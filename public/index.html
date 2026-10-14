@@ -267,14 +267,15 @@
             <div id="passage-content" class="text-sm md:text-base text-slate-800 dark:text-slate-200 leading-relaxed font-serif prose prose-sm dark:prose-invert max-w-none">
               <!-- Rendered Reading Passage HTML -->
             </div>
+          </div>
 
-            <div id="question-image-box" class="hidden mt-4 pt-3 border-t border-amber-200/40">
-              <img id="question-image" src="" alt="Question Image" class="max-w-full rounded-xl border mx-auto">
-            </div>
+          <!-- Question Image (For Part 1 Photographs or Diagram Questions) -->
+          <div id="question-image-box" class="hidden my-4 p-3 bg-slate-50 dark:bg-slate-800/50 rounded-2xl border border-slate-200 dark:border-slate-700 text-center">
+            <img id="question-image" src="" alt="Question Image" class="max-h-80 md:max-h-96 mx-auto rounded-xl object-contain shadow-sm border border-slate-200 dark:border-slate-600 bg-white" />
           </div>
 
           <!-- Question Content -->
-          <div class="my-5">
+          <div class="my-4">
             <h4 id="question-text" class="text-lg md:text-xl font-semibold text-slate-900 dark:text-white leading-relaxed">
               Included is a ______ of the latest feedback from our customers.
             </h4>
@@ -1418,14 +1419,37 @@
       document.getElementById('quiz-current-num').textContent = currentQuestionIdx + 1;
       document.getElementById('question-order-badge').textContent = `CÂU ${q.order || currentQuestionIdx + 1}`;
       document.getElementById('question-topic-badge').textContent = q.topic || (q.type === 'fill-blank' ? 'Nghe Điền Từ' : 'Nghe Tranh Part 1');
-      document.getElementById('question-text').textContent = q.questionText;
+      // Question Text & Image
+      const imageBox = document.getElementById('question-image-box');
+      const imageEl = document.getElementById('question-image');
+      const qTextEl = document.getElementById('question-text');
+
+      let imgSrc = (q.image || '').trim();
+      if (!imgSrc && q.questionText && q.questionText.includes('src="')) {
+        const m = q.questionText.match(/src="([^"]+)"/);
+        if (m) imgSrc = m[1];
+      }
+
+      if (imgSrc.length > 0) {
+        imageBox.classList.remove('hidden');
+        imageEl.src = imgSrc;
+      } else {
+        imageBox.classList.add('hidden');
+      }
+
+      // Display clean question prompt
+      if (q.type === 'photo-listen' || (imgSrc && q.questionText.includes('<img'))) {
+        qTextEl.textContent = '🎧 Nhìn tranh và nghe các lựa chọn để chọn đáp án đúng:';
+      } else if (q.questionText && q.questionText.includes('<')) {
+        qTextEl.innerHTML = q.questionText;
+      } else {
+        qTextEl.textContent = q.questionText || '';
+      }
 
       // Render Reading Passage if present
       const passageBox = document.getElementById('reading-passage-box');
       const passageTitleEl = document.getElementById('passage-title');
       const passageContentEl = document.getElementById('passage-content');
-      const imageBox = document.getElementById('question-image-box');
-      const imageEl = document.getElementById('question-image');
 
       if (q.passage && q.passage.trim().length > 0) {
         passageBox.classList.remove('hidden');
@@ -1438,13 +1462,6 @@
         }
       } else {
         passageBox.classList.add('hidden');
-      }
-
-      if (q.image && q.image.trim().length > 0) {
-        imageBox.classList.remove('hidden');
-        imageEl.src = q.image;
-      } else {
-        imageBox.classList.add('hidden');
       }
 
       const progressPct = ((currentQuestionIdx + 1) / currentQuiz.totalQuestions) * 100;
