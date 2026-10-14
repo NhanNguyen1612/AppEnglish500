@@ -1593,12 +1593,18 @@
         imageBox.classList.add('hidden');
       }
 
-      const isPhotoListen = q.type === 'photo-listen' || (imgSrc.length > 0 && (!q.a || q.a === 'A' || q.photoOptions || (q.topic || '').toLowerCase().includes('part 1')));
+      const isRea = (currentQuiz?.title || '').includes('[REA]') || (q.topic || '').toLowerCase().includes('reading') || (q.topic || '').toLowerCase().includes('đọc');
+      const isPhotoListen = !isRea && (q.type === 'photo-listen' || (imgSrc.length > 0 && (!q.a || q.a === 'A' || q.a === '(A)')));
 
       // Quiz Audio Setup
       const quizAudio = q.audioUrl || (currentQuiz && currentQuiz.audioUrl);
-      if (quizAudio) {
+      if (quizAudio && !isRea) {
         setupQuizAudio(quizAudio, currentQuiz?.title);
+      } else {
+        const audioCard = document.getElementById('quiz-audio-player-card');
+        if (audioCard) audioCard.classList.add('hidden');
+        const audioEl = document.getElementById('quiz-global-audio');
+        if (audioEl) audioEl.pause();
       }
 
       // Display clean question prompt

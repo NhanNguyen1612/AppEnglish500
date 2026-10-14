@@ -138,7 +138,9 @@ const LESSON_MAP = {
   '19715233': '19715236', // Checkup 7 Audio -> Answer Key
   '16790979': '13250872', // Checkup 8 Audio -> Answer Key
   '16791027': '13250888', // Checkup 9 Audio -> Answer Key
-  '16791436': '16791275'  // MINI TEST 1 Audio -> Answer Key
+  '16791436': '16791275', // MINI TEST 1 Audio -> Answer Key
+  '16791834': '16791767', // MINI TEST 2 Audio -> Answer Key
+  '16915851': '16791767'  // MINI TEST 2 Audio (Alt) -> Answer Key
 };
 
   // 4. Quiz Questions for a lesson

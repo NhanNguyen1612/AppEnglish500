@@ -134,7 +134,7 @@ app.get('/api/course', (req, res) => {
 
 // 2. Get Lessons for a Group
 app.get('/api/lessons', (req, res) => {
-  const groupId = parseInt(req.query.group_id);
+  const groupId = parseInt(req.query.group_id || req.query.groupId);
   const { lessons } = getCourseData();
   const filtered = groupId ? lessons.filter(l => l.group_id === groupId) : lessons;
   res.json(filtered);
@@ -172,8 +172,30 @@ const LESSON_MAP = {
   16791834: 16791767  // MINI TEST 2 Audio -> Answer Key
 };
 
+function resolveLessonId(rawLessonId) {
+  if (LESSON_MAP[rawLessonId]) return LESSON_MAP[rawLessonId];
+  const { lessons } = getCourseData();
+  const cur = lessons.find(l => l.id == rawLessonId);
+  if (!cur) return rawLessonId;
+
+  const name = cur.name || '';
+  // Audio lesson -> Answer Key lesson
+  if (name.includes('Audio')) {
+    const base = name.replace(/-\s*Audio.*/i, '').trim();
+    const pair = lessons.find(l => l.group_id === cur.group_id && l.id != cur.id && l.name.includes(base) && l.name.includes('Answer Key'));
+    if (pair) return pair.id;
+  }
+  // Chữa lesson -> Test lesson
+  if (name.includes('Chữa') || name.includes('Ch?a')) {
+    const targetName = name.replace(/Chữa\s*|Ch\?a\s*/gi, '').trim();
+    const pair = lessons.find(l => l.group_id === cur.group_id && l.id != cur.id && (l.name.trim() === targetName || l.name.trim() === targetName + ' - Answer Key'));
+    if (pair) return pair.id;
+  }
+  return rawLessonId;
+}
+
 async function getLessonQuizData(rawLessonId) {
-  const lessonId = LESSON_MAP[rawLessonId] || rawLessonId;
+  const lessonId = resolveLessonId(rawLessonId);
   const quizCacheFile = path.join(CACHE_DIR, `quiz_${lessonId}.json`);
   if (fs.existsSync(quizCacheFile)) {
     try {
@@ -195,6 +217,10 @@ async function getLessonQuizData(rawLessonId) {
     return { lessonId, title: lessonDetail.name, totalQuestions: 0, questions: [] };
   }
 
+  const lessonTitleLower = (lessonDetail.name || '').toLowerCase();
+  const isReadingLesson = lessonDetail.name.includes('[REA]') || lessonTitleLower.includes('reading') || lessonTitleLower.includes('đọc');
+  const isListeningLesson = !isReadingLesson && (lessonDetail.name.includes('[LIS]') || lessonTitleLower.includes('listening') || lessonTitleLower.includes('nghe') || lessonTitleLower.includes('part 1'));
+
   const questionPromises = keyAll.map(async (k, index) => {
     const qId = k.questionId;
     const qCachePath = path.join(QUESTIONS_CACHE_DIR, `${qId}.json`);
@@ -214,8 +240,13 @@ async function getLessonQuizData(rawLessonId) {
     const rawAns = qData.answer || '';
     const qText = qData.questionText || '';
     const cleanStr = s => s.replace(/<[^>]+>/g, '').replace(/&nbsp;/g, ' ').replace(/\s+/g, ' ').trim();
-    const hasABCD = rawAns.includes('(A)') && rawAns.includes('(B)') && rawAns.includes('(C)') && rawAns.includes('(D)');
-    const isFillBlank = qText.includes('____') || (!hasABCD && rawAns.includes('<b>'));
+
+    const cleanA = cleanStr(qData.a || '');
+    const cleanB = cleanStr(qData.b || '');
+    const hasRealChoices = Boolean(cleanA && cleanA !== 'A' && cleanA !== '(A)' && cleanB && cleanB !== 'B');
+
+    const mImg = qText.match(/src="([^"]+)"/);
+    const image = (qData.advImage || '').trim() || (mImg ? mImg[1] : '');
 
     let type = 'multiple-choice';
     let photoOptions = null;
@@ -223,10 +254,8 @@ async function getLessonQuizData(rawLessonId) {
     let fullSentence = '';
     let vietnamese = '';
 
-    const mImg = qText.match(/src="([^"]+)"/);
-    const image = (qData.advImage || '').trim() || (mImg ? mImg[1] : '');
-
-    if (hasABCD || (image && !qData.a)) {
+    // CASE 1: TOEIC Part 1 Photo Listening
+    if (isListeningLesson && image && !hasRealChoices) {
       type = 'photo-listen';
       let enPart = rawAns;
       let viPart = '';
@@ -256,17 +285,25 @@ async function getLessonQuizData(rawLessonId) {
         C: { text: en.C, vi: vi.C },
         D: { text: en.D, vi: vi.D }
       };
-    } else if (isFillBlank) {
+    } 
+    // CASE 2: Dictation Fill-in-the-Blank
+    else if (!hasRealChoices && !image && (rawAns.includes('<b>') || (qText.includes('____') && !hasRealChoices)) && isListeningLesson) {
       type = 'fill-blank';
       const bMatch = rawAns.match(/<b>(.*?)<\/b>/i);
       blankPart = bMatch ? bMatch[1].replace(/&nbsp;/g, ' ').trim() : '';
       const parts = rawAns.split(/<br\s*\/?>/i);
       fullSentence = (parts[0] || '').replace(/<[^>]+>/g, '').replace(/&nbsp;/g, ' ').trim();
       vietnamese = (parts[1] || '').replace(/<[^>]+>/g, '').replace(/&nbsp;/g, ' ').trim();
+    } 
+    // CASE 3: Standard Multiple Choice (Reading Part 5, 6, 7 or grammar or listening with printed options)
+    else {
+      type = 'multiple-choice';
     }
 
     const parsedVocab = extractVocab(rawAns);
-    const topic = (type === 'photo-listen' || lessonDetail.name.includes('Part 1')) ? 'Listening Part 1' : detectTopic(lessonDetail.name, rawAns);
+    const topic = (type === 'photo-listen' || (isListeningLesson && lessonDetail.name.includes('Part 1'))) 
+      ? 'Listening Part 1' 
+      : (isListeningLesson ? 'Listening' : detectTopic(lessonDetail.name, rawAns));
     const passage = qData.conetentEnglish || qData.contentEnglish || '';
     const passageTitle = qData.titleEnglish || '';
 
@@ -303,6 +340,24 @@ async function getLessonQuizData(rawLessonId) {
     audioUrl: questions.find(q => q.audioUrl)?.audioUrl || '',
     questions
   };
+
+  if (!fullQuiz.audioUrl && isListeningLesson) {
+    const { lessons } = getCourseData();
+    const cur = lessons.find(l => l.id == lessonId);
+    if (cur) {
+      const base = (cur.name || '').replace(/-\s*Answer Key.*/i, '').trim();
+      const audioPair = lessons.find(l => l.group_id === cur.group_id && l.id != cur.id && l.name.includes(base) && l.name.includes('Audio'));
+      if (audioPair) {
+        const audioLessonPath = path.join(LESSONS_CACHE_DIR, `${audioPair.id}.json`);
+        if (fs.existsSync(audioLessonPath)) {
+          try {
+            const aData = JSON.parse(fs.readFileSync(audioLessonPath, 'utf8'));
+            if (aData.fileDownloadFullUrl) fullQuiz.audioUrl = aData.fileDownloadFullUrl;
+          } catch (e) {}
+        }
+      }
+    }
+  }
 
   fs.writeFileSync(quizCacheFile, JSON.stringify(fullQuiz, null, 2), 'utf8');
   return fullQuiz;
