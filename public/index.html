@@ -207,9 +207,12 @@
           </div>
         </div>
 
-        <div class="w-full bg-slate-200 dark:bg-slate-800 h-1.5 rounded-full overflow-hidden mb-4">
+        <div class="w-full bg-slate-200 dark:bg-slate-800 h-1.5 rounded-full overflow-hidden mb-3">
           <div id="quiz-progress-bar" class="bg-blue-600 h-full transition-all duration-300" style="width: 10%;"></div>
         </div>
+
+        <!-- Question Navigation Bar (Pills 1..N) -->
+        <div id="quiz-question-pills" class="flex flex-wrap items-center gap-1.5 p-2.5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 mb-4 overflow-x-auto max-h-24 shadow-sm"></div>
 
         <!-- Question Card -->
         <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-sm flex-1 flex flex-col">
@@ -1199,12 +1202,15 @@
         let actionBtn = '';
 
         if (isQuiz) {
-          badge = `<span class="px-2 py-0.5 rounded text-[11px] font-semibold bg-emerald-100 text-emerald-700 dark:bg-emerald-950 dark:text-emerald-300">Trắc nghiệm</span>`;
+          const isListening = l.name.includes('[LIS]') || l.name.toLowerCase().includes('audio') || l.name.toLowerCase().includes('listening');
+          badge = isListening 
+            ? `<span class="px-2 py-0.5 rounded text-[11px] font-semibold bg-sky-100 text-sky-700 dark:bg-sky-950 dark:text-sky-300">🎧 Nghe câu nhỏ</span>`
+            : `<span class="px-2 py-0.5 rounded text-[11px] font-semibold bg-emerald-100 text-emerald-700 dark:bg-emerald-950 dark:text-emerald-300">Trắc nghiệm</span>`;
           actionBtn = `
             <div class="mt-3 flex items-center space-x-2">
-              <button onclick="startQuiz(${l.id})" class="flex-1 py-2 px-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold shadow-sm transition flex items-center justify-center space-x-1.5">
-                <i data-lucide="play" class="w-3.5 h-3.5"></i>
-                <span>Làm bài</span>
+              <button onclick="startQuiz(${l.id})" class="flex-1 py-2 px-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold shadow-sm transition flex items-center justify-center space-x-1.5" title="${isListening ? 'Nghe và làm từng câu nhỏ' : 'Làm bài trắc nghiệm'}">
+                <i data-lucide="${isListening ? 'volume-2' : 'play'}" class="w-3.5 h-3.5"></i>
+                <span>${isListening ? 'Nghe từng câu' : 'Làm bài'}</span>
               </button>
               <button onclick="practiceWordTypingForLesson(${l.id})" class="py-2 px-2.5 rounded-xl bg-rose-50 text-rose-700 dark:bg-rose-950/60 dark:text-rose-300 border border-rose-200 dark:border-rose-900/60 hover:bg-rose-100 text-xs font-semibold transition" title="Luyện gõ từ vựng bài này">
                 <span>✍️ Gõ từ</span>
@@ -1303,13 +1309,70 @@
       switchView('lessons');
     }
 
+    function renderQuestionPills() {
+      const pillsBox = document.getElementById('quiz-question-pills');
+      if (!pillsBox || !currentQuiz || !currentQuiz.questions) return;
+      pillsBox.innerHTML = currentQuiz.questions.map((q, idx) => {
+        const isCurrent = idx === currentQuestionIdx;
+        const isEval = userEvaluated[q.questionId] === true;
+        const userSel = userPendingSelections[q.questionId];
+        
+        let pillClass = 'w-7 h-7 rounded-lg text-xs font-bold flex items-center justify-center transition cursor-pointer ';
+        if (isCurrent) {
+          pillClass += 'ring-2 ring-blue-600 ring-offset-1 font-extrabold bg-blue-600 text-white ';
+        } else if (isEval) {
+          let isCorrect = false;
+          if (q.type === 'fill-blank') {
+            const cleanT = (userSel || '').toLowerCase().replace(/[.,!?;:'"]/g, '').replace(/\s+/g, ' ').trim();
+            const cleanB = (q.blankPart || '').toLowerCase().replace(/[.,!?;:'"]/g, '').replace(/\s+/g, ' ').trim();
+            const cleanF = (q.fullSentence || '').toLowerCase().replace(/[.,!?;:'"]/g, '').replace(/\s+/g, ' ').trim();
+            isCorrect = cleanT === cleanB || cleanT === cleanF || (cleanB.length > 5 && cleanF.includes(cleanT));
+          } else {
+            isCorrect = userSel === q.key;
+          }
+          pillClass += isCorrect ? 'bg-emerald-500 text-white ' : 'bg-rose-500 text-white ';
+        } else {
+          pillClass += 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 ';
+        }
+
+        return `<button onclick="jumpToQuestion(${idx})" class="${pillClass}">${idx + 1}</button>`;
+      }).join('');
+    }
+
+    function jumpToQuestion(idx) {
+      if (idx >= 0 && idx < currentQuiz.questions.length) {
+        currentQuestionIdx = idx;
+        renderCurrentQuestion();
+      }
+    }
+
+    let fillBlankHintLevel = 0;
+    function toggleFillBlankHint() {
+      const q = currentQuiz.questions[currentQuestionIdx];
+      if (!q || !q.blankPart) return;
+      const el = document.getElementById('fill-blank-hint-text');
+      if (!el) return;
+      fillBlankHintLevel = (fillBlankHintLevel + 1) % 3;
+      const bp = q.blankPart.trim();
+      const len = bp.length;
+      if (fillBlankHintLevel === 0) {
+        el.textContent = `${len} chữ cái: ` + bp.split('').map((c, i) => (i === 0 || c === ' ') ? c : '_').join(' ');
+      } else if (fillBlankHintLevel === 1) {
+        el.textContent = `${len} chữ cái: ` + bp.split('').map((c, i) => (i === 0 || i === len - 1 || c === ' ') ? c : '_').join(' ');
+      } else {
+        el.textContent = `${len} chữ cái: ` + bp.split('').map((c, i) => (i % 2 === 0 || c === ' ') ? c : '_').join(' ');
+      }
+    }
+
     function renderCurrentQuestion() {
       const q = currentQuiz.questions[currentQuestionIdx];
       if (!q) return;
 
+      renderQuestionPills();
+
       document.getElementById('quiz-current-num').textContent = currentQuestionIdx + 1;
       document.getElementById('question-order-badge').textContent = `CÂU ${q.order || currentQuestionIdx + 1}`;
-      document.getElementById('question-topic-badge').textContent = q.topic || 'Ngữ pháp';
+      document.getElementById('question-topic-badge').textContent = q.topic || (q.type === 'fill-blank' ? 'Nghe Điền Từ' : 'Nghe Tranh Part 1');
       document.getElementById('question-text').textContent = q.questionText;
 
       // Render Reading Passage if present
@@ -1355,47 +1418,106 @@
       const isEvaluated = userEvaluated[q.questionId] === true;
       const selected = userPendingSelections[q.questionId];
 
-      const options = [
-        { key: 'A', text: q.a },
-        { key: 'B', text: q.b },
-        { key: 'C', text: q.c },
-        { key: 'D', text: q.d },
-      ].filter(o => o.text);
-
       const container = document.getElementById('choices-container');
-      container.innerHTML = options.map(opt => {
-        const isThisSelected = selected === opt.key;
-        let btnClasses = 'p-4 rounded-xl border text-left transition flex items-center space-x-3.5 bg-white dark:bg-slate-800/40 border-slate-200 dark:border-slate-800 hover:border-blue-400';
-        let badgeClasses = 'bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300';
-        let rightIndicator = '';
 
-        if (!isEvaluated) {
-          if (isThisSelected) {
-            btnClasses = 'p-4 rounded-xl border-2 border-blue-600 bg-blue-50/70 text-blue-900 dark:border-blue-500 dark:bg-blue-950/60 dark:text-blue-200 font-semibold shadow-sm text-left flex items-center space-x-3.5';
-            badgeClasses = 'bg-blue-600 text-white';
-            rightIndicator = `<span class="ml-auto text-xs font-bold text-blue-600 dark:text-blue-400 px-2 py-0.5 rounded bg-blue-100 dark:bg-blue-900/60">Đã chọn</span>`;
-          }
-        } else {
-          const isCorrectAnswer = opt.key === q.key;
-          if (isCorrectAnswer) {
-            btnClasses = 'p-4 rounded-xl border-2 border-emerald-500 bg-emerald-50 text-emerald-950 dark:border-emerald-500 dark:bg-emerald-950/60 dark:text-emerald-200 font-semibold shadow-sm text-left flex items-center space-x-3.5';
-            badgeClasses = 'bg-emerald-600 text-white';
-            rightIndicator = `<span class="ml-auto text-xs font-bold text-emerald-600 dark:text-emerald-400 px-2 py-0.5 rounded bg-emerald-100 dark:bg-emerald-950 flex items-center space-x-1"><i data-lucide="check" class="w-3.5 h-3.5"></i><span>Đáp án đúng</span></span>`;
-          } else if (isThisSelected && !isCorrectAnswer) {
-            btnClasses = 'p-4 rounded-xl border-2 border-rose-500 bg-rose-50 text-rose-950 dark:border-rose-500 dark:bg-rose-950/60 dark:text-rose-200 font-semibold shadow-sm text-left flex items-center space-x-3.5';
-            badgeClasses = 'bg-rose-600 text-white';
-            rightIndicator = `<span class="ml-auto text-xs font-bold text-rose-600 dark:text-rose-400 px-2 py-0.5 rounded bg-rose-100 dark:bg-rose-950 flex items-center space-x-1"><i data-lucide="x" class="w-3.5 h-3.5"></i><span>Lựa chọn của bạn</span></span>`;
-          }
+      // TYPE 1: FILL-IN-THE-BLANK LISTENING SENTENCE
+      if (q.type === 'fill-blank') {
+        const userTyped = selected || '';
+        const cleanTyped = userTyped.toLowerCase().replace(/[.,!?;:'"]/g, '').replace(/\s+/g, ' ').trim();
+        const cleanBlank = (q.blankPart || '').toLowerCase().replace(/[.,!?;:'"]/g, '').replace(/\s+/g, ' ').trim();
+        const cleanFull = (q.fullSentence || '').toLowerCase().replace(/[.,!?;:'"]/g, '').replace(/\s+/g, ' ').trim();
+        const isCorrect = cleanTyped === cleanBlank || cleanTyped === cleanFull || (cleanBlank.length > 5 && cleanFull.includes(cleanTyped) && cleanTyped.length >= cleanBlank.length * 0.8);
+
+        let inputClass = 'w-full px-4 py-3.5 rounded-xl border-2 border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 font-bold text-center text-lg md:text-xl outline-none focus:border-blue-600 transition tracking-wide text-slate-900 dark:text-white shadow-sm';
+        if (isEvaluated) {
+          inputClass = isCorrect 
+            ? 'w-full px-4 py-3.5 rounded-xl border-2 border-emerald-500 bg-emerald-50 dark:bg-emerald-950/60 font-bold text-center text-lg md:text-xl outline-none text-emerald-800 dark:text-emerald-200 tracking-wide'
+            : 'w-full px-4 py-3.5 rounded-xl border-2 border-rose-500 bg-rose-50 dark:bg-rose-950/60 font-bold text-center text-lg md:text-xl outline-none text-rose-800 dark:text-rose-200 tracking-wide';
         }
 
-        return `
-          <button onclick="selectOption('${opt.key}')" id="opt-btn-${opt.key}" class="${btnClasses}">
-            <span class="w-8 h-8 rounded-lg flex items-center justify-center text-xs font-bold font-mono ${badgeClasses}">${opt.key}</span>
-            <span class="text-sm leading-snug flex-1">${opt.text}</span>
-            ${rightIndicator}
-          </button>
+        container.className = 'w-full mb-6';
+        container.innerHTML = `
+          <div class="w-full bg-slate-50 dark:bg-slate-800/40 p-6 md:p-8 rounded-2xl border border-slate-200 dark:border-slate-700/80 text-center">
+            
+            <!-- Sentence Audio Control -->
+            <div class="flex items-center justify-center space-x-3 mb-4">
+              <button onclick="speakSentence('${(q.fullSentence || q.questionText).replace(/'/g, "\\'")}', '0.95')" class="px-6 py-3 rounded-2xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-sm shadow-lg shadow-blue-500/25 transition flex items-center space-x-2 active:scale-95 group">
+                <i data-lucide="volume-2" class="w-5 h-5 group-hover:scale-110 transition"></i>
+                <span>🔊 Nghe riêng câu nhỏ này (Space)</span>
+              </button>
+              <button onclick="speakSentence('${(q.fullSentence || q.questionText).replace(/'/g, "\\'")}', '0.75')" class="px-4 py-3 rounded-2xl border border-slate-300 dark:border-slate-600 hover:bg-white dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 font-bold text-xs transition" title="Nghe chậm">
+                🐢 0.75x
+              </button>
+            </div>
+            <p class="text-xs text-slate-400 mb-5">🎧 Bạn có thể nghe đi nghe lại câu này nhiều lần tùy thích và điền cụm từ còn thiếu</p>
+
+            <!-- Typing Input -->
+            <div class="max-w-md mx-auto mb-3">
+              <input id="fill-blank-input" type="text" autocomplete="off" spellcheck="false" placeholder="Gõ từ/cụm từ còn thiếu rồi nhấn Enter..." value="${userTyped}" class="${inputClass}" onkeydown="if(event.key==='Enter') checkCurrentAnswer()" ${isEvaluated ? 'disabled' : ''} />
+            </div>
+
+            <!-- Letter Hint -->
+            <div class="flex items-center justify-center space-x-2">
+              <span id="fill-blank-hint-text" class="text-xs font-mono font-bold text-slate-500 dark:text-slate-400">
+                ${q.blankPart ? q.blankPart.length + ' chữ cái: ' + q.blankPart.split('').map((c, i) => (i === 0 || c === ' ') ? c : '_').join(' ') : ''}
+              </span>
+              <button onclick="toggleFillBlankHint()" class="text-xs text-blue-600 dark:text-blue-400 hover:underline font-semibold">Hiện thêm chữ cái</button>
+            </div>
+          </div>
         `;
-      }).join('');
+        setTimeout(() => {
+          const inp = document.getElementById('fill-blank-input');
+          if (inp && !isEvaluated) inp.focus();
+        }, 150);
+
+      } else {
+        // TYPE 2: MULTIPLE CHOICE OR PHOTO LISTENING
+        container.className = 'grid grid-cols-1 md:grid-cols-2 gap-3 mb-6';
+        const options = [
+          { key: 'A', text: q.a },
+          { key: 'B', text: q.b },
+          { key: 'C', text: q.c },
+          { key: 'D', text: q.d },
+        ].filter(o => o.text);
+
+        container.innerHTML = options.map(opt => {
+          const isThisSelected = selected === opt.key;
+          let btnClasses = 'p-4 rounded-xl border text-left transition flex items-center space-x-3.5 bg-white dark:bg-slate-800/40 border-slate-200 dark:border-slate-800 hover:border-blue-400';
+          let badgeClasses = 'bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300';
+          let rightIndicator = '';
+
+          if (!isEvaluated) {
+            if (isThisSelected) {
+              btnClasses = 'p-4 rounded-xl border-2 border-blue-600 bg-blue-50/70 text-blue-900 dark:border-blue-500 dark:bg-blue-950/60 dark:text-blue-200 font-semibold shadow-sm text-left flex items-center space-x-3.5';
+              badgeClasses = 'bg-blue-600 text-white';
+              rightIndicator = `<span class="ml-auto text-xs font-bold text-blue-600 dark:text-blue-400 px-2 py-0.5 rounded bg-blue-100 dark:bg-blue-900/60">Đã chọn</span>`;
+            }
+          } else {
+            const isCorrectAnswer = opt.key === q.key;
+            if (isCorrectAnswer) {
+              btnClasses = 'p-4 rounded-xl border-2 border-emerald-500 bg-emerald-50 text-emerald-950 dark:border-emerald-500 dark:bg-emerald-950/60 dark:text-emerald-200 font-semibold shadow-sm text-left flex items-center space-x-3.5';
+              badgeClasses = 'bg-emerald-600 text-white';
+              rightIndicator = `<span class="ml-auto text-xs font-bold text-emerald-600 dark:text-emerald-400 px-2 py-0.5 rounded bg-emerald-100 dark:bg-emerald-950 flex items-center space-x-1"><i data-lucide="check" class="w-3.5 h-3.5"></i><span>Đáp án đúng</span></span>`;
+            } else if (isThisSelected && !isCorrectAnswer) {
+              btnClasses = 'p-4 rounded-xl border-2 border-rose-500 bg-rose-50 text-rose-950 dark:border-rose-500 dark:bg-rose-950/60 dark:text-rose-200 font-semibold shadow-sm text-left flex items-center space-x-3.5';
+              badgeClasses = 'bg-rose-600 text-white';
+              rightIndicator = `<span class="ml-auto text-xs font-bold text-rose-600 dark:text-rose-400 px-2 py-0.5 rounded bg-rose-100 dark:bg-rose-950 flex items-center space-x-1"><i data-lucide="x" class="w-3.5 h-3.5"></i><span>Lựa chọn của bạn</span></span>`;
+            }
+          }
+
+          // Individual speaker button for listening practice!
+          const speakerBtn = `<button type="button" onclick="event.stopPropagation(); speakSentence('${opt.text.replace(/'/g, "\\'")}', '0.95')" class="p-2 rounded-lg bg-slate-100 dark:bg-slate-700 hover:bg-blue-100 hover:text-blue-600 text-slate-600 dark:text-slate-300 transition flex-shrink-0" title="Nghe riêng câu này"><i data-lucide="volume-2" class="w-4 h-4"></i></button>`;
+
+          return `
+            <button onclick="selectOption('${opt.key}')" id="opt-btn-${opt.key}" class="${btnClasses}">
+              <span class="w-8 h-8 rounded-lg flex items-center justify-center text-xs font-bold font-mono ${badgeClasses}">${opt.key}</span>
+              <span class="text-sm leading-snug flex-1">${opt.text}</span>
+              ${speakerBtn}
+              ${rightIndicator}
+            </button>
+          `;
+        }).join('');
+      }
 
       const expBox = document.getElementById('explanation-box');
       const statusBanner = document.getElementById('result-status-banner');
@@ -1403,7 +1525,16 @@
       const checkBtnText = document.getElementById('btn-check-text');
 
       if (isEvaluated) {
-        const isCorrect = selected === q.key;
+        let isCorrect = false;
+        if (q.type === 'fill-blank') {
+          const cleanTyped = (selected || '').toLowerCase().replace(/[.,!?;:'"]/g, '').replace(/\s+/g, ' ').trim();
+          const cleanBlank = (q.blankPart || '').toLowerCase().replace(/[.,!?;:'"]/g, '').replace(/\s+/g, ' ').trim();
+          const cleanFull = (q.fullSentence || '').toLowerCase().replace(/[.,!?;:'"]/g, '').replace(/\s+/g, ' ').trim();
+          isCorrect = cleanTyped === cleanBlank || cleanTyped === cleanFull || (cleanBlank.length > 5 && cleanFull.includes(cleanTyped) && cleanTyped.length >= cleanBlank.length * 0.8);
+        } else {
+          isCorrect = selected === q.key;
+        }
+
         statusBanner.classList.remove('hidden');
         expBox.classList.remove('hidden');
 
@@ -1413,19 +1544,38 @@
           document.getElementById('result-status-icon').innerHTML = '<i data-lucide="check" class="w-4 h-4"></i>';
           document.getElementById('result-status-title').textContent = 'Chính xác! Xuất sắc!';
           document.getElementById('result-status-title').className = 'font-bold text-sm text-emerald-800 dark:text-emerald-200';
-          document.getElementById('result-status-subtitle').textContent = `Bạn đã chọn đúng đáp án (${q.key}).`;
+          document.getElementById('result-status-subtitle').textContent = q.type === 'fill-blank' ? `Bạn đã điền đúng: "${q.blankPart}"` : `Bạn đã chọn đúng đáp án (${q.key}).`;
         } else {
           statusBanner.className = 'mt-4 p-3.5 rounded-xl border border-rose-300 dark:border-rose-800 bg-rose-50 dark:bg-rose-950/50 flex items-center justify-between transition-all';
           document.getElementById('result-status-icon').className = 'w-7 h-7 rounded-lg bg-rose-600 flex items-center justify-center text-white';
           document.getElementById('result-status-icon').innerHTML = '<i data-lucide="x" class="w-4 h-4"></i>';
           document.getElementById('result-status-title').textContent = 'Chưa chính xác!';
           document.getElementById('result-status-title').className = 'font-bold text-sm text-rose-800 dark:text-rose-200';
-          document.getElementById('result-status-subtitle').textContent = `Bạn chọn ${selected || 'trống'} • Đáp án đúng là ${q.key}. (Đã lưu vào Sổ tay)`;
+          document.getElementById('result-status-subtitle').textContent = q.type === 'fill-blank' ? `Bạn đã gõ: "${selected || 'trống'}" • Đáp án đúng: "${q.blankPart}"` : `Bạn chọn ${selected || 'trống'} • Đáp án đúng là ${q.key}.`;
         }
 
-        document.getElementById('explanation-key-badge').textContent = `Đáp án đúng: ${q.key}`;
-        document.getElementById('explanation-content').innerHTML = q.explanation || 'Không có giải thích chi tiết.';
-        renderVocabTags(q.vocabList);
+        if (q.type === 'fill-blank') {
+          document.getElementById('explanation-key-badge').textContent = `Đáp án chuẩn: ${q.blankPart}`;
+          document.getElementById('explanation-content').innerHTML = `
+            <div class="mb-3">
+              <span class="text-xs font-bold uppercase text-slate-400 block mb-1">Câu đầy đủ:</span>
+              <div class="text-base font-bold text-slate-900 dark:text-white font-mono flex items-center space-x-2">
+                <span>${q.fullSentence}</span>
+                <button onclick="speakSentence('${q.fullSentence.replace(/'/g, "\\'")}', '0.95')" class="p-1.5 rounded-full text-blue-600 hover:bg-blue-50 dark:hover:bg-slate-700 transition" title="Nghe lại câu">
+                  <i data-lucide="volume-2" class="w-4 h-4"></i>
+                </button>
+              </div>
+            </div>
+            ${q.vietnamese ? `
+            <div class="p-3 rounded-xl bg-blue-50/70 dark:bg-slate-800/80 border border-blue-100 dark:border-slate-700 text-sm text-slate-700 dark:text-slate-200 font-medium">
+              <b>Dịch nghĩa:</b> ${q.vietnamese}
+            </div>` : ''}
+          `;
+        } else {
+          document.getElementById('explanation-key-badge').textContent = `Đáp án đúng: ${q.key}`;
+          document.getElementById('explanation-content').innerHTML = q.explanation || 'Không có giải thích chi tiết.';
+          renderVocabTags(q.vocabList);
+        }
 
         checkBtn.className = 'px-5 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-sm font-semibold hover:bg-slate-200 transition flex items-center space-x-2';
         checkBtnText.textContent = 'Đã kiểm tra';
@@ -1448,15 +1598,35 @@
 
     async function checkCurrentAnswer() {
       const q = currentQuiz.questions[currentQuestionIdx];
-      const selected = userPendingSelections[q.questionId];
+      let selected = userPendingSelections[q.questionId];
 
-      if (!selected) {
-        alert('👉 Vui lòng click chọn một đáp án (A, B, C, hoặc D) trước khi kiểm tra!');
-        return;
+      if (q.type === 'fill-blank') {
+        const inp = document.getElementById('fill-blank-input');
+        selected = (inp ? inp.value : selected || '').trim();
+        if (!selected) {
+          alert('👉 Vui lòng nhập từ hoặc cụm từ bạn nghe được trước khi kiểm tra!');
+          if (inp) inp.focus();
+          return;
+        }
+        userPendingSelections[q.questionId] = selected;
+      } else {
+        if (!selected) {
+          alert('👉 Vui lòng click chọn một đáp án (A, B, C, hoặc D) trước khi kiểm tra!');
+          return;
+        }
       }
 
       userEvaluated[q.questionId] = true;
-      const isCorrect = selected === q.key;
+      let isCorrect = false;
+
+      if (q.type === 'fill-blank') {
+        const cleanT = selected.toLowerCase().replace(/[.,!?;:'"]/g, '').replace(/\s+/g, ' ').trim();
+        const cleanB = (q.blankPart || '').toLowerCase().replace(/[.,!?;:'"]/g, '').replace(/\s+/g, ' ').trim();
+        const cleanF = (q.fullSentence || '').toLowerCase().replace(/[.,!?;:'"]/g, '').replace(/\s+/g, ' ').trim();
+        isCorrect = cleanT === cleanB || cleanT === cleanF || (cleanB.length > 5 && cleanF.includes(cleanT) && cleanT.length >= cleanB.length * 0.8);
+      } else {
+        isCorrect = selected === q.key;
+      }
 
       // Record stats to backend
       fetch('/api/record-answer', {
@@ -1476,9 +1646,9 @@
           questionId: q.questionId,
           questionText: q.questionText,
           a: q.a, b: q.b, c: q.c, d: q.d,
-          key: q.key,
+          key: q.key || q.blankPart || '',
           yourKey: selected,
-          explanation: q.explanation,
+          explanation: q.explanation || q.vietnamese || '',
           lessonTitle: currentQuiz.title
         });
       } else if (typeof confetti === 'function') {

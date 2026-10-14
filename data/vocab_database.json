@@ -1150,5 +1150,230 @@
     "lesson": "[REA] MINI TEST 1 ",
     "ipa": "/fɔːˈsiː/",
     "phonetic": "/fɔːˈsiː/"
+  },
+  {
+    "word": "talk",
+    "pos": "v",
+    "meaning": "nói chuyện",
+    "ipa": "/tɔːk/",
+    "example": "They are talking in the conference room.",
+    "lesson": "[LIS] Checkup 2 - TALKING",
+    "phonetic": "/tɔːk/"
+  },
+  {
+    "word": "speak",
+    "pos": "v",
+    "meaning": "nói chuyện, phát biểu",
+    "ipa": "/spiːk/",
+    "example": "The manager is speaking to the team.",
+    "lesson": "[LIS] Checkup 2 - TALKING",
+    "phonetic": "/spiːk/"
+  },
+  {
+    "word": "chat",
+    "pos": "v",
+    "meaning": "trò chuyện thân mật",
+    "ipa": "/tʃæt/",
+    "example": "Colleagues are chatting during the coffee break.",
+    "lesson": "[LIS] Checkup 2 - TALKING",
+    "phonetic": "/tʃæt/"
+  },
+  {
+    "word": "lecture",
+    "pos": "n",
+    "meaning": "bài giảng, buổi thuyết trình",
+    "ipa": "/ˈlektʃər/",
+    "example": "The professor is giving an interesting lecture.",
+    "lesson": "[LIS] Checkup 2 - TALKING",
+    "phonetic": "/ˈlektʃər/"
+  },
+  {
+    "word": "deliver",
+    "pos": "v",
+    "meaning": "phát biểu (bài diễn văn), giao hàng",
+    "ipa": "/dɪˈlɪvər/",
+    "example": "She is delivering a presentation at the conference.",
+    "lesson": "[LIS] Checkup 2 - TALKING",
+    "phonetic": "/dɪˈlɪvər/"
+  },
+  {
+    "word": "speech",
+    "pos": "n",
+    "meaning": "bài phát biểu, diễn văn",
+    "ipa": "/spiːtʃ/",
+    "example": "The director gave a welcoming speech.",
+    "lesson": "[LIS] Checkup 2 - TALKING",
+    "phonetic": "/spiːtʃ/"
+  },
+  {
+    "word": "conversation",
+    "pos": "n",
+    "meaning": "cuộc hội thoại, cuộc nói chuyện",
+    "ipa": "/ˌkɒnvəˈseɪʃn/",
+    "example": "They are having a conversation by the entrance.",
+    "lesson": "[LIS] Checkup 2 - TALKING",
+    "phonetic": "/ˌkɒnvəˈseɪʃn/"
+  },
+  {
+    "word": "colleague",
+    "pos": "n",
+    "meaning": "đồng nghiệp",
+    "ipa": "/ˈkɒliːɡ/",
+    "example": "He is discussing project details with a colleague.",
+    "lesson": "[LIS] Checkup 2 - TALKING",
+    "phonetic": "/ˈkɒliːɡ/"
+  },
+  {
+    "word": "hold",
+    "pos": "v",
+    "meaning": "cầm, nắm, giữ",
+    "ipa": "/həʊld/",
+    "example": "The passenger is holding a ticket.",
+    "lesson": "[LIS] Checkup 3 - CARRYING/HOLDING",
+    "phonetic": "/həʊld/"
+  },
+  {
+    "word": "grasp",
+    "pos": "v",
+    "meaning": "nắm chặt, ôm chặt",
+    "ipa": "/ɡrɑːsp/",
+    "example": "She is grasping the handrail while descending.",
+    "lesson": "[LIS] Checkup 3 - CARRYING/HOLDING",
+    "phonetic": "/ɡrɑːsp/"
+  },
+  {
+    "word": "carry",
+    "pos": "v",
+    "meaning": "mang, vác, mang theo",
+    "ipa": "/ˈkæri/",
+    "example": "The courier is carrying several boxes.",
+    "lesson": "[LIS] Checkup 3 - CARRYING/HOLDING",
+    "phonetic": "/ˈkæri/"
+  },
+  {
+    "word": "move",
+    "pos": "v",
+    "meaning": "di chuyển, chuyển đồ",
+    "ipa": "/muːv/",
+    "example": "Workers are moving office furniture.",
+    "lesson": "[LIS] Checkup 3 - CARRYING/HOLDING",
+    "phonetic": "/muːv/"
+  },
+  {
+    "word": "push",
+    "pos": "v",
+    "meaning": "đẩy (xe, cửa)",
+    "ipa": "/pʊʃ/",
+    "example": "A traveler is pushing a luggage cart.",
+    "lesson": "[LIS] Checkup 3 - CARRYING/HOLDING",
+    "phonetic": "/pʊʃ/"
+  },
+  {
+    "word": "use",
+    "pos": "v",
+    "meaning": "sử dụng, dùng",
+    "ipa": "/juːz/",
+    "example": "An engineer is using a measuring device.",
+    "lesson": "[LIS] Checkup 3 - CARRYING/HOLDING",
+    "phonetic": "/juːz/"
+  },
+  {
+    "word": "operate",
+    "pos": "v",
+    "meaning": "vận hành thiết bị / máy móc",
+    "ipa": "/ˈɒpəreɪt/",
+    "example": "The technician is operating heavy machinery.",
+    "lesson": "[LIS] Checkup 3 - CARRYING/HOLDING",
+    "phonetic": "/ˈɒpəreɪt/"
+  },
+  {
+    "word": "pour",
+    "pos": "v",
+    "meaning": "rót (nước), đổ (nước)",
+    "ipa": "/pɔːr/",
+    "example": "The barista is pouring hot water into a cup.",
+    "lesson": "[LIS] Checkup 3 - CARRYING/HOLDING",
+    "phonetic": "/pɔːr/"
+  },
+  {
+    "word": "microscope",
+    "pos": "n",
+    "meaning": "kính hiển vi",
+    "ipa": "/ˈmaɪkrəskəʊp/",
+    "example": "The scientist is looking through a microscope.",
+    "lesson": "[LIS] Checkup 1 - ACTIONS OF 1 PERSON",
+    "phonetic": "/ˈmaɪkrəskəʊp/"
+  },
+  {
+    "word": "presentation",
+    "pos": "n",
+    "meaning": "bài thuyết trình, buổi trình bày",
+    "ipa": "/ˌpreznˈteɪʃn/",
+    "example": "Attendees are watching a slideshow presentation.",
+    "lesson": "[LIS] Checkup 1 - ACTIONS OF 1 PERSON",
+    "phonetic": "/ˌpreznˈteɪʃn/"
+  },
+  {
+    "word": "exhibition",
+    "pos": "n",
+    "meaning": "buổi triển lãm",
+    "ipa": "/ˌeksɪˈbɪʃn/",
+    "example": "Visitors are viewing paintings at an art exhibition.",
+    "lesson": "[LIS] Checkup 1 - ACTIONS OF 1 PERSON",
+    "phonetic": "/ˌeksɪˈbɪʃn/"
+  },
+  {
+    "word": "artwork",
+    "pos": "n",
+    "meaning": "tác phẩm nghệ thuật",
+    "ipa": "/ˈɑːtwɜːk/",
+    "example": "Sculptures and artwork are displayed in the gallery.",
+    "lesson": "[LIS] Checkup 1 - ACTIONS OF 1 PERSON",
+    "phonetic": "/ˈɑːtwɜːk/"
+  },
+  {
+    "word": "artifact",
+    "pos": "n",
+    "meaning": "hiện vật lịch sử",
+    "ipa": "/ˈɑːtɪfækt/",
+    "example": "Tourists are viewing historical artifacts in the museum.",
+    "lesson": "[LIS] Checkup 1 - ACTIONS OF 1 PERSON",
+    "phonetic": "/ˈɑːtɪfækt/"
+  },
+  {
+    "word": "adjust",
+    "pos": "v",
+    "meaning": "điều chỉnh, sửa lại cho vừa",
+    "ipa": "/əˈdʒʌst/",
+    "example": "The man is adjusting his necktie.",
+    "lesson": "[LIS] Checkup 9 - Luyện tập",
+    "phonetic": "/əˈdʒʌst/"
+  },
+  {
+    "word": "approach",
+    "pos": "v",
+    "meaning": "tiến lại gần, đến gần",
+    "ipa": "/əˈprəʊtʃ/",
+    "example": "Passengers are approaching the boarding gate.",
+    "lesson": "[LIS] Checkup 9 - Luyện tập",
+    "phonetic": "/əˈprəʊtʃ/"
+  },
+  {
+    "word": "shelf",
+    "pos": "n",
+    "meaning": "kệ, giá đỡ",
+    "ipa": "/ʃelf/",
+    "example": "Products are arranged neatly on the shelves.",
+    "lesson": "[LIS] Checkup 1 - ACTIONS OF 1 PERSON",
+    "phonetic": "/ʃelf/"
+  },
+  {
+    "word": "shelves",
+    "pos": "n",
+    "meaning": "những chiếc kệ, giá sách",
+    "ipa": "/ʃelvz/",
+    "example": "Books are stocked on the library shelves.",
+    "lesson": "[LIS] Checkup 1 - ACTIONS OF 1 PERSON",
+    "phonetic": "/ʃelvz/"
   }
 ]

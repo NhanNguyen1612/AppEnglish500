@@ -103,9 +103,24 @@ export async function onRequest(context) {
     return jsonResponse(filtered);
   }
 
+const LESSON_MAP = {
+  '19715180': '19715199', // Checkup 1 Audio -> Answer Key
+  '19715207': '19715255', // Checkup 2 Audio -> Answer Key
+  '19715214': '19715217', // Checkup 3 Audio -> Answer Key
+  '19715219': '19715220', // Checkup 4 Audio -> Answer Key
+  '19715222': '19715225', // Checkup 5 Audio -> Answer Key
+  '19715227': '19715231', // Checkup 6 Audio -> Answer Key
+  '19715233': '19715236', // Checkup 7 Audio -> Answer Key
+  '16790979': '13250872', // Checkup 8 Audio -> Answer Key
+  '16791027': '13250888', // Checkup 9 Audio -> Answer Key
+  '16791436': '16791275'  // MINI TEST 1 Audio -> Answer Key
+};
+
   // 4. Quiz Questions for a lesson
   if (path.startsWith('/api/quiz/')) {
-    const lessonId = path.replace('/api/quiz/', '').trim();
+    let lessonId = path.replace('/api/quiz/', '').trim();
+    if (LESSON_MAP[lessonId]) lessonId = LESSON_MAP[lessonId];
+
     if (data.quizzes && data.quizzes[lessonId]) {
       return jsonResponse(data.quizzes[lessonId]);
     }
@@ -146,7 +161,8 @@ export async function onRequest(context) {
 
   // 5. Dictation & Word Typing items
   if (path === '/api/dictation/items') {
-    const lessonId = url.searchParams.get('lessonId') || 'all';
+    let lessonId = url.searchParams.get('lessonId') || 'all';
+    if (LESSON_MAP[lessonId]) lessonId = LESSON_MAP[lessonId];
     const mode = url.searchParams.get('mode') || 'word';
 
     const vocabList = data.vocab || [];
@@ -168,7 +184,7 @@ export async function onRequest(context) {
                 word: w,
                 pos: v.pos || 'từ vựng',
                 meaning: v.meaning || '',
-                example: q.questionText.replace(/_{2,}/g, w).replace(/\s+/g, ' ').trim()
+                example: q.questionText ? q.questionText.replace(/_{2,}/g, w).replace(/\s+/g, ' ').trim() : ''
               });
             }
           });
@@ -181,10 +197,31 @@ export async function onRequest(context) {
               word: target,
               pos: 'từ trọng tâm',
               meaning: (q.explanation || '').replace(/<[^>]*>?/gm, ' ').slice(0, 150).trim(),
-              example: q.questionText.replace(/_{2,}/g, target).replace(/\s+/g, ' ').trim()
+              example: q.questionText ? q.questionText.replace(/_{2,}/g, target).replace(/\s+/g, ' ').trim() : ''
             });
           }
         });
+
+        if (words.length === 0) {
+          questions.forEach(q => {
+            if (q.blankPart) {
+              const cleanWords = q.blankPart.split(/\s+/).filter(w => w.length > 2);
+              cleanWords.forEach(w => {
+                const wClean = w.replace(/[^a-zA-Z]/g, '').trim();
+                if (wClean && !seen.has(wClean.toLowerCase())) {
+                  seen.add(wClean.toLowerCase());
+                  words.push({
+                    id: `w_${q.questionId}_${words.length}`,
+                    word: wClean,
+                    pos: 'từ trong bài nghe',
+                    meaning: q.vietnamese || 'Từ vựng trong bài nghe',
+                    example: q.fullSentence || ''
+                  });
+                }
+              });
+            }
+          });
+        }
 
         if (words.length < 3) {
           vocabList.slice(0, 10).forEach(v => {
@@ -206,16 +243,27 @@ export async function onRequest(context) {
         // mode === 'sentence'
         const sentences = [];
         questions.forEach(q => {
-          const key = (q.key || '').trim().toLowerCase();
-          const target = (q[key] || '').trim();
-          if (q.questionText && target) {
+          if (q.fullSentence) {
             sentences.push({
               questionId: q.questionId,
-              targetWord: target,
+              targetWord: q.blankPart || '',
               originalQuestion: q.questionText,
-              fullSentence: q.questionText.replace(/_{2,}/g, target).replace(/\s+/g, ' ').trim(),
-              explanation: q.explanation || ''
+              fullSentence: q.fullSentence,
+              explanation: q.vietnamese || q.explanation || '',
+              vietnamese: q.vietnamese || ''
             });
+          } else {
+            const key = (q.key || '').trim().toLowerCase();
+            const target = (q[key] || '').trim();
+            if (q.questionText && target) {
+              sentences.push({
+                questionId: q.questionId,
+                targetWord: target,
+                originalQuestion: q.questionText,
+                fullSentence: q.questionText.replace(/_{2,}/g, target).replace(/\s+/g, ' ').trim(),
+                explanation: q.explanation || ''
+              });
+            }
           }
         });
         return jsonResponse({

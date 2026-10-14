@@ -158,7 +158,21 @@ app.get('/api/lesson/:id', async (req, res) => {
   }
 });
 
-async function getLessonQuizData(lessonId) {
+const LESSON_MAP = {
+  19715180: 19715199, // Checkup 1 Audio -> Answer Key
+  19715207: 19715255, // Checkup 2 Audio -> Answer Key
+  19715214: 19715217, // Checkup 3 Audio -> Answer Key
+  19715219: 19715220, // Checkup 4 Audio -> Answer Key
+  19715222: 19715225, // Checkup 5 Audio -> Answer Key
+  19715227: 19715231, // Checkup 6 Audio -> Answer Key
+  19715233: 19715236, // Checkup 7 Audio -> Answer Key
+  16790979: 13250872, // Checkup 8 Audio -> Answer Key
+  16791027: 13250888, // Checkup 9 Audio -> Answer Key
+  16791436: 16791275  // MINI TEST 1 Audio -> Answer Key
+};
+
+async function getLessonQuizData(rawLessonId) {
+  const lessonId = LESSON_MAP[rawLessonId] || rawLessonId;
   const quizCacheFile = path.join(CACHE_DIR, `quiz_${lessonId}.json`);
   if (fs.existsSync(quizCacheFile)) {
     try {
@@ -358,6 +372,29 @@ app.get('/api/dictation/items', async (req, res) => {
           }
         });
 
+        if (words.length === 0) {
+          questions.forEach(q => {
+            if (q.blankPart) {
+              const cleanWords = q.blankPart.split(/\s+/).filter(w => w.length > 2);
+              cleanWords.forEach(w => {
+                const wClean = w.replace(/[^a-zA-Z]/g, '').trim();
+                if (wClean && !seen.has(wClean.toLowerCase())) {
+                  seen.add(wClean.toLowerCase());
+                  const dbInfo = vocabMap.get(wClean.toLowerCase()) || {};
+                  words.push({
+                    id: `w_${q.questionId}_${words.length}`,
+                    word: wClean,
+                    pos: dbInfo.pos || 'từ trong bài nghe',
+                    meaning: dbInfo.meaning || q.vietnamese || 'Từ vựng trong bài nghe',
+                    ipa: dbInfo.ipa || dbInfo.phonetic || '',
+                    example: q.fullSentence || ''
+                  });
+                }
+              });
+            }
+          });
+        }
+
         // If lesson has few words, supplement from general vocab database
         if (words.length < 3 && vocabDb.length) {
           vocabDb.slice(0, 10).forEach(v => {
@@ -368,7 +405,7 @@ app.get('/api/dictation/items', async (req, res) => {
                 word: v.word,
                 pos: v.pos || 'vocab',
                 meaning: v.meaning,
-                ipa: v.pronunciation_us || v.pronunciation_uk || '',
+                ipa: v.ipa || v.phonetic || '',
                 example: v.example || ''
               });
             }
@@ -386,17 +423,28 @@ app.get('/api/dictation/items', async (req, res) => {
         // mode === 'sentence'
         const sentences = [];
         questions.forEach(q => {
-          const key = (q.key || '').trim().toLowerCase();
-          const correctWord = (q[key] || '').trim();
-          if (q.questionText && q.questionText.length > 10 && correctWord) {
-            const fullSentence = q.questionText.replace(/_{2,}/g, correctWord).replace(/\s+/g, ' ').trim();
+          if (q.fullSentence) {
             sentences.push({
               questionId: q.questionId,
-              targetWord: correctWord,
+              targetWord: q.blankPart || '',
               originalQuestion: q.questionText,
-              fullSentence,
-              explanation: q.explanation || ''
+              fullSentence: q.fullSentence,
+              explanation: q.vietnamese || q.explanation || '',
+              vietnamese: q.vietnamese || ''
             });
+          } else {
+            const key = (q.key || '').trim().toLowerCase();
+            const correctWord = (q[key] || '').trim();
+            if (q.questionText && q.questionText.length > 10 && correctWord) {
+              const fullSentence = q.questionText.replace(/_{2,}/g, correctWord).replace(/\s+/g, ' ').trim();
+              sentences.push({
+                questionId: q.questionId,
+                targetWord: correctWord,
+                originalQuestion: q.questionText,
+                fullSentence,
+                explanation: q.explanation || ''
+              });
+            }
           }
         });
 

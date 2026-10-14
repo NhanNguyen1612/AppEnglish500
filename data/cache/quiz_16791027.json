@@ -1,0 +1,367 @@
+{
+  "lessonId": 13250888,
+  "title": "[LIS] Checkup 9 - Luyện tập - Answer Key",
+  "totalQuestions": 10,
+  "questions": [
+    {
+      "order": 1,
+      "questionId": 16188142,
+      "type": "photo-listen",
+      "questionText": "<p><img src=\"https://asset.moon.vn/img/chat/picture/ee2bf1db-67ed-4e72-88d3-47cdd53bb855.jpg\" data-filename=\"\" style=\"max-width: 600px; height: auto;\"><br></p>",
+      "image": "https://asset.moon.vn/img/chat/picture/ee2bf1db-67ed-4e72-88d3-47cdd53bb855.jpg",
+      "a": "He is approaching a bus stop.",
+      "b": "He is holding a pole on a bus.",
+      "c": "He is using a mobile phone.",
+      "d": "He is adjusting his necktie.",
+      "photoOptions": {
+        "A": {
+          "text": "He is approaching a bus stop.",
+          "vi": "Anh ấy đang đến gần một trạm xe buýt."
+        },
+        "B": {
+          "text": "He is holding a pole on a bus.",
+          "vi": "Anh ấy đang cầm một cây sào trên xe buýt."
+        },
+        "C": {
+          "text": "He is using a mobile phone.",
+          "vi": "Anh ấy đang sử dụng điện thoại di động."
+        },
+        "D": {
+          "text": "He is adjusting his necktie.",
+          "vi": "Anh ấy đang chỉnh lại cà vạt."
+        }
+      },
+      "blankPart": "",
+      "fullSentence": "",
+      "vietnamese": "",
+      "key": "C",
+      "explanation": "<b>Transcript:</b><br>(A) He is approaching a bus stop.<br>(B) He is holding a pole on a bus. <br>(C) He is using a mobile phone.<br>(D) He is adjusting his necktie.<br><br><b>Tạm dịch: </b><br>(A) Anh ấy đang đến gần một trạm xe buýt.<br>(B) Anh ấy đang cầm một cây sào trên xe buýt.<br>(C) Anh ấy đang sử dụng điện thoại di động.<br>(D) Anh ấy đang chỉnh lại cà vạt.\n\n",
+      "audioUrl": "https://media.moon.vn/audio/englishtitle?id=47112",
+      "topic": "Listening Part 1"
+    },
+    {
+      "order": 2,
+      "questionId": 16188197,
+      "type": "photo-listen",
+      "questionText": "<p><img src=\"https://asset.moon.vn/img/chat/picture/ea617de9-1b54-4370-a2a8-f985b659ed58.jpg\" data-filename=\"\" style=\"max-width: 600px; height: auto;\"><br></p>",
+      "image": "https://asset.moon.vn/img/chat/picture/ea617de9-1b54-4370-a2a8-f985b659ed58.jpg",
+      "a": "The man is facing a mountain.",
+      "b": "The man is setting up a tent.",
+      "c": "The man is putting on a backpack.",
+      "d": "The man is stepping into a lake.",
+      "photoOptions": {
+        "A": {
+          "text": "The man is facing a mountain.",
+          "vi": "Người đàn ông đang đối mặt với một ngọn núi."
+        },
+        "B": {
+          "text": "The man is setting up a tent.",
+          "vi": "Người đàn ông đang dựng lều."
+        },
+        "C": {
+          "text": "The man is putting on a backpack.",
+          "vi": "Người đàn ông đang đeo ba lô."
+        },
+        "D": {
+          "text": "The man is stepping into a lake.",
+          "vi": "Người đàn ông đang bước xuống hồ."
+        }
+      },
+      "blankPart": "",
+      "fullSentence": "",
+      "vietnamese": "",
+      "key": "A",
+      "explanation": "<b>Transcript:</b><br>(A) The man is facing a mountain. <br>(B) The man is setting up a tent.<br>(C) The man is putting on a backpack. <br>(D) The man is stepping into a lake.<br><br><b>Tạm dịch:</b><br>(A) Người đàn ông đang đối mặt với một ngọn núi.<br>(B) Người đàn ông đang dựng lều.<br>(C) Người đàn ông đang đeo ba lô.<br>(D) Người đàn ông đang bước xuống hồ.\n\n",
+      "audioUrl": "https://media.moon.vn/audio/englishtitle?id=47112",
+      "topic": "Listening Part 1"
+    },
+    {
+      "order": 3,
+      "questionId": 16188223,
+      "type": "photo-listen",
+      "questionText": "<p><img src=\"https://asset.moon.vn/img/chat/picture/ea40a00e-44a9-40e7-a3df-b4787b4717e9.jpg\" data-filename=\"\" style=\"max-width: 600px; height: auto;\"><br></p>",
+      "image": "https://asset.moon.vn/img/chat/picture/ea40a00e-44a9-40e7-a3df-b4787b4717e9.jpg",
+      "a": "She is trying to reach the top shelf.",
+      "b": "She is putting items in the grocery cart.",
+      "c": "She is inspecting a product.",
+      "d": "She is emptying a basket.",
+      "photoOptions": {
+        "A": {
+          "text": "She is trying to reach the top shelf.",
+          "vi": "Cô ấy đang cố với tới kệ trên cùng."
+        },
+        "B": {
+          "text": "She is putting items in the grocery cart.",
+          "vi": "Cô ấy đang bỏ đồ vào xe đẩy hàng."
+        },
+        "C": {
+          "text": "She is inspecting a product.",
+          "vi": "Cô ấy đang xem xét một sản phẩm."
+        },
+        "D": {
+          "text": "She is emptying a basket.",
+          "vi": "Cô ấy đang đổ hết đồ ra khỏi giỏ."
+        }
+      },
+      "blankPart": "",
+      "fullSentence": "",
+      "vietnamese": "",
+      "key": "C",
+      "explanation": "<b>Transcript:</b><br>(A) She is trying to reach the top shelf.<br>(B) She is putting items in the grocery cart. <br>(C) She is inspecting a product.<br>(D) She is emptying a basket.<br><br><b>Tạm dịch:</b><br>(A) Cô ấy đang cố với tới kệ trên cùng.<br>(B) Cô ấy đang bỏ đồ vào xe đẩy hàng.<br>(C) Cô ấy đang xem xét một sản phẩm.<br>(D) Cô ấy đang đổ hết đồ ra khỏi giỏ.\n\n",
+      "audioUrl": "https://media.moon.vn/audio/englishtitle?id=47112",
+      "topic": "Listening Part 1"
+    },
+    {
+      "order": 4,
+      "questionId": 16188227,
+      "type": "photo-listen",
+      "questionText": "<p><img src=\"https://asset.moon.vn/img/chat/picture/6360f6ef-ad6a-468d-9edb-609e0c4004cc.jpg\" data-filename=\"\" style=\"max-width: 600px; height: auto;\"><br></p>",
+      "image": "https://asset.moon.vn/img/chat/picture/6360f6ef-ad6a-468d-9edb-609e0c4004cc.jpg",
+      "a": "The man is lying on the grass.",
+      "b": "The man is driving along a mountain track.",
+      "c": "The man is searching his backpack.",
+      "d": "The man is standing by a sign post.",
+      "photoOptions": {
+        "A": {
+          "text": "The man is lying on the grass.",
+          "vi": "Người đàn ông đang nằm trên cỏ."
+        },
+        "B": {
+          "text": "The man is driving along a mountain track.",
+          "vi": "Người đàn ông đang lái xe dọc theo đường mòn trên núi."
+        },
+        "C": {
+          "text": "The man is searching his backpack.",
+          "vi": "Người đàn ông đang lục ba lô của mình."
+        },
+        "D": {
+          "text": "The man is standing by a sign post.",
+          "vi": "Người đàn ông đang đứng cạnh một biển báo."
+        }
+      },
+      "blankPart": "",
+      "fullSentence": "",
+      "vietnamese": "",
+      "key": "D",
+      "explanation": "<b>Transcript:</b><br>(A) The man is lying on the grass.<br>(B) The man is driving along a mountain track.<br>(C) The man is searching his backpack.<br>(D) The man is standing by a sign post.<br><br><b>Tạm dịch:</b><br>(A) Người đàn ông đang nằm trên cỏ.<br>(B) Người đàn ông đang lái xe dọc theo đường mòn trên núi.<br>(C) Người đàn ông đang lục ba lô của mình.<br>(D) Người đàn ông đang đứng cạnh một biển báo.\n",
+      "audioUrl": "https://media.moon.vn/audio/englishtitle?id=47112",
+      "topic": "Listening Part 1"
+    },
+    {
+      "order": 5,
+      "questionId": 16188228,
+      "type": "photo-listen",
+      "questionText": "<p><img src=\"https://asset.moon.vn/img/chat/picture/5d00d508-ff57-4540-8abb-0d7534ad3391.jpg\" data-filename=\"\" style=\"max-width: 600px; height: auto;\"><br></p>",
+      "image": "https://asset.moon.vn/img/chat/picture/5d00d508-ff57-4540-8abb-0d7534ad3391.jpg",
+      "a": "The man is kneeling in front of a sink.",
+      "b": "The woman is reaching into a toolbox.",
+      "c": "The woman is carrying some pipes.",
+      "d": "The man is wearing his work gloves.",
+      "photoOptions": {
+        "A": {
+          "text": "The man is kneeling in front of a sink.",
+          "vi": "Người đàn ông đang quỳ trước bồn rửa."
+        },
+        "B": {
+          "text": "The woman is reaching into a toolbox.",
+          "vi": "Người phụ nữ đang với tay vào hộp dụng cụ."
+        },
+        "C": {
+          "text": "The woman is carrying some pipes.",
+          "vi": "Người phụ nữ đang mang một số ống nước."
+        },
+        "D": {
+          "text": "The man is wearing his work gloves.",
+          "vi": "Người đàn ông đang đeo găng tay làm việc."
+        }
+      },
+      "blankPart": "",
+      "fullSentence": "",
+      "vietnamese": "",
+      "key": "A",
+      "explanation": "<b>Transcript:</b><br>(A) The man is kneeling in front of a sink.<br>(B) The woman is reaching into a toolbox.<br>(C) The woman is carrying some pipes.<br>(D) The man is wearing his work gloves.<br><br><b>Tạm dịch:</b><br>(A) Người đàn ông đang quỳ trước bồn rửa.<br>(B) Người phụ nữ đang với tay vào hộp dụng cụ.<br>(C) Người phụ nữ đang mang một số ống nước.<br>(D) Người đàn ông đang đeo găng tay làm việc.\n",
+      "audioUrl": "https://media.moon.vn/audio/englishtitle?id=47112",
+      "topic": "Listening Part 1"
+    },
+    {
+      "order": 6,
+      "questionId": 16188230,
+      "type": "photo-listen",
+      "questionText": "<p><img src=\"https://asset.moon.vn/img/chat/picture/cc0d2122-4b5f-49b1-a3d5-e279020800e5.jpg\" data-filename=\"\" style=\"max-width: 600px; height: auto;\"><br></p>",
+      "image": "https://asset.moon.vn/img/chat/picture/cc0d2122-4b5f-49b1-a3d5-e279020800e5.jpg",
+      "a": "One of the women is sorting through a pile of document on the desk.",
+      "b": "One of the women is holding a clipboard.",
+      "c": "Both of the women are jotting something down.",
+      "d": "Both of the women are looking at a monitor.",
+      "photoOptions": {
+        "A": {
+          "text": "One of the women is sorting through a pile of document on the desk.",
+          "vi": "Một trong hai người phụ nữ đang sắp xếp một chồng tài liệu trên bàn."
+        },
+        "B": {
+          "text": "One of the women is holding a clipboard.",
+          "vi": "Một trong hai người phụ nữ đang cầm một tấm bảng kẹp."
+        },
+        "C": {
+          "text": "Both of the women are jotting something down.",
+          "vi": "Cả hai người phụ nữ đang ghi chép điều gì đó."
+        },
+        "D": {
+          "text": "Both of the women are looking at a monitor.",
+          "vi": "Cả hai người phụ nữ đang nhìn vào màn hình."
+        }
+      },
+      "blankPart": "",
+      "fullSentence": "",
+      "vietnamese": "",
+      "key": "B",
+      "explanation": "<b>Transcript:</b><br>(A) One of the women is sorting through a pile of document on the desk.<br>(B) One of the women is holding a clipboard.<br>(C) Both of the women are jotting something down. <br>(D) Both of the women are looking at a monitor.<br><br><b>Tạm dịch:</b><br>(A) Một trong hai người phụ nữ đang sắp xếp một chồng tài liệu trên bàn.<br>(B) Một trong hai người phụ nữ đang cầm một tấm bảng kẹp.<br>(C) Cả hai người phụ nữ đang ghi chép điều gì đó.<br>(D) Cả hai người phụ nữ đang nhìn vào màn hình.\n",
+      "audioUrl": "https://media.moon.vn/audio/englishtitle?id=47112",
+      "topic": "Listening Part 1"
+    },
+    {
+      "order": 7,
+      "questionId": 16188232,
+      "type": "photo-listen",
+      "questionText": "<p><img src=\"https://asset.moon.vn/img/chat/picture/1f0e39ec-9c74-4f8c-937f-c833ff0228e9.jpg\" data-filename=\"\" style=\"max-width: 600px; height: auto;\"><br></p>",
+      "image": "https://asset.moon.vn/img/chat/picture/1f0e39ec-9c74-4f8c-937f-c833ff0228e9.jpg",
+      "a": "The woman is using a scale.",
+      "b": "The woman is having her pulse checked.",
+      "c": "They are having a conversation.",
+      "d": "The patient is being examined.",
+      "photoOptions": {
+        "A": {
+          "text": "The woman is using a scale.",
+          "vi": "Người phụ nữ đang sử dụng cân."
+        },
+        "B": {
+          "text": "The woman is having her pulse checked.",
+          "vi": "Người phụ nữ đang kiểm tra mạch."
+        },
+        "C": {
+          "text": "They are having a conversation.",
+          "vi": "Họ đang trò chuyện."
+        },
+        "D": {
+          "text": "The patient is being examined.",
+          "vi": "Bệnh nhân đang được khám."
+        }
+      },
+      "blankPart": "",
+      "fullSentence": "",
+      "vietnamese": "",
+      "key": "D",
+      "explanation": "<b>Transcript:</b><br>(A) The woman is using a scale.<br>(B) The woman is having her pulse checked. <br>(C) They are having a conversation.<br>(D) The patient is being examined.<br><br><b>Tạm dịch:</b><br>(A) Người phụ nữ đang sử dụng cân.<br>(B) Người phụ nữ đang kiểm tra mạch.<br>(C) Họ đang trò chuyện.<br>(D) Bệnh nhân đang được khám.\n",
+      "audioUrl": "https://media.moon.vn/audio/englishtitle?id=47112",
+      "topic": "Listening Part 1"
+    },
+    {
+      "order": 8,
+      "questionId": 16188235,
+      "type": "photo-listen",
+      "questionText": "<p><img src=\"https://asset.moon.vn/img/chat/picture/32be6f8f-36e6-49fd-9246-cb5cc34313da.jpg\" data-filename=\"\" style=\"max-width: 600px; height: auto;\"><br></p>",
+      "image": "https://asset.moon.vn/img/chat/picture/32be6f8f-36e6-49fd-9246-cb5cc34313da.jpg",
+      "a": "They are shaking hands.",
+      "b": "The woman is pointing at a bulletin board.",
+      "c": "The man is opening the cap of the bottle.",
+      "d": "All of the people are sitting in chairs.",
+      "photoOptions": {
+        "A": {
+          "text": "They are shaking hands.",
+          "vi": "Họ đang bắt tay nhau."
+        },
+        "B": {
+          "text": "The woman is pointing at a bulletin board.",
+          "vi": "Người phụ nữ đang chỉ vào bảng thông báo."
+        },
+        "C": {
+          "text": "The man is opening the cap of the bottle.",
+          "vi": "Người đàn ông đang mở nắp chai."
+        },
+        "D": {
+          "text": "All of the people are sitting in chairs.",
+          "vi": "Tất cả mọi người đang ngồi trên ghế."
+        }
+      },
+      "blankPart": "",
+      "fullSentence": "",
+      "vietnamese": "",
+      "key": "D",
+      "explanation": "<b>Transcript:</b><br>(A) They are shaking hands.<br>(B) The woman is pointing at a bulletin board.<br>(C) The man is opening the cap of the bottle.<br>(D) All of the people are sitting in chairs.<br><br><b>Tạm dịch:</b><br>(A) Họ đang bắt tay nhau.<br>(B) Người phụ nữ đang chỉ vào bảng thông báo.<br>(C) Người đàn ông đang mở nắp chai.<br>(D) Tất cả mọi người đang ngồi trên ghế.\n",
+      "audioUrl": "https://media.moon.vn/audio/englishtitle?id=47112",
+      "topic": "Listening Part 1"
+    },
+    {
+      "order": 9,
+      "questionId": 16188236,
+      "type": "photo-listen",
+      "questionText": "<p><img src=\"https://asset.moon.vn/img/chat/picture/1b3dc2b3-b7b1-4f5e-9f63-2c99b63c393d.jpg\" data-filename=\"\" style=\"max-width: 600px; height: auto;\"><br></p>",
+      "image": "https://asset.moon.vn/img/chat/picture/1b3dc2b3-b7b1-4f5e-9f63-2c99b63c393d.jpg",
+      "a": "One of the women is plugging in a laptop.",
+      "b": "Some people are gathered around a table.",
+      "c": "One of the men is taking notes.",
+      "d": "Some people are watching a performance.",
+      "photoOptions": {
+        "A": {
+          "text": "One of the women is plugging in a laptop.",
+          "vi": "Một trong những người phụ nữ đang cắm máy tính xách tay."
+        },
+        "B": {
+          "text": "Some people are gathered around a table.",
+          "vi": "Một số người đang tụ tập quanh bàn."
+        },
+        "C": {
+          "text": "One of the men is taking notes.",
+          "vi": "Một trong những người đàn ông đang ghi chép."
+        },
+        "D": {
+          "text": "Some people are watching a performance.",
+          "vi": "Một số người đang xem một buổi biểu diễn."
+        }
+      },
+      "blankPart": "",
+      "fullSentence": "",
+      "vietnamese": "",
+      "key": "B",
+      "explanation": "<b>Transcript:</b><br>(A) One of the women is plugging in a laptop.<br>(B) Some people are gathered around a table.<br>(C) One of the men is taking notes.<br>(D) Some people are watching a performance.<br><br><b>Tạm dịch:</b><br>(A) Một trong những người phụ nữ đang cắm máy tính xách tay.<br>(B) Một số người đang tụ tập quanh bàn.<br>(C) Một trong những người đàn ông đang ghi chép.<br>(D) Một số người đang xem một buổi biểu diễn.\n",
+      "audioUrl": "https://media.moon.vn/audio/englishtitle?id=47112",
+      "topic": "Listening Part 1"
+    },
+    {
+      "order": 10,
+      "questionId": 16188239,
+      "type": "photo-listen",
+      "questionText": "<p><img src=\"https://asset.moon.vn/img/chat/picture/03bcff4a-e5c0-408c-9562-074880ccc3d4.jpg\" data-filename=\"\" style=\"max-width: 600px; height: auto;\"><br></p>",
+      "image": "https://asset.moon.vn/img/chat/picture/03bcff4a-e5c0-408c-9562-074880ccc3d4.jpg",
+      "a": "One of the women is holding a serving tray.",
+      "b": "One of the women is taking the bread out of the toaster.",
+      "c": "Some people are studying the menu.",
+      "d": "Some customers are selecting some desserts from the store window.",
+      "photoOptions": {
+        "A": {
+          "text": "One of the women is holding a serving tray.",
+          "vi": "Một trong những người phụ nữ đang cầm khay phục vụ."
+        },
+        "B": {
+          "text": "One of the women is taking the bread out of the toaster.",
+          "vi": "Một trong những người phụ nữ đang lấy bánh mì ra khỏi máy nướng bánh mì."
+        },
+        "C": {
+          "text": "Some people are studying the menu.",
+          "vi": "Một số người đang nghiên cứu thực đơn."
+        },
+        "D": {
+          "text": "Some customers are selecting some desserts from the store window.",
+          "vi": "Một số khách hàng đang chọn một số món tráng miệng từ cửa sổ cửa hàng."
+        }
+      },
+      "blankPart": "",
+      "fullSentence": "",
+      "vietnamese": "",
+      "key": "A",
+      "explanation": "<b>Transcript:</b><br>(A) One of the women is holding a serving tray.<br>(B) One of the women is taking the bread out of the toaster.<br>(C) Some people are studying the menu.<br>(D) Some customers are selecting some desserts from the store window.<br><br><b>Tạm dịch:</b><br>(A) Một trong những người phụ nữ đang cầm khay phục vụ.<br>(B) Một trong những người phụ nữ đang lấy bánh mì ra khỏi máy nướng bánh mì.<br>(C) Một số người đang nghiên cứu thực đơn.<br>(D) Một số khách hàng đang chọn một số món tráng miệng từ cửa sổ cửa hàng.\n",
+      "audioUrl": "https://media.moon.vn/audio/englishtitle?id=47112",
+      "topic": "Listening Part 1"
+    }
+  ]
+}
