@@ -386,7 +386,8 @@
                 </div>
 
                 <div class="my-auto">
-                  <h3 id="fc-word" class="text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white mb-3 tracking-tight">summary</h3>
+                  <h3 id="fc-word" class="text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white mb-1.5 tracking-tight">summary</h3>
+                  <div id="fc-phonetic" class="text-sm md:text-base font-mono font-semibold text-blue-600 dark:text-blue-400 mb-3 tracking-wide">/ˈsʌm.ər.i/</div>
                   <p class="text-xs text-slate-400 mb-4">💡 Nhấn vào thẻ để lật xem nghĩa & câu ví dụ</p>
                   
                   <button onclick="event.stopPropagation(); speakWord(currentFlashcard.word)" class="inline-flex items-center space-x-2 px-4 py-2 rounded-xl bg-blue-50 dark:bg-slate-800 hover:bg-blue-100 text-blue-600 dark:text-blue-400 font-semibold text-xs transition shadow-sm">
@@ -409,6 +410,10 @@
                 </div>
 
                 <div class="my-auto w-full">
+                  <div class="flex items-center justify-center space-x-2.5 mb-2">
+                    <span id="fc-back-word" class="text-xl font-bold text-slate-800 dark:text-slate-100">summary</span>
+                    <span id="fc-back-phonetic" class="text-xs font-mono font-semibold text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-slate-800 px-2 py-0.5 rounded-md">/ˈsʌm.ər.i/</span>
+                  </div>
                   <h4 id="fc-meaning" class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4">bản tóm tắt, bản tổng kết</h4>
                   <div class="bg-white/90 dark:bg-slate-800/90 p-4 rounded-2xl border border-slate-200 dark:border-slate-700 text-left w-full text-sm text-slate-700 dark:text-slate-200 shadow-sm">
                     <div class="flex items-center justify-between mb-1.5">
@@ -553,6 +558,7 @@
           <div class="mb-4">
             <span id="wt-pos-badge" class="inline-block text-[11px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-rose-100 dark:bg-rose-950/60 text-rose-700 dark:text-rose-300 mb-1.5">DANH TỪ</span>
             <h3 id="wt-meaning-display" class="text-xl md:text-2xl font-bold text-slate-900 dark:text-white leading-tight">người tham gia</h3>
+            <div id="wt-phonetic-display" class="text-xs md:text-sm font-mono font-bold text-rose-500/90 dark:text-rose-400 mt-1"></div>
           </div>
 
           <!-- Character Hint Pill -->
@@ -766,6 +772,144 @@
     // Speech Recognition
     let recognition = null;
     let isListening = false;
+
+    // Standard Oxford/Cambridge IPA Pronunciation Dictionary
+    const IPA_DICT = {
+      'summarize': '/ˈsʌm.ər.aɪz/',
+      'summarizes': '/ˈsʌm.ər.aɪz/',
+      'summary': '/ˈsʌm.ər.i/',
+      'summaries': '/ˈsʌm.ər.iz/',
+      'latest': '/ˈleɪ.tɪst/',
+      'feedback': '/ˈfiːd.bæk/',
+      'participated': '/pɑːˈtɪs.ɪ.peɪ.tɪd/',
+      'participant': '/pɑːˈtɪs.ɪ.pənt/',
+      'participants': '/pɑːˈtɪs.ɪ.pənts/',
+      'complimentary': '/ˌkɒm.plɪˈmen.tri/',
+      'discussion': '/dɪˈskʌʃ.n/',
+      'specialist': '/ˈspeʃ.əl.ɪst/',
+      'specialize': '/ˈspeʃ.ə.laɪz/',
+      'specialists': '/ˈspeʃ.əl.ɪsts/',
+      'hands-on': '/ˌhændzˈɒn/',
+      'apply': '/əˈplaɪ/',
+      'applicant': '/ˈæp.lɪ.kənt/',
+      'applicants': '/ˈæp.lɪ.kənts/',
+      'rigorous': '/ˈrɪɡ.ər.əs/',
+      'consultation': '/ˌkɒn.sʌlˈteɪ.ʃn/',
+      'consultant': '/kənˈsʌl.tənt/',
+      'consult': '/kənˈsʌlt/',
+      'consultative': '/kənˈsʌl.tə.tɪv/',
+      'merger': '/ˈmɜː.dʒər/',
+      'third party': '/ˌθɜːd ˈpɑː.ti/',
+      'participate': '/pɑːˈtɪs.ɪ.peɪt/',
+      'participation': '/pɑːˌtɪs.ɪˈpeɪ.ʃn/',
+      'participatory': '/pɑːˌtɪs.ɪˈpeɪ.tər.i/',
+      'commitment': '/kəˈmɪt.mənt/',
+      'foster': '/ˈfɒs.tər/',
+      'performer': '/pəˈfɔː.mər/',
+      'performance': '/pəˈfɔː.məns/',
+      'cutting-edge': '/ˌkʌt.ɪŋˈedʒ/',
+      'enthusiast': '/ɪnˈθjuː.zi.æst/',
+      'decide': '/dɪˈsaɪd/',
+      'decision': '/dɪˈsɪʒ.n/',
+      'decides': '/dɪˈsaɪdz/',
+      'relocate': '/ˌriː.ləʊˈkeɪt/',
+      'assist': '/əˈsɪst/',
+      'assistance': '/əˈsɪs.təns/',
+      'assistant': '/əˈsɪs.tənt/',
+      'troubleshoot': '/ˈtrʌb.l.ʃuːt/',
+      'issue': '/ˈɪʃ.uː/',
+      'entertainment': '/ˌen.təˈteɪn.mənt/',
+      'entertainer': '/ˌen.təˈteɪ.nər/',
+      'entertainers': '/ˌen.təˈteɪ.nərz/',
+      'amenities': '/əˈmiː.nə.tiz/',
+      'cater for': '/ˈkeɪ.tər fɔːr/',
+      'baggages': '/ˈbæɡ.ɪdʒɪz/',
+      'baggage': '/ˈbæɡ.ɪdʒ/',
+      'carry-on': '/ˈkær.i.ɒn/',
+      'exceed': '/ɪkˈsiːd/',
+      'research': '/rɪˈsɜːtʃ/',
+      'conduct': '/kənˈdʌkt/',
+      'effectiveness': '/ɪˈfek.tɪv.nəs/',
+      'productivity': '/ˌprɒd.ʌkˈtɪv.ə.ti/',
+      'information': '/ˌɪn.fəˈmeɪ.ʃn/',
+      'informed': '/ɪnˈfɔːmd/',
+      'informs': '/ɪnˈfɔːmz/',
+      'informations': '/ˌɪn.fəˈmeɪ.ʃənz/',
+      'sensitive': '/ˈsen.sə.tɪv/',
+      'measure': '/ˈmeʒ.ər/',
+      'machineries': '/məˈʃiː.nər.iz/',
+      'machinery': '/məˈʃiː.nər.i/',
+      'some machinery': '/sʌm məˈʃiː.nər.i/',
+      'a machine': '/ə məˈʃiːn/',
+      'capacity': '/kəˈpæs.ə.ti/',
+      'cloth': '/klɒθ/',
+      'clothe': '/kləʊð/',
+      'clothing': '/ˈkləʊ.ðɪŋ/',
+      'clothings': '/ˈkləʊ.ðɪŋz/',
+      'stylish': '/ˈstaɪ.lɪʃ/',
+      'professional': '/prəˈfeʃ.ən.əl/',
+      'advise': '/ədˈvaɪz/',
+      'advice': '/ədˈvaɪs/',
+      'advised': '/ədˈvaɪzd/',
+      'communication': '/kəˌmjuː.nɪˈkeɪ.ʃn/',
+      'benefit': '/ˈben.ɪ.fɪt/',
+      'benefits': '/ˈben.ɪ.fɪts/',
+      'beneficial': '/ˌben.ɪˈfɪʃ.l/',
+      'beneficiary': '/ˌben.ɪˈfɪʃ.ər.i/',
+      'membership': '/ˈmem.bə.ʃɪp/',
+      'increase': '/ɪnˈkriːs/',
+      'increases': '/ɪnˈkriːsɪz/',
+      'increased': '/ɪnˈkriːst/',
+      'increasingly': '/ɪnˈkriː.sɪŋ.li/',
+      'profits': '/ˈprɒf.ɪts/',
+      'implement': '/ˈɪm.plɪ.ment/',
+      'interpret': '/ɪnˈtɜː.prɪt/',
+      'interpretation': '/ɪnˌtɜː.prɪˈteɪ.ʃn/',
+      'interpreter': '/ɪnˈtɜː.prɪ.tər/',
+      'interpreting': '/ɪnˈtɜː.prɪ.tɪŋ/',
+      'delegate': '/ˈdel.ɪ.ɡət/',
+      'smooth': '/smuːð/',
+      'attendant': '/əˈten.dənt/',
+      'attention': '/əˈten.ʃn/',
+      'attendees': '/əˌtenˈdiːz/',
+      'expertise': '/ˌek.spɜːˈtiːz/',
+      'address': '/əˈdres/',
+      'representatives': '/ˌrep.rɪˈzen.tə.tɪvz/',
+      'represent': '/ˌrep.rɪˈzent/',
+      'representation': '/ˌrep.rɪ.zenˈteɪ.ʃn/',
+      'represented': '/ˌrep.rɪˈzen.tɪd/',
+      'showcase': '/ˈʃəʊ.keɪs/',
+      'competitors': '/kəmˈpet.ɪ.tərz/',
+      'compete': '/kəmˈpiːt/',
+      'competition': '/ˌkɒm.pəˈtɪʃ.n/',
+      'competitions': '/ˌkɒm.pəˈtɪʃ.nz/',
+      'role': '/rəʊl/',
+      'intense': '/ɪnˈtens/',
+      'attendance': '/əˈten.dəns/',
+      'attendee': '/əˌtenˈdiː/',
+      'meticulously': '/məˈtɪk.jə.ləs.li/',
+      'evaluate': '/ɪˈvæl.ju.eɪt/',
+      'rates': '/reɪts/',
+      'rated': '/reɪ.tɪd/',
+      'rating': '/ˈreɪ.tɪŋ/',
+      'rate': '/reɪt/',
+      'unemployment': '/ˌʌn.ɪmˈplɔɪ.mənt/',
+      'trend': '/trend/',
+      'strategies': '/ˈstræt.ə.dʒiz/',
+      'strategy': '/ˈstræt.ə.dʒi/',
+      'strategic': '/strəˈtiː.dʒɪk/',
+      'strategically': '/strəˈtiː.dʒɪk.li/',
+      'view': '/vjuː/',
+      'demands': '/dɪˈmɑːndz/',
+      'ask': '/ɑːsk/',
+      'foresee': '/fɔːˈsiː/'
+    };
+
+    function getIpaForWord(word) {
+      if (!word) return '';
+      const clean = word.toLowerCase().trim();
+      return IPA_DICT[clean] || '';
+    }
 
     // Notebook & Flashcards
     let notebook = [];
@@ -1632,6 +1776,11 @@
 
         document.getElementById('wt-pos-badge').textContent = (item.pos || 'từ vựng').toUpperCase();
         document.getElementById('wt-meaning-display').textContent = item.meaning || 'Nghĩa từ vựng';
+        const wtIpa = item.ipa || item.phonetic || getIpaForWord(item.word) || '';
+        const wtPhoneticEl = document.getElementById('wt-phonetic-display');
+        if (wtPhoneticEl) {
+          wtPhoneticEl.textContent = wtIpa ? wtIpa : '';
+        }
 
         updateWordHintDisplay(item.word);
 
@@ -1722,7 +1871,7 @@
             <span class="text-xs font-bold text-emerald-700 dark:text-emerald-300 flex items-center space-x-1">
               <span>🎉 RẤT CHÍNH XÁC!</span>
             </span>
-            <span class="text-xs font-mono text-emerald-600 dark:text-emerald-400 font-bold">${item.ipa || ''}</span>
+            <span class="text-xs font-mono text-emerald-600 dark:text-emerald-400 font-bold">${item.ipa || item.phonetic || getIpaForWord(item.word) || ''}</span>
           </div>
           <div class="text-base font-bold text-slate-900 dark:text-white mb-1.5 flex items-center space-x-2">
             <span>${item.word}</span>
@@ -1782,7 +1931,7 @@
       feedbackBox.innerHTML = `
         <div class="flex items-center justify-between mb-2">
           <span class="text-xs font-bold text-amber-700 dark:text-amber-300">💡 Đáp án chuẩn:</span>
-          <span class="text-xs font-mono text-amber-700 font-bold">${item.ipa || ''}</span>
+          <span class="text-xs font-mono text-amber-700 dark:text-amber-400 font-bold">${item.ipa || item.phonetic || getIpaForWord(item.word) || ''}</span>
         </div>
         <div class="text-lg font-bold text-slate-900 dark:text-white mb-2 flex items-center space-x-2">
           <span>${item.word}</span>
@@ -2201,6 +2350,12 @@
     function renderFlashcard() {
       if (!activeFlashcards.length) {
         document.getElementById('fc-word').textContent = 'Không tìm thấy từ';
+        const pEl = document.getElementById('fc-phonetic');
+        if (pEl) pEl.textContent = '';
+        const bpEl = document.getElementById('fc-back-phonetic');
+        if (bpEl) bpEl.textContent = '';
+        const bwEl = document.getElementById('fc-back-word');
+        if (bwEl) bwEl.textContent = '';
         document.getElementById('fc-meaning').textContent = 'Thử đổi bộ lọc hoặc tìm kiếm từ khác';
         document.getElementById('fc-example').textContent = '';
         document.getElementById('fc-pos').textContent = 'TRỐNG';
@@ -2213,6 +2368,20 @@
       document.getElementById('fc-total-count').textContent = activeFlashcards.length;
 
       document.getElementById('fc-word').textContent = currentFlashcard.word;
+      const ipa = currentFlashcard.ipa || currentFlashcard.phonetic || getIpaForWord(currentFlashcard.word);
+      const phoneticEl = document.getElementById('fc-phonetic');
+      if (phoneticEl) {
+        phoneticEl.textContent = ipa || '';
+        phoneticEl.style.display = ipa ? 'block' : 'none';
+      }
+      const backWordEl = document.getElementById('fc-back-word');
+      if (backWordEl) backWordEl.textContent = currentFlashcard.word;
+      const backPhoneticEl = document.getElementById('fc-back-phonetic');
+      if (backPhoneticEl) {
+        backPhoneticEl.textContent = ipa || '';
+        backPhoneticEl.style.display = ipa ? 'inline-block' : 'none';
+      }
+
       document.getElementById('fc-pos').textContent = (currentFlashcard.pos || 'VOCAB').toUpperCase();
       document.getElementById('fc-lesson-tag').textContent = currentFlashcard.lesson || 'TOEIC 550+';
       document.getElementById('fc-meaning').textContent = currentFlashcard.meaning;
