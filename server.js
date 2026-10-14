@@ -168,7 +168,8 @@ const LESSON_MAP = {
   19715233: 19715236, // Checkup 7 Audio -> Answer Key
   16790979: 13250872, // Checkup 8 Audio -> Answer Key
   16791027: 13250888, // Checkup 9 Audio -> Answer Key
-  16791436: 16791275  // MINI TEST 1 Audio -> Answer Key
+  16791436: 16791275, // MINI TEST 1 Audio -> Answer Key
+  16791834: 16791767  // MINI TEST 2 Audio -> Answer Key
 };
 
 async function getLessonQuizData(rawLessonId) {
@@ -210,25 +211,83 @@ async function getLessonQuizData(rawLessonId) {
       }
     }
 
-    const parsedVocab = extractVocab(qData.answer || '');
-    const topic = detectTopic(lessonDetail.name, qData.answer || '');
+    const rawAns = qData.answer || '';
+    const qText = qData.questionText || '';
+    const cleanStr = s => s.replace(/<[^>]+>/g, '').replace(/&nbsp;/g, ' ').replace(/\s+/g, ' ').trim();
+    const hasABCD = rawAns.includes('(A)') && rawAns.includes('(B)') && rawAns.includes('(C)') && rawAns.includes('(D)');
+    const isFillBlank = qText.includes('____') || (!hasABCD && rawAns.includes('<b>'));
+
+    let type = 'multiple-choice';
+    let photoOptions = null;
+    let blankPart = '';
+    let fullSentence = '';
+    let vietnamese = '';
+
+    const mImg = qText.match(/src="([^"]+)"/);
+    const image = (qData.advImage || '').trim() || (mImg ? mImg[1] : '');
+
+    if (hasABCD || (image && !qData.a)) {
+      type = 'photo-listen';
+      let enPart = rawAns;
+      let viPart = '';
+      if (rawAns.includes('Tạm dịch:')) {
+        const parts = rawAns.split(/Tạm dịch:\s*<\/b><br>|Tạm dịch:\s*<br>|Tạm dịch:/i);
+        enPart = parts[0] || '';
+        viPart = parts[1] || '';
+      } else if (rawAns.includes('<br><br>')) {
+        const parts = rawAns.split(/<br\s*\/?>\s*<br\s*\/?>/i);
+        enPart = parts[0] || '';
+        viPart = parts[1] || '';
+      }
+
+      const extractOptions = (block) => {
+        const a = (block.match(/\(A\)\s*([\s\S]*?)(?=(?:\(B\)|\(C\)|\(D\)|$))/i) || [])[1] || '';
+        const b = (block.match(/\(B\)\s*([\s\S]*?)(?=(?:\(C\)|\(D\)|$))/i) || [])[1] || '';
+        const c = (block.match(/\(C\)\s*([\s\S]*?)(?=(?:\(D\)|$))/i) || [])[1] || '';
+        const d = (block.match(/\(D\)\s*([\s\S]*?)(?=(?:<br\s*\/?>\s*<br\s*\/?>|$))/i) || [])[1] || '';
+        return { A: cleanStr(a), B: cleanStr(b), C: cleanStr(c), D: cleanStr(d) };
+      };
+
+      const en = extractOptions(enPart);
+      const vi = extractOptions(viPart);
+      photoOptions = {
+        A: { text: en.A, vi: vi.A },
+        B: { text: en.B, vi: vi.B },
+        C: { text: en.C, vi: vi.C },
+        D: { text: en.D, vi: vi.D }
+      };
+    } else if (isFillBlank) {
+      type = 'fill-blank';
+      const bMatch = rawAns.match(/<b>(.*?)<\/b>/i);
+      blankPart = bMatch ? bMatch[1].replace(/&nbsp;/g, ' ').trim() : '';
+      const parts = rawAns.split(/<br\s*\/?>/i);
+      fullSentence = (parts[0] || '').replace(/<[^>]+>/g, '').replace(/&nbsp;/g, ' ').trim();
+      vietnamese = (parts[1] || '').replace(/<[^>]+>/g, '').replace(/&nbsp;/g, ' ').trim();
+    }
+
+    const parsedVocab = extractVocab(rawAns);
+    const topic = (type === 'photo-listen' || lessonDetail.name.includes('Part 1')) ? 'Listening Part 1' : detectTopic(lessonDetail.name, rawAns);
     const passage = qData.conetentEnglish || qData.contentEnglish || '';
     const passageTitle = qData.titleEnglish || '';
-    const image = qData.advImage || '';
 
     return {
       order: k.order || (index + 1),
       questionId: qId,
-      questionText: qData.questionText || '',
+      type,
+      questionText: qText,
       passage: passage.trim(),
       passageTitle: passageTitle.trim(),
-      image: image.trim(),
-      a: qData.a || '',
-      b: qData.b || '',
-      c: qData.c || '',
-      d: qData.d || '',
+      image,
+      a: qData.a || (photoOptions?.A?.text) || 'A',
+      b: qData.b || (photoOptions?.B?.text) || 'B',
+      c: qData.c || (photoOptions?.C?.text) || 'C',
+      d: qData.d || (photoOptions?.D?.text) || 'D',
+      photoOptions,
+      blankPart,
+      fullSentence,
+      vietnamese,
       key: (qData.key || k.key || '').trim().toUpperCase(),
-      explanation: qData.answer || '',
+      explanation: rawAns,
       audioUrl: qData.audioUrl || '',
       topic,
       vocabList: parsedVocab
@@ -241,6 +300,7 @@ async function getLessonQuizData(rawLessonId) {
     lessonId,
     title: lessonDetail.name,
     totalQuestions: questions.length,
+    audioUrl: questions.find(q => q.audioUrl)?.audioUrl || '',
     questions
   };
 
@@ -714,6 +774,29 @@ app.get('/api/export-anki', (req, res) => {
   res.setHeader('Content-Type', 'text/tab-separated-values; charset=utf-8');
   res.setHeader('Content-Disposition', 'attachment; filename="moon_toeic_550_flashcards.tsv"');
   res.send(tsvContent);
+});
+
+// 10b. Moon Original Audio Stream Proxy
+app.get('/api/audio-proxy', async (req, res) => {
+  const audioUrl = (req.query.url || '').trim();
+  if (!audioUrl) return res.status(400).send('URL required');
+  try {
+    const upstream = await fetch(audioUrl, {
+      headers: {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36',
+        'Referer': 'https://moon.vn/',
+        'Origin': 'https://moon.vn'
+      }
+    });
+    if (!upstream.ok) return res.status(upstream.status).send('Audio fetch failed');
+    res.setHeader('Content-Type', upstream.headers.get('content-type') || 'audio/mpeg');
+    res.setHeader('Accept-Ranges', 'bytes');
+    res.setHeader('Cache-Control', 'public, max-age=86400');
+    const buffer = await upstream.arrayBuffer();
+    res.send(Buffer.from(buffer));
+  } catch (err) {
+    res.status(500).send('Audio proxy error: ' + err.message);
+  }
 });
 
 // 11. High Quality Warm Female Voice TTS (Speecher.org / Edge Neural)

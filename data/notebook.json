@@ -1,1 +1,32 @@
-[]
+[
+  {
+    "questionId": 16783925,
+    "questionText": "holding ______________________________________",
+    "a": "",
+    "b": "",
+    "c": "",
+    "d": "",
+    "key": "a phone at the front desk of the office",
+    "yourKey": "a phone at from desh his office",
+    "explanation": "holding <b>a phone at the front desk of the office</b><br>cầm điện thoại ở quầy lễ tân văn phòng",
+    "lessonTitle": "[LIS] Checkup 3 - Mở rộng từ vựng nhóm (A) – ACTIONS OF 1 PERSON - Answer key",
+    "addedAt": "2026-10-14T16:05:00.844Z",
+    "mastered": false,
+    "reviewCount": 0
+  },
+  {
+    "questionId": 16784910,
+    "questionText": "typing _______________________________________",
+    "a": "",
+    "b": "",
+    "c": "",
+    "d": "",
+    "key": "on a keyboard",
+    "yourKey": "D",
+    "explanation": "typing <b>on a keyboard</b><br>gõ bàn phím",
+    "lessonTitle": "[LIS] Checkup 5 - Mở rộng từ vựng nhóm (A) – ACTIONS OF 1 PERSON - Answer key",
+    "addedAt": "2026-10-14T15:49:02.702Z",
+    "mastered": false,
+    "reviewCount": 0
+  }
+]

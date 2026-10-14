@@ -1,6 +1,6 @@
 {
-  "totalAnswered": 3,
-  "totalCorrect": 2,
+  "totalAnswered": 7,
+  "totalCorrect": 4,
   "history": [
     {
       "questionId": 15957382,
@@ -22,12 +22,40 @@
       "isCorrect": false,
       "lessonTitle": "Đề Thi Thử TOEIC Mini (20 Câu ngẫu nhiên)",
       "timestamp": "2026-10-14T09:40:31.353Z"
+    },
+    {
+      "questionId": 16784910,
+      "topic": "Listening Part 1",
+      "isCorrect": false,
+      "lessonTitle": "[LIS] Checkup 5 - Mở rộng từ vựng nhóm (A) – ACTIONS OF 1 PERSON - Answer key",
+      "timestamp": "2026-10-14T15:49:02.699Z"
+    },
+    {
+      "questionId": 15956524,
+      "topic": "Danh từ (Nouns)",
+      "isCorrect": true,
+      "lessonTitle": "[REA] Checkup 2 - Section A: NOUNS (DANH TỪ)",
+      "timestamp": "2026-10-14T15:58:46.398Z"
+    },
+    {
+      "questionId": 16188142,
+      "topic": "Listening Part 1",
+      "isCorrect": true,
+      "lessonTitle": "[LIS] Checkup 9 - Luyện tập - Answer Key",
+      "timestamp": "2026-10-14T16:02:36.243Z"
+    },
+    {
+      "questionId": 16783925,
+      "topic": "Listening Part 1",
+      "isCorrect": false,
+      "lessonTitle": "[LIS] Checkup 3 - Mở rộng từ vựng nhóm (A) – ACTIONS OF 1 PERSON - Answer key",
+      "timestamp": "2026-10-14T16:05:00.839Z"
     }
   ],
   "topics": {
     "Danh từ (Nouns)": {
-      "total": 0,
-      "correct": 0
+      "total": 1,
+      "correct": 1
     },
     "Động từ & Thì (Verbs)": {
       "total": 0,
@@ -48,6 +76,10 @@
     "Ngữ pháp & Từ loại khác": {
       "total": 3,
       "correct": 2
+    },
+    "Listening Part 1": {
+      "total": 3,
+      "correct": 1
     }
   }
 }

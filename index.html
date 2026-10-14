@@ -269,6 +269,47 @@
             </div>
           </div>
 
+          <!-- Audio Player for Listening Quizzes (Like Moon.vn Web Player) -->
+          <div id="quiz-audio-player-card" class="hidden mb-5 p-4 rounded-2xl bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-700 text-white shadow-md">
+            <div class="flex items-center justify-between mb-2.5">
+              <div class="flex items-center space-x-2.5">
+                <div class="w-8 h-8 rounded-xl bg-white/20 flex items-center justify-center flex-shrink-0">
+                  <i data-lucide="headphones" class="w-4 h-4 text-white"></i>
+                </div>
+                <div class="overflow-hidden">
+                  <span class="text-[10px] font-bold uppercase tracking-wider text-blue-200 block">Đoạn băng bài nghe TOEIC (Bản gốc Moon.vn)</span>
+                  <span id="quiz-audio-title" class="text-xs font-semibold text-white truncate max-w-xs md:max-w-md block">Nghe và chọn đáp án miêu tả đúng nhất bức tranh</span>
+                </div>
+              </div>
+              <div class="flex items-center space-x-2">
+                <span id="quiz-audio-time" class="font-mono text-xs text-blue-100 font-bold bg-white/10 px-2.5 py-1 rounded-lg">00:00 / --:--</span>
+              </div>
+            </div>
+
+            <div class="flex items-center space-x-2.5">
+              <button onclick="toggleQuizAudio()" id="btn-quiz-audio-play" class="w-10 h-10 rounded-full bg-white text-blue-600 flex items-center justify-center hover:scale-105 active:scale-95 transition shadow flex-shrink-0" title="Phát / Tạm dừng">
+                <i data-lucide="play" class="w-5 h-5 ml-0.5" id="quiz-audio-play-icon"></i>
+              </button>
+
+              <button onclick="seekQuizAudio(-10)" class="px-2.5 py-1.5 rounded-xl bg-white/15 hover:bg-white/25 text-xs font-semibold flex items-center space-x-1 flex-shrink-0 transition" title="Lùi 10 giây">
+                <i data-lucide="rotate-ccw" class="w-3.5 h-3.5"></i>
+                <span>10s</span>
+              </button>
+
+              <button onclick="seekQuizAudio(10)" class="px-2.5 py-1.5 rounded-xl bg-white/15 hover:bg-white/25 text-xs font-semibold flex items-center space-x-1 flex-shrink-0 transition" title="Tới 10 giây">
+                <i data-lucide="rotate-cw" class="w-3.5 h-3.5"></i>
+                <span>10s</span>
+              </button>
+
+              <input type="range" id="quiz-audio-seekbar" min="0" max="100" value="0" step="0.1" class="flex-1 h-2 bg-blue-300/30 rounded-lg appearance-none cursor-pointer accent-white" oninput="onQuizAudioSeek(this.value)" />
+
+              <button onclick="changeQuizAudioSpeed()" id="btn-quiz-audio-speed" class="px-2.5 py-1.5 rounded-xl bg-white/15 hover:bg-white/25 text-xs font-bold font-mono flex-shrink-0 transition" title="Tốc độ phát">
+                1.0x
+              </button>
+            </div>
+            <audio id="quiz-global-audio" preload="auto"></audio>
+          </div>
+
           <!-- Question Image (For Part 1 Photographs or Diagram Questions) -->
           <div id="question-image-box" class="hidden my-4 p-3 bg-slate-50 dark:bg-slate-800/50 rounded-2xl border border-slate-200 dark:border-slate-700 text-center">
             <img id="question-image" src="" alt="Question Image" class="max-h-80 md:max-h-96 mx-auto rounded-xl object-contain shadow-sm border border-slate-200 dark:border-slate-600 bg-white" />
@@ -772,6 +813,9 @@
     let userEvaluated = {};
     let quizTimerInterval = null;
     let quizSeconds = 0;
+    let showTranscriptEarly = {};
+    let quizAudioCurrentUrl = '';
+    let quizAudioSpeed = 1.0;
 
     // Speech Recognition
     let recognition = null;
@@ -1140,6 +1184,11 @@
       const activeView = document.getElementById(`view-${viewName}`);
       if (activeView) activeView.classList.remove('hidden');
 
+      if (viewName !== 'quiz-player') {
+        const audioEl = document.getElementById('quiz-global-audio');
+        if (audioEl) audioEl.pause();
+      }
+
       if (viewName === 'pdfs') renderPdfs();
       if (viewName === 'notebook') renderNotebook();
       if (viewName === 'flashcards') renderFlashcard();
@@ -1321,7 +1370,9 @@
         currentQuestionIdx = 0;
         userPendingSelections = {};
         userEvaluated = {};
+        showTranscriptEarly = {};
         startTimer();
+        setupQuizAudio(currentQuiz.audioUrl || (currentQuiz.questions[0] && currentQuiz.questions[0].audioUrl), currentQuiz.title);
         renderCurrentQuestion();
       } catch (e) {
         alert('Lỗi tải bài trắc nghiệm: ' + e.message);
@@ -1342,7 +1393,111 @@
 
     function exitQuiz() {
       clearInterval(quizTimerInterval);
+      const audioEl = document.getElementById('quiz-global-audio');
+      if (audioEl) audioEl.pause();
+      quizAudioCurrentUrl = '';
       switchView('lessons');
+    }
+
+    function formatAudioTime(secs) {
+      if (isNaN(secs) || secs < 0) return '00:00';
+      const m = Math.floor(secs / 60);
+      const s = Math.floor(secs % 60);
+      return `${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+    }
+
+    function setupQuizAudio(rawUrl, title) {
+      const card = document.getElementById('quiz-audio-player-card');
+      const audioEl = document.getElementById('quiz-global-audio');
+      if (!card || !audioEl) return;
+
+      if (!rawUrl) {
+        card.classList.add('hidden');
+        audioEl.pause();
+        return;
+      }
+
+      const proxyUrl = `/api/audio-proxy?url=${encodeURIComponent(rawUrl)}`;
+      card.classList.remove('hidden');
+      if (title) {
+        const titleEl = document.getElementById('quiz-audio-title');
+        if (titleEl) titleEl.textContent = title;
+      }
+
+      if (quizAudioCurrentUrl !== proxyUrl) {
+        quizAudioCurrentUrl = proxyUrl;
+        audioEl.src = proxyUrl;
+        audioEl.load();
+        quizAudioSpeed = 1.0;
+        audioEl.playbackRate = 1.0;
+        const speedBtn = document.getElementById('btn-quiz-audio-speed');
+        if (speedBtn) speedBtn.textContent = '1.0x';
+        updateQuizAudioPlayBtn(false);
+      }
+
+      audioEl.ontimeupdate = () => {
+        const cur = audioEl.currentTime || 0;
+        const dur = audioEl.duration || 0;
+        const timeStr = `${formatAudioTime(cur)} / ${formatAudioTime(dur)}`;
+        const timeEl = document.getElementById('quiz-audio-time');
+        if (timeEl) timeEl.textContent = timeStr;
+        const bar = document.getElementById('quiz-audio-seekbar');
+        if (bar && dur > 0) {
+          bar.value = (cur / dur) * 100;
+        }
+      };
+
+      audioEl.onplay = () => updateQuizAudioPlayBtn(true);
+      audioEl.onpause = () => updateQuizAudioPlayBtn(false);
+      audioEl.onended = () => updateQuizAudioPlayBtn(false);
+    }
+
+    function updateQuizAudioPlayBtn(isPlaying) {
+      const btn = document.getElementById('btn-quiz-audio-play');
+      if (!btn) return;
+      btn.innerHTML = isPlaying 
+        ? '<i data-lucide="pause" class="w-5 h-5"></i>' 
+        : '<i data-lucide="play" class="w-5 h-5 ml-0.5"></i>';
+      lucide.createIcons();
+    }
+
+    function toggleQuizAudio() {
+      const audioEl = document.getElementById('quiz-global-audio');
+      if (!audioEl) return;
+      if (audioEl.paused) {
+        audioEl.play().catch(e => console.warn('Audio play error:', e));
+      } else {
+        audioEl.pause();
+      }
+    }
+
+    function seekQuizAudio(offset) {
+      const audioEl = document.getElementById('quiz-global-audio');
+      if (!audioEl) return;
+      audioEl.currentTime = Math.max(0, Math.min(audioEl.duration || 9999, audioEl.currentTime + offset));
+    }
+
+    function onQuizAudioSeek(percent) {
+      const audioEl = document.getElementById('quiz-global-audio');
+      if (!audioEl || !audioEl.duration) return;
+      audioEl.currentTime = (percent / 100) * audioEl.duration;
+    }
+
+    function changeQuizAudioSpeed() {
+      const audioEl = document.getElementById('quiz-global-audio');
+      if (!audioEl) return;
+      const speeds = [1.0, 1.25, 1.5, 0.75, 0.9];
+      const currentIdx = speeds.indexOf(quizAudioSpeed);
+      const nextIdx = (currentIdx + 1) % speeds.length;
+      quizAudioSpeed = speeds[nextIdx];
+      audioEl.playbackRate = quizAudioSpeed;
+      const btn = document.getElementById('btn-quiz-audio-speed');
+      if (btn) btn.textContent = `${quizAudioSpeed}x`;
+    }
+
+    function toggleEarlyTranscript(qId) {
+      showTranscriptEarly[qId] = !showTranscriptEarly[qId];
+      renderCurrentQuestion();
     }
 
     function renderQuestionPills() {
@@ -1418,7 +1573,8 @@
 
       document.getElementById('quiz-current-num').textContent = currentQuestionIdx + 1;
       document.getElementById('question-order-badge').textContent = `CÂU ${q.order || currentQuestionIdx + 1}`;
-      document.getElementById('question-topic-badge').textContent = q.topic || (q.type === 'fill-blank' ? 'Nghe Điền Từ' : 'Nghe Tranh Part 1');
+      document.getElementById('question-topic-badge').textContent = q.topic || (q.type === 'fill-blank' ? 'Nghe Điền Từ' : (q.type === 'photo-listen' ? 'Nghe Tranh Part 1' : 'Trắc Nghiệm'));
+      
       // Question Text & Image
       const imageBox = document.getElementById('question-image-box');
       const imageEl = document.getElementById('question-image');
@@ -1437,9 +1593,17 @@
         imageBox.classList.add('hidden');
       }
 
+      const isPhotoListen = q.type === 'photo-listen' || (imgSrc.length > 0 && (!q.a || q.a === 'A' || q.photoOptions || (q.topic || '').toLowerCase().includes('part 1')));
+
+      // Quiz Audio Setup
+      const quizAudio = q.audioUrl || (currentQuiz && currentQuiz.audioUrl);
+      if (quizAudio) {
+        setupQuizAudio(quizAudio, currentQuiz?.title);
+      }
+
       // Display clean question prompt
-      if (q.type === 'photo-listen' || (imgSrc && q.questionText.includes('<img'))) {
-        qTextEl.textContent = '🎧 Nhìn tranh và nghe các lựa chọn để chọn đáp án đúng:';
+      if (isPhotoListen) {
+        qTextEl.textContent = '🎧 Nhìn tranh và nghe đoạn băng để chọn đáp án đúng nhất:';
       } else if (q.questionText && q.questionText.includes('<')) {
         qTextEl.innerHTML = q.questionText;
       } else {
@@ -1543,8 +1707,89 @@
           if (inp && !isEvaluated) inp.focus();
         }, 150);
 
+      } else if (isPhotoListen) {
+        // TYPE 2: TOEIC PART 1 PHOTO LISTENING (Clean Exam Choices + Transcript on Check)
+        const showTranscript = isEvaluated || showTranscriptEarly[q.questionId];
+        container.className = 'grid grid-cols-1 md:grid-cols-2 gap-3.5 mb-6';
+
+        const photoOpts = [
+          { key: 'A', text: (q.photoOptions && q.photoOptions.A && q.photoOptions.A.text) || (q.a !== 'A' ? q.a : '') || 'Phương án (A)', vi: q.photoOptions?.A?.vi || '' },
+          { key: 'B', text: (q.photoOptions && q.photoOptions.B && q.photoOptions.B.text) || (q.b !== 'B' ? q.b : '') || 'Phương án (B)', vi: q.photoOptions?.B?.vi || '' },
+          { key: 'C', text: (q.photoOptions && q.photoOptions.C && q.photoOptions.C.text) || (q.c !== 'C' ? q.c : '') || 'Phương án (C)', vi: q.photoOptions?.C?.vi || '' },
+          { key: 'D', text: (q.photoOptions && q.photoOptions.D && q.photoOptions.D.text) || (q.d !== 'D' ? q.d : '') || 'Phương án (D)', vi: q.photoOptions?.D?.vi || '' },
+        ];
+
+        const toggleHeader = !isEvaluated ? `
+          <div class="col-span-1 md:col-span-2 flex items-center justify-between pb-1 px-1 text-xs">
+            <span class="font-bold text-slate-500 flex items-center space-x-1.5">
+              <i data-lucide="headphones" class="w-3.5 h-3.5 text-blue-500"></i>
+              <span>Chọn phương án (A, B, C, D) bạn nghe được:</span>
+            </span>
+            <button type="button" onclick="toggleEarlyTranscript(${q.questionId})" class="text-blue-600 dark:text-blue-400 hover:underline font-semibold flex items-center space-x-1">
+              <i data-lucide="${showTranscriptEarly[q.questionId] ? 'eye-off' : 'eye'}" class="w-3.5 h-3.5"></i>
+              <span>${showTranscriptEarly[q.questionId] ? 'Ẩn lời thoại (chế độ thi chuẩn)' : '👁️ Xem trước lời thoại (luyện tập)'}</span>
+            </button>
+          </div>
+        ` : '';
+
+        container.innerHTML = toggleHeader + photoOpts.map(opt => {
+          const isThisSelected = selected === opt.key;
+          let btnClasses = 'p-4 rounded-2xl border text-left transition flex items-center space-x-3.5 bg-white dark:bg-slate-800/40 border-slate-200 dark:border-slate-800 hover:border-blue-400 hover:shadow-sm';
+          let badgeClasses = 'bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300';
+          let rightIndicator = '';
+
+          if (!isEvaluated) {
+            if (isThisSelected) {
+              btnClasses = 'p-4 rounded-2xl border-2 border-blue-600 bg-blue-50/80 text-blue-900 dark:border-blue-500 dark:bg-blue-950/70 dark:text-blue-200 font-semibold shadow text-left flex items-center space-x-3.5';
+              badgeClasses = 'bg-blue-600 text-white';
+              rightIndicator = `<span class="ml-auto text-xs font-bold text-blue-600 dark:text-blue-400 px-2.5 py-0.5 rounded bg-blue-100 dark:bg-blue-900/60">Đã chọn</span>`;
+            }
+          } else {
+            const isCorrectAnswer = opt.key === q.key;
+            if (isCorrectAnswer) {
+              btnClasses = 'p-4 rounded-2xl border-2 border-emerald-500 bg-emerald-50 text-emerald-950 dark:border-emerald-500 dark:bg-emerald-950/70 dark:text-emerald-200 font-semibold shadow text-left flex items-center space-x-3.5';
+              badgeClasses = 'bg-emerald-600 text-white';
+              rightIndicator = `<span class="ml-auto text-xs font-bold text-emerald-600 dark:text-emerald-400 px-2.5 py-0.5 rounded bg-emerald-100 dark:bg-emerald-950 flex items-center space-x-1"><i data-lucide="check" class="w-3.5 h-3.5"></i><span>Đáp án đúng</span></span>`;
+            } else if (isThisSelected && !isCorrectAnswer) {
+              btnClasses = 'p-4 rounded-2xl border-2 border-rose-500 bg-rose-50 text-rose-950 dark:border-rose-500 dark:bg-rose-950/70 dark:text-rose-200 font-semibold shadow text-left flex items-center space-x-3.5';
+              badgeClasses = 'bg-rose-600 text-white';
+              rightIndicator = `<span class="ml-auto text-xs font-bold text-rose-600 dark:text-rose-400 px-2.5 py-0.5 rounded bg-rose-100 dark:bg-rose-950 flex items-center space-x-1"><i data-lucide="x" class="w-3.5 h-3.5"></i><span>Lựa chọn của bạn</span></span>`;
+            }
+          }
+
+          let displayContent = '';
+          let speakerBtn = '';
+
+          if (showTranscript) {
+            const cleanSpeak = opt.text.replace(/'/g, "\\'");
+            speakerBtn = `<button type="button" onclick="event.stopPropagation(); speakSentence('${cleanSpeak}', '0.95')" class="p-2 rounded-xl bg-slate-100 dark:bg-slate-700 hover:bg-blue-100 hover:text-blue-600 text-slate-600 dark:text-slate-300 transition flex-shrink-0" title="Nghe riêng câu này"><i data-lucide="volume-2" class="w-4 h-4"></i></button>`;
+            displayContent = `
+              <div class="flex-1 overflow-hidden">
+                <div class="text-sm font-medium leading-snug text-slate-900 dark:text-white">${opt.text}</div>
+                ${opt.vi ? `<div class="text-xs text-slate-500 dark:text-slate-400 mt-1 italic">${opt.vi}</div>` : ''}
+              </div>
+            `;
+          } else {
+            displayContent = `
+              <div class="flex-1">
+                <div class="text-sm font-bold text-slate-800 dark:text-slate-200">Phương án (${opt.key})</div>
+                <div class="text-[11px] text-slate-400">Nghe đoạn băng và chọn phương án đúng</div>
+              </div>
+            `;
+          }
+
+          return `
+            <button onclick="selectOption('${opt.key}')" id="opt-btn-${opt.key}" class="${btnClasses}">
+              <span class="w-9 h-9 rounded-xl flex items-center justify-center text-sm font-bold font-mono ${badgeClasses} shadow-sm">${opt.key}</span>
+              ${displayContent}
+              ${speakerBtn}
+              ${rightIndicator}
+            </button>
+          `;
+        }).join('');
+
       } else {
-        // TYPE 2: MULTIPLE CHOICE OR PHOTO LISTENING
+        // TYPE 3: STANDARD MULTIPLE CHOICE (Part 5, 6, 7 or grammar)
         container.className = 'grid grid-cols-1 md:grid-cols-2 gap-3 mb-6';
         const options = [
           { key: 'A', text: q.a },
@@ -1624,7 +1869,7 @@
           document.getElementById('result-status-icon').innerHTML = '<i data-lucide="x" class="w-4 h-4"></i>';
           document.getElementById('result-status-title').textContent = 'Chưa chính xác!';
           document.getElementById('result-status-title').className = 'font-bold text-sm text-rose-800 dark:text-rose-200';
-          document.getElementById('result-status-subtitle').textContent = q.type === 'fill-blank' ? `Bạn đã gõ: "${selected || 'trống'}" • Đáp án đúng: "${q.blankPart}"` : `Bạn chọn ${selected || 'trống'} • Đáp án đúng là ${q.key}.`;
+          document.getElementById('result-status-subtitle').textContent = q.type === 'fill-blank' ? `Bạn đã gõ: "${selected || 'trống'}" • Đáp án đúng: "${q.blankPart}"` : `Bạn chọn ${selected || 'trống'} • Đáp án đúng là (${q.key}).`;
         }
 
         if (q.type === 'fill-blank') {
@@ -1644,6 +1889,49 @@
               <b>Dịch nghĩa:</b> ${q.vietnamese}
             </div>` : ''}
           `;
+        } else if (isPhotoListen) {
+          document.getElementById('explanation-key-badge').textContent = `Đáp án đúng: (${q.key})`;
+          
+          let transcriptCards = ['A', 'B', 'C', 'D'].map(k => {
+            const p = q.photoOptions ? q.photoOptions[k] : null;
+            const text = (p && p.text) || (q[k.toLowerCase()] !== k ? q[k.toLowerCase()] : '') || '';
+            const vi = p ? p.vi : '';
+            if (!text) return '';
+            const isKey = k === q.key;
+            return `
+              <div class="p-3 rounded-xl ${isKey ? 'bg-emerald-50/80 border border-emerald-300 dark:bg-emerald-950/40 dark:border-emerald-800' : 'bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800'} flex items-start space-x-3">
+                <span class="w-6 h-6 rounded-md font-mono font-bold text-xs flex items-center justify-center flex-shrink-0 mt-0.5 ${isKey ? 'bg-emerald-600 text-white' : 'bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300'}">${k}</span>
+                <div class="flex-1">
+                  <div class="text-sm font-semibold text-slate-800 dark:text-slate-200 flex items-center space-x-2">
+                    <span>${text}</span>
+                    <button onclick="speakSentence('${text.replace(/'/g, "\\'")}', '0.95')" class="p-1 rounded text-blue-600 hover:bg-blue-100 dark:hover:bg-slate-800 transition" title="Nghe riêng câu này">
+                      <i data-lucide="volume-2" class="w-3.5 h-3.5"></i>
+                    </button>
+                  </div>
+                  ${vi ? `<div class="text-xs text-slate-600 dark:text-slate-400 mt-1">${vi}</div>` : ''}
+                </div>
+                ${isKey ? '<span class="text-[11px] font-bold text-emerald-600 whitespace-nowrap bg-emerald-100 dark:bg-emerald-900/60 px-2 py-0.5 rounded">Đáp án đúng</span>' : ''}
+              </div>
+            `;
+          }).filter(Boolean).join('');
+
+          document.getElementById('explanation-content').innerHTML = `
+            <div class="mb-4">
+              <span class="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 block mb-2.5 flex items-center space-x-1.5">
+                <i data-lucide="file-text" class="w-4 h-4 text-blue-500"></i>
+                <span>Lời thoại chi tiết (Transcript & Dịch nghĩa):</span>
+              </span>
+              <div class="space-y-2">
+                ${transcriptCards}
+              </div>
+            </div>
+            ${q.explanation && !q.explanation.includes('(A)') ? `
+              <div class="mt-3 pt-3 border-t border-slate-100 dark:border-slate-800 text-sm leading-relaxed">
+                ${q.explanation}
+              </div>
+            ` : ''}
+          `;
+          renderVocabTags(q.vocabList);
         } else {
           document.getElementById('explanation-key-badge').textContent = `Đáp án đúng: ${q.key}`;
           document.getElementById('explanation-content').innerHTML = q.explanation || 'Không có giải thích chi tiết.';
@@ -1747,14 +2035,24 @@
       const tags = document.getElementById('vocab-tags');
       if (vocabList && vocabList.length) {
         container.classList.remove('hidden');
-        tags.innerHTML = vocabList.map(v => `
-          <button onclick="speakWord('${v.word}')" class="px-3 py-1.5 rounded-xl bg-blue-50 hover:bg-blue-100 dark:bg-slate-800 dark:hover:bg-slate-700 border border-blue-200/80 dark:border-slate-700 text-xs flex items-center space-x-1.5 transition text-left" title="Click để nghe phát âm">
-            <i data-lucide="volume-2" class="w-3.5 h-3.5 text-blue-600 flex-shrink-0"></i>
-            <span class="font-bold text-blue-700 dark:text-blue-300">${v.word}</span>
-            <span class="text-[10px] text-slate-400">(${v.pos})</span>
-            <span class="text-slate-600 dark:text-slate-300">: ${v.meaning}</span>
-          </button>
-        `).join('');
+        tags.innerHTML = vocabList.map(v => {
+          const cleanWord = (v.word || '').trim().toLowerCase();
+          const cleanBase = cleanWord.replace(/s$/, '').replace(/ed$/, '');
+          const ipa = v.ipa || (typeof IPA_DICT !== 'undefined' && (IPA_DICT[cleanWord] || IPA_DICT[cleanBase])) || '';
+          return `
+            <button onclick="speakWord('${(v.word || '').replace(/'/g, "\\'")}')" class="px-3.5 py-2 rounded-xl bg-blue-50/80 hover:bg-blue-100/90 dark:bg-slate-800 dark:hover:bg-slate-700/80 border border-blue-200/80 dark:border-slate-700 text-xs flex items-center space-x-2.5 transition text-left shadow-sm" title="Click để nghe phát âm chuẩn">
+              <i data-lucide="volume-2" class="w-4 h-4 text-blue-600 dark:text-blue-400 flex-shrink-0"></i>
+              <div>
+                <div class="flex items-center space-x-1.5">
+                  <span class="font-bold text-blue-700 dark:text-blue-300">${v.word}</span>
+                  <span class="text-[10px] text-slate-400">(${v.pos})</span>
+                </div>
+                ${ipa ? `<div class="font-mono text-[11px] text-rose-600 dark:text-rose-400 font-semibold leading-tight my-0.5">${ipa}</div>` : ''}
+                <div class="text-[11px] text-slate-600 dark:text-slate-300 leading-snug">${v.meaning}</div>
+              </div>
+            </button>
+          `;
+        }).join('');
       } else {
         container.classList.add('hidden');
       }

@@ -66,6 +66,31 @@ export async function onRequest(context) {
     return fetch(googleUrl);
   }
 
+  // 1b. Moon Audio Proxy
+  if (path === '/api/audio-proxy') {
+    const audioUrl = url.searchParams.get('url');
+    if (!audioUrl) return new Response('URL required', { status: 400 });
+    try {
+      const resp = await fetch(audioUrl, {
+        headers: {
+          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36',
+          'Referer': 'https://moon.vn/',
+          'Origin': 'https://moon.vn'
+        }
+      });
+      return new Response(resp.body, {
+        status: resp.status,
+        headers: {
+          'Content-Type': resp.headers.get('content-type') || 'audio/mpeg',
+          'Cache-Control': 'public, max-age=86400',
+          'Access-Control-Allow-Origin': '*'
+        }
+      });
+    } catch (e) {
+      return new Response('Audio fetch error: ' + e.message, { status: 500 });
+    }
+  }
+
   // 2. Course Overview
   if (path === '/api/course') {
     const groups = data.course.groupList || [];
