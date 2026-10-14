@@ -1016,16 +1016,43 @@
     // Keyboard Shortcuts
     function initKeyboardShortcuts() {
       window.addEventListener('keydown', (e) => {
+        const isTyping = ['INPUT', 'TEXTAREA'].includes(document.activeElement.tagName) || document.activeElement.isContentEditable;
+
         const quizView = document.getElementById('view-quiz-player');
         if (quizView && !quizView.classList.contains('hidden')) {
-          if (['a', 'b', 'c', 'd'].includes(e.key.toLowerCase())) {
-            selectOption(e.key.toUpperCase());
-          } else if (['1', '2', '3', '4'].includes(e.key)) {
-            const map = { '1': 'A', '2': 'B', '3': 'C', '4': 'D' };
-            selectOption(map[e.key]);
+          const q = currentQuiz && currentQuiz.questions ? currentQuiz.questions[currentQuestionIdx] : null;
+
+          // If user is typing in an input (such as fill-blank-input)
+          if (isTyping) {
+            if (e.key === 'Enter') {
+              e.preventDefault();
+              if (q && !userEvaluated[q.questionId]) {
+                checkCurrentAnswer();
+              } else {
+                nextQuestion();
+              }
+            }
+            // CRITICAL: Do NOT intercept any letters (a, b, c, d), numbers, spaces, or arrows while typing!
+            return;
+          }
+
+          // Outside input:
+          if (q && q.type !== 'fill-blank') {
+            if (['a', 'b', 'c', 'd'].includes(e.key.toLowerCase())) {
+              selectOption(e.key.toUpperCase());
+            } else if (['1', '2', '3', '4'].includes(e.key)) {
+              const map = { '1': 'A', '2': 'B', '3': 'C', '4': 'D' };
+              selectOption(map[e.key]);
+            }
+          }
+
+          if (e.key === ' ' || e.code === 'Space') {
+            e.preventDefault();
+            if (q) {
+              speakSentence(q.fullSentence || q.questionText, '0.95');
+            }
           } else if (e.key === 'Enter') {
-            const q = currentQuiz.questions[currentQuestionIdx];
-            if (!userEvaluated[q.questionId]) {
+            if (q && !userEvaluated[q.questionId]) {
               checkCurrentAnswer();
             } else {
               nextQuestion();
@@ -1039,23 +1066,31 @@
 
         const fcView = document.getElementById('view-flashcards');
         if (fcView && !fcView.classList.contains('hidden') && document.getElementById('vocab-card-container').offsetParent !== null) {
-          if (e.key === ' ' || e.code === 'Space') {
-            e.preventDefault();
-            flipFlashcard();
-          } else if (e.key === 'ArrowRight') {
-            nextFlashcard();
-          } else if (e.key === 'ArrowLeft') {
-            prevFlashcard();
+          if (!isTyping) {
+            if (e.key === ' ' || e.code === 'Space') {
+              e.preventDefault();
+              flipFlashcard();
+            } else if (e.key === 'ArrowRight') {
+              nextFlashcard();
+            } else if (e.key === 'ArrowLeft') {
+              prevFlashcard();
+            }
           }
         }
 
         const dictationView = document.getElementById('view-dictation');
         if (dictationView && !dictationView.classList.contains('hidden')) {
-          if (e.key === 'ArrowRight' && document.activeElement.tagName !== 'INPUT' && document.activeElement.tagName !== 'TEXTAREA') {
-            nextDictationItem();
-          } else if (e.key === 'ArrowLeft' && document.activeElement.tagName !== 'INPUT' && document.activeElement.tagName !== 'TEXTAREA') {
-            prevDictationItem();
-          } else if (e.code === 'Space' && (e.ctrlKey || (document.activeElement.tagName !== 'INPUT' && document.activeElement.tagName !== 'TEXTAREA'))) {
+          if (!isTyping) {
+            if (e.key === 'ArrowRight') {
+              nextDictationItem();
+            } else if (e.key === 'ArrowLeft') {
+              prevDictationItem();
+            } else if (e.code === 'Space') {
+              e.preventDefault();
+              if (dictationMode === 'word') playCurrentWordAudio(0.95);
+              else playDictationAudio(0.95);
+            }
+          } else if (e.code === 'Space' && e.ctrlKey) {
             e.preventDefault();
             if (dictationMode === 'word') playCurrentWordAudio(0.95);
             else playDictationAudio(0.95);
@@ -1339,9 +1374,19 @@
       }).join('');
     }
 
+    function saveCurrentFillBlankInput() {
+      const q = currentQuiz && currentQuiz.questions ? currentQuiz.questions[currentQuestionIdx] : null;
+      if (q && q.type === 'fill-blank' && !userEvaluated[q.questionId]) {
+        const inp = document.getElementById('fill-blank-input');
+        if (inp) userPendingSelections[q.questionId] = inp.value;
+      }
+    }
+
     function jumpToQuestion(idx) {
       if (idx >= 0 && idx < currentQuiz.questions.length) {
+        saveCurrentFillBlankInput();
         currentQuestionIdx = idx;
+        fillBlankHintLevel = 0;
         renderCurrentQuestion();
       }
     }
@@ -1453,7 +1498,18 @@
 
             <!-- Typing Input -->
             <div class="max-w-md mx-auto mb-3">
-              <input id="fill-blank-input" type="text" autocomplete="off" spellcheck="false" placeholder="Gõ từ/cụm từ còn thiếu rồi nhấn Enter..." value="${userTyped}" class="${inputClass}" onkeydown="if(event.key==='Enter') checkCurrentAnswer()" ${isEvaluated ? 'disabled' : ''} />
+              <input id="fill-blank-input" 
+                     type="text" 
+                     autocomplete="off" 
+                     autocorrect="off" 
+                     autocapitalize="none" 
+                     spellcheck="false" 
+                     placeholder="Gõ từ/cụm từ còn thiếu rồi nhấn Enter..." 
+                     value="${(userTyped || '').replace(/"/g, '&quot;')}" 
+                     class="${inputClass}" 
+                     oninput="userPendingSelections[${q.questionId}] = this.value" 
+                     onkeydown="if(event.key==='Enter') { event.preventDefault(); checkCurrentAnswer(); }" 
+                     ${isEvaluated ? 'disabled' : ''} />
             </div>
 
             <!-- Letter Hint -->
@@ -1687,7 +1743,21 @@
       }
     }
 
+    function isQuestionAnsweredCorrectly(q) {
+      const selected = userPendingSelections[q.questionId];
+      if (!selected) return false;
+      if (q.type === 'fill-blank') {
+        const cleanTyped = selected.toLowerCase().replace(/[.,!?;:'"]/g, '').replace(/\s+/g, ' ').trim();
+        const cleanBlank = (q.blankPart || '').toLowerCase().replace(/[.,!?;:'"]/g, '').replace(/\s+/g, ' ').trim();
+        const cleanFull = (q.fullSentence || '').toLowerCase().replace(/[.,!?;:'"]/g, '').replace(/\s+/g, ' ').trim();
+        return cleanTyped === cleanBlank || cleanTyped === cleanFull || (cleanBlank.length > 5 && cleanFull.includes(cleanTyped) && cleanTyped.length >= cleanBlank.length * 0.8);
+      }
+      return selected === q.key;
+    }
+
     function nextQuestion() {
+      saveCurrentFillBlankInput();
+      fillBlankHintLevel = 0;
       if (currentQuestionIdx < currentQuiz.totalQuestions - 1) {
         currentQuestionIdx++;
         document.getElementById('quiz-speech-feedback').classList.add('hidden');
@@ -1695,13 +1765,15 @@
         window.scrollTo({ top: 0, behavior: 'smooth' });
       } else {
         clearInterval(quizTimerInterval);
-        const correctCount = currentQuiz.questions.filter(q => userPendingSelections[q.questionId] === q.key).length;
+        const correctCount = currentQuiz.questions.filter(q => isQuestionAnsweredCorrectly(q)).length;
         if (typeof confetti === 'function') confetti({ particleCount: 100, spread: 80 });
         alert(`🎉 Chúc mừng bạn đã hoàn thành bài luyện tập!\n\nKết quả: ${correctCount} / ${currentQuiz.totalQuestions} câu đúng (${Math.round(correctCount / currentQuiz.totalQuestions * 100)}%)\nThời gian: ${document.getElementById('quiz-timer').textContent}`);
       }
     }
 
     function prevQuestion() {
+      saveCurrentFillBlankInput();
+      fillBlankHintLevel = 0;
       if (currentQuestionIdx > 0) {
         currentQuestionIdx--;
         document.getElementById('quiz-speech-feedback').classList.add('hidden');
