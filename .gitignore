@@ -1,0 +1,33 @@
+# Dependencies
+node_modules/
+package-lock.json
+
+# Environment & Sensitive Auth
+auth_token.txt
+.env
+.env.local
+
+# Audio Cache & Large Media
+data/cache/audio/*.mp3
+*.mp3
+
+# Python bytecode & venv
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+env/
+venv/
+
+# Scratch & Logs
+scratch/
+*.log
+
+# OS & Editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Large temporary bundles
+main.dart.js

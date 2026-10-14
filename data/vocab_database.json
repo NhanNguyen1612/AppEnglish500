@@ -1,0 +1,898 @@
+[
+  {
+    "word": "summarize",
+    "pos": "v",
+    "meaning": "tổng kết, tóm tắt",
+    "example": "Included is a ______ of the latest feedback from our customers.",
+    "lesson": "[REA] Checkup 1 - Section A: NOUNS (DANH TỪ)"
+  },
+  {
+    "word": "summarizes",
+    "pos": "v",
+    "meaning": "tổng kết, tóm tắt",
+    "example": "Included is a ______ of the latest feedback from our customers.",
+    "lesson": "[REA] Checkup 1 - Section A: NOUNS (DANH TỪ)"
+  },
+  {
+    "word": "summary",
+    "pos": "n",
+    "meaning": "một bản tổng kết, bản tóm tắt",
+    "example": "Included is a ______ of the latest feedback from our customers.",
+    "lesson": "[REA] Checkup 1 - Section A: NOUNS (DANH TỪ)"
+  },
+  {
+    "word": "summaries",
+    "pos": "n",
+    "meaning": "những bản tổng kết, bản tóm tắt",
+    "example": "Included is a ______ of the latest feedback from our customers.",
+    "lesson": "[REA] Checkup 1 - Section A: NOUNS (DANH TỪ)"
+  },
+  {
+    "word": "latest",
+    "pos": "adj",
+    "meaning": "gần đây nhất, mới nhất",
+    "example": "Included is a ______ of the latest feedback from our customers.",
+    "lesson": "[REA] Checkup 1 - Section A: NOUNS (DANH TỪ)"
+  },
+  {
+    "word": "feedback",
+    "pos": "n",
+    "meaning": "phản hồi, ý kiến đóng góp",
+    "example": "Included is a ______ of the latest feedback from our customers.",
+    "lesson": "[REA] Checkup 1 - Section A: NOUNS (DANH TỪ)"
+  },
+  {
+    "word": "participated",
+    "pos": "v",
+    "meaning": "đã tham gia",
+    "example": "_________ in the discussion can get complimentary meals on the 3rd floor.",
+    "lesson": "[REA] Checkup 1 - Section A: NOUNS (DANH TỪ)"
+  },
+  {
+    "word": "participant",
+    "pos": "n",
+    "meaning": "một người tham gia",
+    "example": "_________ in the discussion can get complimentary meals on the 3rd floor.",
+    "lesson": "[REA] Checkup 1 - Section A: NOUNS (DANH TỪ)"
+  },
+  {
+    "word": "participants",
+    "pos": "n",
+    "meaning": "những người tham gia",
+    "example": "_________ in the discussion can get complimentary meals on the 3rd floor.",
+    "lesson": "[REA] Checkup 1 - Section A: NOUNS (DANH TỪ)"
+  },
+  {
+    "word": "complimentary",
+    "pos": "adj",
+    "meaning": "miễn phí = free = at no cost = free of charge",
+    "example": "_________ in the discussion can get complimentary meals on the 3rd floor.",
+    "lesson": "[REA] Checkup 1 - Section A: NOUNS (DANH TỪ)"
+  },
+  {
+    "word": "discussion",
+    "pos": "n",
+    "meaning": "cuộc thảo luận",
+    "example": "_________ in the discussion can get complimentary meals on the 3rd floor.",
+    "lesson": "[REA] Checkup 1 - Section A: NOUNS (DANH TỪ)"
+  },
+  {
+    "word": "specialist",
+    "pos": "n",
+    "meaning": "một chuyên gia",
+    "example": "The HR Department is looking for ________ with hands-on experience.",
+    "lesson": "[REA] Checkup 1 - Section A: NOUNS (DANH TỪ)"
+  },
+  {
+    "word": "specialize",
+    "pos": "v",
+    "meaning": "chuyên về",
+    "example": "The HR Department is looking for ________ with hands-on experience.",
+    "lesson": "[REA] Checkup 1 - Section A: NOUNS (DANH TỪ)"
+  },
+  {
+    "word": "specialists",
+    "pos": "n",
+    "meaning": "các chuyên gia",
+    "example": "The HR Department is looking for ________ with hands-on experience.",
+    "lesson": "[REA] Checkup 1 - Section A: NOUNS (DANH TỪ)"
+  },
+  {
+    "word": "hands-on",
+    "pos": "adj",
+    "meaning": "thực tế = practical",
+    "example": "The HR Department is looking for ________ with hands-on experience.",
+    "lesson": "[REA] Checkup 1 - Section A: NOUNS (DANH TỪ)"
+  },
+  {
+    "word": "apply",
+    "pos": "v",
+    "meaning": "nộp đơn",
+    "example": "______ for this position must go through a rigorous evaluation process consisting of 5 rounds.",
+    "lesson": "[REA] Checkup 1 - Section A: NOUNS (DANH TỪ)"
+  },
+  {
+    "word": "applicant",
+    "pos": "n",
+    "meaning": "một ứng viên",
+    "example": "______ for this position must go through a rigorous evaluation process consisting of 5 rounds.",
+    "lesson": "[REA] Checkup 1 - Section A: NOUNS (DANH TỪ)"
+  },
+  {
+    "word": "applicants",
+    "pos": "n",
+    "meaning": "các ứng viên",
+    "example": "______ for this position must go through a rigorous evaluation process consisting of 5 rounds.",
+    "lesson": "[REA] Checkup 1 - Section A: NOUNS (DANH TỪ)"
+  },
+  {
+    "word": "rigorous",
+    "pos": "adj",
+    "meaning": "nghiêm ngặt = strict = thorough (kỹ lưỡng) = demanding (yêu cầu cao)",
+    "example": "______ for this position must go through a rigorous evaluation process consisting of 5 rounds.",
+    "lesson": "[REA] Checkup 1 - Section A: NOUNS (DANH TỪ)"
+  },
+  {
+    "word": "consultation",
+    "pos": "n",
+    "meaning": "sự tư vấn, buổi tham vấn",
+    "example": "TOEIC Horizon, Inc. should receive ________ from a third party before making any decisions regarding the upcoming merger.",
+    "lesson": "[REA] Checkup 1 - Section A: NOUNS (DANH TỪ)"
+  },
+  {
+    "word": "consultant",
+    "pos": "n",
+    "meaning": "người tư vấn",
+    "example": "TOEIC Horizon, Inc. should receive ________ from a third party before making any decisions regarding the upcoming merger.",
+    "lesson": "[REA] Checkup 1 - Section A: NOUNS (DANH TỪ)"
+  },
+  {
+    "word": "consult",
+    "pos": "v",
+    "meaning": "tư vấn",
+    "example": "TOEIC Horizon, Inc. should receive ________ from a third party before making any decisions regarding the upcoming merger.",
+    "lesson": "[REA] Checkup 1 - Section A: NOUNS (DANH TỪ)"
+  },
+  {
+    "word": "consultative",
+    "pos": "adj",
+    "meaning": "có tính chất tham vấn",
+    "example": "TOEIC Horizon, Inc. should receive ________ from a third party before making any decisions regarding the upcoming merger.",
+    "lesson": "[REA] Checkup 1 - Section A: NOUNS (DANH TỪ)"
+  },
+  {
+    "word": "merger",
+    "pos": "n",
+    "meaning": "sự sáp nhập",
+    "example": "TOEIC Horizon, Inc. should receive ________ from a third party before making any decisions regarding the upcoming merger.",
+    "lesson": "[REA] Checkup 1 - Section A: NOUNS (DANH TỪ)"
+  },
+  {
+    "word": "third party",
+    "pos": "n",
+    "meaning": "bên thứ ba = outside party",
+    "example": "TOEIC Horizon, Inc. should receive ________ from a third party before making any decisions regarding the upcoming merger.",
+    "lesson": "[REA] Checkup 1 - Section A: NOUNS (DANH TỪ)"
+  },
+  {
+    "word": "participate",
+    "pos": "v",
+    "meaning": "tham gia",
+    "example": "Active ________ in company events shows a strong commitment to the organization and fosters team spirit and collaboration among employees.",
+    "lesson": "[REA] Checkup 1 - Section A: NOUNS (DANH TỪ)"
+  },
+  {
+    "word": "participation",
+    "pos": "n",
+    "meaning": "sự tham gia",
+    "example": "Active ________ in company events shows a strong commitment to the organization and fosters team spirit and collaboration among employees.",
+    "lesson": "[REA] Checkup 1 - Section A: NOUNS (DANH TỪ)"
+  },
+  {
+    "word": "participatory",
+    "pos": "adj",
+    "meaning": "mang tính tham gia",
+    "example": "Active ________ in company events shows a strong commitment to the organization and fosters team spirit and collaboration among employees.",
+    "lesson": "[REA] Checkup 1 - Section A: NOUNS (DANH TỪ)"
+  },
+  {
+    "word": "commitment",
+    "pos": "n",
+    "meaning": "sự cam kết",
+    "example": "Active ________ in company events shows a strong commitment to the organization and fosters team spirit and collaboration among employees.",
+    "lesson": "[REA] Checkup 1 - Section A: NOUNS (DANH TỪ)"
+  },
+  {
+    "word": "foster",
+    "pos": "v",
+    "meaning": "thúc đẩy = encourage = promote",
+    "example": "Active ________ in company events shows a strong commitment to the organization and fosters team spirit and collaboration among employees.",
+    "lesson": "[REA] Checkup 1 - Section A: NOUNS (DANH TỪ)"
+  },
+  {
+    "word": "performer",
+    "pos": "n",
+    "meaning": "người biểu diễn/ người thực hiện",
+    "example": "This cutting-edge smartphone offers exceptional ________, with lightning-fast speeds, making it the ultimate choice for tech enthusiasts.",
+    "lesson": "[REA] Checkup 1 - Section A: NOUNS (DANH TỪ)"
+  },
+  {
+    "word": "performance",
+    "pos": "n",
+    "meaning": "sự biểu diễn/ hiệu suất công việc",
+    "example": "This cutting-edge smartphone offers exceptional ________, with lightning-fast speeds, making it the ultimate choice for tech enthusiasts.",
+    "lesson": "[REA] Checkup 1 - Section A: NOUNS (DANH TỪ)"
+  },
+  {
+    "word": "cutting-edge",
+    "pos": "adj",
+    "meaning": "tiên tiến, hiện đại = advanced = state-of-the-art",
+    "example": "This cutting-edge smartphone offers exceptional ________, with lightning-fast speeds, making it the ultimate choice for tech enthusiasts.",
+    "lesson": "[REA] Checkup 1 - Section A: NOUNS (DANH TỪ)"
+  },
+  {
+    "word": "enthusiast",
+    "pos": "n",
+    "meaning": "người đam mê",
+    "example": "This cutting-edge smartphone offers exceptional ________, with lightning-fast speeds, making it the ultimate choice for tech enthusiasts.",
+    "lesson": "[REA] Checkup 1 - Section A: NOUNS (DANH TỪ)"
+  },
+  {
+    "word": "decide",
+    "pos": "v",
+    "meaning": "quyết định",
+    "example": "After careful consideration, she made an early _______ to accept the job offer and relocate to the new city.",
+    "lesson": "[REA] Checkup 1 - Section A: NOUNS (DANH TỪ)"
+  },
+  {
+    "word": "decision",
+    "pos": "n",
+    "meaning": "sự quyết định",
+    "example": "After careful consideration, she made an early _______ to accept the job offer and relocate to the new city.",
+    "lesson": "[REA] Checkup 1 - Section A: NOUNS (DANH TỪ)"
+  },
+  {
+    "word": "decides",
+    "pos": "v",
+    "meaning": "quyết định",
+    "example": "After careful consideration, she made an early _______ to accept the job offer and relocate to the new city.",
+    "lesson": "[REA] Checkup 1 - Section A: NOUNS (DANH TỪ)"
+  },
+  {
+    "word": "relocate",
+    "pos": "v",
+    "meaning": "chuyển chỗ ở/làm việc = move = transfer",
+    "example": "After careful consideration, she made an early _______ to accept the job offer and relocate to the new city.",
+    "lesson": "[REA] Checkup 1 - Section A: NOUNS (DANH TỪ)"
+  },
+  {
+    "word": "assist",
+    "pos": "v",
+    "meaning": "giúp đỡ",
+    "example": "She is seeking _______ with troubleshooting the technical issues on her computer.",
+    "lesson": "[REA] Checkup 1 - Section A: NOUNS (DANH TỪ)"
+  },
+  {
+    "word": "assistance",
+    "pos": "n",
+    "meaning": "sự giúp đỡ",
+    "example": "She is seeking _______ with troubleshooting the technical issues on her computer.",
+    "lesson": "[REA] Checkup 1 - Section A: NOUNS (DANH TỪ)"
+  },
+  {
+    "word": "assistant",
+    "pos": "n",
+    "meaning": "trợ lý",
+    "example": "She is seeking _______ with troubleshooting the technical issues on her computer.",
+    "lesson": "[REA] Checkup 1 - Section A: NOUNS (DANH TỪ)"
+  },
+  {
+    "word": "troubleshoot",
+    "pos": "v",
+    "meaning": "khắc phục sự cố = fix = resolve = resolve",
+    "example": "She is seeking _______ with troubleshooting the technical issues on her computer.",
+    "lesson": "[REA] Checkup 1 - Section A: NOUNS (DANH TỪ)"
+  },
+  {
+    "word": "issue",
+    "pos": "n",
+    "meaning": "vấn đề = problem = matter",
+    "example": "She is seeking _______ with troubleshooting the technical issues on her computer.",
+    "lesson": "[REA] Checkup 1 - Section A: NOUNS (DANH TỪ)"
+  },
+  {
+    "word": "entertainment",
+    "pos": "n",
+    "meaning": "sự giải trí",
+    "example": "The resort offers a wide range of activities and amenities, catering for _______ needs of guests of all ages.",
+    "lesson": "[REA] Checkup 1 - Section A: NOUNS (DANH TỪ)"
+  },
+  {
+    "word": "entertainer",
+    "pos": "n",
+    "meaning": "người biểu diễn, nghệ sĩ giải trí",
+    "example": "The resort offers a wide range of activities and amenities, catering for _______ needs of guests of all ages.",
+    "lesson": "[REA] Checkup 1 - Section A: NOUNS (DANH TỪ)"
+  },
+  {
+    "word": "entertainers",
+    "pos": "n",
+    "meaning": "những người biểu diễn",
+    "example": "The resort offers a wide range of activities and amenities, catering for _______ needs of guests of all ages.",
+    "lesson": "[REA] Checkup 1 - Section A: NOUNS (DANH TỪ)"
+  },
+  {
+    "word": "amenities",
+    "pos": "n",
+    "meaning": "tiện nghi",
+    "example": "The resort offers a wide range of activities and amenities, catering for _______ needs of guests of all ages.",
+    "lesson": "[REA] Checkup 1 - Section A: NOUNS (DANH TỪ)"
+  },
+  {
+    "word": "cater for",
+    "pos": "v",
+    "meaning": "đáp ứng nhu cầu = serve =provide for",
+    "example": "The resort offers a wide range of activities and amenities, catering for _______ needs of guests of all ages.",
+    "lesson": "[REA] Checkup 1 - Section A: NOUNS (DANH TỪ)"
+  },
+  {
+    "word": "baggages",
+    "pos": "n",
+    "meaning": "những hành lý",
+    "example": "For some Vietnamese airlines, the total weight of carry-on ________ must not exceed 18kg.",
+    "lesson": "[REA] Checkup 2 - Section A: NOUNS (DANH TỪ)"
+  },
+  {
+    "word": "baggage",
+    "pos": "n",
+    "meaning": "hành lý",
+    "example": "For some Vietnamese airlines, the total weight of carry-on ________ must not exceed 18kg.",
+    "lesson": "[REA] Checkup 2 - Section A: NOUNS (DANH TỪ)"
+  },
+  {
+    "word": "carry-on",
+    "pos": "adj",
+    "meaning": "xách tay",
+    "example": "For some Vietnamese airlines, the total weight of carry-on ________ must not exceed 18kg.",
+    "lesson": "[REA] Checkup 2 - Section A: NOUNS (DANH TỪ)"
+  },
+  {
+    "word": "exceed",
+    "pos": "v",
+    "meaning": "vượt quá = surpass = go beyond",
+    "example": "For some Vietnamese airlines, the total weight of carry-on ________ must not exceed 18kg.",
+    "lesson": "[REA] Checkup 2 - Section A: NOUNS (DANH TỪ)"
+  },
+  {
+    "word": "research",
+    "pos": "n",
+    "meaning": "nghiên cứu",
+    "example": "The recent _________ conducted by the team shed light on the effectiveness of certain teaching methods in improving student productivity.",
+    "lesson": "[REA] Checkup 2 - Section A: NOUNS (DANH TỪ)"
+  },
+  {
+    "word": "conduct",
+    "pos": "v",
+    "meaning": "thực hiện = make = do",
+    "example": "The recent _________ conducted by the team shed light on the effectiveness of certain teaching methods in improving student productivity.",
+    "lesson": "[REA] Checkup 2 - Section A: NOUNS (DANH TỪ)"
+  },
+  {
+    "word": "effectiveness",
+    "pos": "n",
+    "meaning": "sự hiệu quả, tính hiệu quả",
+    "example": "The recent _________ conducted by the team shed light on the effectiveness of certain teaching methods in improving student productivity.",
+    "lesson": "[REA] Checkup 2 - Section A: NOUNS (DANH TỪ)"
+  },
+  {
+    "word": "productivity",
+    "pos": "n",
+    "meaning": "năng suất",
+    "example": "The recent _________ conducted by the team shed light on the effectiveness of certain teaching methods in improving student productivity.",
+    "lesson": "[REA] Checkup 2 - Section A: NOUNS (DANH TỪ)"
+  },
+  {
+    "word": "information",
+    "pos": "n",
+    "meaning": "thông tin",
+    "example": "The new software update includes additional security measures to protect sensitive ________ stored on the device.",
+    "lesson": "[REA] Checkup 2 - Section A: NOUNS (DANH TỪ)"
+  },
+  {
+    "word": "informed",
+    "pos": "adj",
+    "meaning": "am hiểu, thông thạo",
+    "example": "The new software update includes additional security measures to protect sensitive ________ stored on the device.",
+    "lesson": "[REA] Checkup 2 - Section A: NOUNS (DANH TỪ)"
+  },
+  {
+    "word": "informs",
+    "pos": "v",
+    "meaning": "thông báo",
+    "example": "The new software update includes additional security measures to protect sensitive ________ stored on the device.",
+    "lesson": "[REA] Checkup 2 - Section A: NOUNS (DANH TỪ)"
+  },
+  {
+    "word": "informations",
+    "pos": "n",
+    "meaning": "những thông tin (sai, information không có số nhiều)",
+    "example": "The new software update includes additional security measures to protect sensitive ________ stored on the device.",
+    "lesson": "[REA] Checkup 2 - Section A: NOUNS (DANH TỪ)"
+  },
+  {
+    "word": "sensitive",
+    "pos": "adj",
+    "meaning": "nhạy cảm",
+    "example": "The new software update includes additional security measures to protect sensitive ________ stored on the device.",
+    "lesson": "[REA] Checkup 2 - Section A: NOUNS (DANH TỪ)"
+  },
+  {
+    "word": "measure",
+    "pos": "n",
+    "meaning": "biện pháp, giải pháp",
+    "example": "The new software update includes additional security measures to protect sensitive ________ stored on the device.",
+    "lesson": "[REA] Checkup 2 - Section A: NOUNS (DANH TỪ)"
+  },
+  {
+    "word": "machineries",
+    "pos": "n",
+    "meaning": "những loại máy móc (sai, “machinery” không dùng số nhiều)",
+    "example": "The factory invested in new ________ to increase production capacity.",
+    "lesson": "[REA] Checkup 2 - Section A: NOUNS (DANH TỪ)"
+  },
+  {
+    "word": "machinery",
+    "pos": "n",
+    "meaning": "máy móc, thiết bị",
+    "example": "The factory invested in new ________ to increase production capacity.",
+    "lesson": "[REA] Checkup 2 - Section A: NOUNS (DANH TỪ)"
+  },
+  {
+    "word": "some machinery",
+    "pos": "n",
+    "meaning": "một số máy móc",
+    "example": "The factory invested in new ________ to increase production capacity.",
+    "lesson": "[REA] Checkup 2 - Section A: NOUNS (DANH TỪ)"
+  },
+  {
+    "word": "a machine",
+    "pos": "n",
+    "meaning": "một cái máy",
+    "example": "The factory invested in new ________ to increase production capacity.",
+    "lesson": "[REA] Checkup 2 - Section A: NOUNS (DANH TỪ)"
+  },
+  {
+    "word": "capacity",
+    "pos": "n",
+    "meaning": "năng lực, công suất",
+    "example": "The factory invested in new ________ to increase production capacity.",
+    "lesson": "[REA] Checkup 2 - Section A: NOUNS (DANH TỪ)"
+  },
+  {
+    "word": "cloth",
+    "pos": "n",
+    "meaning": "mảnh vải",
+    "example": "She carefully selected her ____ for the job interview, aiming for a professional yet stylish look.",
+    "lesson": "[REA] Checkup 2 - Section A: NOUNS (DANH TỪ)"
+  },
+  {
+    "word": "clothe",
+    "pos": "v",
+    "meaning": "mặc quần áo",
+    "example": "She carefully selected her ____ for the job interview, aiming for a professional yet stylish look.",
+    "lesson": "[REA] Checkup 2 - Section A: NOUNS (DANH TỪ)"
+  },
+  {
+    "word": "clothing",
+    "pos": "n",
+    "meaning": "quần áo, y phục",
+    "example": "She carefully selected her ____ for the job interview, aiming for a professional yet stylish look.",
+    "lesson": "[REA] Checkup 2 - Section A: NOUNS (DANH TỪ)"
+  },
+  {
+    "word": "clothings",
+    "pos": "n",
+    "meaning": "những bộ quần áo (sai, clothing không có số nhiều)",
+    "example": "She carefully selected her ____ for the job interview, aiming for a professional yet stylish look.",
+    "lesson": "[REA] Checkup 2 - Section A: NOUNS (DANH TỪ)"
+  },
+  {
+    "word": "stylish",
+    "pos": "adj",
+    "meaning": "hợp thời trang = fashionable",
+    "example": "She carefully selected her ____ for the job interview, aiming for a professional yet stylish look.",
+    "lesson": "[REA] Checkup 2 - Section A: NOUNS (DANH TỪ)"
+  },
+  {
+    "word": "professional",
+    "pos": "adj",
+    "meaning": "chuyên nghiệp",
+    "example": "She carefully selected her ____ for the job interview, aiming for a professional yet stylish look.",
+    "lesson": "[REA] Checkup 2 - Section A: NOUNS (DANH TỪ)"
+  },
+  {
+    "word": "advise",
+    "pos": "v",
+    "meaning": "khuyên, đưa lời khuyên",
+    "example": "The manager provided insightful ______ on improving workplace communication and productivity.",
+    "lesson": "[REA] MINI TEST 1 "
+  },
+  {
+    "word": "advice",
+    "pos": "n",
+    "meaning": "lời khuyên",
+    "example": "The manager provided insightful ______ on improving workplace communication and productivity.",
+    "lesson": "[REA] MINI TEST 1 "
+  },
+  {
+    "word": "advised",
+    "pos": "v",
+    "meaning": "đã khuyên",
+    "example": "The manager provided insightful ______ on improving workplace communication and productivity.",
+    "lesson": "[REA] MINI TEST 1 "
+  },
+  {
+    "word": "communication",
+    "pos": "n",
+    "meaning": "giao tiếp",
+    "example": "The manager provided insightful ______ on improving workplace communication and productivity.",
+    "lesson": "[REA] MINI TEST 1 "
+  },
+  {
+    "word": "benefit",
+    "pos": "n",
+    "meaning": "lợi ích (số ít)",
+    "example": "The new health insurance plan offers a range of _________, including dental coverage and gym memberships.",
+    "lesson": "[REA] MINI TEST 1 "
+  },
+  {
+    "word": "benefits",
+    "pos": "n",
+    "meaning": "lợi ích (số nhiều)",
+    "example": "The new health insurance plan offers a range of _________, including dental coverage and gym memberships.",
+    "lesson": "[REA] MINI TEST 1 "
+  },
+  {
+    "word": "beneficial",
+    "pos": "adj",
+    "meaning": "có lợi",
+    "example": "The new health insurance plan offers a range of _________, including dental coverage and gym memberships.",
+    "lesson": "[REA] MINI TEST 1 "
+  },
+  {
+    "word": "beneficiary",
+    "pos": "n",
+    "meaning": "người thụ hưởng",
+    "example": "The new health insurance plan offers a range of _________, including dental coverage and gym memberships.",
+    "lesson": "[REA] MINI TEST 1 "
+  },
+  {
+    "word": "membership",
+    "pos": "n",
+    "meaning": "tư cách thành viên",
+    "example": "The new health insurance plan offers a range of _________, including dental coverage and gym memberships.",
+    "lesson": "[REA] MINI TEST 1 "
+  },
+  {
+    "word": "increase",
+    "pos": "n",
+    "meaning": "sự gia tăng (số ít)",
+    "example": "The CEO wanted to achieve an ________ in profits by implementing cost-saving measures.",
+    "lesson": "[REA] MINI TEST 1 "
+  },
+  {
+    "word": "increases",
+    "pos": "n",
+    "meaning": "sự gia tăng (số nhiều)",
+    "example": "The CEO wanted to achieve an ________ in profits by implementing cost-saving measures.",
+    "lesson": "[REA] MINI TEST 1 "
+  },
+  {
+    "word": "increased",
+    "pos": "adj",
+    "meaning": "tăng thêm",
+    "example": "The CEO wanted to achieve an ________ in profits by implementing cost-saving measures.",
+    "lesson": "[REA] MINI TEST 1 "
+  },
+  {
+    "word": "increasingly",
+    "pos": "adv",
+    "meaning": "ngày càng",
+    "example": "The CEO wanted to achieve an ________ in profits by implementing cost-saving measures.",
+    "lesson": "[REA] MINI TEST 1 "
+  },
+  {
+    "word": "profits",
+    "pos": "n",
+    "meaning": "lợi nhuận",
+    "example": "The CEO wanted to achieve an ________ in profits by implementing cost-saving measures.",
+    "lesson": "[REA] MINI TEST 1 "
+  },
+  {
+    "word": "implement",
+    "pos": "v",
+    "meaning": "thực hiện = carry out",
+    "example": "The CEO wanted to achieve an ________ in profits by implementing cost-saving measures.",
+    "lesson": "[REA] MINI TEST 1 "
+  },
+  {
+    "word": "interpret",
+    "pos": "v",
+    "meaning": "phiên dịch",
+    "example": "The conference hired a professional _________ to ensure smooth communication between the delegates from different countries.",
+    "lesson": "[REA] MINI TEST 1 "
+  },
+  {
+    "word": "interpretation",
+    "pos": "n",
+    "meaning": "sự phiên dịch (danh từ không đếm được)",
+    "example": "The conference hired a professional _________ to ensure smooth communication between the delegates from different countries.",
+    "lesson": "[REA] MINI TEST 1 "
+  },
+  {
+    "word": "interpreter",
+    "pos": "n",
+    "meaning": "phiên dịch viên (danh từ đếm được)",
+    "example": "The conference hired a professional _________ to ensure smooth communication between the delegates from different countries.",
+    "lesson": "[REA] MINI TEST 1 "
+  },
+  {
+    "word": "interpreting",
+    "pos": "n",
+    "meaning": "việc phiên dịch",
+    "example": "The conference hired a professional _________ to ensure smooth communication between the delegates from different countries.",
+    "lesson": "[REA] MINI TEST 1 "
+  },
+  {
+    "word": "delegate",
+    "pos": "n",
+    "meaning": "đại biểu",
+    "example": "The conference hired a professional _________ to ensure smooth communication between the delegates from different countries.",
+    "lesson": "[REA] MINI TEST 1 "
+  },
+  {
+    "word": "smooth",
+    "pos": "adj",
+    "meaning": "trôi chảy, suôn sẻ",
+    "example": "The conference hired a professional _________ to ensure smooth communication between the delegates from different countries.",
+    "lesson": "[REA] MINI TEST 1 "
+  },
+  {
+    "word": "Attendant",
+    "pos": "n",
+    "meaning": "người phục vụ, người chăm sóc",
+    "example": "__________ of the Sustainable Development Forum are expected to contribute their expertise to address pressing environmental and social challenges.",
+    "lesson": "[REA] MINI TEST 1 "
+  },
+  {
+    "word": "Attention",
+    "pos": "n",
+    "meaning": "sự chú ý",
+    "example": "__________ of the Sustainable Development Forum are expected to contribute their expertise to address pressing environmental and social challenges.",
+    "lesson": "[REA] MINI TEST 1 "
+  },
+  {
+    "word": "Attendees",
+    "pos": "n",
+    "meaning": "người tham dự",
+    "example": "__________ of the Sustainable Development Forum are expected to contribute their expertise to address pressing environmental and social challenges.",
+    "lesson": "[REA] MINI TEST 1 "
+  },
+  {
+    "word": "expertise",
+    "pos": "n",
+    "meaning": "chuyên môn",
+    "example": "__________ of the Sustainable Development Forum are expected to contribute their expertise to address pressing environmental and social challenges.",
+    "lesson": "[REA] MINI TEST 1 "
+  },
+  {
+    "word": "address",
+    "pos": "v",
+    "meaning": "giải quyết",
+    "example": "__________ of the Sustainable Development Forum are expected to contribute their expertise to address pressing environmental and social challenges.",
+    "lesson": "[REA] MINI TEST 1 "
+  },
+  {
+    "word": "representatives",
+    "pos": "n",
+    "meaning": "người đại diện",
+    "example": "The company sent sales _______ to the trade show to showcase their latest products and connect with potential clients.",
+    "lesson": "[REA] MINI TEST 1 "
+  },
+  {
+    "word": "represent",
+    "pos": "v",
+    "meaning": "đại diện",
+    "example": "The company sent sales _______ to the trade show to showcase their latest products and connect with potential clients.",
+    "lesson": "[REA] MINI TEST 1 "
+  },
+  {
+    "word": "representation",
+    "pos": "n",
+    "meaning": "sự đại diện",
+    "example": "The company sent sales _______ to the trade show to showcase their latest products and connect with potential clients.",
+    "lesson": "[REA] MINI TEST 1 "
+  },
+  {
+    "word": "represented",
+    "pos": "v",
+    "meaning": "đã đại diện",
+    "example": "The company sent sales _______ to the trade show to showcase their latest products and connect with potential clients.",
+    "lesson": "[REA] MINI TEST 1 "
+  },
+  {
+    "word": "showcase",
+    "pos": "v",
+    "meaning": "trưng bày, giới thiệu",
+    "example": "The company sent sales _______ to the trade show to showcase their latest products and connect with potential clients.",
+    "lesson": "[REA] MINI TEST 1 "
+  },
+  {
+    "word": "Competitors",
+    "pos": "n",
+    "meaning": "đối thủ cạnh tranh",
+    "example": "__________ for the role of Chief Financial Officer at the multinational corporation was intense.",
+    "lesson": "[REA] MINI TEST 1 "
+  },
+  {
+    "word": "Compete",
+    "pos": "v",
+    "meaning": "cạnh tranh",
+    "example": "__________ for the role of Chief Financial Officer at the multinational corporation was intense.",
+    "lesson": "[REA] MINI TEST 1 "
+  },
+  {
+    "word": "Competition",
+    "pos": "n",
+    "meaning": "sự cạnh tranh",
+    "example": "__________ for the role of Chief Financial Officer at the multinational corporation was intense.",
+    "lesson": "[REA] MINI TEST 1 "
+  },
+  {
+    "word": "Competitions",
+    "pos": "n",
+    "meaning": "các cuộc thi",
+    "example": "__________ for the role of Chief Financial Officer at the multinational corporation was intense.",
+    "lesson": "[REA] MINI TEST 1 "
+  },
+  {
+    "word": "role",
+    "pos": "n",
+    "meaning": "vai trò, vị trí",
+    "example": "__________ for the role of Chief Financial Officer at the multinational corporation was intense.",
+    "lesson": "[REA] MINI TEST 1 "
+  },
+  {
+    "word": "intense",
+    "pos": "adj",
+    "meaning": "gay gắt, dữ dội",
+    "example": "__________ for the role of Chief Financial Officer at the multinational corporation was intense.",
+    "lesson": "[REA] MINI TEST 1 "
+  },
+  {
+    "word": "attendance",
+    "pos": "n",
+    "meaning": "sự tham dự",
+    "example": "The event organizers meticulously tracked _______ records to evaluate the effectiveness of their marketing campaigns.",
+    "lesson": "[REA] MINI TEST 1 "
+  },
+  {
+    "word": "attendee",
+    "pos": "n",
+    "meaning": "người tham dự",
+    "example": "The event organizers meticulously tracked _______ records to evaluate the effectiveness of their marketing campaigns.",
+    "lesson": "[REA] MINI TEST 1 "
+  },
+  {
+    "word": "meticulously",
+    "pos": "adv",
+    "meaning": "tỉ mỉ, cẩn thận",
+    "example": "The event organizers meticulously tracked _______ records to evaluate the effectiveness of their marketing campaigns.",
+    "lesson": "[REA] MINI TEST 1 "
+  },
+  {
+    "word": "evaluate",
+    "pos": "v",
+    "meaning": "đánh giá",
+    "example": "The event organizers meticulously tracked _______ records to evaluate the effectiveness of their marketing campaigns.",
+    "lesson": "[REA] MINI TEST 1 "
+  },
+  {
+    "word": "rates",
+    "pos": "n",
+    "meaning": "tỉ lệ (số nhiều)",
+    "example": "The unemployment __________ decreased by 0.5% compared to last quarter, indicating a positive trend in the job market.",
+    "lesson": "[REA] MINI TEST 1 "
+  },
+  {
+    "word": "rated",
+    "pos": "v",
+    "meaning": "được đánh giá",
+    "example": "The unemployment __________ decreased by 0.5% compared to last quarter, indicating a positive trend in the job market.",
+    "lesson": "[REA] MINI TEST 1 "
+  },
+  {
+    "word": "rating",
+    "pos": "n",
+    "meaning": "sự xếp hạng",
+    "example": "The unemployment __________ decreased by 0.5% compared to last quarter, indicating a positive trend in the job market.",
+    "lesson": "[REA] MINI TEST 1 "
+  },
+  {
+    "word": "rate",
+    "pos": "n",
+    "meaning": "tỉ lệ (số ít)",
+    "example": "The unemployment __________ decreased by 0.5% compared to last quarter, indicating a positive trend in the job market.",
+    "lesson": "[REA] MINI TEST 1 "
+  },
+  {
+    "word": "unemployment",
+    "pos": "n",
+    "meaning": "thất nghiệp",
+    "example": "The unemployment __________ decreased by 0.5% compared to last quarter, indicating a positive trend in the job market.",
+    "lesson": "[REA] MINI TEST 1 "
+  },
+  {
+    "word": "trend",
+    "pos": "n",
+    "meaning": "xu hướng",
+    "example": "The unemployment __________ decreased by 0.5% compared to last quarter, indicating a positive trend in the job market.",
+    "lesson": "[REA] MINI TEST 1 "
+  },
+  {
+    "word": "strategies",
+    "pos": "n",
+    "meaning": "các chiến lược (danh từ số nhiều)",
+    "example": "The company implemented a new marketing ___ aimed at targeting niche demographics, resulting in a significant increase in sales and brand visibility.",
+    "lesson": "[REA] MINI TEST 1 "
+  },
+  {
+    "word": "strategy",
+    "pos": "n",
+    "meaning": "chiến lược (danh từ số ít)",
+    "example": "The company implemented a new marketing ___ aimed at targeting niche demographics, resulting in a significant increase in sales and brand visibility.",
+    "lesson": "[REA] MINI TEST 1 "
+  },
+  {
+    "word": "strategic",
+    "pos": "adj",
+    "meaning": "mang tính chiến lược",
+    "example": "The company implemented a new marketing ___ aimed at targeting niche demographics, resulting in a significant increase in sales and brand visibility.",
+    "lesson": "[REA] MINI TEST 1 "
+  },
+  {
+    "word": "strategically",
+    "pos": "adv",
+    "meaning": "một cách chiến lược",
+    "example": "The company implemented a new marketing ___ aimed at targeting niche demographics, resulting in a significant increase in sales and brand visibility.",
+    "lesson": "[REA] MINI TEST 1 "
+  },
+  {
+    "word": "view",
+    "pos": "v",
+    "meaning": "xem",
+    "example": "What are team members asked to do?",
+    "lesson": "[REA] MINI TEST 1 "
+  },
+  {
+    "word": "demands",
+    "pos": "n",
+    "meaning": "yêu cầu",
+    "example": "What is the purpose of the letter?",
+    "lesson": "[REA] MINI TEST 1 "
+  },
+  {
+    "word": "ask",
+    "pos": "v",
+    "meaning": "hỏi",
+    "example": "What is the purpose of the letter?",
+    "lesson": "[REA] MINI TEST 1 "
+  },
+  {
+    "word": "foresee",
+    "pos": "v",
+    "meaning": "dự đoán",
+    "example": "The word “anticipate” in paragraph 2, line 2 is closest in meaning to:",
+    "lesson": "[REA] MINI TEST 1 "
+  }
+]

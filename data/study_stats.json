@@ -1,0 +1,53 @@
+{
+  "totalAnswered": 3,
+  "totalCorrect": 2,
+  "history": [
+    {
+      "questionId": 15957382,
+      "topic": "Ngữ pháp & Từ loại khác",
+      "isCorrect": true,
+      "lessonTitle": "Đề Thi Thử TOEIC Mini (20 Câu ngẫu nhiên)",
+      "timestamp": "2026-10-14T09:32:54.021Z"
+    },
+    {
+      "questionId": 15957204,
+      "topic": "Ngữ pháp & Từ loại khác",
+      "isCorrect": true,
+      "lessonTitle": "Đề Thi Thử TOEIC Mini (20 Câu ngẫu nhiên)",
+      "timestamp": "2026-10-14T09:39:37.210Z"
+    },
+    {
+      "questionId": 15957376,
+      "topic": "Ngữ pháp & Từ loại khác",
+      "isCorrect": false,
+      "lessonTitle": "Đề Thi Thử TOEIC Mini (20 Câu ngẫu nhiên)",
+      "timestamp": "2026-10-14T09:40:31.353Z"
+    }
+  ],
+  "topics": {
+    "Danh từ (Nouns)": {
+      "total": 0,
+      "correct": 0
+    },
+    "Động từ & Thì (Verbs)": {
+      "total": 0,
+      "correct": 0
+    },
+    "Giới từ (Prepositions)": {
+      "total": 0,
+      "correct": 0
+    },
+    "Tính từ & Trạng từ": {
+      "total": 0,
+      "correct": 0
+    },
+    "Đọc hiểu Thư từ & Email": {
+      "total": 0,
+      "correct": 0
+    },
+    "Ngữ pháp & Từ loại khác": {
+      "total": 3,
+      "correct": 2
+    }
+  }
+}
