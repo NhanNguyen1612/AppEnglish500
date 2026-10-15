@@ -1176,6 +1176,7 @@ app.get('/api/vocabulary-lessons', (req, res) => {
   const { lessons } = getCourseData();
   const vocabLessons = lessons.filter(l => {
     if (l.pageName === 'videolesson' || l.pageName === 'pdf') return false;
+    if (l.name.includes('- Audio')) return false; // Filter out audio duplicates, keep test/key
     if (l.pageName === 'vocabulary' || l.contentViewTypeLMS === 'vocabulary') return true;
     const nameLower = (l.name || '').toLowerCase();
     if (nameLower.includes('chữa') || nameLower.includes('ch?a')) return false;
@@ -1184,6 +1185,7 @@ app.get('/api/vocabulary-lessons', (req, res) => {
     id: l.id,
     name: l.name,
     group_id: l.group_id,
+    group_name: l.group_name || `Unit ${l.group_id}`,
     pageName: l.pageName,
     isPrimaryVocab: l.pageName === 'vocabulary' || l.contentViewTypeLMS === 'vocabulary'
   })).sort((a, b) => {

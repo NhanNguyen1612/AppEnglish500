@@ -429,9 +429,12 @@
             </select>
           </div>
 
-          <div class="flex items-center space-x-2">
+          <div class="flex flex-wrap items-center gap-2">
             <button onclick="practiceWordTypingForCurrentVocabLesson()" class="px-3.5 py-2 rounded-xl bg-rose-50 text-rose-700 dark:bg-rose-950/60 dark:text-rose-300 border border-rose-200 dark:border-rose-900/60 text-xs font-bold hover:bg-rose-100 transition flex items-center space-x-1.5 shadow-sm" title="Luyện gõ từ vựng cho chủ đề đang chọn">
-              <span>✍️ Luyện gõ từ này</span>
+              <span>✍️ Gõ từ vựng</span>
+            </button>
+            <button onclick="practiceSentenceDictationForCurrentVocabLesson()" class="px-3.5 py-2 rounded-xl bg-indigo-50 text-indigo-700 dark:bg-indigo-950/60 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-900/60 text-xs font-bold hover:bg-indigo-100 transition flex items-center space-x-1.5 shadow-sm" title="Nghe chép câu có chứa từ vựng chủ đề này">
+              <span>🎧 Nghe chép câu</span>
             </button>
             <button onclick="quizForCurrentVocabLesson()" class="px-3.5 py-2 rounded-xl bg-blue-50 text-blue-700 dark:bg-blue-950/60 dark:text-blue-300 border border-blue-200 dark:border-blue-900/60 text-xs font-bold hover:bg-blue-100 transition flex items-center space-x-1.5 shadow-sm" title="Làm bài trắc nghiệm nhớ từ">
               <span>🎯 Trắc nghiệm</span>
@@ -603,16 +606,36 @@
             </div>
           </div>
 
+          <!-- Category Filter Tabs: All, Vocab Topics, Listening, Reading -->
+          <div class="pt-3 border-t border-slate-100 dark:border-slate-800 flex flex-wrap items-center gap-1.5 mb-2.5 text-xs">
+            <span class="font-bold text-slate-400 mr-1 text-[11px] uppercase tracking-wider">Phân loại bài:</span>
+            <button id="btn-dcat-all" onclick="setDictationCategory('all')" class="px-2.5 py-1.5 rounded-lg font-bold transition bg-slate-900 dark:bg-white text-white dark:text-slate-900 shadow-sm flex items-center space-x-1">
+              <span>🌟 Tất cả</span>
+            </button>
+            <button id="btn-dcat-vocab" onclick="setDictationCategory('vocab')" class="px-2.5 py-1.5 rounded-lg font-bold transition bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:text-rose-600 flex items-center space-x-1 border border-transparent hover:border-rose-200">
+              <i data-lucide="book-open" class="w-3.5 h-3.5 text-rose-500"></i>
+              <span>📚 Chủ đề Từ vựng (55 topics)</span>
+            </button>
+            <button id="btn-dcat-listening" onclick="setDictationCategory('listening')" class="px-2.5 py-1.5 rounded-lg font-bold transition bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:text-blue-600 flex items-center space-x-1 border border-transparent hover:border-blue-200">
+              <i data-lucide="headphones" class="w-3.5 h-3.5 text-blue-500"></i>
+              <span>🎧 Bài nghe TOEIC</span>
+            </button>
+            <button id="btn-dcat-reading" onclick="setDictationCategory('reading')" class="px-2.5 py-1.5 rounded-lg font-bold transition bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:text-amber-600 flex items-center space-x-1 border border-transparent hover:border-amber-200">
+              <i data-lucide="file-text" class="w-3.5 h-3.5 text-amber-500"></i>
+              <span>📖 Bài đọc & Ngữ pháp</span>
+            </button>
+          </div>
+
           <!-- Lesson Selector & Scope Controls -->
-          <div class="pt-3 border-t border-slate-100 dark:border-slate-800 flex flex-col sm:flex-row items-stretch sm:items-center gap-2 text-xs">
+          <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 text-xs">
             <div class="flex-1 flex items-center space-x-2">
-              <label class="font-bold text-slate-500 whitespace-nowrap">Chọn bài học:</label>
-              <select id="dictation-lesson-select" onchange="onDictationLessonChanged()" class="w-full bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg px-2.5 py-1.5 font-medium outline-none text-slate-800 dark:text-slate-200">
+              <label id="dictation-select-label" class="font-bold text-slate-500 whitespace-nowrap">Chọn bài học:</label>
+              <select id="dictation-lesson-select" onchange="onDictationLessonChanged()" class="w-full bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg px-2.5 py-2 font-medium outline-none text-slate-800 dark:text-slate-200 cursor-pointer">
                 <option value="all">🌟 Toàn bộ bài học (Tổng hợp từ vựng & câu)</option>
               </select>
             </div>
             
-            <button id="btn-sync-current-lesson" onclick="syncDictationToCurrentLesson()" title="Chọn nhanh bài học bạn đang mở ở thanh lộ trình" class="px-2.5 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800 font-semibold text-slate-700 dark:text-slate-300 flex items-center justify-center space-x-1 whitespace-nowrap">
+            <button id="btn-sync-current-lesson" onclick="syncDictationToCurrentLesson()" title="Chọn nhanh bài học bạn đang mở ở thanh lộ trình" class="px-3 py-2 rounded-lg border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800 font-semibold text-slate-700 dark:text-slate-300 flex items-center justify-center space-x-1 whitespace-nowrap">
               <i data-lucide="pin" class="w-3.5 h-3.5 text-rose-500"></i>
               <span>Bài đang học</span>
             </button>
@@ -1322,7 +1345,20 @@
         return;
       }
       if (path === '/dictation' || path === '/nghe-chep') {
+        const urlParams = new URLSearchParams(window.location.search);
+        const lId = urlParams.get('lessonId') || urlParams.get('topic');
+        const mode = urlParams.get('mode') || 'word';
+        const cat = urlParams.get('cat') || (lId ? 'vocab' : 'all');
+        dictationMode = mode;
+        if (lId) dictationLessonId = lId;
+        dictationCategory = cat;
         switchView('dictation', false);
+        await setDictationCategory(dictationCategory);
+        if (lId) {
+          const select = document.getElementById('dictation-lesson-select');
+          if (select) select.value = lId;
+          onDictationLessonChanged();
+        }
         return;
       }
       if (path === '/mock-test' || path === '/thi-thu') {
@@ -2455,12 +2491,14 @@
     // DICTATION & WORD TYPING CONTROLLER
     // ==========================================
     let dictationMode = 'word'; // 'word' or 'sentence'
+    let dictationCategory = 'all'; // 'all' | 'vocab' | 'listening' | 'reading'
     let dictationLessonId = 'all';
     let dictationItems = [];
     let dictationCurrentIndex = 0;
     let isWordAnswerRevealed = false;
     let isWordAnswerChecked = false;
     let wordHintLevel = 0;
+    let allCourseLessonsList = [];
 
     function setDictationMode(mode) {
       dictationMode = mode;
@@ -2477,21 +2515,186 @@
       loadDictationItems();
     }
 
-    function populateDictationLessonSelect() {
-      const select = document.getElementById('dictation-lesson-select');
-      if (!select || select.children.length > 1) return;
+    async function ensureCourseLessonsLoaded() {
+      if (!allCourseLessonsList.length) {
+        try {
+          const res = await fetch('/api/lessons');
+          allCourseLessonsList = await res.json();
+        } catch (e) {
+          allCourseLessonsList = allLessons || [];
+        }
+      }
+      if (!vocabLessonsList.length) {
+        try {
+          const res = await fetch('/api/vocabulary-lessons');
+          vocabLessonsList = await res.json();
+        } catch (e) {}
+      }
+    }
 
-      const quizLessons = allLessons.filter(l => 
-        ['keys', 'readingkeys', 'stest-key', 'readingtestonline', 'readingtestoffline', 'vocabulary'].includes(l.pageName) ||
-        (l.name && (l.name.includes('Checkup') || l.name.includes('Luyện tập') || l.name.includes('Bài') || l.name.includes('Part') || l.name.includes('Section')))
-      );
+    async function setDictationCategory(cat) {
+      dictationCategory = cat;
+      const btnAll = document.getElementById('btn-dcat-all');
+      const btnVocab = document.getElementById('btn-dcat-vocab');
+      const btnLis = document.getElementById('btn-dcat-listening');
+      const btnRea = document.getElementById('btn-dcat-reading');
 
-      quizLessons.forEach(l => {
-        const opt = document.createElement('option');
-        opt.value = l.id;
-        opt.textContent = `[Unit ${l.group_id}] ${l.name}`;
-        select.appendChild(opt);
+      const normalClass = 'px-2.5 py-1.5 rounded-lg font-bold transition bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:text-slate-900 border border-transparent';
+      const activeClass = 'px-2.5 py-1.5 rounded-lg font-bold transition shadow-sm';
+
+      [btnAll, btnVocab, btnLis, btnRea].forEach(b => {
+        if (b) b.className = normalClass;
       });
+
+      const label = document.getElementById('dictation-select-label');
+
+      if (cat === 'vocab') {
+        if (btnVocab) btnVocab.className = `${activeClass} bg-rose-600 text-white shadow-rose-500/20`;
+        if (label) label.textContent = 'Chọn chủ đề từ vựng:';
+      } else if (cat === 'listening') {
+        if (btnLis) btnLis.className = `${activeClass} bg-blue-600 text-white shadow-blue-500/20`;
+        if (label) label.textContent = 'Chọn bài nghe:';
+      } else if (cat === 'reading') {
+        if (btnRea) btnRea.className = `${activeClass} bg-amber-600 text-white shadow-amber-500/20`;
+        if (label) label.textContent = 'Chọn bài đọc / ngữ pháp:';
+      } else {
+        if (btnAll) btnAll.className = `${activeClass} bg-slate-900 dark:bg-white text-white dark:text-slate-900`;
+        if (label) label.textContent = 'Chọn bài học:';
+      }
+
+      await populateDictationLessonSelect(true);
+    }
+
+    async function populateDictationLessonSelect(forceRerender = false) {
+      const select = document.getElementById('dictation-lesson-select');
+      if (!select) return;
+      if (!forceRerender && select.children.length > 5) return;
+
+      await ensureCourseLessonsLoaded();
+
+      const curVal = dictationLessonId || select.value || 'all';
+      select.innerHTML = '';
+
+      if (dictationCategory === 'vocab') {
+        const optAll = document.createElement('option');
+        optAll.value = 'all';
+        optAll.textContent = '🌟 Toàn bộ 55 chủ đề từ vựng (Tổng hợp)';
+        select.appendChild(optAll);
+
+        vocabLessonsList.forEach(vl => {
+          const opt = document.createElement('option');
+          opt.value = vl.id;
+          opt.textContent = `[Unit ${vl.group_id}] ${vl.name}`;
+          select.appendChild(opt);
+        });
+
+        const hasCur = vocabLessonsList.some(vl => String(vl.id) === String(curVal));
+        dictationLessonId = (curVal === 'all' || hasCur) ? curVal : (vocabLessonsList[0]?.id ? String(vocabLessonsList[0].id) : 'all');
+        select.value = dictationLessonId;
+        onDictationLessonChanged();
+        return;
+      }
+
+      if (dictationCategory === 'listening') {
+        const optAll = document.createElement('option');
+        optAll.value = 'all';
+        optAll.textContent = '🌟 Toàn bộ bài nghe TOEIC tổng hợp';
+        select.appendChild(optAll);
+
+        const lisLessons = allCourseLessonsList.filter(l => 
+          (l.name && (l.name.includes('[LIS]') || l.name.toLowerCase().includes('listening') || l.name.toLowerCase().includes('nghe'))) &&
+          !l.name.includes('- Audio')
+        );
+
+        lisLessons.forEach(l => {
+          const opt = document.createElement('option');
+          opt.value = l.id;
+          opt.textContent = `[Unit ${l.group_id}] ${l.name}`;
+          select.appendChild(opt);
+        });
+
+        const hasCur = lisLessons.some(l => String(l.id) === String(curVal));
+        dictationLessonId = (curVal === 'all' || hasCur) ? curVal : (lisLessons[0]?.id ? String(lisLessons[0].id) : 'all');
+        select.value = dictationLessonId;
+        onDictationLessonChanged();
+        return;
+      }
+
+      if (dictationCategory === 'reading') {
+        const optAll = document.createElement('option');
+        optAll.value = 'all';
+        optAll.textContent = '🌟 Toàn bộ bài đọc & ngữ pháp tổng hợp';
+        select.appendChild(optAll);
+
+        const reaLessons = allCourseLessonsList.filter(l => 
+          l.name && (l.name.includes('[REA]') || l.name.toLowerCase().includes('reading') || l.name.toLowerCase().includes('checkup') || l.name.toLowerCase().includes('đọc'))
+        );
+
+        reaLessons.forEach(l => {
+          const opt = document.createElement('option');
+          opt.value = l.id;
+          opt.textContent = `[Unit ${l.group_id}] ${l.name}`;
+          select.appendChild(opt);
+        });
+
+        const hasCur = reaLessons.some(l => String(l.id) === String(curVal));
+        dictationLessonId = (curVal === 'all' || hasCur) ? curVal : (reaLessons[0]?.id ? String(reaLessons[0].id) : 'all');
+        select.value = dictationLessonId;
+        onDictationLessonChanged();
+        return;
+      }
+
+      // dictationCategory === 'all'
+      const optAll = document.createElement('option');
+      optAll.value = 'all';
+      optAll.textContent = '🌟 Toàn bộ bài học (Tổng hợp từ vựng & câu)';
+      select.appendChild(optAll);
+
+      if (vocabLessonsList.length) {
+        const groupVocab = document.createElement('optgroup');
+        groupVocab.label = `📚 CHỦ ĐỀ TỪ VỰNG TOEIC (${vocabLessonsList.length} CHỦ ĐỀ)`;
+        vocabLessonsList.forEach(vl => {
+          const opt = document.createElement('option');
+          opt.value = vl.id;
+          opt.textContent = `[Unit ${vl.group_id}] ${vl.name}`;
+          groupVocab.appendChild(opt);
+        });
+        select.appendChild(groupVocab);
+      }
+
+      const lisLessons = allCourseLessonsList.filter(l => 
+        (l.name && (l.name.includes('[LIS]') || l.name.toLowerCase().includes('listening'))) &&
+        !l.name.includes('- Audio')
+      );
+      if (lisLessons.length) {
+        const groupLis = document.createElement('optgroup');
+        groupLis.label = `🎧 BÀI NGHE TOEIC (${lisLessons.length} BÀI)`;
+        lisLessons.forEach(l => {
+          const opt = document.createElement('option');
+          opt.value = l.id;
+          opt.textContent = `[Unit ${l.group_id}] ${l.name}`;
+          groupLis.appendChild(opt);
+        });
+        select.appendChild(groupLis);
+      }
+
+      const reaLessons = allCourseLessonsList.filter(l => 
+        l.name && (l.name.includes('[REA]') || l.name.toLowerCase().includes('reading') || l.name.toLowerCase().includes('checkup'))
+      );
+      if (reaLessons.length) {
+        const groupRea = document.createElement('optgroup');
+        groupRea.label = `📖 BÀI ĐỌC & NGỮ PHÁP (${reaLessons.length} BÀI)`;
+        reaLessons.forEach(l => {
+          const opt = document.createElement('option');
+          opt.value = l.id;
+          opt.textContent = `[Unit ${l.group_id}] ${l.name}`;
+          groupRea.appendChild(opt);
+        });
+        select.appendChild(groupRea);
+      }
+
+      select.value = curVal;
+      dictationLessonId = curVal;
     }
 
     function syncDictationToCurrentLesson() {
@@ -2513,18 +2716,33 @@
       const badge = document.getElementById('dictation-scope-badge');
       if (badge) {
         if (dictationLessonId === 'all') {
-          badge.textContent = 'Toàn khóa';
+          badge.textContent = dictationCategory === 'vocab' ? 'Toàn bộ 55 chủ đề từ vựng' : 'Toàn khóa';
           badge.className = 'text-xs font-semibold px-2.5 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300';
         } else {
-          badge.textContent = 'Theo bài học';
-          badge.className = 'text-xs font-semibold px-2.5 py-0.5 rounded-full bg-rose-100 dark:bg-rose-950/60 text-rose-700 dark:text-rose-300';
+          const isVocab = vocabLessonsList.some(v => String(v.id) === String(dictationLessonId));
+          if (isVocab) {
+            badge.textContent = '📚 Chủ đề từ vựng';
+            badge.className = 'text-xs font-semibold px-2.5 py-0.5 rounded-full bg-rose-100 dark:bg-rose-950/60 text-rose-700 dark:text-rose-300';
+          } else {
+            badge.textContent = 'Theo bài học';
+            badge.className = 'text-xs font-semibold px-2.5 py-0.5 rounded-full bg-blue-100 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300';
+          }
         }
       }
+
+      // Sync URL
+      const newPath = dictationLessonId === 'all' 
+        ? `/dictation?mode=${dictationMode}`
+        : `/dictation?lessonId=${dictationLessonId}&mode=${dictationMode}`;
+      if (window.location.pathname + window.location.search !== newPath) {
+        history.pushState({ type: 'dictation', lessonId: dictationLessonId, mode: dictationMode }, '', newPath);
+      }
+
       loadDictationItems();
     }
 
     async function initDictationView() {
-      populateDictationLessonSelect();
+      await populateDictationLessonSelect();
       if (!dictationItems.length) {
         await loadDictationItems();
       }
@@ -2762,14 +2980,30 @@
       }
     }
 
-    function practiceWordTypingForLesson(lessonId) {
+    async function practiceWordTypingForLesson(lessonId) {
       dictationLessonId = lessonId || 'all';
-      dictationMode = 'word';
-      populateDictationLessonSelect();
+      dictationCategory = 'vocab';
+      await setDictationCategory('vocab');
       const select = document.getElementById('dictation-lesson-select');
       if (select) select.value = dictationLessonId;
       setDictationMode('word');
       switchView('dictation');
+    }
+
+    async function practiceSentenceDictationForLesson(lessonId) {
+      dictationLessonId = lessonId || 'all';
+      dictationCategory = 'vocab';
+      await setDictationCategory('vocab');
+      const select = document.getElementById('dictation-lesson-select');
+      if (select) select.value = dictationLessonId;
+      setDictationMode('sentence');
+      switchView('dictation');
+    }
+
+    function practiceSentenceDictationForCurrentVocabLesson() {
+      const select = document.getElementById('fc-lesson-select');
+      const lid = select ? select.value : currentFlashcardLessonId;
+      practiceSentenceDictationForLesson(lid === 'all' ? 'all' : lid);
     }
 
     function practiceWordTypingForCurrentCard() {
