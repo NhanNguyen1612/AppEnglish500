@@ -688,6 +688,43 @@ app.get('/api/mock-test', (req, res) => {
 });
 
 // 6. Dictation & Word Typing Mode API
+function stripHtml(s) {
+  if (!s) return '';
+  return s
+    .replace(/<[^>]*>/g, ' ')
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .replace(/&amp;/g, '&')
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&nbsp;/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+function isCleanEnglishSentence(s) {
+  if (!s || s.length < 10) return false;
+  // If it has Vietnamese accents, reject
+  if (/[àáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹđ]/i.test(s)) return false;
+  // If it starts with or contains Vietnamese question prompts
+  if (/^(chọn|nghe|điền|tìm|câu|nghĩa|đáp án|từ vựng)/i.test(s.trim())) return false;
+  if (/có nghĩa|tiếng anh|chọn đáp án|đáp án đúng/i.test(s)) return false;
+  // Must contain mostly English letters
+  const englishChars = s.replace(/[^a-zA-Z]/g, '').length;
+  if (englishChars < 8) return false;
+  return true;
+}
+
+function cleanTypingWord(raw) {
+  if (!raw) return '';
+  let cleaned = raw.replace(/\([^)]*\)/g, '').trim();
+  if (cleaned.includes('/') && cleaned.length > 20) {
+    const parts = cleaned.split('/').map(p => p.trim()).filter(Boolean);
+    cleaned = parts[0] || cleaned;
+  }
+  return cleaned.replace(/\s+/g, ' ').trim();
+}
+
 app.get('/api/dictation/items', async (req, res) => {
   const lessonId = req.query.lessonId || 'all';
   const mode = req.query.mode || 'word'; // 'word' or 'sentence'
@@ -707,15 +744,23 @@ app.get('/api/dictation/items', async (req, res) => {
       if (mode === 'word') {
         const vocabData = await getLessonVocabulary(lessonId);
         if (vocabData.words && vocabData.words.length > 0) {
-          const words = vocabData.words.map((w, idx) => ({
-            id: w.id || `v_${lessonId}_${idx}`,
-            word: w.word,
-            pos: w.pos || 'từ vựng',
-            meaning: w.meaning || 'Nghĩa từ vựng',
-            ipa: w.ipa || w.phonetic || w.pronunciation_us || '',
-            example: w.example || '',
-            audioUrl: w.audioUrl || ''
-          }));
+          const words = [];
+          vocabData.words.forEach((w, idx) => {
+            const rawWord = (w.word || '').trim();
+            const cleanWord = cleanTypingWord(rawWord);
+            if (cleanWord) {
+              words.push({
+                id: w.id || `v_${lessonId}_${idx}`,
+                word: cleanWord,
+                rawWord: rawWord !== cleanWord ? rawWord : undefined,
+                pos: w.pos || 'từ vựng',
+                meaning: w.meaning || 'Nghĩa từ vựng',
+                ipa: w.ipa || w.phonetic || w.pronunciation_us || '',
+                example: w.example || '',
+                audioUrl: w.audioUrl || ''
+              });
+            }
+          });
           return res.json({
             mode: 'word',
             lessonId,
@@ -736,7 +781,7 @@ app.get('/api/dictation/items', async (req, res) => {
         questions.forEach(q => {
           // 1. From vocabList
           (q.vocabList || []).forEach(v => {
-            const wClean = (v.word || '').trim();
+            const wClean = cleanTypingWord((v.word || '').trim());
             const wKey = wClean.toLowerCase();
             if (wClean && !seen.has(wKey)) {
               seen.add(wKey);
@@ -747,7 +792,7 @@ app.get('/api/dictation/items', async (req, res) => {
                 pos: v.pos || dbInfo.pos || 'từ vựng',
                 meaning: v.meaning || dbInfo.meaning || 'Từ vựng quan trọng',
                 ipa: dbInfo.pronunciation_us || dbInfo.pronunciation_uk || '',
-                example: dbInfo.example || q.questionText.replace(/_{2,}/g, wClean).replace(/\s+/g, ' ').trim()
+                example: dbInfo.example || stripHtml(q.questionText).replace(/_{2,}/g, wClean).replace(/\s+/g, ' ').trim()
               });
             }
           });
@@ -755,13 +800,12 @@ app.get('/api/dictation/items', async (req, res) => {
           // 2. From target answer word
           const key = (q.key || '').trim().toLowerCase();
           const targetWord = (q[key] || '').trim();
-          const targetClean = targetWord.replace(/[^a-zA-Z-]/g, '').trim();
+          const targetClean = cleanTypingWord(targetWord.replace(/[^a-zA-Z-]/g, '').trim());
           const targetKey = targetClean.toLowerCase();
           if (targetClean.length > 2 && !seen.has(targetKey)) {
             seen.add(targetKey);
             const dbInfo = vocabMap.get(targetKey) || {};
-            const cleanMeaning = (q.explanation || '')
-              .replace(/<[^>]*>?/gm, ' ')
+            const cleanMeaning = stripHtml(q.explanation || '')
               .replace(/\s+/g, ' ')
               .slice(0, 150)
               .trim();
@@ -771,7 +815,7 @@ app.get('/api/dictation/items', async (req, res) => {
               pos: dbInfo.pos || 'từ trọng tâm',
               meaning: dbInfo.meaning || cleanMeaning || 'Đáp án đúng trong đề',
               ipa: dbInfo.pronunciation_us || dbInfo.pronunciation_uk || '',
-              example: q.questionText.replace(/_{2,}/g, targetClean).replace(/\s+/g, ' ').trim()
+              example: stripHtml(q.questionText).replace(/_{2,}/g, targetClean).replace(/\s+/g, ' ').trim()
             });
           }
         });
@@ -781,7 +825,7 @@ app.get('/api/dictation/items', async (req, res) => {
             if (q.blankPart) {
               const cleanWords = q.blankPart.split(/\s+/).filter(w => w.length > 2);
               cleanWords.forEach(w => {
-                const wClean = w.replace(/[^a-zA-Z]/g, '').trim();
+                const wClean = cleanTypingWord(w.replace(/[^a-zA-Z]/g, '').trim());
                 if (wClean && !seen.has(wClean.toLowerCase())) {
                   seen.add(wClean.toLowerCase());
                   const dbInfo = vocabMap.get(wClean.toLowerCase()) || {};
@@ -791,7 +835,7 @@ app.get('/api/dictation/items', async (req, res) => {
                     pos: dbInfo.pos || 'từ trong bài nghe',
                     meaning: dbInfo.meaning || q.vietnamese || 'Từ vựng trong bài nghe',
                     ipa: dbInfo.ipa || dbInfo.phonetic || '',
-                    example: q.fullSentence || ''
+                    example: stripHtml(q.fullSentence || '')
                   });
                 }
               });
@@ -826,31 +870,100 @@ app.get('/api/dictation/items', async (req, res) => {
       } else {
         // mode === 'sentence'
         const sentences = [];
+        const seenSentences = new Set();
+
+        // 1. Try questions from current lesson quiz (Part 5 blanks, listening fullSentence, etc.)
         questions.forEach(q => {
           if (q.fullSentence) {
-            sentences.push({
-              questionId: q.questionId,
-              targetWord: q.blankPart || '',
-              originalQuestion: q.questionText,
-              fullSentence: q.fullSentence,
-              explanation: q.vietnamese || q.explanation || '',
-              vietnamese: q.vietnamese || ''
-            });
-          } else {
-            const key = (q.key || '').trim().toLowerCase();
-            const correctWord = (q[key] || '').trim();
-            if (q.questionText && q.questionText.length > 10 && correctWord) {
-              const fullSentence = q.questionText.replace(/_{2,}/g, correctWord).replace(/\s+/g, ' ').trim();
+            const cleanFull = stripHtml(q.fullSentence);
+            if (isCleanEnglishSentence(cleanFull) && !seenSentences.has(cleanFull.toLowerCase())) {
+              seenSentences.add(cleanFull.toLowerCase());
+              const cleanTarget = stripHtml(q.blankPart || q.key || '').replace(/[^a-zA-Z-]/g, '').trim();
               sentences.push({
                 questionId: q.questionId,
-                targetWord: correctWord,
-                originalQuestion: q.questionText,
-                fullSentence,
-                explanation: q.explanation || ''
+                targetWord: cleanTarget,
+                originalQuestion: stripHtml(q.questionText),
+                fullSentence: cleanFull,
+                explanation: stripHtml(q.vietnamese || q.explanation || ''),
+                vietnamese: stripHtml(q.vietnamese || '')
               });
+            }
+          } else if (q.questionText && /_{2,}/.test(q.questionText)) {
+            const key = (q.key || '').trim().toLowerCase();
+            const correctWord = stripHtml(q[key] || '').replace(/[^a-zA-Z-]/g, '').trim();
+            if (correctWord) {
+              const fullSentence = stripHtml(q.questionText).replace(/_{2,}/g, correctWord).replace(/\s+/g, ' ').trim();
+              if (isCleanEnglishSentence(fullSentence) && !seenSentences.has(fullSentence.toLowerCase())) {
+                seenSentences.add(fullSentence.toLowerCase());
+                sentences.push({
+                  questionId: q.questionId,
+                  targetWord: correctWord,
+                  originalQuestion: stripHtml(q.questionText),
+                  fullSentence,
+                  explanation: stripHtml(q.explanation || q.answer || '')
+                });
+              }
             }
           }
         });
+
+        // 2. If lesson has few or no sentences (e.g. Vocabulary lessons like 13250827),
+        // match vocabulary words against all cached clean TOEIC sentences
+        if (sentences.length < 5) {
+          const vocabData = await getLessonVocabulary(lessonId);
+          const targetVocab = (vocabData.words || []).map(w => w.word.toLowerCase().replace(/[^a-z]/g, ' ')).filter(Boolean);
+
+          const cachedCleanSentences = [];
+          if (fs.existsSync(QUESTIONS_CACHE_DIR)) {
+            const files = fs.readdirSync(QUESTIONS_CACHE_DIR);
+            files.forEach(f => {
+              if (f.endsWith('.json')) {
+                try {
+                  const q = JSON.parse(fs.readFileSync(path.join(QUESTIONS_CACHE_DIR, f), 'utf8'));
+                  if (q.questionText && /_{2,}/.test(q.questionText) && q.key) {
+                    const correctWord = stripHtml(q[q.key.toLowerCase()] || '').replace(/[^a-zA-Z-]/g, '').trim();
+                    if (correctWord) {
+                      const full = stripHtml(q.questionText).replace(/_{2,}/g, correctWord).replace(/\s+/g, ' ').trim();
+                      if (isCleanEnglishSentence(full)) {
+                        cachedCleanSentences.push({
+                          questionId: q.questionId,
+                          targetWord: correctWord,
+                          originalQuestion: stripHtml(q.questionText),
+                          fullSentence: full,
+                          explanation: stripHtml(q.answer || '')
+                        });
+                      }
+                    }
+                  }
+                } catch (e) {}
+              }
+            });
+          }
+
+          // First pass: sentences containing words from this lesson's vocabulary
+          targetVocab.forEach(vw => {
+            const parts = vw.split(/\s+/).filter(p => p.length > 2);
+            parts.forEach(part => {
+              const regex = new RegExp(`\\b${part}\\b`, 'i');
+              cachedCleanSentences.forEach(cs => {
+                if (regex.test(cs.fullSentence) && !seenSentences.has(cs.fullSentence.toLowerCase())) {
+                  seenSentences.add(cs.fullSentence.toLowerCase());
+                  sentences.push(cs);
+                }
+              });
+            });
+          });
+
+          // Second pass: if still under 10 sentences, add standard high-quality TOEIC sentences from cache
+          if (sentences.length < 10 && cachedCleanSentences.length > 0) {
+            cachedCleanSentences.forEach(cs => {
+              if (sentences.length < 20 && !seenSentences.has(cs.fullSentence.toLowerCase())) {
+                seenSentences.add(cs.fullSentence.toLowerCase());
+                sentences.push(cs);
+              }
+            });
+          }
+        }
 
         return res.json({
           mode: 'sentence',
@@ -865,7 +978,7 @@ app.get('/api/dictation/items', async (req, res) => {
       if (mode === 'word') {
         const words = vocabDb.map((v, i) => ({
           id: `all_w_${i}`,
-          word: v.word,
+          word: cleanTypingWord(v.word),
           pos: v.pos || 'vocab',
           meaning: v.meaning,
           ipa: v.pronunciation_us || v.pronunciation_uk || '',
@@ -881,23 +994,27 @@ app.get('/api/dictation/items', async (req, res) => {
       } else {
         // All sentences from cached questions
         const sentences = [];
+        const seen = new Set();
         if (fs.existsSync(QUESTIONS_CACHE_DIR)) {
           const files = fs.readdirSync(QUESTIONS_CACHE_DIR);
           files.forEach(f => {
             if (f.endsWith('.json')) {
               try {
                 const q = JSON.parse(fs.readFileSync(path.join(QUESTIONS_CACHE_DIR, f), 'utf8'));
-                if (q.questionText && q.questionText.length > 15 && q.key) {
-                  const correctWord = (q[q.key.toLowerCase()] || '').trim();
+                if (q.questionText && /_{2,}/.test(q.questionText) && q.key) {
+                  const correctWord = stripHtml(q[q.key.toLowerCase()] || '').replace(/[^a-zA-Z-]/g, '').trim();
                   if (correctWord) {
-                    const fullSentence = q.questionText.replace(/_{2,}/g, correctWord).replace(/\s+/g, ' ').trim();
-                    sentences.push({
-                      questionId: q.questionId,
-                      targetWord: correctWord,
-                      originalQuestion: q.questionText,
-                      fullSentence,
-                      explanation: q.answer || ''
-                    });
+                    const fullSentence = stripHtml(q.questionText).replace(/_{2,}/g, correctWord).replace(/\s+/g, ' ').trim();
+                    if (isCleanEnglishSentence(fullSentence) && !seen.has(fullSentence.toLowerCase())) {
+                      seen.add(fullSentence.toLowerCase());
+                      sentences.push({
+                        questionId: q.questionId,
+                        targetWord: correctWord,
+                        originalQuestion: stripHtml(q.questionText),
+                        fullSentence,
+                        explanation: stripHtml(q.answer || '')
+                      });
+                    }
                   }
                 }
               } catch (e) {}
