@@ -1,8 +1,6 @@
 @echo off
-title Moon TOEIC 550 Study App
-echo ========================================================
-echo   Starting Moon TOEIC 550+ English Study App...
-echo ========================================================
-start http://localhost:3000
-node server.js
-pause
+chcp 65001 >nul
+title TOEIC Moon Pro Launcher
+cd /d "%~dp0"
+wscript.exe "%~dp0start_app.vbs"
+exit

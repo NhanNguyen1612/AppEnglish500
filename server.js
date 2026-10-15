@@ -1232,6 +1232,15 @@ app.get('/api/tts', (req, res) => {
   });
 });
 
+// Graceful shutdown endpoint
+app.post('/api/shutdown', (req, res) => {
+  res.json({ success: true, message: 'Máy chủ đang được tắt...' });
+  console.log('🛑 Nhận lệnh tắt máy chủ từ người dùng. Đang dừng Node.js process...');
+  setTimeout(() => {
+    process.exit(0);
+  }, 600);
+});
+
 // 12. SPA Fallback routing for distinct lesson/quiz/tab pages (Express 5 compatible)
 app.use((req, res, next) => {
   if (req.method !== 'GET' || req.path.startsWith('/api/') || req.path.includes('.')) {
