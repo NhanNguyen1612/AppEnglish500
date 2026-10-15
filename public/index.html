@@ -168,8 +168,9 @@
             </div>
 
             <!-- Filter Buttons -->
-            <div class="flex items-center space-x-1.5 bg-slate-100 dark:bg-slate-800/80 p-1 rounded-xl self-start md:self-auto">
+            <div class="flex items-center space-x-1.5 bg-slate-100 dark:bg-slate-800/80 p-1 rounded-xl self-start md:self-auto overflow-x-auto">
               <button onclick="filterLessons('all')" class="filter-btn active-filter px-3 py-1 rounded-lg text-xs font-medium bg-white dark:bg-slate-700 shadow-sm text-blue-600 dark:text-blue-400">Tất cả</button>
+              <button onclick="filterLessons('vocab')" class="filter-btn px-3 py-1 rounded-lg text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900">📚 Từ vựng</button>
               <button onclick="filterLessons('quiz')" class="filter-btn px-3 py-1 rounded-lg text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900">Trắc nghiệm</button>
               <button onclick="filterLessons('video')" class="filter-btn px-3 py-1 rounded-lg text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900">Video bài giảng</button>
               <button onclick="filterLessons('pdf')" class="filter-btn px-3 py-1 rounded-lg text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900">Tài liệu PDF</button>
@@ -383,26 +384,50 @@
       <!-- ======================================================== -->
       <section id="view-flashcards" class="hidden flex-1 flex flex-col max-w-4xl mx-auto w-full py-2">
         <!-- Sub-tabs: Flashcard vs Word Match Game -->
-        <div class="flex items-center justify-between mb-5">
+        <div class="flex items-center justify-between mb-4">
           <div class="flex items-center space-x-2 bg-slate-200/80 dark:bg-slate-800 p-1 rounded-xl">
             <button onclick="setVocabMode('card')" id="btn-vmode-card" class="px-3.5 py-1.5 rounded-lg text-xs font-bold transition bg-white dark:bg-slate-700 text-blue-600 dark:text-blue-400 shadow-sm flex items-center space-x-1.5">
               <i data-lucide="layers" class="w-3.5 h-3.5"></i>
               <span>Lật thẻ Flashcard</span>
             </button>
+            <button onclick="setVocabMode('table')" id="btn-vmode-table" class="px-3.5 py-1.5 rounded-lg text-xs font-bold transition text-slate-600 dark:text-slate-400 hover:text-slate-900 flex items-center space-x-1.5">
+              <i data-lucide="list" class="w-3.5 h-3.5"></i>
+              <span>Danh sách từ vựng</span>
+            </button>
             <button onclick="setVocabMode('game')" id="btn-vmode-game" class="px-3.5 py-1.5 rounded-lg text-xs font-bold transition text-slate-600 dark:text-slate-400 hover:text-slate-900 flex items-center space-x-1.5">
               <i data-lucide="gamepad-2" class="w-3.5 h-3.5"></i>
-              <span>Game Nối Từ (Speed Match)</span>
+              <span>Game Nối Từ</span>
             </button>
           </div>
 
           <!-- Export Anki Button -->
           <a href="/api/export-anki" target="_blank" class="px-3 py-1.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 hover:bg-slate-50 text-xs font-semibold text-slate-700 dark:text-slate-200 transition flex items-center space-x-1.5 shadow-sm" title="Tải file nhập vào Anki hoặc Quizlet">
             <i data-lucide="download" class="w-3.5 h-3.5 text-blue-600"></i>
-            <span>Xuất sang Anki (.tsv)</span>
+            <span>Xuất Anki (.tsv)</span>
           </a>
         </div>
 
-        <!-- MODE A: FLASHCARD FLIP -->
+        <!-- VOCABULARY LESSON SELECTOR -->
+        <div class="w-full mb-4 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-4 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div class="flex items-center space-x-2.5 flex-1 min-w-0">
+            <span class="text-xs font-bold uppercase tracking-wider text-amber-600 dark:text-amber-400 whitespace-nowrap flex items-center space-x-1.5">
+              <i data-lucide="book-open" class="w-4 h-4"></i>
+              <span>Chủ đề:</span>
+            </span>
+            <select id="fc-lesson-select" onchange="onFlashcardLessonChanged()" class="w-full bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl px-3 py-2 text-xs font-semibold outline-none text-slate-800 dark:text-slate-100 cursor-pointer">
+              <option value="all">🌟 Toàn bộ từ vựng tổng hợp (Tất cả chủ đề)</option>
+            </select>
+          </div>
+
+          <div class="flex items-center space-x-2">
+            <button onclick="practiceWordTypingForCurrentVocabLesson()" class="px-3.5 py-2 rounded-xl bg-rose-50 text-rose-700 dark:bg-rose-950/60 dark:text-rose-300 border border-rose-200 dark:border-rose-900/60 text-xs font-bold hover:bg-rose-100 transition flex items-center space-x-1.5 shadow-sm" title="Luyện gõ từ vựng cho chủ đề đang chọn">
+              <span>✍️ Luyện gõ từ này</span>
+            </button>
+            <button onclick="quizForCurrentVocabLesson()" class="px-3.5 py-2 rounded-xl bg-blue-50 text-blue-700 dark:bg-blue-950/60 dark:text-blue-300 border border-blue-200 dark:border-blue-900/60 text-xs font-bold hover:bg-blue-100 transition flex items-center space-x-1.5 shadow-sm" title="Làm bài trắc nghiệm nhớ từ">
+              <span>🎯 Trắc nghiệm</span>
+            </button>
+          </div>
+        </div>
         <div id="vocab-card-container" class="flex flex-col items-center">
           <div class="flex flex-wrap items-center justify-between w-full mb-4 gap-2">
             <div>
@@ -504,7 +529,23 @@
           </div>
         </div>
 
-        <!-- MODE B: WORD MATCH GAME -->
+        <!-- MODE B: DETAILED VOCABULARY LIST / CARDS -->
+        <div id="vocab-table-container" class="hidden w-full flex flex-col">
+          <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-4 mb-4 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div>
+              <h3 id="vt-title" class="text-base font-bold text-slate-900 dark:text-white flex items-center space-x-2">
+                <span>Danh sách từ vựng chi tiết</span>
+                <span id="vt-count-badge" class="text-xs px-2.5 py-0.5 rounded-full bg-blue-100 text-blue-700 dark:bg-blue-900/60 dark:text-blue-300 font-mono font-bold">0 từ</span>
+              </h3>
+              <p class="text-xs text-slate-400 mt-0.5">Bấm vào biểu tượng loa để nghe phát âm giọng chuẩn kèm phiên âm IPA</p>
+            </div>
+            <input type="text" id="vt-search" oninput="filterVocabTable()" placeholder="Lọc từ trong danh sách..." class="px-3 py-1.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 text-xs outline-none focus:border-blue-500 w-full sm:w-60 text-slate-800 dark:text-slate-100">
+          </div>
+
+          <div id="vocab-items-grid" class="grid grid-cols-1 md:grid-cols-2 gap-3.5 w-full"></div>
+        </div>
+
+        <!-- MODE C: WORD MATCH GAME -->
         <div id="vocab-game-container" class="hidden flex flex-col items-center w-full">
           <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-5 w-full mb-4 shadow-sm flex items-center justify-between">
             <div>
@@ -1215,7 +1256,11 @@
 
       if (viewName === 'pdfs') renderPdfs();
       if (viewName === 'notebook') renderNotebook();
-      if (viewName === 'flashcards') renderFlashcard();
+      if (viewName === 'flashcards') {
+        populateFlashcardLessonSelect();
+        if (!allFlashcards.length) loadFlashcards(currentFlashcardLessonId || 'all');
+        else renderFlashcard();
+      }
       if (viewName === 'analytics') loadAnalytics();
       if (viewName === 'dictation') initDictationView();
       lucide.createIcons();
@@ -1252,7 +1297,18 @@
 
       // 2. Tab pages
       if (path === '/vocab' || path === '/tu-vung') {
+        const urlParams = new URLSearchParams(window.location.search);
+        const lId = urlParams.get('lessonId');
         switchView('flashcards', false);
+        await populateFlashcardLessonSelect();
+        if (lId) {
+          const select = document.getElementById('fc-lesson-select');
+          if (select) select.value = lId;
+          currentFlashcardLessonId = lId;
+          await loadFlashcards(lId);
+        } else {
+          await loadFlashcards('all');
+        }
         return;
       }
       if (path === '/dictation' || path === '/nghe-chep') {
@@ -1358,6 +1414,8 @@
 
       if (currentFilter === 'quiz') {
         filtered = allLessons.filter(l => ['keys', 'readingkeys', 'stest-key', 'readingtestonline', 'readingtestoffline'].includes(l.pageName));
+      } else if (currentFilter === 'vocab') {
+        filtered = allLessons.filter(l => l.pageName === 'vocabulary' || l.contentViewTypeLMS === 'vocabulary' || (l.name && l.name.toLowerCase().includes('từ vựng') && !l.name.toLowerCase().includes('chữa') && l.pageName !== 'videolesson' && l.pageName !== 'pdf'));
       } else if (currentFilter === 'pdf') {
         filtered = allLessons.filter(l => l.pageName === 'pdf');
       } else if (currentFilter === 'video') {
@@ -1373,11 +1431,36 @@
         const isQuiz = ['keys', 'readingkeys', 'stest-key', 'readingtestonline', 'readingtestoffline'].includes(l.pageName);
         const isPdf = l.pageName === 'pdf';
         const isVideo = l.pageName === 'videolesson';
+        const isVocab = l.pageName === 'vocabulary' || l.contentViewTypeLMS === 'vocabulary' || (l.name && l.name.toLowerCase().includes('từ vựng') && !isQuiz && !isVideo && !isPdf && !l.name.toLowerCase().includes('chữa'));
 
         let badge = `<span class="px-2 py-0.5 rounded text-[11px] font-semibold bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-400">Khác</span>`;
         let actionBtn = '';
 
-        if (isQuiz) {
+        if (isVocab) {
+          badge = `<span class="px-2 py-0.5 rounded text-[11px] font-bold bg-amber-100 text-amber-800 dark:bg-amber-950/80 dark:text-amber-300 flex items-center space-x-1"><span>📚 Từ vựng chủ đề</span></span>`;
+          actionBtn = `
+            <div class="mt-3 flex flex-col space-y-2">
+              <div class="flex items-center space-x-2">
+                <button onclick="studyVocabForLesson(${l.id})" class="flex-1 py-2 px-2.5 rounded-xl bg-amber-500 hover:bg-amber-600 text-white text-xs font-bold shadow-sm transition flex items-center justify-center space-x-1.5" title="Học thẻ flashcard từ vựng kèm phát âm US chuẩn & phiên âm IPA">
+                  <i data-lucide="layers" class="w-3.5 h-3.5"></i>
+                  <span>📖 Học từ vựng</span>
+                </button>
+                <button onclick="startQuiz(${l.id})" class="flex-1 py-2 px-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold shadow-sm transition flex items-center justify-center space-x-1.5" title="Làm bài trắc nghiệm nhớ từ">
+                  <i data-lucide="help-circle" class="w-3.5 h-3.5"></i>
+                  <span>🎯 Trắc nghiệm</span>
+                </button>
+              </div>
+              <div class="flex items-center space-x-2">
+                <button onclick="practiceWordTypingForLesson(${l.id})" class="flex-1 py-1.5 px-2 rounded-xl bg-rose-50 text-rose-700 dark:bg-rose-950/60 dark:text-rose-300 border border-rose-200 dark:border-rose-900/60 hover:bg-rose-100 text-xs font-semibold transition flex items-center justify-center space-x-1" title="Luyện gõ chính tả các từ trong bài">
+                  <span>✍️ Luyện gõ từ</span>
+                </button>
+                <a href="https://moon.vn/khoa-hoc/2769/tu-vung/${l.id}" target="_blank" class="p-1.5 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-500 transition" title="Mở trang gốc trên Moon.vn">
+                  <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                </a>
+              </div>
+            </div>
+          `;
+        } else if (isQuiz) {
           const isListening = l.name.includes('[LIS]') || l.name.toLowerCase().includes('audio') || l.name.toLowerCase().includes('listening');
           badge = isListening 
             ? `<span class="px-2 py-0.5 rounded text-[11px] font-semibold bg-sky-100 text-sky-700 dark:bg-sky-950 dark:text-sky-300">🎧 Nghe câu nhỏ</span>`
@@ -2676,18 +2759,19 @@
     }
 
     function practiceWordTypingForCurrentCard() {
-      if (!flashcards.length) return;
-      const card = flashcards[currentCardIdx];
+      if (!allFlashcards.length) return;
+      const card = currentFlashcard || allFlashcards[currentFlashcardIdx];
       if (!card) return;
       dictationMode = 'word';
-      dictationLessonId = 'all';
+      dictationLessonId = card.lessonId || 'all';
       dictationItems = [{
-        id: `fc_${currentCardIdx}`,
+        id: `fc_${currentFlashcardIdx}`,
         word: card.word,
         pos: card.pos || 'từ vựng',
         meaning: card.meaning || '',
-        ipa: card.pronunciation_us || card.pronunciation_uk || '',
-        example: card.example || ''
+        ipa: card.ipa || card.phonetic || card.pronunciation_us || '',
+        example: card.example || '',
+        audioUrl: card.audioUrl || ''
       }];
       dictationCurrentIndex = 0;
       switchView('dictation');
@@ -2730,26 +2814,37 @@
     }
 
     // ==========================================
-    // WORD MATCH GAME
+    // VOCABULARY MODES: CARD, TABLE, GAME
     // ==========================================
     function setVocabMode(mode) {
       const cardBox = document.getElementById('vocab-card-container');
+      const tableBox = document.getElementById('vocab-table-container');
       const gameBox = document.getElementById('vocab-game-container');
       const btnCard = document.getElementById('btn-vmode-card');
+      const btnTable = document.getElementById('btn-vmode-table');
       const btnGame = document.getElementById('btn-vmode-game');
 
+      [cardBox, tableBox, gameBox].forEach(b => b?.classList.add('hidden'));
+      [btnCard, btnTable, btnGame].forEach(b => {
+        if (b) {
+          b.className = 'px-3.5 py-1.5 rounded-lg text-xs font-bold transition text-slate-600 dark:text-slate-400 hover:text-slate-900 flex items-center space-x-1.5';
+        }
+      });
+
       if (mode === 'card') {
-        cardBox.classList.remove('hidden');
-        gameBox.classList.add('hidden');
-        btnCard.className = 'px-3.5 py-1.5 rounded-lg text-xs font-bold transition bg-white dark:bg-slate-700 text-blue-600 dark:text-blue-400 shadow-sm flex items-center space-x-1.5';
-        btnGame.className = 'px-3.5 py-1.5 rounded-lg text-xs font-bold transition text-slate-600 dark:text-slate-400 hover:text-slate-900 flex items-center space-x-1.5';
-      } else {
-        cardBox.classList.add('hidden');
-        gameBox.classList.remove('hidden');
-        btnGame.className = 'px-3.5 py-1.5 rounded-lg text-xs font-bold transition bg-white dark:bg-slate-700 text-blue-600 dark:text-blue-400 shadow-sm flex items-center space-x-1.5';
-        btnCard.className = 'px-3.5 py-1.5 rounded-lg text-xs font-bold transition text-slate-600 dark:text-slate-400 hover:text-slate-900 flex items-center space-x-1.5';
+        cardBox?.classList.remove('hidden');
+        if (btnCard) btnCard.className = 'px-3.5 py-1.5 rounded-lg text-xs font-bold transition bg-white dark:bg-slate-700 text-blue-600 dark:text-blue-400 shadow-sm flex items-center space-x-1.5';
+        renderFlashcard();
+      } else if (mode === 'table') {
+        tableBox?.classList.remove('hidden');
+        if (btnTable) btnTable.className = 'px-3.5 py-1.5 rounded-lg text-xs font-bold transition bg-white dark:bg-slate-700 text-blue-600 dark:text-blue-400 shadow-sm flex items-center space-x-1.5';
+        renderVocabTable();
+      } else if (mode === 'game') {
+        gameBox?.classList.remove('hidden');
+        if (btnGame) btnGame.className = 'px-3.5 py-1.5 rounded-lg text-xs font-bold transition bg-white dark:bg-slate-700 text-blue-600 dark:text-blue-400 shadow-sm flex items-center space-x-1.5';
         startWordMatchGame();
       }
+      lucide.createIcons();
     }
 
     function startWordMatchGame() {
@@ -2995,22 +3090,139 @@
     }
 
     // ==========================================
-    // FLASHCARDS ENGINE
+    // FLASHCARDS & VOCABULARY ENGINE
     // ==========================================
-    async function loadFlashcards() {
+    let currentFlashcardLessonId = 'all';
+    let vocabLessonsList = [];
+
+    async function populateFlashcardLessonSelect() {
+      const select = document.getElementById('fc-lesson-select');
+      if (!select) return;
+
+      if (!vocabLessonsList.length) {
+        try {
+          const res = await fetch('/api/vocabulary-lessons');
+          vocabLessonsList = await res.json();
+        } catch (e) {
+          console.warn('Failed to fetch vocab lessons list:', e);
+        }
+      }
+
+      // Preserve current selection if any
+      const curVal = select.value || currentFlashcardLessonId || 'all';
+      select.innerHTML = `<option value="all">🌟 Toàn bộ từ vựng tổng hợp (Tất cả chủ đề)</option>`;
+
+      vocabLessonsList.forEach(vl => {
+        const opt = document.createElement('option');
+        opt.value = vl.id;
+        opt.textContent = `[Unit ${vl.group_id}] ${vl.name}`;
+        select.appendChild(opt);
+      });
+
+      select.value = curVal;
+    }
+
+    async function onFlashcardLessonChanged() {
+      const select = document.getElementById('fc-lesson-select');
+      currentFlashcardLessonId = select ? select.value : 'all';
+      
+      const newPath = currentFlashcardLessonId === 'all' ? '/vocab' : `/vocab?lessonId=${currentFlashcardLessonId}`;
+      if (window.location.pathname + window.location.search !== newPath) {
+        history.pushState({ type: 'vocab', lessonId: currentFlashcardLessonId }, '', newPath);
+      }
+
+      await loadFlashcards(currentFlashcardLessonId);
+    }
+
+    async function studyVocabForLesson(lessonId) {
+      switchView('flashcards', false);
+      currentFlashcardLessonId = String(lessonId);
+      
+      const newPath = `/vocab?lessonId=${lessonId}`;
+      if (window.location.pathname + window.location.search !== newPath) {
+        history.pushState({ type: 'vocab', lessonId }, '', newPath);
+      }
+
+      await populateFlashcardLessonSelect();
+      const select = document.getElementById('fc-lesson-select');
+      if (select) select.value = String(lessonId);
+
+      await loadFlashcards(lessonId);
+    }
+
+    function practiceWordTypingForCurrentVocabLesson() {
+      const select = document.getElementById('fc-lesson-select');
+      const lid = select ? select.value : currentFlashcardLessonId;
+      practiceWordTypingForLesson(lid === 'all' ? 'all' : lid);
+    }
+
+    function quizForCurrentVocabLesson() {
+      const select = document.getElementById('fc-lesson-select');
+      const lid = select ? select.value : currentFlashcardLessonId;
+      if (lid === 'all') {
+        alert('👉 Vui lòng chọn một chủ đề cụ thể trong danh sách để làm bài trắc nghiệm nhớ từ.');
+        return;
+      }
+      startQuiz(lid);
+    }
+
+    function playFlashcardAudio(f) {
+      if (!f) f = currentFlashcard;
+      if (!f) return;
+      if (f.audioUrl) {
+        playDirectAudio(f.audioUrl, f.word);
+      } else {
+        speakText(f.word);
+      }
+    }
+
+    function playDirectAudio(url, fallbackWord) {
+      if (currentAudioPlayer) {
+        try {
+          currentAudioPlayer.pause();
+          currentAudioPlayer.currentTime = 0;
+        } catch (e) {}
+        currentAudioPlayer = null;
+      }
+      if ('speechSynthesis' in window) {
+        try { window.speechSynthesis.cancel(); } catch (e) {}
+      }
+
+      const audioSrc = url.startsWith('http') ? `/api/audio-proxy?url=${encodeURIComponent(url)}` : url;
+      currentAudioPlayer = new Audio(audioSrc);
+      currentAudioPlayer.play().catch(e => {
+        if (fallbackWord) speakText(fallbackWord);
+      });
+    }
+
+    async function loadFlashcards(lessonId = 'all') {
       try {
-        const res = await fetch('/api/flashcards');
+        const url = lessonId && lessonId !== 'all' ? `/api/flashcards?lessonId=${lessonId}` : '/api/flashcards';
+        const res = await fetch(url);
         const data = await res.json();
         allFlashcards = data.flashcards || [];
         activeFlashcards = [...allFlashcards];
 
-        document.getElementById('fc-badge-total').textContent = `${allFlashcards.length} từ`;
+        const totalEl = document.getElementById('fc-badge-total');
+        if (totalEl) totalEl.textContent = `${allFlashcards.length} từ`;
+        const countBadge = document.getElementById('vt-count-badge');
+        if (countBadge) countBadge.textContent = `${allFlashcards.length} từ`;
+        const vtTitle = document.getElementById('vt-title');
+        if (vtTitle) {
+          const lObj = vocabLessonsList.find(vl => String(vl.id) === String(lessonId));
+          vtTitle.querySelector('span').textContent = lObj ? `Từ vựng: ${lObj.name}` : 'Danh sách từ vựng chi tiết';
+        }
+
         document.getElementById('fc-total-count').textContent = activeFlashcards.length;
 
         if (activeFlashcards.length) {
           currentFlashcardIdx = 0;
           renderFlashcard();
+        } else {
+          renderFlashcard();
         }
+
+        renderVocabTable();
       } catch (e) {
         console.error('Error loading flashcards:', e);
       }
@@ -3036,7 +3248,7 @@
         filterFlashcardMode();
         return;
       }
-      activeFlashcards = allFlashcards.filter(f => f.word.toLowerCase().includes(q) || f.meaning.toLowerCase().includes(q));
+      activeFlashcards = allFlashcards.filter(f => (f.word && f.word.toLowerCase().includes(q)) || (f.meaning && f.meaning.toLowerCase().includes(q)));
       currentFlashcardIdx = 0;
       document.getElementById('fc-total-count').textContent = activeFlashcards.length;
       renderFlashcard();
@@ -3051,7 +3263,7 @@
         if (bpEl) bpEl.textContent = '';
         const bwEl = document.getElementById('fc-back-word');
         if (bwEl) bwEl.textContent = '';
-        document.getElementById('fc-meaning').textContent = 'Thử đổi bộ lọc hoặc tìm kiếm từ khác';
+        document.getElementById('fc-meaning').textContent = 'Thử đổi chủ đề từ vựng hoặc bộ lọc khác';
         document.getElementById('fc-example').textContent = '';
         document.getElementById('fc-pos').textContent = 'TRỐNG';
         return;
@@ -3063,7 +3275,7 @@
       document.getElementById('fc-total-count').textContent = activeFlashcards.length;
 
       document.getElementById('fc-word').textContent = currentFlashcard.word;
-      const ipa = currentFlashcard.ipa || currentFlashcard.phonetic || getIpaForWord(currentFlashcard.word);
+      const ipa = currentFlashcard.ipa || currentFlashcard.phonetic || currentFlashcard.pronunciation_us || getIpaForWord(currentFlashcard.word);
       const phoneticEl = document.getElementById('fc-phonetic');
       if (phoneticEl) {
         phoneticEl.textContent = ipa || '';
@@ -3093,6 +3305,114 @@
       }
 
       lucide.createIcons();
+    }
+
+    function renderVocabTable() {
+      const grid = document.getElementById('vocab-items-grid');
+      if (!grid) return;
+
+      if (!allFlashcards.length) {
+        grid.innerHTML = `<div class="col-span-full py-12 text-center text-slate-400 text-sm">Chưa có từ vựng nào cho chủ đề này.</div>`;
+        return;
+      }
+
+      const q = (document.getElementById('vt-search')?.value || '').toLowerCase().trim();
+      const items = q 
+        ? allFlashcards.filter(f => (f.word && f.word.toLowerCase().includes(q)) || (f.meaning && f.meaning.toLowerCase().includes(q)))
+        : allFlashcards;
+
+      grid.innerHTML = items.map((f, idx) => {
+        const ipa = f.ipa || f.phonetic || f.pronunciation_us || getIpaForWord(f.word);
+        return `
+          <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-4 shadow-sm hover:shadow-md transition flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-[11px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-blue-100 dark:bg-blue-950 text-blue-700 dark:text-blue-300">${(f.pos || 'từ vựng').toUpperCase()}</span>
+                <button onclick="toggleMasterCardByIdx(${idx})" class="text-xs transition flex items-center space-x-1 ${f.isMastered ? 'text-emerald-600 font-bold' : 'text-slate-400 hover:text-emerald-600'}">
+                  <i data-lucide="check-circle" class="w-4 h-4 ${f.isMastered ? 'fill-emerald-100 text-emerald-600' : ''}"></i>
+                  <span>${f.isMastered ? 'Đã thuộc' : 'Thuộc'}</span>
+                </button>
+              </div>
+
+              <div class="flex items-start justify-between gap-2 mb-1.5">
+                <div>
+                  <h4 class="text-lg font-bold text-slate-900 dark:text-white leading-tight">${f.word}</h4>
+                  ${ipa ? `<div class="text-xs font-mono font-semibold text-rose-600 dark:text-rose-400 mt-0.5">${ipa}</div>` : ''}
+                </div>
+                <button onclick="playFlashcardAudioDirect('${(f.audioUrl || '').replace(/'/g, "\\'")}', '${f.word.replace(/'/g, "\\'")}')" class="p-2 rounded-xl bg-blue-50 dark:bg-slate-800 hover:bg-blue-100 text-blue-600 dark:text-blue-400 transition flex-shrink-0 shadow-sm" title="Nghe phát âm chuẩn">
+                  <i data-lucide="volume-2" class="w-4 h-4"></i>
+                </button>
+              </div>
+
+              <p class="text-sm font-medium text-slate-700 dark:text-slate-200 mb-2 leading-snug">${f.meaning}</p>
+              ${f.example ? `<p class="text-xs text-slate-500 italic bg-slate-50 dark:bg-slate-800/60 p-2.5 rounded-xl border border-slate-100 dark:border-slate-800 mb-3 leading-relaxed">"${f.example}"</p>` : ''}
+            </div>
+
+            <div class="pt-2 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between gap-2">
+              <button onclick="practiceSingleWord(${idx})" class="flex-1 py-1.5 px-2 rounded-xl bg-rose-50 text-rose-700 dark:bg-rose-950/60 dark:text-rose-300 border border-rose-200 dark:border-rose-900/60 hover:bg-rose-100 text-xs font-semibold transition flex items-center justify-center space-x-1">
+                <span>✍️ Gõ từ này</span>
+              </button>
+              <button onclick="openCardInFlashcardMode(${idx})" class="py-1.5 px-2.5 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800 text-xs font-semibold text-slate-600 dark:text-slate-300 transition flex items-center space-x-1" title="Lật thẻ ghi nhớ">
+                <i data-lucide="layers" class="w-3.5 h-3.5"></i>
+                <span>Xem thẻ</span>
+              </button>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      lucide.createIcons();
+    }
+
+    function filterVocabTable() {
+      renderVocabTable();
+    }
+
+    function playFlashcardAudioDirect(url, word) {
+      if (url) {
+        playDirectAudio(url, word);
+      } else {
+        speakText(word);
+      }
+    }
+
+    function practiceSingleWord(idx) {
+      const f = allFlashcards[idx];
+      if (!f) return;
+      dictationMode = 'word';
+      dictationLessonId = f.lessonId || currentFlashcardLessonId || 'all';
+      dictationItems = [{
+        id: `single_${idx}`,
+        word: f.word,
+        pos: f.pos || 'từ vựng',
+        meaning: f.meaning || '',
+        ipa: f.ipa || f.phonetic || f.pronunciation_us || '',
+        example: f.example || '',
+        audioUrl: f.audioUrl || ''
+      }];
+      dictationCurrentIndex = 0;
+      switchView('dictation');
+      renderCurrentDictationItem();
+    }
+
+    function openCardInFlashcardMode(idx) {
+      activeFlashcards = [...allFlashcards];
+      currentFlashcardIdx = idx;
+      setVocabMode('card');
+      renderFlashcard();
+    }
+
+    async function toggleMasterCardByIdx(idx) {
+      const f = allFlashcards[idx];
+      if (!f) return;
+      const res = await fetch('/api/flashcards/toggle-mastered', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ word: f.word })
+      });
+      const data = await res.json();
+      f.isMastered = data.isMastered;
+      renderVocabTable();
     }
 
     function flipFlashcard() {

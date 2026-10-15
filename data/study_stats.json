@@ -1,6 +1,6 @@
 {
-  "totalAnswered": 15,
-  "totalCorrect": 7,
+  "totalAnswered": 26,
+  "totalCorrect": 13,
   "history": [
     {
       "questionId": 15957382,
@@ -106,12 +106,89 @@
       "isCorrect": false,
       "lessonTitle": "[LIS] Checkup 5 - Câu hỏi YES/NO cơ bản - Answer Key",
       "timestamp": "2026-10-15T00:38:36.314Z"
+    },
+    {
+      "questionId": 19678551,
+      "topic": "Listening",
+      "isCorrect": true,
+      "lessonTitle": "[LIS] MINI TEST 8  - Answer Key",
+      "timestamp": "2026-10-15T03:40:50.164Z"
+    },
+    {
+      "questionId": 16186978,
+      "topic": "Listening Part 1",
+      "isCorrect": true,
+      "lessonTitle": "[LIS] Checkup 8 - Luyện tập - Answer Key",
+      "timestamp": "2026-10-15T03:41:34.067Z"
+    },
+    {
+      "questionId": 16187225,
+      "topic": "Listening Part 1",
+      "isCorrect": true,
+      "lessonTitle": "[LIS] Checkup 8 - Luyện tập - Answer Key",
+      "timestamp": "2026-10-15T03:42:08.388Z"
+    },
+    {
+      "questionId": 16187240,
+      "topic": "Listening Part 1",
+      "isCorrect": true,
+      "lessonTitle": "[LIS] Checkup 8 - Luyện tập - Answer Key",
+      "timestamp": "2026-10-15T03:42:32.203Z"
+    },
+    {
+      "questionId": 16187248,
+      "topic": "Listening Part 1",
+      "isCorrect": false,
+      "lessonTitle": "[LIS] Checkup 8 - Luyện tập - Answer Key",
+      "timestamp": "2026-10-15T03:42:56.789Z"
+    },
+    {
+      "questionId": 16187264,
+      "topic": "Listening Part 1",
+      "isCorrect": false,
+      "lessonTitle": "[LIS] Checkup 8 - Luyện tập - Answer Key",
+      "timestamp": "2026-10-15T03:43:18.731Z"
+    },
+    {
+      "questionId": 15956102,
+      "topic": "Danh từ (Nouns)",
+      "isCorrect": true,
+      "lessonTitle": "[REA] Checkup 1 - Section A: NOUNS (DANH TỪ)",
+      "timestamp": "2026-10-15T03:44:38.302Z"
+    },
+    {
+      "questionId": 15956355,
+      "topic": "Danh từ (Nouns)",
+      "isCorrect": false,
+      "lessonTitle": "[REA] Checkup 1 - Section A: NOUNS (DANH TỪ)",
+      "timestamp": "2026-10-15T03:45:31.337Z"
+    },
+    {
+      "questionId": 15956370,
+      "topic": "Danh từ (Nouns)",
+      "isCorrect": false,
+      "lessonTitle": "[REA] Checkup 1 - Section A: NOUNS (DANH TỪ)",
+      "timestamp": "2026-10-15T03:45:37.470Z"
+    },
+    {
+      "questionId": 16783925,
+      "topic": "Listening",
+      "isCorrect": false,
+      "lessonTitle": "[LIS] Checkup 3 - Mở rộng từ vựng nhóm (A) – ACTIONS OF 1 PERSON - Answer key",
+      "timestamp": "2026-10-15T03:46:49.610Z"
+    },
+    {
+      "questionId": 16783925,
+      "topic": "Listening",
+      "isCorrect": true,
+      "lessonTitle": "[LIS] Checkup 3 - Mở rộng từ vựng nhóm (A) – ACTIONS OF 1 PERSON - Answer key",
+      "timestamp": "2026-10-15T04:06:19.709Z"
     }
   ],
   "topics": {
     "Danh từ (Nouns)": {
-      "total": 1,
-      "correct": 1
+      "total": 4,
+      "correct": 2
     },
     "Động từ & Thì (Verbs)": {
       "total": 0,
@@ -134,12 +211,12 @@
       "correct": 2
     },
     "Listening Part 1": {
-      "total": 7,
-      "correct": 2
+      "total": 12,
+      "correct": 5
     },
     "Listening": {
-      "total": 4,
-      "correct": 2
+      "total": 7,
+      "correct": 4
     }
   }
 }

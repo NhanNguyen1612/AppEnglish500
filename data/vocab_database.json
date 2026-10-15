@@ -888,7 +888,8 @@
     "example": "__________ of the Sustainable Development Forum are expected to contribute their expertise to address pressing environmental and social challenges.",
     "lesson": "[REA] MINI TEST 1 ",
     "ipa": "/əˈdres/",
-    "phonetic": "/əˈdres/"
+    "phonetic": "/əˈdres/",
+    "audioUrl": "https://media.moon.vn/dictionary/audio/us?id=address"
   },
   {
     "word": "representatives",
@@ -1122,7 +1123,8 @@
     "example": "What are team members asked to do?",
     "lesson": "[REA] MINI TEST 1 ",
     "ipa": "/vjuː/",
-    "phonetic": "/vjuː/"
+    "phonetic": "/vjuː/",
+    "audioUrl": "https://media.moon.vn/dictionary/audio/us?id=view"
   },
   {
     "word": "demands",
@@ -1158,7 +1160,8 @@
     "ipa": "/tɔːk/",
     "example": "They are talking in the conference room.",
     "lesson": "[LIS] Checkup 2 - TALKING",
-    "phonetic": "/tɔːk/"
+    "phonetic": "/tɔːk/",
+    "audioUrl": "https://media.moon.vn/dictionary/audio/us?id=talk"
   },
   {
     "word": "speak",
@@ -1239,7 +1242,8 @@
     "ipa": "/ɡrɑːsp/",
     "example": "She is grasping the handrail while descending.",
     "lesson": "[LIS] Checkup 3 - CARRYING/HOLDING",
-    "phonetic": "/ɡrɑːsp/"
+    "phonetic": "/ɡrɑːsp/",
+    "audioUrl": "https://media.moon.vn/dictionary/audio/us?id=grasp"
   },
   {
     "word": "carry",
@@ -1248,7 +1252,8 @@
     "ipa": "/ˈkæri/",
     "example": "The courier is carrying several boxes.",
     "lesson": "[LIS] Checkup 3 - CARRYING/HOLDING",
-    "phonetic": "/ˈkæri/"
+    "phonetic": "/ˈkæri/",
+    "audioUrl": "https://media.moon.vn/dictionary/audio/us?id=carry"
   },
   {
     "word": "move",
@@ -1257,7 +1262,8 @@
     "ipa": "/muːv/",
     "example": "Workers are moving office furniture.",
     "lesson": "[LIS] Checkup 3 - CARRYING/HOLDING",
-    "phonetic": "/muːv/"
+    "phonetic": "/muːv/",
+    "audioUrl": "https://media.moon.vn/dictionary/audio/us?id=move"
   },
   {
     "word": "push",
@@ -1266,7 +1272,8 @@
     "ipa": "/pʊʃ/",
     "example": "A traveler is pushing a luggage cart.",
     "lesson": "[LIS] Checkup 3 - CARRYING/HOLDING",
-    "phonetic": "/pʊʃ/"
+    "phonetic": "/pʊʃ/",
+    "audioUrl": "https://asset.moon.vn/audio/wav/2026/6/ece56366-c581-4b88-9d7a-dada6a4849ce.wav"
   },
   {
     "word": "use",
@@ -1275,7 +1282,8 @@
     "ipa": "/juːz/",
     "example": "An engineer is using a measuring device.",
     "lesson": "[LIS] Checkup 3 - CARRYING/HOLDING",
-    "phonetic": "/juːz/"
+    "phonetic": "/juːz/",
+    "audioUrl": "https://media.moon.vn/dictionary/audio/us?id=use"
   },
   {
     "word": "operate",
@@ -1284,7 +1292,8 @@
     "ipa": "/ˈɒpəreɪt/",
     "example": "The technician is operating heavy machinery.",
     "lesson": "[LIS] Checkup 3 - CARRYING/HOLDING",
-    "phonetic": "/ˈɒpəreɪt/"
+    "phonetic": "/ˈɒpəreɪt/",
+    "audioUrl": "https://media.moon.vn/dictionary/audio/us?id=operate"
   },
   {
     "word": "pour",
@@ -1293,7 +1302,8 @@
     "ipa": "/pɔːr/",
     "example": "The barista is pouring hot water into a cup.",
     "lesson": "[LIS] Checkup 3 - CARRYING/HOLDING",
-    "phonetic": "/pɔːr/"
+    "phonetic": "/pɔːr/",
+    "audioUrl": "https://media.moon.vn/dictionary/audio/us?id=pour"
   },
   {
     "word": "microscope",
@@ -1347,7 +1357,8 @@
     "ipa": "/əˈdʒʌst/",
     "example": "The man is adjusting his necktie.",
     "lesson": "[LIS] Checkup 9 - Luyện tập",
-    "phonetic": "/əˈdʒʌst/"
+    "phonetic": "/əˈdʒʌst/",
+    "audioUrl": "https://media.moon.vn/dictionary/audio/us?id=adjust"
   },
   {
     "word": "approach",
@@ -1375,5 +1386,698 @@
     "example": "Books are stocked on the library shelves.",
     "lesson": "[LIS] Checkup 1 - ACTIONS OF 1 PERSON",
     "phonetic": "/ʃelvz/"
+  },
+  {
+    "word": "rest",
+    "pos": "từ vựng",
+    "meaning": "nghỉ ngơi, thư giãn",
+    "example": "nghỉ ngơi, thư giãn",
+    "lesson": "[LIS] Mở rộng từ vựng các TOPIC ",
+    "ipa": "/rest/",
+    "phonetic": "/rest/",
+    "pronunciation_us": "/rest/",
+    "audioUrl": "https://media.moon.vn/dictionary/audio/us?id=rest"
+  },
+  {
+    "word": "sit",
+    "pos": "từ vựng",
+    "meaning": "ngồi",
+    "example": "",
+    "lesson": "[LIS] Mở rộng từ vựng các TOPIC ",
+    "ipa": "/sɪt/",
+    "phonetic": "/sɪt/",
+    "pronunciation_us": "/sɪt/",
+    "audioUrl": "https://media.moon.vn/dictionary/audio/us?id=sit"
+  },
+  {
+    "word": "read",
+    "pos": "từ vựng",
+    "meaning": "đọc",
+    "example": "",
+    "lesson": "[LIS] Mở rộng từ vựng các TOPIC ",
+    "ipa": "/riːd/",
+    "phonetic": "/riːd/",
+    "pronunciation_us": "/riːd/",
+    "audioUrl": "https://media.moon.vn/dictionary/audio/us?id=read"
+  },
+  {
+    "word": "hammer",
+    "pos": "từ vựng",
+    "meaning": "đóng (bằng búa)",
+    "example": "",
+    "lesson": "[LIS] Mở rộng từ vựng các TOPIC ",
+    "ipa": "/ˈhæmə(r)/",
+    "phonetic": "/ˈhæmə(r)/",
+    "pronunciation_us": "/ˈhæmə(r)/",
+    "audioUrl": "https://media.moon.vn/dictionary/audio/us?id=hammer"
+  },
+  {
+    "word": "go over",
+    "pos": "từ vựng",
+    "meaning": "kiểm tra, rà soát, nghiên cứu kỹ",
+    "example": "kiểm tra, rà soát, nghiên cứu kỹ",
+    "lesson": "[LIS] Mở rộng từ vựng các TOPIC ",
+    "ipa": "/ɡəʊ/",
+    "phonetic": "/ɡəʊ/",
+    "pronunciation_us": "/ɡəʊ/",
+    "audioUrl": ""
+  },
+  {
+    "word": "stretch",
+    "pos": "từ vựng",
+    "meaning": "duỗi (tay)",
+    "example": "",
+    "lesson": "[LIS] Mở rộng từ vựng các TOPIC ",
+    "ipa": "/stretʃ/",
+    "phonetic": "/stretʃ/",
+    "pronunciation_us": "/stretʃ/",
+    "audioUrl": "https://media.moon.vn/dictionary/audio/us?id=stretch"
+  },
+  {
+    "word": "sort through",
+    "pos": "từ vựng",
+    "meaning": "lục tìm",
+    "example": "",
+    "lesson": "[LIS] Mở rộng từ vựng các TOPIC ",
+    "ipa": "/sɔːt/",
+    "phonetic": "/sɔːt/",
+    "pronunciation_us": "/sɔːt/",
+    "audioUrl": ""
+  },
+  {
+    "word": "touch",
+    "pos": "từ vựng",
+    "meaning": "chạm; sờ",
+    "example": "",
+    "lesson": "[LIS] Mở rộng từ vựng các TOPIC ",
+    "ipa": "/tʌtʃ/",
+    "phonetic": "/tʌtʃ/",
+    "pronunciation_us": "/tʌtʃ/",
+    "audioUrl": "https://media.moon.vn/dictionary/audio/us?id=touch"
+  },
+  {
+    "word": "browse",
+    "pos": "từ vựng",
+    "meaning": "xem lướt qua",
+    "example": "",
+    "lesson": "[LIS] Mở rộng từ vựng các TOPIC ",
+    "ipa": "/braʊz/",
+    "phonetic": "/braʊz/",
+    "pronunciation_us": "/braʊz/",
+    "audioUrl": "https://media.moon.vn/dictionary/audio/us?id=browse"
+  },
+  {
+    "word": "pick",
+    "pos": "từ vựng",
+    "meaning": "hái",
+    "example": "",
+    "lesson": "[LIS] Mở rộng từ vựng các TOPIC ",
+    "ipa": "/pɪk/",
+    "phonetic": "/pɪk/",
+    "pronunciation_us": "/pɪk/",
+    "audioUrl": "https://media.moon.vn/dictionary/audio/us?id=pick"
+  },
+  {
+    "word": "study",
+    "pos": "từ vựng",
+    "meaning": "kiểm tra, rà soát, nghiên cứu kỹ",
+    "example": "",
+    "lesson": "[LIS] Mở rộng từ vựng các TOPIC ",
+    "ipa": "/ˈstʌdi/",
+    "phonetic": "/ˈstʌdi/",
+    "pronunciation_us": "/ˈstʌdi/",
+    "audioUrl": "https://media.moon.vn/dictionary/audio/us?id=study"
+  },
+  {
+    "word": "mop",
+    "pos": "từ vựng",
+    "meaning": "lau",
+    "example": "lau",
+    "lesson": "[LIS] Mở rộng từ vựng các TOPIC ",
+    "ipa": "/mɒp/",
+    "phonetic": "/mɒp/",
+    "pronunciation_us": "/mɒp/",
+    "audioUrl": "https://media.moon.vn/dictionary/audio/us?id=mop"
+  },
+  {
+    "word": "walk",
+    "pos": "từ vựng",
+    "meaning": "đi bộ",
+    "example": "",
+    "lesson": "[LIS] Mở rộng từ vựng các TOPIC ",
+    "ipa": "/wɔːk/",
+    "phonetic": "/wɔːk/",
+    "pronunciation_us": "/wɔːk/",
+    "audioUrl": "https://media.moon.vn/dictionary/audio/us?id=walk"
+  },
+  {
+    "word": "shake hands",
+    "pos": "từ vựng",
+    "meaning": "bắt tay, trao tay",
+    "example": "",
+    "lesson": "[LIS] Mở rộng từ vựng các TOPIC ",
+    "ipa": "/ʃeɪk hændz/",
+    "phonetic": "/ʃeɪk hændz/",
+    "pronunciation_us": "/ʃeɪk hændz/",
+    "audioUrl": ""
+  },
+  {
+    "word": "enjoy",
+    "pos": "từ vựng",
+    "meaning": "ngắm, thưởng thức",
+    "example": "",
+    "lesson": "[LIS] Mở rộng từ vựng các TOPIC ",
+    "ipa": "/ɪnˈdʒɔɪ/",
+    "phonetic": "/ɪnˈdʒɔɪ/",
+    "pronunciation_us": "/ɪnˈdʒɔɪ/",
+    "audioUrl": "https://media.moon.vn/dictionary/audio/us?id=enjoy"
+  },
+  {
+    "word": "kneel (down)",
+    "pos": "từ vựng",
+    "meaning": "quỳ (xuống)",
+    "example": "",
+    "lesson": "[LIS] Mở rộng từ vựng các TOPIC ",
+    "ipa": "/niːl/",
+    "phonetic": "/niːl/",
+    "pronunciation_us": "/niːl/",
+    "audioUrl": ""
+  },
+  {
+    "word": "clap for",
+    "pos": "từ vựng",
+    "meaning": "vỗ tay",
+    "example": "",
+    "lesson": "[LIS] Mở rộng từ vựng các TOPIC ",
+    "ipa": "/klæp/",
+    "phonetic": "/klæp/",
+    "pronunciation_us": "/klæp/",
+    "audioUrl": ""
+  },
+  {
+    "word": "ascend / go up / climb up / walk up",
+    "pos": "từ vựng",
+    "meaning": "đi lên",
+    "example": "đi lên",
+    "lesson": "[LIS] Mở rộng từ vựng các TOPIC ",
+    "ipa": "/əˈsend/ /ɡəʊ ʌp/ /klaɪm ʌp/ /wɔːk ʌp/",
+    "phonetic": "/əˈsend/ /ɡəʊ ʌp/ /klaɪm ʌp/ /wɔːk ʌp/",
+    "pronunciation_us": "/əˈsend/ /ɡəʊ ʌp/ /klaɪm ʌp/ /wɔːk ʌp/",
+    "audioUrl": ""
+  },
+  {
+    "word": "review",
+    "pos": "từ vựng",
+    "meaning": "kiểm tra, rà soát, nghiên cứu kỹ",
+    "example": "",
+    "lesson": "[LIS] Mở rộng từ vựng các TOPIC ",
+    "ipa": "/rɪˈvjuː/",
+    "phonetic": "/rɪˈvjuː/",
+    "pronunciation_us": "/rɪˈvjuː/",
+    "audioUrl": "https://media.moon.vn/dictionary/audio/us?id=review"
+  },
+  {
+    "word": "call / make a call",
+    "pos": "từ vựng",
+    "meaning": "gọi điện",
+    "example": "",
+    "lesson": "[LIS] Mở rộng từ vựng các TOPIC ",
+    "ipa": "/kɔːl/ /meɪk ə kɔːl/",
+    "phonetic": "/kɔːl/ /meɪk ə kɔːl/",
+    "pronunciation_us": "/kɔːl/ /meɪk ə kɔːl/",
+    "audioUrl": ""
+  },
+  {
+    "word": "type",
+    "pos": "từ vựng",
+    "meaning": "đánh máy",
+    "example": "đánh máy",
+    "lesson": "[LIS] Mở rộng từ vựng các TOPIC ",
+    "ipa": "/taɪp/",
+    "phonetic": "/taɪp/",
+    "pronunciation_us": "/taɪp/",
+    "audioUrl": "https://media.moon.vn/dictionary/audio/us?id=type"
+  },
+  {
+    "word": "point (to / at / into)",
+    "pos": "từ vựng",
+    "meaning": "chỉ",
+    "example": "",
+    "lesson": "[LIS] Mở rộng từ vựng các TOPIC ",
+    "ipa": "/pɔɪnt/",
+    "phonetic": "/pɔɪnt/",
+    "pronunciation_us": "/pɔɪnt/",
+    "audioUrl": ""
+  },
+  {
+    "word": "load >< unload",
+    "pos": "từ vựng",
+    "meaning": "chất đồ lên >< dỡ đồ xuống",
+    "example": "",
+    "lesson": "[LIS] Mở rộng từ vựng các TOPIC ",
+    "ipa": "/ləʊd/ /ˌʌnˈləʊd/",
+    "phonetic": "/ləʊd/ /ˌʌnˈləʊd/",
+    "pronunciation_us": "/ləʊd/ /ˌʌnˈləʊd/",
+    "audioUrl": ""
+  },
+  {
+    "word": "chat / have a chat",
+    "pos": "từ vựng",
+    "meaning": "nói chuyện",
+    "example": "",
+    "lesson": "[LIS] Mở rộng từ vựng các TOPIC ",
+    "ipa": "/tʃæt/",
+    "phonetic": "/tʃæt/",
+    "pronunciation_us": "/tʃæt/",
+    "audioUrl": ""
+  },
+  {
+    "word": "look (at / in / through / towards)",
+    "pos": "từ vựng",
+    "meaning": "nhìn",
+    "example": "",
+    "lesson": "[LIS] Mở rộng từ vựng các TOPIC ",
+    "ipa": "/lʊk/",
+    "phonetic": "/lʊk/",
+    "pronunciation_us": "/lʊk/",
+    "audioUrl": ""
+  },
+  {
+    "word": "jot down",
+    "pos": "từ vựng",
+    "meaning": "viết",
+    "example": "",
+    "lesson": "[LIS] Mở rộng từ vựng các TOPIC ",
+    "ipa": "/dʒɒt daʊn/",
+    "phonetic": "/dʒɒt daʊn/",
+    "pronunciation_us": "/dʒɒt daʊn/",
+    "audioUrl": ""
+  },
+  {
+    "word": "jog",
+    "pos": "từ vựng",
+    "meaning": "chạy bộ",
+    "example": "",
+    "lesson": "[LIS] Mở rộng từ vựng các TOPIC ",
+    "ipa": "/dʒɒɡ/",
+    "phonetic": "/dʒɒɡ/",
+    "pronunciation_us": "/dʒɒɡ/",
+    "audioUrl": "https://media.moon.vn/dictionary/audio/us?id=jog"
+  },
+  {
+    "word": "saw",
+    "pos": "từ vựng",
+    "meaning": "cưa",
+    "example": "",
+    "lesson": "[LIS] Mở rộng từ vựng các TOPIC ",
+    "ipa": "/sɔː/",
+    "phonetic": "/sɔː/",
+    "pronunciation_us": "/sɔː/",
+    "audioUrl": "https://media.moon.vn/dictionary/audio/us?id=saw"
+  },
+  {
+    "word": "lean (on / against)",
+    "pos": "từ vựng",
+    "meaning": "dựa vào",
+    "example": "",
+    "lesson": "[LIS] Mở rộng từ vựng các TOPIC ",
+    "ipa": "/liːn/",
+    "phonetic": "/liːn/",
+    "pronunciation_us": "/liːn/",
+    "audioUrl": ""
+  },
+  {
+    "word": "wash",
+    "pos": "từ vựng",
+    "meaning": "rửa",
+    "example": "",
+    "lesson": "[LIS] Mở rộng từ vựng các TOPIC ",
+    "ipa": "/wɒʃ/",
+    "phonetic": "/wɒʃ/",
+    "pronunciation_us": "/wɒʃ/",
+    "audioUrl": "https://media.moon.vn/dictionary/audio/us?id=wash"
+  },
+  {
+    "word": "admire",
+    "pos": "từ vựng",
+    "meaning": "ngắm, thưởng thức",
+    "example": "",
+    "lesson": "[LIS] Mở rộng từ vựng các TOPIC ",
+    "ipa": "/ədˈmaɪə(r)/",
+    "phonetic": "/ədˈmaɪə(r)/",
+    "pronunciation_us": "/ədˈmaɪə(r)/",
+    "audioUrl": "https://media.moon.vn/dictionary/audio/us?id=admire"
+  },
+  {
+    "word": "descend / go down",
+    "pos": "từ vựng",
+    "meaning": "đi xuống",
+    "example": "",
+    "lesson": "[LIS] Mở rộng từ vựng các TOPIC ",
+    "ipa": "/dɪˈsend/ /ɡəʊ daʊn/",
+    "phonetic": "/dɪˈsend/ /ɡəʊ daʊn/",
+    "pronunciation_us": "/dɪˈsend/ /ɡəʊ daʊn/",
+    "audioUrl": ""
+  },
+  {
+    "word": "inspect",
+    "pos": "từ vựng",
+    "meaning": "kiểm tra, rà soát, nghiên cứu kỹ",
+    "example": "",
+    "lesson": "[LIS] Mở rộng từ vựng các TOPIC ",
+    "ipa": "/ɪnˈspekt/",
+    "phonetic": "/ɪnˈspekt/",
+    "pronunciation_us": "/ɪnˈspekt/",
+    "audioUrl": "https://media.moon.vn/dictionary/audio/us?id=inspect"
+  },
+  {
+    "word": "wave",
+    "pos": "từ vựng",
+    "meaning": "vẫy tay",
+    "example": "",
+    "lesson": "[LIS] Mở rộng từ vựng các TOPIC ",
+    "ipa": "/weɪv/",
+    "phonetic": "/weɪv/",
+    "pronunciation_us": "/weɪv/",
+    "audioUrl": "https://media.moon.vn/dictionary/audio/us?id=wave"
+  },
+  {
+    "word": "Applaud",
+    "pos": "từ vựng",
+    "meaning": "Vỗ tay; tán thưởng",
+    "example": "",
+    "lesson": "[LIS] Mở rộng từ vựng các TOPIC ",
+    "ipa": "/əˈplɔːd/",
+    "phonetic": "/əˈplɔːd/",
+    "pronunciation_us": "/əˈplɔːd/",
+    "audioUrl": "https://media.moon.vn/dictionary/audio/us?id=applaud"
+  },
+  {
+    "word": "head",
+    "pos": "từ vựng",
+    "meaning": "tiến lại về phía",
+    "example": "",
+    "lesson": "[LIS] Mở rộng từ vựng các TOPIC ",
+    "ipa": "/hed/",
+    "phonetic": "/hed/",
+    "pronunciation_us": "/hed/",
+    "audioUrl": "https://media.moon.vn/dictionary/audio/us?id=head"
+  },
+  {
+    "word": "repair",
+    "pos": "từ vựng",
+    "meaning": "sửa",
+    "example": "",
+    "lesson": "[LIS] Mở rộng từ vựng các TOPIC ",
+    "ipa": "/rɪˈpeə(r)/",
+    "phonetic": "/rɪˈpeə(r)/",
+    "pronunciation_us": "/rɪˈpeə(r)/",
+    "audioUrl": "https://media.moon.vn/dictionary/audio/us?id=repair"
+  },
+  {
+    "word": "board",
+    "pos": "từ vựng",
+    "meaning": "lên (máy bay, tàu …)",
+    "example": "",
+    "lesson": "[LIS] Mở rộng từ vựng các TOPIC ",
+    "ipa": "/bɔːd/",
+    "phonetic": "/bɔːd/",
+    "pronunciation_us": "/bɔːd/",
+    "audioUrl": "https://media.moon.vn/dictionary/audio/us?id=board"
+  },
+  {
+    "word": "check",
+    "pos": "từ vựng",
+    "meaning": "kiểm tra, rà soát, nghiên cứu kỹ",
+    "example": "",
+    "lesson": "[LIS] Mở rộng từ vựng các TOPIC ",
+    "ipa": "/tʃek/",
+    "phonetic": "/tʃek/",
+    "pronunciation_us": "/tʃek/",
+    "audioUrl": "https://media.moon.vn/dictionary/audio/us?id=check"
+  },
+  {
+    "word": "sweep",
+    "pos": "từ vựng",
+    "meaning": "quét",
+    "example": "",
+    "lesson": "[LIS] Mở rộng từ vựng các TOPIC ",
+    "ipa": "/swiːp/",
+    "phonetic": "/swiːp/",
+    "pronunciation_us": "/swiːp/",
+    "audioUrl": "https://media.moon.vn/dictionary/audio/us?id=sweep"
+  },
+  {
+    "word": "pick up / lift",
+    "pos": "từ vựng",
+    "meaning": "nhặt lên",
+    "example": "nhặt lên",
+    "lesson": "[LIS] Mở rộng từ vựng các TOPIC ",
+    "ipa": "/pɪk ʌp/ /lɪft/",
+    "phonetic": "/pɪk ʌp/ /lɪft/",
+    "pronunciation_us": "/pɪk ʌp/ /lɪft/",
+    "audioUrl": ""
+  },
+  {
+    "word": "reach (for)",
+    "pos": "từ vựng",
+    "meaning": "với",
+    "example": "",
+    "lesson": "[LIS] Mở rộng từ vựng các TOPIC ",
+    "ipa": "/riːtʃ/",
+    "phonetic": "/riːtʃ/",
+    "pronunciation_us": "/riːtʃ/",
+    "audioUrl": "https://media.moon.vn/dictionary/audio/us?id=reach (for)"
+  },
+  {
+    "word": "stand",
+    "pos": "từ vựng",
+    "meaning": "đứng",
+    "example": "",
+    "lesson": "[LIS] Mở rộng từ vựng các TOPIC ",
+    "ipa": "/stænd/",
+    "phonetic": "/stænd/",
+    "pronunciation_us": "/stænd/",
+    "audioUrl": "https://media.moon.vn/dictionary/audio/us?id=stand"
+  },
+  {
+    "word": "deliver / give / make a speech",
+    "pos": "từ vựng",
+    "meaning": "diễn thuyết, phát biểu",
+    "example": "diễn thuyết, phát biểu",
+    "lesson": "[LIS] Mở rộng từ vựng các TOPIC ",
+    "ipa": "/dɪˈlɪvə(r)/ /ɡɪv/ /meɪk/ /ə spiːtʃ/",
+    "phonetic": "/dɪˈlɪvə(r)/ /ɡɪv/ /meɪk/ /ə spiːtʃ/",
+    "pronunciation_us": "/dɪˈlɪvə(r)/ /ɡɪv/ /meɪk/ /ə spiːtʃ/",
+    "audioUrl": ""
+  },
+  {
+    "word": "wrap",
+    "pos": "từ vựng",
+    "meaning": "gói",
+    "example": "",
+    "lesson": "[LIS] Mở rộng từ vựng các TOPIC ",
+    "ipa": "/ræp/",
+    "phonetic": "/ræp/",
+    "pronunciation_us": "/ræp/",
+    "audioUrl": "https://media.moon.vn/dictionary/audio/us?id=wrap"
+  },
+  {
+    "word": "talk on the phone",
+    "pos": "từ vựng",
+    "meaning": "gọi điện",
+    "example": "",
+    "lesson": "[LIS] Mở rộng từ vựng các TOPIC ",
+    "ipa": "/tɔːk ɒn ðə fəʊn/",
+    "phonetic": "/tɔːk ɒn ðə fəʊn/",
+    "pronunciation_us": "/tɔːk ɒn ðə fəʊn/",
+    "audioUrl": ""
+  },
+  {
+    "word": "glance at",
+    "pos": "từ vựng",
+    "meaning": "nhìn liếc qua",
+    "example": "",
+    "lesson": "[LIS] Mở rộng từ vựng các TOPIC ",
+    "ipa": "/ɡlɑːns/",
+    "phonetic": "/ɡlɑːns/",
+    "pronunciation_us": "/ɡlɑːns/",
+    "audioUrl": ""
+  },
+  {
+    "word": "have / be involved in a conversation / chat",
+    "pos": "từ vựng",
+    "meaning": "nói chuyện",
+    "example": "",
+    "lesson": "[LIS] Mở rộng từ vựng các TOPIC ",
+    "ipa": "/hæv/ /ɪnˈvɒlvd/",
+    "phonetic": "/hæv/ /ɪnˈvɒlvd/",
+    "pronunciation_us": "/hæv/ /ɪnˈvɒlvd/",
+    "audioUrl": ""
+  },
+  {
+    "word": "examine",
+    "pos": "từ vựng",
+    "meaning": "kiểm tra, rà soát, nghiên cứu kỹ",
+    "example": "",
+    "lesson": "[LIS] Mở rộng từ vựng các TOPIC ",
+    "ipa": "/ɪɡˈzæmɪn/",
+    "phonetic": "/ɪɡˈzæmɪn/",
+    "pronunciation_us": "/ɪɡˈzæmɪn/",
+    "audioUrl": "https://media.moon.vn/dictionary/audio/us?id=examine"
+  },
+  {
+    "word": "be seated",
+    "pos": "từ vựng",
+    "meaning": "ngồi",
+    "example": "",
+    "lesson": "[LIS] Mở rộng từ vựng các TOPIC ",
+    "ipa": "/bi siːt/",
+    "phonetic": "/bi siːt/",
+    "pronunciation_us": "/bi siːt/",
+    "audioUrl": ""
+  },
+  {
+    "word": "work",
+    "pos": "từ vựng",
+    "meaning": "làm việc",
+    "example": "",
+    "lesson": "[LIS] Mở rộng từ vựng các TOPIC ",
+    "ipa": "/wɜːk/",
+    "phonetic": "/wɜːk/",
+    "pronunciation_us": "/wɜːk/",
+    "audioUrl": "https://media.moon.vn/dictionary/audio/us?id=work"
+  },
+  {
+    "word": "relax",
+    "pos": "từ vựng",
+    "meaning": "nghỉ ngơi, thư giãn",
+    "example": "",
+    "lesson": "[LIS] Mở rộng từ vựng các TOPIC ",
+    "ipa": "/rɪˈlæks/",
+    "phonetic": "/rɪˈlæks/",
+    "pronunciation_us": "/rɪˈlæks/",
+    "audioUrl": "https://media.moon.vn/dictionary/audio/us?id=relax"
+  },
+  {
+    "word": "pack",
+    "pos": "từ vựng",
+    "meaning": "đóng (hành lý)",
+    "example": "",
+    "lesson": "[LIS] Mở rộng từ vựng các TOPIC ",
+    "ipa": "/pæk/",
+    "phonetic": "/pæk/",
+    "pronunciation_us": "/pæk/",
+    "audioUrl": "https://media.moon.vn/dictionary/audio/us?id=pack"
+  },
+  {
+    "word": "stack",
+    "pos": "từ vựng",
+    "meaning": "chồng; xếp chồng; ngăn xếp",
+    "example": "",
+    "lesson": "[LIS] Mở rộng từ vựng các TOPIC ",
+    "ipa": "/stæk/",
+    "phonetic": "/stæk/",
+    "pronunciation_us": "/stæk/",
+    "audioUrl": "https://media.moon.vn/dictionary/audio/us?id=stack"
+  },
+  {
+    "word": "hand",
+    "pos": "từ vựng",
+    "meaning": "tay",
+    "example": "",
+    "lesson": "[LIS] Mở rộng từ vựng các TOPIC ",
+    "ipa": "/hænd/",
+    "phonetic": "/hænd/",
+    "pronunciation_us": "/hænd/",
+    "audioUrl": "https://media.moon.vn/dictionary/audio/us?id=hand"
+  },
+  {
+    "word": "build",
+    "pos": "từ vựng",
+    "meaning": "xây",
+    "example": "",
+    "lesson": "[LIS] Mở rộng từ vựng các TOPIC ",
+    "ipa": "/bɪld/",
+    "phonetic": "/bɪld/",
+    "pronunciation_us": "/bɪld/",
+    "audioUrl": "https://media.moon.vn/dictionary/audio/us?id=build"
+  },
+  {
+    "word": "clean",
+    "pos": "từ vựng",
+    "meaning": "dọn",
+    "example": "",
+    "lesson": "[LIS] Mở rộng từ vựng các TOPIC ",
+    "ipa": "/kliːn/",
+    "phonetic": "/kliːn/",
+    "pronunciation_us": "/kliːn/",
+    "audioUrl": "https://media.moon.vn/dictionary/audio/us?id=clean"
+  },
+  {
+    "word": "step (down / up / back / forward / out / off / into / onto …)",
+    "pos": "từ vựng",
+    "meaning": "bước",
+    "example": "",
+    "lesson": "[LIS] Mở rộng từ vựng các TOPIC ",
+    "ipa": "/step/",
+    "phonetic": "/step/",
+    "pronunciation_us": "/step/",
+    "audioUrl": ""
+  },
+  {
+    "word": "pile",
+    "pos": "từ vựng",
+    "meaning": "xếp chồng",
+    "example": "",
+    "lesson": "[LIS] Mở rộng từ vựng các TOPIC ",
+    "ipa": "/paɪl/",
+    "phonetic": "/paɪl/",
+    "pronunciation_us": "/paɪl/",
+    "audioUrl": "https://media.moon.vn/dictionary/audio/us?id=pile"
+  },
+  {
+    "word": "write",
+    "pos": "từ vựng",
+    "meaning": "viết",
+    "example": "viết",
+    "lesson": "[LIS] Mở rộng từ vựng các TOPIC ",
+    "ipa": "/raɪt/",
+    "phonetic": "/raɪt/",
+    "pronunciation_us": "/raɪt/",
+    "audioUrl": "https://media.moon.vn/dictionary/audio/us?id=write"
+  },
+  {
+    "word": "rake",
+    "pos": "từ vựng",
+    "meaning": "cào (lá)",
+    "example": "",
+    "lesson": "[LIS] Mở rộng từ vựng các TOPIC ",
+    "ipa": "/reɪk/",
+    "phonetic": "/reɪk/",
+    "pronunciation_us": "/reɪk/",
+    "audioUrl": "https://media.moon.vn/dictionary/audio/us?id=rake"
+  },
+  {
+    "word": "stroll",
+    "pos": "từ vựng",
+    "meaning": "đi dạo",
+    "example": "",
+    "lesson": "[LIS] Mở rộng từ vựng các TOPIC ",
+    "ipa": "/strəʊl/",
+    "phonetic": "/strəʊl/",
+    "pronunciation_us": "/strəʊl/",
+    "audioUrl": "https://media.moon.vn/dictionary/audio/us?id=stroll"
+  },
+  {
+    "word": "watch",
+    "pos": "từ vựng",
+    "meaning": "xem",
+    "example": "",
+    "lesson": "[LIS] Mở rộng từ vựng các TOPIC ",
+    "ipa": "/wɒtʃ/",
+    "phonetic": "/wɒtʃ/",
+    "pronunciation_us": "/wɒtʃ/",
+    "audioUrl": "https://media.moon.vn/dictionary/audio/us?id=watch"
   }
 ]

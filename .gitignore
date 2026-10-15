@@ -8,7 +8,7 @@ auth_token.txt
 .env.local
 
 # Audio Cache & Large Media
-data/cache/audio/*.mp3
+data/cache/
 *.mp3
 
 # Python bytecode & venv

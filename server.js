@@ -14,8 +14,9 @@ const DATA_DIR = path.join(__dirname, 'data');
 const CACHE_DIR = path.join(DATA_DIR, 'cache');
 const QUESTIONS_CACHE_DIR = path.join(CACHE_DIR, 'questions');
 const LESSONS_CACHE_DIR = path.join(CACHE_DIR, 'lessons');
+const VOCAB_LESSON_CACHE_DIR = path.join(CACHE_DIR, 'vocab_lessons');
 
-[DATA_DIR, CACHE_DIR, QUESTIONS_CACHE_DIR, LESSONS_CACHE_DIR].forEach(dir => {
+[DATA_DIR, CACHE_DIR, QUESTIONS_CACHE_DIR, LESSONS_CACHE_DIR, VOCAB_LESSON_CACHE_DIR].forEach(dir => {
   if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
 });
 
@@ -194,6 +195,171 @@ function resolveLessonId(rawLessonId) {
   return rawLessonId;
 }
 
+async function getLessonVocabulary(lessonId) {
+  const cacheFile = path.join(VOCAB_LESSON_CACHE_DIR, `${lessonId}.json`);
+  if (fs.existsSync(cacheFile)) {
+    try {
+      return JSON.parse(fs.readFileSync(cacheFile, 'utf8'));
+    } catch (e) {}
+  }
+
+  let lessonDetail;
+  const lessonCachePath = path.join(LESSONS_CACHE_DIR, `${lessonId}.json`);
+  if (fs.existsSync(lessonCachePath)) {
+    try { lessonDetail = JSON.parse(fs.readFileSync(lessonCachePath, 'utf8')); } catch (e) {}
+  }
+  if (!lessonDetail) {
+    try {
+      lessonDetail = await fetchMoonApi(`/api/Course/LessonDetail/${lessonId}`);
+      fs.writeFileSync(lessonCachePath, JSON.stringify(lessonDetail, null, 2), 'utf8');
+    } catch (e) {
+      const { lessons } = getCourseData();
+      const match = lessons.find(l => l.id == lessonId);
+      lessonDetail = { name: match ? match.name : 'Từ vựng chủ đề' };
+    }
+  }
+
+  let words = [];
+  try {
+    const vItems = await fetchMoonApi(`/api/tiktok/TikTokVocabularyTesting/${lessonId}`);
+    if (Array.isArray(vItems) && vItems.length > 0) {
+      const seen = new Set();
+      vItems.forEach((item, idx) => {
+        const k = (item.key || 'A').toUpperCase();
+        const mainWord = (item[k.toLowerCase()] || item.questionText || '').trim();
+        const mainDef = (item['definition' + k] || '').trim();
+        const mainIpa = (item['spelling' + k] || '').trim();
+        const mainAudio = item.audioUrl || item['audio' + k + 'Url'] || '';
+
+        if (mainWord && !seen.has(mainWord.toLowerCase())) {
+          seen.add(mainWord.toLowerCase());
+          words.push({
+            id: item.id || `v_${lessonId}_${idx}`,
+            word: mainWord,
+            ipa: mainIpa,
+            pronunciation_us: mainIpa,
+            phonetic: mainIpa,
+            meaning: mainDef,
+            pos: 'từ vựng',
+            audioUrl: mainAudio,
+            example: item.questionText && item.questionText !== mainWord ? item.questionText : '',
+            lesson: lessonDetail.name || 'Từ vựng chủ đề',
+            lessonId
+          });
+        }
+
+        // Add other valid choice words with definitions
+        ['A', 'B', 'C', 'D'].forEach(opt => {
+          if (opt === k) return;
+          const w = (item[opt.toLowerCase()] || '').trim();
+          const def = (item['definition' + opt] || '').trim();
+          const ipa = (item['spelling' + opt] || '').trim();
+          const audio = item['audio' + opt + 'Url'] || '';
+          if (w && def && !seen.has(w.toLowerCase())) {
+            seen.add(w.toLowerCase());
+            words.push({
+              id: item['id' + opt.toLowerCase()] || `v_${lessonId}_${idx}_${opt}`,
+              word: w,
+              ipa: ipa,
+              pronunciation_us: ipa,
+              phonetic: ipa,
+              meaning: def,
+              pos: 'từ vựng',
+              audioUrl: audio,
+              example: '',
+              lesson: lessonDetail.name || 'Từ vựng chủ đề',
+              lessonId
+            });
+          }
+        });
+      });
+    }
+  } catch (err) {
+    console.warn(`Error fetching TikTokVocabularyTesting for ${lessonId}:`, err.message);
+  }
+
+  // If TikTok didn't return, check quiz vocabList
+  if (words.length === 0) {
+    try {
+      const quiz = await getLessonQuizData(lessonId);
+      const seen = new Set();
+      (quiz.questions || []).forEach(q => {
+        (q.vocabList || []).forEach(v => {
+          if (v.word && !seen.has(v.word.toLowerCase())) {
+            seen.add(v.word.toLowerCase());
+            words.push({
+              id: `qz_${q.questionId}_${words.length}`,
+              word: v.word,
+              ipa: v.ipa || '',
+              pronunciation_us: v.ipa || '',
+              phonetic: v.ipa || '',
+              meaning: v.meaning || '',
+              pos: v.pos || 'từ vựng',
+              audioUrl: '',
+              example: q.questionText || '',
+              lesson: lessonDetail.name || 'Từ vựng',
+              lessonId
+            });
+          }
+        });
+      });
+    } catch (e) {}
+  }
+
+  const result = {
+    lessonId,
+    title: lessonDetail.name || 'Từ vựng chủ đề',
+    total: words.length,
+    words
+  };
+
+  if (words.length > 0) {
+    fs.writeFileSync(cacheFile, JSON.stringify(result, null, 2), 'utf8');
+
+    // Enrich master vocab database
+    try {
+      if (fs.existsSync(VOCAB_DB_FILE)) {
+        const db = JSON.parse(fs.readFileSync(VOCAB_DB_FILE, 'utf8'));
+        const existingMap = new Map();
+        db.forEach((d, i) => existingMap.set(d.word.toLowerCase(), i));
+        let added = false;
+        words.forEach(w => {
+          const key = w.word.toLowerCase();
+          if (!existingMap.has(key)) {
+            db.push({
+              word: w.word,
+              pos: w.pos || 'từ vựng',
+              meaning: w.meaning,
+              example: w.example || '',
+              lesson: lessonDetail.name,
+              ipa: w.ipa || '',
+              phonetic: w.ipa || '',
+              pronunciation_us: w.ipa || '',
+              audioUrl: w.audioUrl || ''
+            });
+            added = true;
+          } else {
+            const item = db[existingMap.get(key)];
+            if (!item.audioUrl && w.audioUrl) item.audioUrl = w.audioUrl;
+            if (!item.ipa && w.ipa) {
+              item.ipa = w.ipa;
+              item.phonetic = w.ipa;
+              item.pronunciation_us = w.ipa;
+            }
+          }
+        });
+        if (added) {
+          fs.writeFileSync(VOCAB_DB_FILE, JSON.stringify(db, null, 2), 'utf8');
+        }
+      }
+    } catch (e) {
+      console.warn('Failed to enrich vocab database:', e.message);
+    }
+  }
+
+  return result;
+}
+
 async function getLessonQuizData(rawLessonId) {
   const lessonId = resolveLessonId(rawLessonId);
   const quizCacheFile = path.join(CACHE_DIR, `quiz_${lessonId}.json`);
@@ -214,6 +380,66 @@ async function getLessonQuizData(rawLessonId) {
 
   const keyAll = lessonDetail.keyAllEnglish || [];
   if (!keyAll.length) {
+    // Check if Moon TikTok Vocabulary API has items for this lesson (pageName: vocabulary)
+    try {
+      const vItems = await fetchMoonApi(`/api/tiktok/TikTokVocabularyTesting/${lessonId}`);
+      if (Array.isArray(vItems) && vItems.length > 0) {
+        const questions = vItems.map((item, idx) => {
+          const k = (item.key || 'A').toUpperCase();
+          const correctWord = item[k.toLowerCase()] || '';
+          const correctDef = item['definition' + k] || '';
+          const correctIpa = item['spelling' + k] || '';
+          const audioUrl = item.audioUrl || item['audio' + k + 'Url'] || '';
+
+          const isEngPrompt = item.typeId === 11 || /^[a-zA-Z\s\/\(\)]+$/.test((item.questionText || '').trim());
+          const prompt = isEngPrompt
+            ? `Nghe & chọn từ vựng đúng: <b class="text-blue-600 dark:text-blue-400 font-bold text-lg">${item.questionText}</b> ${correctIpa ? `<span class="text-xs text-slate-500 font-mono">${correctIpa}</span>` : ''}`
+            : `Chọn từ vựng tiếng Anh có nghĩa: <b class="text-blue-600 dark:text-blue-400 font-bold text-lg">"${item.questionText}"</b>`;
+
+          const vocabList = ['A', 'B', 'C', 'D'].map(opt => ({
+            word: item[opt.toLowerCase()],
+            ipa: item['spelling' + opt] || '',
+            meaning: item['definition' + opt] || '',
+            pos: 'từ vựng'
+          })).filter(v => v.word);
+
+          return {
+            order: idx + 1,
+            questionId: item.id || `v_${lessonId}_${idx}`,
+            type: 'multiple-choice',
+            questionText: prompt,
+            passage: '',
+            passageTitle: '',
+            image: '',
+            a: item.a ? `${item.a} ${item.definitionA ? `(${item.definitionA})` : ''}` : '',
+            b: item.b ? `${item.definitionB ? `${item.b} (${item.definitionB})` : item.b}` : '',
+            c: item.c ? `${item.definitionC ? `${item.c} (${item.definitionC})` : item.c}` : '',
+            d: item.d ? `${item.definitionD ? `${item.d} (${item.definitionD})` : item.d}` : '',
+            key: k,
+            audioUrl,
+            explanation: `<b>${correctWord}</b> ${correctIpa ? `<i>${correctIpa}</i>` : ''}: ${correctDef}`,
+            topic: 'Từ vựng chủ đề (Vocabulary)',
+            vocabList
+          };
+        });
+
+        const fullQuiz = {
+          lessonId,
+          title: lessonDetail.name,
+          totalQuestions: questions.length,
+          audioUrl: questions.find(q => q.audioUrl)?.audioUrl || '',
+          questions
+        };
+
+        if (questions.length > 0) {
+          fs.writeFileSync(quizCacheFile, JSON.stringify(fullQuiz, null, 2), 'utf8');
+        }
+        return fullQuiz;
+      }
+    } catch (e) {
+      console.warn(`Vocab fallback failed for lesson ${lessonId}:`, e.message);
+    }
+
     return { lessonId, title: lessonDetail.name, totalQuestions: 0, questions: [] };
   }
 
@@ -478,6 +704,28 @@ app.get('/api/dictation/items', async (req, res) => {
 
   try {
     if (lessonId && lessonId !== 'all') {
+      if (mode === 'word') {
+        const vocabData = await getLessonVocabulary(lessonId);
+        if (vocabData.words && vocabData.words.length > 0) {
+          const words = vocabData.words.map((w, idx) => ({
+            id: w.id || `v_${lessonId}_${idx}`,
+            word: w.word,
+            pos: w.pos || 'từ vựng',
+            meaning: w.meaning || 'Nghĩa từ vựng',
+            ipa: w.ipa || w.phonetic || w.pronunciation_us || '',
+            example: w.example || '',
+            audioUrl: w.audioUrl || ''
+          }));
+          return res.json({
+            mode: 'word',
+            lessonId,
+            title: vocabData.title || 'Bài học',
+            total: words.length,
+            items: words
+          });
+        }
+      }
+
       const quiz = await getLessonQuizData(lessonId);
       const questions = quiz.questions || [];
 
@@ -806,20 +1054,71 @@ app.delete('/api/notebook/:questionId', (req, res) => {
   res.json({ success: true, total: notebook.length });
 });
 
-// 9. Flashcards with Anki Export
-app.get('/api/flashcards', (req, res) => {
+// 9. Vocabulary & Flashcards APIs
+app.get('/api/vocabulary-lessons', (req, res) => {
+  const { lessons } = getCourseData();
+  const vocabLessons = lessons.filter(l => {
+    if (l.pageName === 'videolesson' || l.pageName === 'pdf') return false;
+    if (l.pageName === 'vocabulary' || l.contentViewTypeLMS === 'vocabulary') return true;
+    const nameLower = (l.name || '').toLowerCase();
+    if (nameLower.includes('chữa') || nameLower.includes('ch?a')) return false;
+    return nameLower.includes('từ vựng') || nameLower.includes('bảng n+n');
+  }).map(l => ({
+    id: l.id,
+    name: l.name,
+    group_id: l.group_id,
+    pageName: l.pageName,
+    isPrimaryVocab: l.pageName === 'vocabulary' || l.contentViewTypeLMS === 'vocabulary'
+  })).sort((a, b) => {
+    if (a.isPrimaryVocab && !b.isPrimaryVocab) return -1;
+    if (!a.isPrimaryVocab && b.isPrimaryVocab) return 1;
+    return a.group_id - b.group_id;
+  });
+  res.json(vocabLessons);
+});
+
+app.get('/api/vocabulary/:lessonId', async (req, res) => {
+  try {
+    const data = await getLessonVocabulary(req.params.lessonId);
+    res.json(data);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+app.get('/api/flashcards', async (req, res) => {
+  const lessonId = req.query.lessonId;
+  let mastered = [];
+  try {
+    mastered = JSON.parse(fs.readFileSync(MASTERED_VOCAB_FILE, 'utf8'));
+  } catch (e) {}
+  const masteredSet = new Set(mastered);
+
+  if (lessonId && lessonId !== 'all') {
+    try {
+      const vocab = await getLessonVocabulary(lessonId);
+      const formatted = (vocab.words || []).map(f => ({
+        ...f,
+        isMastered: masteredSet.has(f.word.toLowerCase())
+      }));
+      return res.json({
+        lessonId,
+        title: vocab.title,
+        total: formatted.length,
+        masteredCount: formatted.filter(f => f.isMastered).length,
+        flashcards: formatted
+      });
+    } catch (err) {
+      return res.status(500).json({ error: err.message });
+    }
+  }
+
   let flashcards = [];
   if (fs.existsSync(VOCAB_DB_FILE)) {
     try {
       flashcards = JSON.parse(fs.readFileSync(VOCAB_DB_FILE, 'utf8'));
     } catch (e) {}
   }
-
-  let mastered = [];
-  try {
-    mastered = JSON.parse(fs.readFileSync(MASTERED_VOCAB_FILE, 'utf8'));
-  } catch (e) {}
-  const masteredSet = new Set(mastered);
 
   const formatted = flashcards.map(f => ({
     ...f,
