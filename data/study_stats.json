@@ -1,6 +1,6 @@
 {
-  "totalAnswered": 7,
-  "totalCorrect": 4,
+  "totalAnswered": 15,
+  "totalCorrect": 7,
   "history": [
     {
       "questionId": 15957382,
@@ -50,6 +50,62 @@
       "isCorrect": false,
       "lessonTitle": "[LIS] Checkup 3 - Mở rộng từ vựng nhóm (A) – ACTIONS OF 1 PERSON - Answer key",
       "timestamp": "2026-10-14T16:05:00.839Z"
+    },
+    {
+      "questionId": 16188142,
+      "topic": "Listening Part 1",
+      "isCorrect": true,
+      "lessonTitle": "[LIS] Checkup 9 - Luyện tập - Answer Key",
+      "timestamp": "2026-10-14T16:48:42.662Z"
+    },
+    {
+      "questionId": 16188197,
+      "topic": "Listening Part 1",
+      "isCorrect": false,
+      "lessonTitle": "[LIS] Checkup 9 - Luyện tập - Answer Key",
+      "timestamp": "2026-10-14T16:49:14.035Z"
+    },
+    {
+      "questionId": 16791783,
+      "topic": "Listening Part 1",
+      "isCorrect": false,
+      "lessonTitle": "[LIS] MINI TEST 2 - Answer Key",
+      "timestamp": "2026-10-14T17:34:55.698Z"
+    },
+    {
+      "questionId": 16188142,
+      "topic": "Listening Part 1",
+      "isCorrect": false,
+      "lessonTitle": "[LIS] Checkup 9 - Luyện tập - Answer Key",
+      "timestamp": "2026-10-14T17:35:17.618Z"
+    },
+    {
+      "questionId": 16788348,
+      "topic": "Listening",
+      "isCorrect": true,
+      "lessonTitle": "[LIS] Checkup 5 - MỘT SỐ LƯU Ý QUAN TRỌNG - Answer Key",
+      "timestamp": "2026-10-15T00:34:40.318Z"
+    },
+    {
+      "questionId": 19613062,
+      "topic": "Listening",
+      "isCorrect": false,
+      "lessonTitle": "[LIS] Checkup 7 - Câu hỏi YES/NO phủ định, Câu hỏi đuôi, Câu hỏi gián tiếp - Answer Key",
+      "timestamp": "2026-10-15T00:35:44.717Z"
+    },
+    {
+      "questionId": 19613001,
+      "topic": "Listening",
+      "isCorrect": true,
+      "lessonTitle": "[LIS] Checkup 5 - Câu hỏi YES/NO cơ bản - Answer Key",
+      "timestamp": "2026-10-15T00:37:39.225Z"
+    },
+    {
+      "questionId": 19613001,
+      "topic": "Listening",
+      "isCorrect": false,
+      "lessonTitle": "[LIS] Checkup 5 - Câu hỏi YES/NO cơ bản - Answer Key",
+      "timestamp": "2026-10-15T00:38:36.314Z"
     }
   ],
   "topics": {
@@ -78,8 +134,12 @@
       "correct": 2
     },
     "Listening Part 1": {
-      "total": 3,
-      "correct": 1
+      "total": 7,
+      "correct": 2
+    },
+    "Listening": {
+      "total": 4,
+      "correct": 2
     }
   }
 }

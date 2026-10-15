@@ -238,12 +238,28 @@ async function getLessonQuizData(rawLessonId) {
     }
 
     const rawAns = qData.answer || '';
-    const qText = qData.questionText || '';
+    let qText = qData.questionText || '';
     const cleanStr = s => s.replace(/<[^>]+>/g, '').replace(/&nbsp;/g, ' ').replace(/\s+/g, ' ').trim();
 
-    const cleanA = cleanStr(qData.a || '');
-    const cleanB = cleanStr(qData.b || '');
-    const hasRealChoices = Boolean(cleanA && cleanA !== 'A' && cleanA !== '(A)' && cleanB && cleanB !== 'B');
+    let cleanA = cleanStr(qData.a || '');
+    let cleanB = cleanStr(qData.b || '');
+    let cleanC = cleanStr(qData.c || '');
+    let cleanD = cleanStr(qData.d || '');
+
+    const isPlaceholder = (s) => {
+      if (!s) return true;
+      const t = s.replace(/<[^>]+>/g, '').replace(/&nbsp;/g, ' ').trim();
+      if (!t || /^[A-D]$/i.test(t) || /^\([A-D]\)$/i.test(t)) return true;
+      if (/^[\s_.\-–—()]+$/.test(t)) return true;
+      if (/^([A-D]\s*[\.\:\)]\s*)?_{3,}/i.test(t)) return true;
+      if (/^(The\s+man|The\s+woman|A\s+man|A\s+woman|They|He|She|People|Some\s+people|There\s+is|There\s+are)\s+(is|are)?\s*_{3,}/i.test(t)) return true;
+      if (/_{3,}|-{4,}/.test(t) && t.length < 60) return true;
+      return false;
+    };
+
+    let hasRealChoices = Boolean(cleanA && cleanB && !isPlaceholder(cleanA) && !isPlaceholder(cleanB));
+    const rawKey = (qData.key || k.key || '').trim().toUpperCase();
+    const hasOptionsInAns = rawAns.includes('(A)') && rawAns.includes('(B)');
 
     const mImg = qText.match(/src="([^"]+)"/);
     const image = (qData.advImage || '').trim() || (mImg ? mImg[1] : '');
@@ -254,21 +270,8 @@ async function getLessonQuizData(rawLessonId) {
     let fullSentence = '';
     let vietnamese = '';
 
-    // CASE 1: TOEIC Part 1 Photo Listening
-    if (isListeningLesson && image && !hasRealChoices) {
-      type = 'photo-listen';
-      let enPart = rawAns;
-      let viPart = '';
-      if (rawAns.includes('Tạm dịch:')) {
-        const parts = rawAns.split(/Tạm dịch:\s*<\/b><br>|Tạm dịch:\s*<br>|Tạm dịch:/i);
-        enPart = parts[0] || '';
-        viPart = parts[1] || '';
-      } else if (rawAns.includes('<br><br>')) {
-        const parts = rawAns.split(/<br\s*\/?>\s*<br\s*\/?>/i);
-        enPart = parts[0] || '';
-        viPart = parts[1] || '';
-      }
-
+    // Check if options can be extracted from rawAns (e.g. listening transcripts like "(A) The woman is ... (B) ...")
+    if ((!hasRealChoices || isPlaceholder(cleanA)) && hasOptionsInAns) {
       const extractOptions = (block) => {
         const a = (block.match(/\(A\)\s*([\s\S]*?)(?=(?:\(B\)|\(C\)|\(D\)|$))/i) || [])[1] || '';
         const b = (block.match(/\(B\)\s*([\s\S]*?)(?=(?:\(C\)|\(D\)|$))/i) || [])[1] || '';
@@ -277,23 +280,61 @@ async function getLessonQuizData(rawLessonId) {
         return { A: cleanStr(a), B: cleanStr(b), C: cleanStr(c), D: cleanStr(d) };
       };
 
+      let enPart = rawAns;
+      let viPart = '';
+      if (/tạm\s*dịch/i.test(rawAns)) {
+        const parts = rawAns.split(/tạm\s*dịch\s*:?/i);
+        enPart = parts[0] || '';
+        viPart = parts[1] || '';
+      } else if (rawAns.includes('<br><br>') || rawAns.includes('<br/><br/>')) {
+        const parts = rawAns.split(/<br\s*\/?>\s*<br\s*\/?>/i);
+        enPart = parts[0] || '';
+        viPart = parts[1] || '';
+      }
+
       const en = extractOptions(enPart);
       const vi = extractOptions(viPart);
-      photoOptions = {
-        A: { text: en.A, vi: vi.A },
-        B: { text: en.B, vi: vi.B },
-        C: { text: en.C, vi: vi.C },
-        D: { text: en.D, vi: vi.D }
-      };
+      if (en.A && en.B) {
+        photoOptions = {
+          A: { text: en.A, vi: vi.A },
+          B: { text: en.B, vi: vi.B },
+          C: { text: en.C, vi: vi.C },
+          D: { text: en.D, vi: vi.D }
+        };
+        cleanA = en.A;
+        cleanB = en.B;
+        cleanC = en.C;
+        cleanD = en.D;
+        hasRealChoices = true;
+      }
+    }
+
+    // CASE 1: TOEIC Part 1 Photo Listening
+    if (isListeningLesson && image && (hasRealChoices || photoOptions || rawKey)) {
+      type = 'photo-listen';
     } 
     // CASE 2: Dictation Fill-in-the-Blank
-    else if (!hasRealChoices && !image && (rawAns.includes('<b>') || (qText.includes('____') && !hasRealChoices)) && isListeningLesson) {
+    else if (!hasRealChoices && !photoOptions && (rawAns.includes('<b>') || qText.includes('____') || !rawKey)) {
       type = 'fill-blank';
-      const bMatch = rawAns.match(/<b>(.*?)<\/b>/i);
-      blankPart = bMatch ? bMatch[1].replace(/&nbsp;/g, ' ').trim() : '';
-      const parts = rawAns.split(/<br\s*\/?>/i);
-      fullSentence = (parts[0] || '').replace(/<[^>]+>/g, '').replace(/&nbsp;/g, ' ').trim();
-      vietnamese = (parts[1] || '').replace(/<[^>]+>/g, '').replace(/&nbsp;/g, ' ').trim();
+      const boldMatches = [...rawAns.matchAll(/<b>(.*?)<\/b>/gi)].map(m => cleanStr(m[1])).filter(Boolean);
+      blankPart = boldMatches[0] || '';
+      fullSentence = boldMatches.join(' / ') || cleanStr(rawAns);
+
+      // Extract Vietnamese meaning from questionText or explanation
+      const viFromQ = qText.replace(/<[^>]+>/g, ' ').replace(/_{2,}|-{2,}/g, '').replace(/&nbsp;/g, ' ').replace(/\s+/g, ' ').trim();
+      if (viFromQ.length > 0 && viFromQ.length < 150) {
+        vietnamese = viFromQ;
+      } else {
+        const parts = rawAns.split(/<br\s*\/?>/i);
+        vietnamese = cleanStr(parts[1] || '');
+      }
+
+      // Format question prompt cleanly
+      if (/^[_\s\-\–—.&nbsp;]+$/.test(cleanStr(qText)) || (vietnamese && cleanStr(qText).replace(vietnamese, '').replace(/[_\s\-\–—.&nbsp;]+/g, '').length === 0)) {
+        qText = vietnamese ? `🎧 Nghe đoạn băng và điền từ vựng tiếng Anh có nghĩa: "${vietnamese}"` : '🎧 Nghe đoạn băng và điền từ vựng còn thiếu:';
+      } else {
+        qText = qText.replace(/_{4,}/g, '________').replace(/-{4,}/g, '--------');
+      }
     } 
     // CASE 3: Standard Multiple Choice (Reading Part 5, 6, 7 or grammar or listening with printed options)
     else {
@@ -315,10 +356,10 @@ async function getLessonQuizData(rawLessonId) {
       passage: passage.trim(),
       passageTitle: passageTitle.trim(),
       image,
-      a: qData.a || (photoOptions?.A?.text) || 'A',
-      b: qData.b || (photoOptions?.B?.text) || 'B',
-      c: qData.c || (photoOptions?.C?.text) || 'C',
-      d: qData.d || (photoOptions?.D?.text) || 'D',
+      a: cleanA || (photoOptions?.A?.text) || 'A',
+      b: cleanB || (photoOptions?.B?.text) || 'B',
+      c: cleanC || (photoOptions?.C?.text) || 'C',
+      d: cleanD || (photoOptions?.D?.text) || 'D',
       photoOptions,
       blankPart,
       fullSentence,

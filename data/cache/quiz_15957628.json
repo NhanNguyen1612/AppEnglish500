@@ -1,0 +1,588 @@
+{
+  "lessonId": "15957628",
+  "title": "[REA] MINI TEST 2",
+  "totalQuestions": 15,
+  "audioUrl": "",
+  "questions": [
+    {
+      "order": 1,
+      "questionId": 15957687,
+      "type": "multiple-choice",
+      "questionText": "Weekly _______ of the company's financial records ensure that all transactions are accurately reported and any discrepancies are promptly addressed.",
+      "passage": "",
+      "passageTitle": "",
+      "image": "",
+      "a": "investigations",
+      "b": "investigated",
+      "c": "investigative",
+      "d": "investigates",
+      "photoOptions": null,
+      "blankPart": "",
+      "fullSentence": "",
+      "vietnamese": "",
+      "key": "A",
+      "explanation": "<b>Kiến thức về từ loại</b><br><br><b>*Xét các đáp án:</b><br>(A) investigations (n): các cuộc điều tra<br>(B) investigated (v – quá khứ): đã điều tra<br>(C) investigative (adj): điều tra<br>(D) investigates (v – hiện tại): điều tra<br><br><b>*Ta có:</b><br>- Xét mô hình tổng quát của cụm danh từ như sau:<br><div style=\"text-align: center;\"><img src=\"https://asset.moon.vn/img/chat/large/2025/10/4cbf5d32-8002-4fb6-96b1-855532b0cfd1.jpg\" data-filename=\"\" style=\"max-width: 600px; height: auto;\"><br></div><br>- Từ mô hình trên, ta thấy vị trí trống cần 1 danh từ chính → chọn A (hậu tố “tion” thường là hậu tố của danh từ)<br><br><b>*Tạm dịch:</b> <i>Các cuộc điều tra hằng tuần về hồ sơ tài chính của công ty đảm bảo rằng tất cả các giao dịch đều được báo cáo chính xác và mọi sai lệch đều được xử lý kịp thời.<br></i><br><b>*Ghi chú:<br></b>ensure (v): đảm bảo<br>discrepancy (n): sự sai lệch, khác biệt",
+      "audioUrl": "",
+      "topic": "Danh từ (Nouns)",
+      "vocabList": [
+        {
+          "word": "investigations",
+          "pos": "n",
+          "meaning": "các cuộc điều tra"
+        },
+        {
+          "word": "investigative",
+          "pos": "adj",
+          "meaning": "điều tra"
+        },
+        {
+          "word": "ensure",
+          "pos": "v",
+          "meaning": "đảm bảo"
+        },
+        {
+          "word": "discrepancy",
+          "pos": "n",
+          "meaning": "sự sai lệch, khác biệt"
+        }
+      ]
+    },
+    {
+      "order": 2,
+      "questionId": 15957693,
+      "type": "multiple-choice",
+      "questionText": "Sarah's unwavering _______ to her craft is evident in the meticulous attention to detail she applies to each project.",
+      "passage": "",
+      "passageTitle": "",
+      "image": "",
+      "a": "dedicated",
+      "b": "dedicate",
+      "c": "dedicates",
+      "d": "dedication",
+      "photoOptions": null,
+      "blankPart": "",
+      "fullSentence": "",
+      "vietnamese": "",
+      "key": "D",
+      "explanation": "<b>Kiến thức về từ loại</b><br><br><b>*Xét các đáp án:</b><br>(A) dedicated (adj): tận tâm<br>(B) dedicate (v): cống hiến<br>(C) dedicates (v): cống hiến (ngôi 3 số ít)<br>(D) dedication (n): sự cống hiến<br><br><b>*Ta có:</b><br>- Xét mô hình tổng quát của cụm danh từ như sau:<br><div style=\"text-align: center;\"><img src=\"https://asset.moon.vn/img/chat/large/2025/10/5368bd95-4e5d-4afb-bcdf-8f012ea503ed.jpg\" data-filename=\"\" style=\"max-width: 600px; height: auto;\"><br></div><br>- Từ mô hình trên, ta thấy vị trí trống cần 1 danh từ chính → chọn D (hậu tố “tion” thường là hậu tố của danh từ)<br><br><b>*Tạm dịch:</b> <i>Sự cống hiến không ngừng của Sarah cho nghề nghiệp được thể hiện rõ qua sự tỉ mỉ mà cô áp dụng cho từng dự án.</i><br><br><b>*Ghi chú:</b><br>unwavering (adj): kiên định, không lay chuyển<br>meticulous (adj): tỉ mỉ, kỹ lưỡng",
+      "audioUrl": "",
+      "topic": "Danh từ (Nouns)",
+      "vocabList": [
+        {
+          "word": "dedicated",
+          "pos": "adj",
+          "meaning": "tận tâm"
+        },
+        {
+          "word": "dedicate",
+          "pos": "v",
+          "meaning": "cống hiến"
+        },
+        {
+          "word": "dedicates",
+          "pos": "v",
+          "meaning": "cống hiến (ngôi 3 số ít)"
+        },
+        {
+          "word": "dedication",
+          "pos": "n",
+          "meaning": "sự cống hiến"
+        },
+        {
+          "word": "unwavering",
+          "pos": "adj",
+          "meaning": "kiên định, không lay chuyển"
+        },
+        {
+          "word": "meticulous",
+          "pos": "adj",
+          "meaning": "tỉ mỉ, kỹ lưỡng"
+        }
+      ]
+    },
+    {
+      "order": 3,
+      "questionId": 15957695,
+      "type": "multiple-choice",
+      "questionText": "Apart from the production division, the marketing team also collaborated closely with the _______ department to strategize upcoming promotional campaigns.",
+      "passage": "",
+      "passageTitle": "",
+      "image": "",
+      "a": "to sale",
+      "b": "sales",
+      "c": "sold",
+      "d": "has sold",
+      "photoOptions": null,
+      "blankPart": "",
+      "fullSentence": "",
+      "vietnamese": "",
+      "key": "B",
+      "explanation": "<b>Kiến thức về từ loại</b><br><br><b>*Xét các đáp án:</b><br>(A) to sale (to V): để bán<br>(B) sales (n): phòng kinh doanh, bán hàng<br>(C) sold (v – quá khứ): đã bán<br>(D) has sold (v – HTHT): đã bán<br><b><br>*Ta có:</b><br>- Xét mô hình tổng quát của cụm danh từ như sau:<br><br><br>Từ mô hình trên, ta thấy vị trí trống có thể có các trường hợp sau:<br>+ TH1: ta cần 1 tính từ để mô tả cho danh từ “department”, tuy nhiên không có đáp án nào là tính từ trong 4 phương án đã cho. <br>+ TH2: ta cần 1 danh từ nữa ghép cùng danh từ “department” để gọi tên rõ hơn loại phòng ban này là phòng ban gì → chọn B<br><br><b>*Tạm dịch:</b> <i>Ngoài bộ phận sản xuất, đội marketing còn hợp tác chặt chẽ với phòng kinh doanh để xây dựng chiến lược cho các chiến dịch quảng bá sắp tới.</i><br><br><b>*Ghi chú:</b><br>strategize (v): lập chiến lược<br>promotional campaign (n): chiến dịch quảng bá\n\n\n",
+      "audioUrl": "",
+      "topic": "Danh từ (Nouns)",
+      "vocabList": [
+        {
+          "word": "sales",
+          "pos": "n",
+          "meaning": "phòng kinh doanh, bán hàng"
+        },
+        {
+          "word": "strategize",
+          "pos": "v",
+          "meaning": "lập chiến lược"
+        },
+        {
+          "word": "promotional campaign",
+          "pos": "n",
+          "meaning": "chiến dịch quảng bá"
+        }
+      ]
+    },
+    {
+      "order": 4,
+      "questionId": 15957701,
+      "type": "multiple-choice",
+      "questionText": "Because of the increasing demand for medical services, the hospital has expanded its facilities to meet the healthcare _______ of the growing population.",
+      "passage": "",
+      "passageTitle": "",
+      "image": "",
+      "a": "needs",
+      "b": "needing",
+      "c": "has needed",
+      "d": "to need",
+      "photoOptions": null,
+      "blankPart": "",
+      "fullSentence": "",
+      "vietnamese": "",
+      "key": "A",
+      "explanation": "<b>Kiến thức về từ loại</b><br><br><b>*Xét các đáp án:</b><br>(A) needs (n): nhu cầu<br>(B) needing (v-ing): đang cần<br>(C) has needed (v): đã cần<br>(D) to need (v): cần<br><br><b>*Ta có:</b><br>- Xét mô hình tổng quát của cụm danh từ như sau<br><div style=\"text-align: center;\"><img src=\"https://asset.moon.vn/img/chat/large/2025/10/ad92f11a-bf5e-4be5-9872-0469086935da.jpg\" data-filename=\"\" style=\"max-width: 600px; height: auto;\"><br></div><br>- Từ mô hình trên, ta thấy vị trí trống cần 1 danh từ chính → chọn A<br><br><b>*Tạm dịch: </b><i>Do nhu cầu dịch vụ y tế ngày càng tăng, bệnh viện đã mở rộng cơ sở vật chất để đáp ứng nhu cầu chăm sóc sức khỏe của dân số đang tăng.</i><br><br><b>*Ghi chú:</b><br>expand (v): mở rộng<br>demand (n): nhu cầu",
+      "audioUrl": "",
+      "topic": "Danh từ (Nouns)",
+      "vocabList": [
+        {
+          "word": "needs",
+          "pos": "n",
+          "meaning": "nhu cầu"
+        },
+        {
+          "word": "has needed",
+          "pos": "v",
+          "meaning": "đã cần"
+        },
+        {
+          "word": "to need",
+          "pos": "v",
+          "meaning": "cần"
+        },
+        {
+          "word": "expand",
+          "pos": "v",
+          "meaning": "mở rộng"
+        },
+        {
+          "word": "demand",
+          "pos": "n",
+          "meaning": "nhu cầu"
+        }
+      ]
+    },
+    {
+      "order": 5,
+      "questionId": 15957707,
+      "type": "multiple-choice",
+      "questionText": "Implementing interactive activities is crucial to improve _______ during online meetings and seminars.",
+      "passage": "",
+      "passageTitle": "",
+      "image": "",
+      "a": "engage",
+      "b": "engagement",
+      "c": "engaged",
+      "d": "engages",
+      "photoOptions": null,
+      "blankPart": "",
+      "fullSentence": "",
+      "vietnamese": "",
+      "key": "B",
+      "explanation": "<b>Kiến thức về từ loại</b><br><br><b>*Xét các đáp án:</b><br>(A) engage (v): tham gia<br>(B) engagement (n): sự tham gia<br>(C) engaged (adj): đã tham gia<br>(D) engages (v): tham gia (ngôi 3 số ít)<br><br><b>*Ta có:</b><br>- Xét cụm động từ với “improve” (cải thiện), ta cần 1 chủ thể (cái gì đó) đứng sau động từ này (cải thiện cái gì) → vị trí trống cần danh từ → chọn B (hậu tố “ment” thường là hậu tố của danh từ)\n<br><b>*Tạm dịch</b>: <i>Việc áp dụng các hoạt động tương tác là rất quan trọng để cải thiện sự tham gia trong các buổi họp và hội thảo trực tuyến.<br><b>*Ghi chú:</b></i><br>seminar (n): hội thảo<br>crucial (adj): rất quan trọng\n",
+      "audioUrl": "",
+      "topic": "Danh từ (Nouns)",
+      "vocabList": [
+        {
+          "word": "engage",
+          "pos": "v",
+          "meaning": "tham gia"
+        },
+        {
+          "word": "engagement",
+          "pos": "n",
+          "meaning": "sự tham gia"
+        },
+        {
+          "word": "engaged",
+          "pos": "adj",
+          "meaning": "đã tham gia"
+        },
+        {
+          "word": "engages",
+          "pos": "v",
+          "meaning": "tham gia (ngôi 3 số ít)"
+        },
+        {
+          "word": "seminar",
+          "pos": "n",
+          "meaning": "hội thảo"
+        },
+        {
+          "word": "crucial",
+          "pos": "adj",
+          "meaning": "rất quan trọng"
+        }
+      ]
+    },
+    {
+      "order": 6,
+      "questionId": 15957720,
+      "type": "multiple-choice",
+      "questionText": "Her performance in the competition went beyond ________, earning her praise from both judges and spectators alike.",
+      "passage": "",
+      "passageTitle": "",
+      "image": "",
+      "a": "expect",
+      "b": "expectation",
+      "c": "expected",
+      "d": "expecting",
+      "photoOptions": null,
+      "blankPart": "",
+      "fullSentence": "",
+      "vietnamese": "",
+      "key": "B",
+      "explanation": "<b>Kiến thức về từ loại</b><br><b><br>*Xét các đáp án:</b><br>(A) expect (v): mong đợi<br>(B) expectation (n): sự mong đợi<br>(C) expected (adj): được mong đợi<br>(D) expecting (v-ing): đang mong đợi<br><br><b>*Ta có:</b><br>- Xét cụm giới từ “beyond _____” → vị trí trống cần danh từ đứng sau giới từ (vượt  ngoài cái gì đó) → chọn B (hậu tố “tion” thường là hậu tố của danh từ)<br>- Ta có cụm “beyond expectation” có nghĩa là “vượt ngoài sự mong đợi”. <br><br><b>*Tạm dịch</b>: <i>Phần trình diễn của cô trong cuộc thi đã vượt ngoài sự mong đợi, giúp cô nhận được lời khen ngợi từ cả giám khảo và khán giả.<br></i><br><b>*Ghi chú:</b><br>spectator (n): khán giả<br>alike (adv): như nhau\n\n",
+      "audioUrl": "",
+      "topic": "Danh từ (Nouns)",
+      "vocabList": [
+        {
+          "word": "expect",
+          "pos": "v",
+          "meaning": "mong đợi"
+        },
+        {
+          "word": "expectation",
+          "pos": "n",
+          "meaning": "sự mong đợi"
+        },
+        {
+          "word": "expected",
+          "pos": "adj",
+          "meaning": "được mong đợi"
+        },
+        {
+          "word": "spectator",
+          "pos": "n",
+          "meaning": "khán giả"
+        },
+        {
+          "word": "alike",
+          "pos": "adv",
+          "meaning": "như nhau"
+        }
+      ]
+    },
+    {
+      "order": 7,
+      "questionId": 15957760,
+      "type": "multiple-choice",
+      "questionText": "The students were impressed by the expertise and dedication of their ________, who went above and beyond to ensure their success throughout the course.",
+      "passage": "",
+      "passageTitle": "",
+      "image": "",
+      "a": "instructor",
+      "b": "instructive",
+      "c": "instruction",
+      "d": "instructively",
+      "photoOptions": null,
+      "blankPart": "",
+      "fullSentence": "",
+      "vietnamese": "",
+      "key": "A",
+      "explanation": "<b>Kiến thức về từ loại</b><br><b><br>*Xét các đáp án:</b><br>(A) instructor (n): giảng viên, người hướng dẫn<br>(B) instruction (n): sự hướng dẫn<br>(C) instructive (adj): có tính hướng dẫn<br>(D) instructively (adv): một cách hướng dẫn<br><br><b>*Ta có:</b><br>- Xét mô hình tổng quát của cụm danh từ như sau:<br><div style=\"text-align: center;\"><img src=\"https://asset.moon.vn/img/chat/large/2025/10/7d4119f3-a97b-417c-936b-be7b8ff85341.jpg\" data-filename=\"\" style=\"max-width: 600px; height: auto;\"><br></div><br>- Từ mô hình trên, ta thấy vị trí trống cần 1 danh từ chính → phân vân A và B (hậu tố “or” và “tion” thường là hậu tố của danh từ)<br>- Xét thấy phần mô tả đứng sau của danh từ chính này là một mệnh đề quan hệ bắt đầu bằng “who” → danh từ chính này phải là một danh từ chỉ người → chọn A (hậu tố “or” thường là hậu tố của danh từ chỉ người)<br><br><b>*Tạm dịch: </b><i>Sinh viên rất ấn tượng với kiến thức chuyên môn và sự tận tâm của người giảng viên, người đã nỗ lực hết mình để đảm bảo thành công cho họ trong suốt khóa học.</i><br><br><b>*Ghi chú:</b><br>expertise (n): chuyên môn<br>go above and beyond: nỗ lực vượt mức mong đợi\n\n\n",
+      "audioUrl": "",
+      "topic": "Danh từ (Nouns)",
+      "vocabList": [
+        {
+          "word": "instructor",
+          "pos": "n",
+          "meaning": "giảng viên, người hướng dẫn"
+        },
+        {
+          "word": "instruction",
+          "pos": "n",
+          "meaning": "sự hướng dẫn"
+        },
+        {
+          "word": "instructive",
+          "pos": "adj",
+          "meaning": "có tính hướng dẫn"
+        },
+        {
+          "word": "instructively",
+          "pos": "adv",
+          "meaning": "một cách hướng dẫn"
+        },
+        {
+          "word": "expertise",
+          "pos": "n",
+          "meaning": "chuyên môn"
+        }
+      ]
+    },
+    {
+      "order": 8,
+      "questionId": 15957773,
+      "type": "multiple-choice",
+      "questionText": "The sudden power outage in the middle of the workday makes it impossible to complete the ______ before the deadline.",
+      "passage": "",
+      "passageTitle": "",
+      "image": "",
+      "a": "designer",
+      "b": "designers",
+      "c": "design",
+      "d": "designing",
+      "photoOptions": null,
+      "blankPart": "",
+      "fullSentence": "",
+      "vietnamese": "",
+      "key": "C",
+      "explanation": "<b>Kiến thức về từ loại<br></b><br><b>*Xét các đáp án:</b><br>(A) designer (n): nhà thiết kế<br>(B) designers (n, số nhiều): các nhà thiết kế<br>(C) design (v/n): tiết kế, bản thiết kế<br>(D) designing (adj): việc thiết kế<br><br><b>*Ta có:</b><br>-  Xét mô hình tổng quát của cụm danh từ như sau: <br><div style=\"text-align: center;\"><img src=\"https://asset.moon.vn/img/chat/large/2025/10/8ae16f6d-8584-41e7-add7-b7b5523ed1f8.jpg\" data-filename=\"\" style=\"max-width: 600px; height: auto;\"><br></div><br>- Từ mô hình trên, ta thấy vị trí trống cần 1 danh từ chính → phân vân A, B, C <br>- Xét về nghĩa, ta thấy động từ “complete” (hoàn thành) sẽ chỉ có thể đi cùng một danh từ chỉ vật → chọn C (A và B có hậu tố “er” thường là hậu tố của danh từ chỉ người)<br><br><b>*Tạm dịch:</b> <i>Sự cố mất điện đột ngột giữa giờ làm khiến việc hoàn thành bản thiết kế trước hạn chót trở nên bất khả thi.</i><br><br><b>*Ghi chú:</b><br>deadline (n): hạn chót<br>outage (n): mất điện\n\n",
+      "audioUrl": "",
+      "topic": "Danh từ (Nouns)",
+      "vocabList": [
+        {
+          "word": "designer",
+          "pos": "n",
+          "meaning": "nhà thiết kế"
+        },
+        {
+          "word": "designing",
+          "pos": "adj",
+          "meaning": "việc thiết kế"
+        },
+        {
+          "word": "deadline",
+          "pos": "n",
+          "meaning": "hạn chót"
+        },
+        {
+          "word": "outage",
+          "pos": "n",
+          "meaning": "mất điện"
+        }
+      ]
+    },
+    {
+      "order": 9,
+      "questionId": 15957797,
+      "type": "multiple-choice",
+      "questionText": "The bakery is closed today in _________ for their grand opening tomorrow.",
+      "passage": "",
+      "passageTitle": "",
+      "image": "",
+      "a": "prepare",
+      "b": "preparation",
+      "c": "preparative",
+      "d": "prepared",
+      "photoOptions": null,
+      "blankPart": "",
+      "fullSentence": "",
+      "vietnamese": "",
+      "key": "B",
+      "explanation": "<b>Kiến thức về từ loại</b><br><br><b>*Xét các đáp án:</b><br>(A) prepare (v): chuẩn bị<br>(B) preparation (n): sự chuẩn bị<br>(C) preparative (adj): có tính chuẩn bị<br>(D) prepared (adj): đã chuẩn bị<br><br><b>*Ta có:</b><br>- Xét cụm giới từ “in ____ for” → vị trí trống cần 1 danh từ → chọn B (hậu tố “tion” thường là hậu tố của danh từ)<br>- Cụm giới từ “in preparation for” có nghĩa là “trong sự chuẩn bị cho cái gì”<br><br><b>*Tạm dịch:</b> <i>Tiệm bánh hôm nay đóng cửa để chuẩn bị cho lễ khai trương vào ngày mai.</i><br><br><b>*Ghi chú:</b><br>grand opening (n): lễ khai trương\n",
+      "audioUrl": "",
+      "topic": "Danh từ (Nouns)",
+      "vocabList": [
+        {
+          "word": "prepare",
+          "pos": "v",
+          "meaning": "chuẩn bị"
+        },
+        {
+          "word": "preparation",
+          "pos": "n",
+          "meaning": "sự chuẩn bị"
+        },
+        {
+          "word": "preparative",
+          "pos": "adj",
+          "meaning": "có tính chuẩn bị"
+        },
+        {
+          "word": "prepared",
+          "pos": "adj",
+          "meaning": "đã chuẩn bị"
+        },
+        {
+          "word": "grand opening",
+          "pos": "n",
+          "meaning": "lễ khai trương"
+        }
+      ]
+    },
+    {
+      "order": 10,
+      "questionId": 15957800,
+      "type": "multiple-choice",
+      "questionText": "After a thorough ________ of the damage, the insurance company determined the roof would need a complete replacement.",
+      "passage": "",
+      "passageTitle": "",
+      "image": "",
+      "a": "assess",
+      "b": "assessor",
+      "c": "assessors",
+      "d": "assessment",
+      "photoOptions": null,
+      "blankPart": "",
+      "fullSentence": "",
+      "vietnamese": "",
+      "key": "D",
+      "explanation": "<b>Kiến thức về từ loại</b><br><br><b>*Xét các đáp án:</b><br>(A) assess (v): đánh giá<br>(B) assessor (n): người thẩm định<br>(C) assessors (n, số nhiều): những người thẩm định<br>(D) assessment (n): sự đánh giá<br><br><b>*Ta có:</b><br>-  Xét mô hình tổng quát của cụm danh từ như sau:<br><div style=\"text-align: center;\"><img src=\"https://asset.moon.vn/img/chat/large/2025/10/e079bb96-7fff-4b7c-80cf-98776aa9ee16.jpg\" data-filename=\"\" style=\"max-width: 600px; height: auto;\"><br></div><br>- Từ mô hình trên, ta thấy vị trí trống cần 1 danh từ chính → phân vân B, C và D (hậu tố “or” và “ment” thường là hậu tố của danh từ)<br>- Xét mạo từ “a” không đi cùng danh từ số nhiều → loại C <br>- Xét về nghĩa, đáp án B có hậu tố “or”, thường là hậu tố chỉ người ghép vào câu ko phù hợp về nghĩa → loại B<br>- Vậy đáp án là D<br><br><b>*Tạm dịch:</b> <i>Sau một cuộc đánh giá kỹ lưỡng về mức độ thiệt hại, công ty bảo hiểm xác định mái nhà sẽ cần được thay thế hoàn toàn.</i><br><br><b>*Ghi chú</b><br>thorough (adj): kỹ lưỡng<br>replacement (n): sự thay thế\n\n\n",
+      "audioUrl": "",
+      "topic": "Danh từ (Nouns)",
+      "vocabList": [
+        {
+          "word": "assess",
+          "pos": "v",
+          "meaning": "đánh giá"
+        },
+        {
+          "word": "assessor",
+          "pos": "n",
+          "meaning": "người thẩm định"
+        },
+        {
+          "word": "assessment",
+          "pos": "n",
+          "meaning": "sự đánh giá"
+        },
+        {
+          "word": "thorough",
+          "pos": "adj",
+          "meaning": "kỹ lưỡng"
+        },
+        {
+          "word": "replacement",
+          "pos": "n",
+          "meaning": "sự thay thế"
+        }
+      ]
+    },
+    {
+      "order": 11,
+      "questionId": 16042902,
+      "type": "multiple-choice",
+      "questionText": "What is indicated about Mr. Walker’s order?",
+      "passage": "<b>To: </b>\t\tBenjamin Walker <benwalker@tec.com><br><b>From: </b>\t\tThe Crafted Page <thecraftedpage@gmail.com><br><b>Date:</b> \t\tSeptember 14<br><b>Subject</b>: \tProduct Order<br><br>Thank you for choosing The Crafted Page for all your stationery needs. We take pride in offering top-quality products designed to enhance your creativity and productivity. As to celebrate the back-to-school season, during the month of September, customers making purchases over $150 do not have to pay any shipping fees.<br><br><b>Here's a quick recap of your order:<br></b>•\tOrder Number: 10384<br>•\tOrder Date: September 14, 2024<br>•\tShipping address: Benjamin Walker, 1600 Sunset Boulevard, Unit 3B<br>•\tProducts: 100 packs of multicolor ballpoint pens with $2 each, paid with credit card (XXXX XXXX XXXX9586)<br><br>We stand behind the quality of our products. That's why we offer a hassle-free 30-day money-back guarantee on all purchases. If you're not completely satisfied with your order, simply bring it back to our store.<br><br>Sincerely,<br>The Crafted Page<br></thecraftedpage@gmail.com></benwalker@tec.com>",
+      "passageTitle": "Question 11 to 12 refer to the following email.",
+      "image": "",
+      "a": "It is out of stock.",
+      "b": "It will be delivered free of charge.",
+      "c": "It has been insured against loss.",
+      "d": "It had been placed for a long time before it was delivered.",
+      "photoOptions": null,
+      "blankPart": "",
+      "fullSentence": "",
+      "vietnamese": "",
+      "key": "B",
+      "explanation": "<b>Đơn hàng của ông Walker được ghi chú như thế nào?</b><br>(A) Hàng đã hết.<br>(B) Hàng sẽ được giao miễn phí.<br>(C) Hàng đã được bảo hiểm mất mát.<br>(D) Hàng đã được đặt từ lâu trước khi được giao.<br><br><b>*Đáp án: (B)</b><br><br><b>*Dẫn chứng: Đoạn 1, câu 3</b><br> “During the month of September, customers making purchases over $150 do not have to pay any shipping fees.”<br><i>(Trong tháng 9, khách hàng mua hàng trên $150 sẽ không phải trả bất kỳ phí vận chuyển nào.)<br></i><br><b>*Giải thích:</b><br>Đơn hàng của Mr. Walker trị giá $200 (100 gói bút × $2). Vì vượt quá $150, nên ông sẽ được miễn phí giao hàng. Do đó, đáp án đúng là B<br><b><br>*Note: </b><br>free of charge = free = complimentary = at no cost: miễn phí \n",
+      "audioUrl": "",
+      "topic": "Ngữ pháp & Từ loại khác",
+      "vocabList": []
+    },
+    {
+      "order": 12,
+      "questionId": 16042906,
+      "type": "multiple-choice",
+      "questionText": "What should Mr. Walker do if he wants a full refund?",
+      "passage": "<b>To: </b>\t\tBenjamin Walker <benwalker@tec.com><br><b>From: </b>\t\tThe Crafted Page <thecraftedpage@gmail.com><br><b>Date:</b> \t\tSeptember 14<br><b>Subject</b>: \tProduct Order<br><br>Thank you for choosing The Crafted Page for all your stationery needs. We take pride in offering top-quality products designed to enhance your creativity and productivity. As to celebrate the back-to-school season, during the month of September, customers making purchases over $150 do not have to pay any shipping fees.<br><br><b>Here's a quick recap of your order:<br></b>•\tOrder Number: 10384<br>•\tOrder Date: September 14, 2024<br>•\tShipping address: Benjamin Walker, 1600 Sunset Boulevard, Unit 3B<br>•\tProducts: 100 packs of multicolor ballpoint pens with $2 each, paid with credit card (XXXX XXXX XXXX9586)<br><br>We stand behind the quality of our products. That's why we offer a hassle-free 30-day money-back guarantee on all purchases. If you're not completely satisfied with your order, simply bring it back to our store.<br><br>Sincerely,<br>The Crafted Page<br></thecraftedpage@gmail.com></benwalker@tec.com>",
+      "passageTitle": "Question 11 to 12 refer to the following email.",
+      "image": "",
+      "a": "Call a representative",
+      "b": "Reply an email",
+      "c": "Return the order in person",
+      "d": "Log a complaint",
+      "photoOptions": null,
+      "blankPart": "",
+      "fullSentence": "",
+      "vietnamese": "",
+      "key": "C",
+      "explanation": "<b>Ông Walker nên làm gì nếu muốn được hoàn tiền đầy đủ?</b><br>(A) Gọi cho đại diện<br>(B) Trả lời email<br>(C) Trả lại đơn hàng trực tiếp<br>(D) Ghi nhận khiếu nại<br><br><b>*Đáp án: (C)</b><br><br><b>*Dẫn chứng: Đoạn cuối, câu 2</b><br>“If you're not completely satisfied with your order, simply bring it back to our store.”<br><i>(Nếu bạn không hoàn toàn hài lòng với đơn hàng, chỉ cần mang nó trở lại cửa hàng của chúng tôi.)</i><br><br><b>*Giải thích:</b><br>Email nêu rõ khách hàng muốn hoàn tiền cần trả lại đơn hàng trực tiếp tại cửa hàng. Vì thế, đáp án chính xác là C<br><br><b>*Note:</b><br>return = bring back = give back = send back = hand in: nộp lại\n",
+      "audioUrl": "",
+      "topic": "Đọc hiểu Thư từ & Email",
+      "vocabList": []
+    },
+    {
+      "order": 13,
+      "questionId": 16043195,
+      "type": "multiple-choice",
+      "questionText": "What is the purpose of this letter?",
+      "passage": "<p style=\"text-align: center; \">Free Yoga in the Park This Summer</p><p></p><div style=\"text-align: right;\"><b>The Maple Park Recreation Team<br></b></div><div style=\"text-align: right;\"><b>153 Main Street</b></div><div style=\"text-align: right;\"><b>Ghost Town, CA 12345</b></div><b>June 10, 2024<br>Ms. Jessica Johnson<br>456 Elm Street</b><br><br>Dear Ms. Johnson,<br><br>Get ready to unwind and reconnect with yourself with our free yoga sessions in the park this summer! Whether you're a seasoned yogi or a curious beginner, these classes are designed to be accessible and enjoyable for all.<br><br>Join us every Tuesday and Thursday morning at 9:00 AM at Maple Park. Certified instructor Sarah Jones will guide you through gentle postures and breathing exercises, helping you improve your flexibility, strength, and mental-health.<br><br>Feel free to bring your own yoga mat, water bottle, and a towel. We'll be practicing on the grass, so wear comfortable clothing that allows for movement.<br><br>We encourage you to embrace the fresh air, scenic surroundings, and the chance to connect with your community during these free yoga sessions.<br><br>Hope to see you there, Ms. Johnson!<br><br>Sincerely,<br>The Maple Park Recreation Team<br><p></p>",
+      "passageTitle": "Question 13 to 15 refer to the following letter.",
+      "image": "",
+      "a": "To schedule a personal training session.",
+      "b": "To advertise a yoga studio and its services.",
+      "c": "To recommend the purchase of yoga equipment.",
+      "d": "To inform about a free activity offered in the park.",
+      "photoOptions": null,
+      "blankPart": "",
+      "fullSentence": "",
+      "vietnamese": "",
+      "key": "D",
+      "explanation": "<b>Mục đích của bức thư này là gì?</b><br>(A) Để lên lịch một buổi tập luyện cá nhân.<br>(B) Để quảng cáo một phòng tập yoga và các dịch vụ của phòng tập.<br>(C) Để khuyến nghị mua dụng cụ tập yoga.<br>(D) Để thông báo về một hoạt động miễn phí được cung cấp trong công viên.<br><b>*Đáp án: (D)</b><br><br><b>*Dẫn chứng: Đoạn 1, câu 1</b><br>“Get ready to unwind and reconnect with yourself with our free yoga sessions in the park this summer!”<br><i>(Hãy sẵn sàng thư giãn và kết nối lại với chính mình với các buổi tập yoga miễn phí trong công viên mùa hè này!)</i><br><br.<br><br><b>*Giải thích:</b><br>Mục đích của lá thư là thông báo về một hoạt động miễn phí trong công viên (free yoga sessions), không phải để bán thiết bị, quảng cáo phòng tập, hay đặt lịch huấn luyện cá nhân.<br><br><b>*Note:</b><br>inform about = notify = announce = make known = let someone know: thông báo\n</br.<br>",
+      "audioUrl": "",
+      "topic": "Danh từ (Nouns)",
+      "vocabList": []
+    },
+    {
+      "order": 14,
+      "questionId": 16043269,
+      "type": "multiple-choice",
+      "questionText": "According to the letter, how often are the free yoga sessions offered?",
+      "passage": "<p style=\"text-align: center; \">Free Yoga in the Park This Summer</p><p></p><div style=\"text-align: right;\"><b>The Maple Park Recreation Team<br></b></div><div style=\"text-align: right;\"><b>153 Main Street</b></div><div style=\"text-align: right;\"><b>Ghost Town, CA 12345</b></div><b>June 10, 2024<br>Ms. Jessica Johnson<br>456 Elm Street</b><br><br>Dear Ms. Johnson,<br><br>Get ready to unwind and reconnect with yourself with our free yoga sessions in the park this summer! Whether you're a seasoned yogi or a curious beginner, these classes are designed to be accessible and enjoyable for all.<br><br>Join us every Tuesday and Thursday morning at 9:00 AM at Maple Park. Certified instructor Sarah Jones will guide you through gentle postures and breathing exercises, helping you improve your flexibility, strength, and mental-health.<br><br>Feel free to bring your own yoga mat, water bottle, and a towel. We'll be practicing on the grass, so wear comfortable clothing that allows for movement.<br><br>We encourage you to embrace the fresh air, scenic surroundings, and the chance to connect with your community during these free yoga sessions.<br><br>Hope to see you there, Ms. Johnson!<br><br>Sincerely,<br>The Maple Park Recreation Team<br><p></p>",
+      "passageTitle": "Question 13 to 15 refer to the following letter.",
+      "image": "",
+      "a": "Once a week.",
+      "b": "Twice a week.",
+      "c": "Every day at the participant's convenience.",
+      "d": "Every weekend morning at 9:00 AM.",
+      "photoOptions": null,
+      "blankPart": "",
+      "fullSentence": "",
+      "vietnamese": "",
+      "key": "B",
+      "explanation": "<b>Theo thư, các buổi tập yoga miễn phí được tổ chức thường xuyên như thế nào?</b><br>(A) Một lần một tuần.<br>(B) Hai lần một tuần.<br>(C) Mỗi ​​ngày tùy theo sự thuận tiện của người tham gia.<br>(D) Mỗi ​​sáng cuối tuần lúc 9:00.<br><br><b>*Đáp án: (B)</b><br><br><b>*Dẫn chứng: Đoạn 2, câu 1</b><br>“Join us every Tuesday and Thursday morning at 9:00 AM at Maple Park.”<br><i>(Hãy tham gia với chúng tôi vào mỗi sáng thứ Ba và thứ Năm lúc 9:00 tại công viên Maple.)</i><br><br><b>*Giải thích:</b><br>Lá thư cho biết các buổi tập diễn ra hai lần một tuần (vào thứ Ba và thứ Năm). Do đó, đáp án đúng là B",
+      "audioUrl": "",
+      "topic": "Đọc hiểu Thư từ & Email",
+      "vocabList": []
+    },
+    {
+      "order": 15,
+      "questionId": 16043287,
+      "type": "multiple-choice",
+      "questionText": "What is NOT MENTIONED as a benefit of attending the yoga sessions?",
+      "passage": "<p style=\"text-align: center; \">Free Yoga in the Park This Summer</p><p></p><div style=\"text-align: right;\"><b>The Maple Park Recreation Team<br></b></div><div style=\"text-align: right;\"><b>153 Main Street</b></div><div style=\"text-align: right;\"><b>Ghost Town, CA 12345</b></div><b>June 10, 2024<br>Ms. Jessica Johnson<br>456 Elm Street</b><br><br>Dear Ms. Johnson,<br><br>Get ready to unwind and reconnect with yourself with our free yoga sessions in the park this summer! Whether you're a seasoned yogi or a curious beginner, these classes are designed to be accessible and enjoyable for all.<br><br>Join us every Tuesday and Thursday morning at 9:00 AM at Maple Park. Certified instructor Sarah Jones will guide you through gentle postures and breathing exercises, helping you improve your flexibility, strength, and mental-health.<br><br>Feel free to bring your own yoga mat, water bottle, and a towel. We'll be practicing on the grass, so wear comfortable clothing that allows for movement.<br><br>We encourage you to embrace the fresh air, scenic surroundings, and the chance to connect with your community during these free yoga sessions.<br><br>Hope to see you there, Ms. Johnson!<br><br>Sincerely,<br>The Maple Park Recreation Team<br><p></p>",
+      "passageTitle": "Question 13 to 15 refer to the following letter.",
+      "image": "",
+      "a": "Flexibility improvement",
+      "b": "Weight loss",
+      "c": "Strength increase",
+      "d": "Stress reduction",
+      "photoOptions": null,
+      "blankPart": "",
+      "fullSentence": "",
+      "vietnamese": "",
+      "key": "B",
+      "explanation": "<b>Lợi ích nào KHÔNG ĐƯỢC ĐỀ CẬP đến khi tham gia các buổi tập yoga?</b><br>(A) Cải thiện độ dẻo dai.<br>(B) Giảm cân.<br>(C) Tăng cường sức mạnh.<br>(D) Giảm căng thẳng.<br><br><b>*Đáp án: (B)</b><br><br><b>*Dẫn chứng: Đoạn 2, câu 2</b><br> “... helping you <b>improve your flexibility, strength,</b> and <b>mental health</b>.”<br><i>(... giúp bạn cải thiện sự dẻo dai, sức mạnh và sức khỏe tinh thần.)</i><br><br><b>*Giải thích:</b><br>Các lợi ích được nhắc đến là <b>cải thiện sự dẻo dai (flexibility)</b>, <b>tăng sức mạnh (strength)</b>, và <b>giảm căng thẳng (stress reduction = mental health)</b>. Không có chỗ nào đề cập đến <b>giảm cân (weight loss)</b>, nên đáp án đúng là (B). ",
+      "audioUrl": "",
+      "topic": "Ngữ pháp & Từ loại khác",
+      "vocabList": []
+    }
+  ]
+}
