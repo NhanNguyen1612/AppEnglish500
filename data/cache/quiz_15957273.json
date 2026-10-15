@@ -1,0 +1,646 @@
+{
+  "lessonId": "15957273",
+  "title": "[REA] MINI TEST 1 ",
+  "totalQuestions": 15,
+  "audioUrl": "",
+  "questions": [
+    {
+      "order": 1,
+      "questionId": 15957285,
+      "type": "multiple-choice",
+      "questionText": "The manager provided insightful ______ on improving workplace communication and productivity.",
+      "passage": "",
+      "passageTitle": "",
+      "image": "",
+      "a": "advise",
+      "b": "advices",
+      "c": "advice",
+      "d": "advised",
+      "photoOptions": null,
+      "blankPart": "",
+      "fullSentence": "",
+      "vietnamese": "",
+      "key": "C",
+      "explanation": "Kiến thức về từ loại<br><br><b>*Xét các đáp án:</b><br>(A) advise (v): khuyên, đưa lời khuyên<br>(B) advices (n – sai vì “advice” không đếm được)<br>(C) advice (n): lời khuyên<br>(D) advised (v): đã khuyên<br><br><b>*Ta có: </b><br>- Xét cụm động từ “provide insightful ____”: ta cần 1 chủ thể (ai đó hoặc cái gì đó) đứng sau động từ “cung cấp”(provide), chủ thể này đang được mô tả bởi tính từ “sâu sắc” (insightful) → vị trí trống cần danh từ → phân vân B hoặc C <br>- “Advice” (lời khuyên) là danh từ không đếm được, nên không có dạng thức số nhiều → chọn C<br><br><b>*Tạm dịch:</b> Người quản lý đã cung cấp những lời khuyên sâu sắc về việc cải thiện giao tiếp và năng suất nơi làm việc.<br><br><b>*Note:</b><br>communication (n): giao tiếp<br>productivity (n): năng suất\n\n",
+      "audioUrl": "",
+      "topic": "Danh từ (Nouns)",
+      "vocabList": [
+        {
+          "word": "advise",
+          "pos": "v",
+          "meaning": "khuyên, đưa lời khuyên"
+        },
+        {
+          "word": "advice",
+          "pos": "n",
+          "meaning": "lời khuyên"
+        },
+        {
+          "word": "advised",
+          "pos": "v",
+          "meaning": "đã khuyên"
+        },
+        {
+          "word": "communication",
+          "pos": "n",
+          "meaning": "giao tiếp"
+        },
+        {
+          "word": "productivity",
+          "pos": "n",
+          "meaning": "năng suất"
+        }
+      ]
+    },
+    {
+      "order": 2,
+      "questionId": 15957287,
+      "type": "multiple-choice",
+      "questionText": "The new health insurance plan offers a range of _________, including dental coverage and gym memberships.",
+      "passage": "",
+      "passageTitle": "",
+      "image": "",
+      "a": "benefit",
+      "b": "benefits",
+      "c": "beneficial",
+      "d": "beneficiary",
+      "photoOptions": null,
+      "blankPart": "",
+      "fullSentence": "",
+      "vietnamese": "",
+      "key": "B",
+      "explanation": "<b>Kiến thức về từ loại</b><br><br><b>*Xét các đáp án:</b><br>(A) benefit (n): lợi ích (số ít)<br>(B) benefits (n): lợi ích (số nhiều)<br>(C) beneficial (adj): có lợi<br>(D) beneficiary (n): người thụ hưởng<br><br><b>*Ta có:</b><br>- Xét cụm động từ “offer a range of ____”: ta cần 1 chủ thể (ai đó hoặc cái gì đó) đứng sau động từ “cung cấp”(offer), chủ thể này đang được mô tả bởi lượng từ “a range of” (đa dạng/ nhiều) → vị trí trống cần danh từ → phân vân A, B, D<br>- Xét đáp án A, D là danh từ số ít nhưng vi phạm quy tắc “Ít đầu” → chọn B<br><br><b>*Tạm dịch: </b>Gói bảo hiểm y tế mới cung cấp nhiều lợi ích, bao gồm bảo hiểm nha khoa và thẻ phòng gym.<br><br><b>*Ghi chú:</b><br>insurance plan: gói bảo hiểm<br>dental coverage: bảo hiểm nha khoa<br>membership (n): tư cách thành viên\n",
+      "audioUrl": "",
+      "topic": "Danh từ (Nouns)",
+      "vocabList": [
+        {
+          "word": "benefit",
+          "pos": "n",
+          "meaning": "lợi ích (số ít)"
+        },
+        {
+          "word": "benefits",
+          "pos": "n",
+          "meaning": "lợi ích (số nhiều)"
+        },
+        {
+          "word": "beneficial",
+          "pos": "adj",
+          "meaning": "có lợi"
+        },
+        {
+          "word": "beneficiary",
+          "pos": "n",
+          "meaning": "người thụ hưởng"
+        },
+        {
+          "word": "membership",
+          "pos": "n",
+          "meaning": "tư cách thành viên"
+        }
+      ]
+    },
+    {
+      "order": 3,
+      "questionId": 15957308,
+      "type": "multiple-choice",
+      "questionText": "The CEO wanted to achieve an ________ in profits by implementing cost-saving measures.",
+      "passage": "",
+      "passageTitle": "",
+      "image": "",
+      "a": "increase",
+      "b": "increases",
+      "c": "increased",
+      "d": "increasingly",
+      "photoOptions": null,
+      "blankPart": "",
+      "fullSentence": "",
+      "vietnamese": "",
+      "key": "A",
+      "explanation": "<b>Kiến thức về từ loại</b><br><br><b>*Xét các đáp án:</b><br>(A) increase (n): sự gia tăng (số ít)<br>(B) increases (n): sự gia tăng (số nhiều)<br>(C) increased (adj): tăng thêm<br>(D) increasingly (adv): ngày càng<br><br><b>*Ta có:<br></b>- Xét cụm động từ “achieve an ____”: ta cần 1 chủ thể (ai đó hoặc cái gì đó) đứng sau động từ “đạt được” (achieve), chủ thể này đang được xác định bởi mạo từ “an” (một) → vị trí trống cần danh từ số ít → chọn A<br><br><b>*Tạm dịch:</b> Giám đốc điều hành muốn đạt được sự gia tăng lợi nhuận bằng cách thực hiện các biện pháp tiết kiệm chi phí.<br><br><b>*Ghi chú:</b><br>profits (n): lợi nhuận<br>implement (v): thực hiện = carry out <br>cost-saving measures: biện pháp tiết kiệm chi phí\n",
+      "audioUrl": "",
+      "topic": "Danh từ (Nouns)",
+      "vocabList": [
+        {
+          "word": "increase",
+          "pos": "n",
+          "meaning": "sự gia tăng (số ít)"
+        },
+        {
+          "word": "increases",
+          "pos": "n",
+          "meaning": "sự gia tăng (số nhiều)"
+        },
+        {
+          "word": "increased",
+          "pos": "adj",
+          "meaning": "tăng thêm"
+        },
+        {
+          "word": "increasingly",
+          "pos": "adv",
+          "meaning": "ngày càng"
+        },
+        {
+          "word": "profits",
+          "pos": "n",
+          "meaning": "lợi nhuận"
+        },
+        {
+          "word": "implement",
+          "pos": "v",
+          "meaning": "thực hiện = carry out"
+        }
+      ]
+    },
+    {
+      "order": 4,
+      "questionId": 15957312,
+      "type": "multiple-choice",
+      "questionText": "The conference hired a professional _________ to ensure smooth communication between the delegates from different countries.",
+      "passage": "",
+      "passageTitle": "",
+      "image": "",
+      "a": "interpret",
+      "b": "interpretation",
+      "c": "interpreter",
+      "d": "interpreting",
+      "photoOptions": null,
+      "blankPart": "",
+      "fullSentence": "",
+      "vietnamese": "",
+      "key": "C",
+      "explanation": "<b>Kiến thức về từ loại</b><br><br><b>*Xét các đáp án:</b><br>(A) interpret (v): phiên dịch<br>(B) interpretation (n): sự phiên dịch (danh từ không đếm được)<br>(C) interpreter (n): phiên dịch viên (danh từ đếm được)<br>(D) interpreting (n): việc phiên dịch<br><br><b>*Ta có:</b><br>- Xét cụm động từ “hired a professional ____”: ta cần 1 chủ thể (ai đó hoặc cái gì đó) đứng sau động từ “thuê” (hire), chủ thể này đang được mô tả bởi tính từ “chuyên nghiệp” (professional) và xác định bởi mạo từ “a” (một) → vị trí trống cần danh từ đếm được số ít → chọn C<br><br><b>*Tạm dịch:</b> Hội nghị đã thuê một phiên dịch viên chuyên nghiệp để đảm bảo giao tiếp trôi chảy giữa các đại biểu từ các quốc gia khác nhau.<br><br><b>*Ghi chú:</b><br>delegate (n): đại biểu<br>smooth (adj): trôi chảy, suôn sẻ\n\n",
+      "audioUrl": "",
+      "topic": "Danh từ (Nouns)",
+      "vocabList": [
+        {
+          "word": "interpret",
+          "pos": "v",
+          "meaning": "phiên dịch"
+        },
+        {
+          "word": "interpretation",
+          "pos": "n",
+          "meaning": "sự phiên dịch (danh từ không đếm được)"
+        },
+        {
+          "word": "interpreter",
+          "pos": "n",
+          "meaning": "phiên dịch viên (danh từ đếm được)"
+        },
+        {
+          "word": "interpreting",
+          "pos": "n",
+          "meaning": "việc phiên dịch"
+        },
+        {
+          "word": "delegate",
+          "pos": "n",
+          "meaning": "đại biểu"
+        },
+        {
+          "word": "smooth",
+          "pos": "adj",
+          "meaning": "trôi chảy, suôn sẻ"
+        }
+      ]
+    },
+    {
+      "order": 5,
+      "questionId": 15957313,
+      "type": "multiple-choice",
+      "questionText": "__________ of the Sustainable Development Forum are expected to contribute their expertise to address pressing environmental and social challenges.",
+      "passage": "",
+      "passageTitle": "",
+      "image": "",
+      "a": "Attendant",
+      "b": "Attending",
+      "c": "Attention",
+      "d": "Attendees",
+      "photoOptions": null,
+      "blankPart": "",
+      "fullSentence": "",
+      "vietnamese": "",
+      "key": "D",
+      "explanation": "<b>Kiến thức về từ loại</b><br><br><b>*Xét các đáp án:</b><br>(A) Attendant (n): người phục vụ, người chăm sóc <br>(B) Attending (v-ing): tham dự<br>(C) Attention (n): sự chú ý<br>(D) Attendees (n): người tham dự<br><br><b>*Ta có:</b><br>- Xét cụm “____ of the Sustainable Development Forum”: ta cần 1 chủ thể (ai đó hoặc cái gì đó) “của diễn đàn này” (of… forum) → vị trí trống cần danh từ → phân vân A, C, D<br>- Xét đáp án A là danh từ số ít nhưng vi phạm quy tắc “Ít đầu” → loại A<br>- Xét đáp án C là danh từ không đếm được → đi cùng động từ chia số ít, nhưng đề bài đang chia động từ “are expected” ở dạng số nhiều → loại C<br>- Vậy D là đáp án đúng <br><b><br>*Tạm dịch:</b> Những người tham dự Diễn đàn Phát triển Bền vững được kỳ vọng sẽ đóng góp chuyên môn để giải quyết các thách thức môi trường và xã hội.<br><br><b>*Ghi chú:</b><br>sustainable development: phát triển bền vững<br>expertise (n): chuyên môn<br>address (v): giải quyết<br>challenges (n) thách thức, khó khăn <br>social (a) xã hội <br>pressing (a) khẩn cấp, cấp bách = urgent \n",
+      "audioUrl": "",
+      "topic": "Danh từ (Nouns)",
+      "vocabList": [
+        {
+          "word": "Attendant",
+          "pos": "n",
+          "meaning": "người phục vụ, người chăm sóc"
+        },
+        {
+          "word": "Attention",
+          "pos": "n",
+          "meaning": "sự chú ý"
+        },
+        {
+          "word": "Attendees",
+          "pos": "n",
+          "meaning": "người tham dự"
+        },
+        {
+          "word": "expertise",
+          "pos": "n",
+          "meaning": "chuyên môn"
+        },
+        {
+          "word": "address",
+          "pos": "v",
+          "meaning": "giải quyết"
+        }
+      ]
+    },
+    {
+      "order": 6,
+      "questionId": 15957331,
+      "type": "multiple-choice",
+      "questionText": "The company sent sales _______ to the trade show to showcase their latest products and connect with potential clients.",
+      "passage": "",
+      "passageTitle": "",
+      "image": "",
+      "a": "representatives",
+      "b": "represent",
+      "c": "representation",
+      "d": "represented",
+      "photoOptions": null,
+      "blankPart": "",
+      "fullSentence": "",
+      "vietnamese": "",
+      "key": "A",
+      "explanation": "<b>Kiến thức về từ loại</b><br><br><b>*Xét các đáp án:</b><br>(A) representatives (n): người đại diện<br>(B) represent (v): đại diện<br>(C) representation (n): sự đại diện<br>(D) represented (v): đã đại diện<br><br><b>*Ta có:</b><br>- Xét cụm động từ “sent sales _____”: ta cần 1 chủ thể (ai đó hoặc cái gì đó) đứng sau động từ “gửi” (send), chủ thể này được gọi tên bằng danh từ ghép (là loại danh từ được ghép bởi 2 danh từ đứng cạnh nhau). Ở đây ta có sẵn 1 danh từ “kinh doanh” (sales) → vị trí trống cần danh từ còn lại ghép cùng và có nghĩa → chọn A <br><br><b>*Tạm dịch:</b> Công ty đã cử các đại diện kinh doanh đến hội chợ để giới thiệu sản phẩm mới nhất và kết nối với khách hàng tiềm năng.<br><br><b>*Ghi chú:</b><br>trade show: hội chợ thương mại<br>showcase (v): trưng bày, giới thiệu<br>potential clients: khách hàng tiềm năng\n",
+      "audioUrl": "",
+      "topic": "Danh từ (Nouns)",
+      "vocabList": [
+        {
+          "word": "representatives",
+          "pos": "n",
+          "meaning": "người đại diện"
+        },
+        {
+          "word": "represent",
+          "pos": "v",
+          "meaning": "đại diện"
+        },
+        {
+          "word": "representation",
+          "pos": "n",
+          "meaning": "sự đại diện"
+        },
+        {
+          "word": "represented",
+          "pos": "v",
+          "meaning": "đã đại diện"
+        },
+        {
+          "word": "showcase",
+          "pos": "v",
+          "meaning": "trưng bày, giới thiệu"
+        }
+      ]
+    },
+    {
+      "order": 7,
+      "questionId": 15957332,
+      "type": "multiple-choice",
+      "questionText": "__________ for the role of Chief Financial Officer at the multinational corporation was intense.",
+      "passage": "",
+      "passageTitle": "",
+      "image": "",
+      "a": "Competitors",
+      "b": "Compete",
+      "c": "Competition",
+      "d": "Competitions",
+      "photoOptions": null,
+      "blankPart": "",
+      "fullSentence": "",
+      "vietnamese": "",
+      "key": "C",
+      "explanation": "<b>Kiến thức về từ loại</b><br><br><b>*Xét các đáp án:</b><br>(A) Competitors (n): đối thủ cạnh tranh<br>(B) Compete (v): cạnh tranh<br>(C) Competition (n): sự cạnh tranh<br>(D) Competitions (n): các cuộc thi<br><br><b>*Ta có:</b><br>- Xét cụm “____ for the role of Chief Financial Officer ”: ta cần 1 chủ thể (ai đó hoặc cái gì đó) “cho vị trí giám đốc này” → vị trí trống cần danh từ → phân vân A, C, D<br>- Xét đáp án A,D là danh từ đếm được số nhiều → đi cùng động từ chia số nhiều, nhưng đề bài đang chia động từ “was” ở dạng số ít → loại A,D<br>- Vậy đáp án là C<br><br><b>*Tạm dịch:</b> Sự cạnh tranh cho vị trí Giám đốc Tài chính tại tập đoàn đa quốc gia rất khốc liệt.<br><br><b>*Ghi chú:</b><br>role (n): vai trò, vị trí<br>intense (adj): gay gắt, dữ dội\n",
+      "audioUrl": "",
+      "topic": "Danh từ (Nouns)",
+      "vocabList": [
+        {
+          "word": "Competitors",
+          "pos": "n",
+          "meaning": "đối thủ cạnh tranh"
+        },
+        {
+          "word": "Compete",
+          "pos": "v",
+          "meaning": "cạnh tranh"
+        },
+        {
+          "word": "Competition",
+          "pos": "n",
+          "meaning": "sự cạnh tranh"
+        },
+        {
+          "word": "Competitions",
+          "pos": "n",
+          "meaning": "các cuộc thi"
+        },
+        {
+          "word": "role",
+          "pos": "n",
+          "meaning": "vai trò, vị trí"
+        },
+        {
+          "word": "intense",
+          "pos": "adj",
+          "meaning": "gay gắt, dữ dội"
+        }
+      ]
+    },
+    {
+      "order": 8,
+      "questionId": 15957337,
+      "type": "multiple-choice",
+      "questionText": "The event organizers meticulously tracked _______ records to evaluate the effectiveness of their marketing campaigns.",
+      "passage": "",
+      "passageTitle": "",
+      "image": "",
+      "a": "attendance",
+      "b": "attendant",
+      "c": "attendee",
+      "d": "attending",
+      "photoOptions": null,
+      "blankPart": "",
+      "fullSentence": "",
+      "vietnamese": "",
+      "key": "A",
+      "explanation": "<b>Kiến thức về từ loại</b><br><br><b>*Xét các đáp án:</b><br>(A) attendance (n): sự tham dự<br>(B) attendant (n): người phục vụ<br>(C) attendee (n): người tham dự<br>(D) attending (adj/V-ing): tham dự<br><br><b>*Ta có:</b><br>- Xét cụm động từ “tracked _____”: ta cần 1 chủ thể (ai đó hoặc cái gì đó) đứng sau động từ “theo dõi” (track), chủ thể này được gọi tên bằng danh từ ghép (là loại danh từ được ghép bởi 2 danh từ đứng cạnh nhau). Ở đây ta có sẵn 1 danh từ “hồ sơ” (records) → vị trí trống cần danh từ còn lại ghép cùng và có nghĩa → chọn A. <br><br><b>*Tạm dịch: </b>Ban tổ chức sự kiện đã theo dõi cẩn thận hồ sơ tham dự để đánh giá hiệu quả của chiến dịch tiếp thị.<br><b><br>*Ghi chú:</b><br>meticulously (adv): tỉ mỉ, cẩn thận<br>evaluate (v): đánh giá<br>effectiveness (n): hiệu quả\n\n",
+      "audioUrl": "",
+      "topic": "Danh từ (Nouns)",
+      "vocabList": [
+        {
+          "word": "attendance",
+          "pos": "n",
+          "meaning": "sự tham dự"
+        },
+        {
+          "word": "attendant",
+          "pos": "n",
+          "meaning": "người phục vụ"
+        },
+        {
+          "word": "attendee",
+          "pos": "n",
+          "meaning": "người tham dự"
+        },
+        {
+          "word": "meticulously",
+          "pos": "adv",
+          "meaning": "tỉ mỉ, cẩn thận"
+        },
+        {
+          "word": "evaluate",
+          "pos": "v",
+          "meaning": "đánh giá"
+        },
+        {
+          "word": "effectiveness",
+          "pos": "n",
+          "meaning": "hiệu quả"
+        }
+      ]
+    },
+    {
+      "order": 9,
+      "questionId": 15957339,
+      "type": "multiple-choice",
+      "questionText": "The unemployment __________ decreased by 0.5% compared to last quarter, indicating a positive trend in the job market.",
+      "passage": "",
+      "passageTitle": "",
+      "image": "",
+      "a": "rates",
+      "b": "rated",
+      "c": "rating",
+      "d": "rate",
+      "photoOptions": null,
+      "blankPart": "",
+      "fullSentence": "",
+      "vietnamese": "",
+      "key": "D",
+      "explanation": "<b>Kiến thức về từ loại</b><br><br><b>*Xét các đáp án:</b><br>(A) rates (n): tỉ lệ (số nhiều)<br>(B) rated (v): được đánh giá<br>(C) rating (n): sự xếp hạng<br>(D) rate (n): tỉ lệ (số ít)<br><br><b>*Ta có:</b><br>- Xét cụm “the unemployment ____”: ta cần 1 chủ thể (ai đó hoặc cái gì đó) sau mạo từ “the”, chủ thể này được gọi tên bằng danh từ ghép (là loại danh từ được ghép bởi 2 danh từ đứng cạnh nhau). Ở đây ta có sẵn 1 danh từ “thất nghiệp” (unemployment) → vị trí trống cần danh từ còn lại ghép cùng và có nghĩa → phân vân A,D<br>- Xét về nghĩa, ta thấy “tỷ lệ thất nghiệp” sẽ là 1 con số chung được tính toán ra cụ thể → chọn D<br><br><b>*Tạm dịch:</b> Tỷ lệ thất nghiệp đã giảm 0,5% so với quý trước, cho thấy xu hướng tích cực trên thị trường việc làm.<br><br><b>*Ghi chú:</b><br>unemployment (n): thất nghiệp<br>trend (n): xu hướng\n\n",
+      "audioUrl": "",
+      "topic": "Danh từ (Nouns)",
+      "vocabList": [
+        {
+          "word": "rates",
+          "pos": "n",
+          "meaning": "tỉ lệ (số nhiều)"
+        },
+        {
+          "word": "rated",
+          "pos": "v",
+          "meaning": "được đánh giá"
+        },
+        {
+          "word": "rating",
+          "pos": "n",
+          "meaning": "sự xếp hạng"
+        },
+        {
+          "word": "rate",
+          "pos": "n",
+          "meaning": "tỉ lệ (số ít)"
+        },
+        {
+          "word": "unemployment",
+          "pos": "n",
+          "meaning": "thất nghiệp"
+        },
+        {
+          "word": "trend",
+          "pos": "n",
+          "meaning": "xu hướng"
+        }
+      ]
+    },
+    {
+      "order": 10,
+      "questionId": 15957345,
+      "type": "multiple-choice",
+      "questionText": "The company implemented a new marketing ___ aimed at targeting niche demographics, resulting in a significant increase in sales and brand visibility.",
+      "passage": "",
+      "passageTitle": "",
+      "image": "",
+      "a": "strategies",
+      "b": "strategy",
+      "c": "strategic",
+      "d": "strategically",
+      "photoOptions": null,
+      "blankPart": "",
+      "fullSentence": "",
+      "vietnamese": "",
+      "key": "B",
+      "explanation": "<b>Kiến thức về từ loại</b><br><br><b>*Xét các đáp án:</b><br>(A) strategies (n): các chiến lược (danh từ số nhiều)<br>(B) strategy (n): chiến lược (danh từ số ít)<br>(C) strategic (adj): mang tính chiến lược<br>(D) strategically (adv): một cách chiến lược<br><br><b>*Ta có:</b><br>- Xét cụm động từ “implemented a new marketing ____”: ta cần 1 chủ thể (ai đó hoặc cái gì đó) đứng sau động từ “thực hiện/triển khai” (implement), chủ thể này được gọi tên bằng danh từ ghép (là loại danh từ được ghép bởi 2 danh từ đứng cạnh nhau). Ở đây ta có sẵn 1 danh từ “tiếp thị” (marketing) → vị trí trống cần danh từ còn lại ghép cùng và có nghĩa → phân vân A và B. Chủ thể này tiếp tục được xác định bởi mạo từ “a” (một) → chọn B <br><br><b>*Tạm dịch:</b> Công ty đã triển khai một chiến lược tiếp thị mới nhằm nhắm vào các nhóm nhân khẩu học đặc thù, dẫn đến sự gia tăng đáng kể về doanh số và độ nhận diện thương hiệu.<br><br><b>*Ghi chú:</b><br>implement (v): triển khai, thực hiện<br>niche demographics: nhóm dân số đặc thù<br>brand visibility: độ nhận diện thương hiệu",
+      "audioUrl": "",
+      "topic": "Danh từ (Nouns)",
+      "vocabList": [
+        {
+          "word": "strategies",
+          "pos": "n",
+          "meaning": "các chiến lược (danh từ số nhiều)"
+        },
+        {
+          "word": "strategy",
+          "pos": "n",
+          "meaning": "chiến lược (danh từ số ít)"
+        },
+        {
+          "word": "strategic",
+          "pos": "adj",
+          "meaning": "mang tính chiến lược"
+        },
+        {
+          "word": "strategically",
+          "pos": "adv",
+          "meaning": "một cách chiến lược"
+        },
+        {
+          "word": "implement",
+          "pos": "v",
+          "meaning": "triển khai, thực hiện"
+        }
+      ]
+    },
+    {
+      "order": 11,
+      "questionId": 15957356,
+      "type": "multiple-choice",
+      "questionText": "When will the new equipment most likely arrive?",
+      "passage": "<b>To</b>: \t\tOperations Team &lt; operations@bmg.com &gt;<br><b>From:</b> \t\tTome Holland &lt; t.holland@bmg.com &gt;<br><b>Date</b>: \t\tJune 10th<br><b>Subject</b>: \tNew Equipment <br><br>Dear Operations Team,<br><br>Please be advised that new equipment is scheduled to arrive on tomorrow morning. To ensure a smooth transition, all team members must watch the attached guidelines video and complete a check test by June 15th. Your prompt attention to this training is greatly appreciated for the successful integration of the new equipment. Thank you for your cooperation.<br><br>Best regards,<br>Tome Holland<br>Director of Operations<br>",
+      "passageTitle": "Questions 11-12 refer to the following email.",
+      "image": "",
+      "a": "June 10th",
+      "b": "June 11th",
+      "c": "June 15th",
+      "d": "Tomorrow morning",
+      "photoOptions": null,
+      "blankPart": "",
+      "fullSentence": "",
+      "vietnamese": "",
+      "key": "B",
+      "explanation": "Khi nào thiết bị mới có khả năng đến nhất?<br>(A) Ngày 10 tháng 6<br>(B) Ngày 11 tháng 6<br>(C) Ngày 15 tháng 6<br>(D) Sáng mai 12. <br><br><b>*Đáp án: (B) </b><br><br><b>*Giải thích:</b><br>Email được gửi ngày 10 tháng 6, và nội dung ghi rõ thiết bị mới sẽ đến <b>vào sáng hôm sau</b>. Vì vậy, ngày đến dự kiến là <b>11 tháng 6</b>.<br><br><b>*Dẫn chứng: Đoạn 1, câu 2 </b><br>- “…new equipment is scheduled to arrive tomorrow morning …”<br><i>(… thiết bị mới dự kiến sẽ đến vào sáng ngày mai …).\n\n</i>",
+      "audioUrl": "",
+      "topic": "Đọc hiểu Thư từ & Email",
+      "vocabList": []
+    },
+    {
+      "order": 12,
+      "questionId": 15957361,
+      "type": "multiple-choice",
+      "questionText": "What are team members asked to do?",
+      "passage": "<b>To</b>: \t\tOperations Team &lt; operations@bmg.com &gt;<br><b>From:</b> \t\tTome Holland &lt; t.holland@bmg.com &gt;<br><b>Date</b>: \t\tJune 10th<br><b>Subject</b>: \tNew Equipment <br><br>Dear Operations Team,<br><br>Please be advised that new equipment is scheduled to arrive on tomorrow morning. To ensure a smooth transition, all team members must watch the attached guidelines video and complete a check test by June 15th. Your prompt attention to this training is greatly appreciated for the successful integration of the new equipment. Thank you for your cooperation.<br><br>Best regards,<br>Tome Holland<br>Director of Operations<br>",
+      "passageTitle": "Questions 11-12 refer to the following email.",
+      "image": "",
+      "a": "Install new equipment",
+      "b": "Complete a project report",
+      "c": "View an instructional video",
+      "d": "Make a check test",
+      "photoOptions": null,
+      "blankPart": "",
+      "fullSentence": "",
+      "vietnamese": "",
+      "key": "C",
+      "explanation": "Các thành viên trong nhóm được yêu cầu làm gì?<br>(A) Lắp đặt thiết bị mới<br>(B) Hoàn thành báo cáo dự án<br>(C) Xem video hướng dẫn<br>(D) Thực hiện bài kiểm tra<br><br><b>*Đáp án: (C)</b><br><br><b>*Dẫn chứng: Đoạn 1, câu 2–3 </b><br>“… all team members must watch the attached guidelines video …”<br><i>(… tất cả các thành viên phải xem video hướng dẫn đính kèm …)</i><br><br><b>Giải thích:<br></b>- <b>must watch = phải xem</b> → cho thấy đây là yêu cầu bắt buộc.<br>- the attached guidelines video = video hướng dẫn được đính kèm.<br>-&gt; Vì vậy, việc mà tất cả thành viên trong nhóm được yêu cầu thực hiện là xem video hướng dẫn.<br><br><b>*Note: </b><br>watch = view (v): xem <br>guidelines video = instructional video: video hướng dẫn",
+      "audioUrl": "",
+      "topic": "Ngữ pháp & Từ loại khác",
+      "vocabList": [
+        {
+          "word": "view",
+          "pos": "v",
+          "meaning": "xem"
+        }
+      ]
+    },
+    {
+      "order": 13,
+      "questionId": 15957372,
+      "type": "multiple-choice",
+      "questionText": "What is the purpose of the letter?",
+      "passage": "<b>May 30, 2024<br>Mr. Ian Green<br>456 Maple Lane <br>Springfield, TX 75002</b><br><br>Dear Mr Ian,<br><br>As we gear up for another busy season, I wanted to take a moment to express my sincere appreciation for the exceptional cleanup services your company provided at our annual charity gala and community festival last year. <br><br>As we look ahead to this year's gala and festival, I am eager to enlist your services again this year. However, unlike last year, we anticipate larger attendance numbers at both events, requiring more extensive cleanup services, including debris removal and sanitation. Additionally, we would appreciate assistance with post-event recycling and waste management to align with our sustainability initiatives.<br><br>Please let us know if we can schedule a meeting to discuss our requirements further. We are eager to finalize the details and begin planning for another successful collaboration.<br><br>Warm regards,<br>Mei Hua,<br>Event Coordinator<br>",
+      "passageTitle": "Questions 13-15 refer to the following letter.",
+      "image": "",
+      "a": "To request a meeting to discuss upcoming events",
+      "b": "To express gratitude for past services provided",
+      "c": "To inquire about availability for future events",
+      "d": "To negotiate pricing for cleanup services",
+      "photoOptions": null,
+      "blankPart": "",
+      "fullSentence": "",
+      "vietnamese": "",
+      "key": "A",
+      "explanation": "Mục đích của bức thư là gì?<br>(A) Yêu cầu một cuộc họp để thảo luận về các sự kiện sắp tới<br>(B) Cảm ơn các dịch vụ đã cung cấp trong quá khứ<br>(C) Hỏi về khả năng cung cấp dịch vụ cho các sự kiện trong tương lai<br>(D) Đàm phán giá dịch vụ dọn dẹp<br><br><b>*Đáp án: (A)</b><br><br><b>*Dẫn chứng: Đoạn 3, câu 1</b><br>“Please let us know if we can schedule a meeting to discuss our requirements further …”<br><i>(Xin vui lòng cho chúng tôi biết liệu có thể sắp xếp một cuộc họp để thảo luận thêm về các yêu cầu không …)</i><br><br><b>*Note:</b><br>schedule a meeting = arrange a meeting: lên lịch, sắp xếp 1 cuộc họp<br>requirements = needs, demands (n): yêu cầu<br>inquire = ask (v): hỏi\n",
+      "audioUrl": "",
+      "topic": "Đọc hiểu Thư từ & Email",
+      "vocabList": [
+        {
+          "word": "demands",
+          "pos": "n",
+          "meaning": "yêu cầu"
+        },
+        {
+          "word": "ask",
+          "pos": "v",
+          "meaning": "hỏi"
+        }
+      ]
+    },
+    {
+      "order": 14,
+      "questionId": 15957376,
+      "type": "multiple-choice",
+      "questionText": "What additional service is MENTIONED in this year's events?",
+      "passage": "<b>May 30, 2024<br>Mr. Ian Green<br>456 Maple Lane <br>Springfield, TX 75002</b><br><br>Dear Mr Ian,<br><br>As we gear up for another busy season, I wanted to take a moment to express my sincere appreciation for the exceptional cleanup services your company provided at our annual charity gala and community festival last year. <br><br>As we look ahead to this year's gala and festival, I am eager to enlist your services again this year. However, unlike last year, we anticipate larger attendance numbers at both events, requiring more extensive cleanup services, including debris removal and sanitation. Additionally, we would appreciate assistance with post-event recycling and waste management to align with our sustainability initiatives.<br><br>Please let us know if we can schedule a meeting to discuss our requirements further. We are eager to finalize the details and begin planning for another successful collaboration.<br><br>Warm regards,<br>Mei Hua,<br>Event Coordinator<br>",
+      "passageTitle": "Questions 13-15 refer to the following letter.",
+      "image": "",
+      "a": "Debris production",
+      "b": "Sustainable catering services",
+      "c": "Waste management after the event",
+      "d": "Fundraisings",
+      "photoOptions": null,
+      "blankPart": "",
+      "fullSentence": "",
+      "vietnamese": "",
+      "key": "C",
+      "explanation": "Dịch vụ bổ sung nào được ĐỀ CẬP trong các sự kiện năm nay?<br>(A) Xử lý rác thải<br>(B) Dịch vụ ăn uống bền vững<br>(C) Quản lý chất thải sau sự kiện<br>(D) Gây quỹ<br><br><b>*Đáp án: (C)</b><br><br><b>* Dẫn chứng: Đoạn 2, câu 4</b><br>“<b>Additionally</b>, we would appreciate assistance with <b>post-event recycling and waste management</b> …”<br><i>(<b>Thêm vào đó</b>, chúng tôi sẽ đánh giá cao sự hỗ trợ trong <b>việc tái chế và quản lý rác thải sau sự kiện</b> …)</i><br><b>*Note:</b><br>waste management = garbage handling = trash disposal: việc xử lý rác<br>recycling = reprocessing: tái chế\n",
+      "audioUrl": "",
+      "topic": "Ngữ pháp & Từ loại khác",
+      "vocabList": []
+    },
+    {
+      "order": 15,
+      "questionId": 15957382,
+      "type": "multiple-choice",
+      "questionText": "The word “anticipate” in paragraph 2, line 2 is closest in meaning to:",
+      "passage": "<b>May 30, 2024<br>Mr. Ian Green<br>456 Maple Lane <br>Springfield, TX 75002</b><br><br>Dear Mr Ian,<br><br>As we gear up for another busy season, I wanted to take a moment to express my sincere appreciation for the exceptional cleanup services your company provided at our annual charity gala and community festival last year. <br><br>As we look ahead to this year's gala and festival, I am eager to enlist your services again this year. However, unlike last year, we anticipate larger attendance numbers at both events, requiring more extensive cleanup services, including debris removal and sanitation. Additionally, we would appreciate assistance with post-event recycling and waste management to align with our sustainability initiatives.<br><br>Please let us know if we can schedule a meeting to discuss our requirements further. We are eager to finalize the details and begin planning for another successful collaboration.<br><br>Warm regards,<br>Mei Hua,<br>Event Coordinator<br>",
+      "passageTitle": "Questions 13-15 refer to the following letter.",
+      "image": "",
+      "a": "Predict",
+      "b": "Hope",
+      "c": "Dread",
+      "d": "Prevent",
+      "photoOptions": null,
+      "blankPart": "",
+      "fullSentence": "",
+      "vietnamese": "",
+      "key": "A",
+      "explanation": "Từ “dự đoán” trong đoạn 2, dòng 2 gần nghĩa nhất với:<br>(A) Dự đoán<br>(B) Hy vọng<br>(C) Lo sợ<br>(D) Ngăn ngừa<br><br><b>*Đáp án: (A)</b><br><br><b>*Dẫn chứng: Đoạn 2, câu 2</b><br> “… we anticipate larger attendance numbers at both events …”<br><i>(Chúng tôi dự đoán số lượng người tham dự ở cả hai sự kiện sẽ nhiều hơn …)</i><br><br><b>*Note:</b><br>anticipate = predict = expect = foresee (v): dự đoán\n",
+      "audioUrl": "",
+      "topic": "Ngữ pháp & Từ loại khác",
+      "vocabList": [
+        {
+          "word": "foresee",
+          "pos": "v",
+          "meaning": "dự đoán"
+        }
+      ]
+    }
+  ]
+}

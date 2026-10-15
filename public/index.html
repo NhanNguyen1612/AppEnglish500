@@ -1163,8 +1163,16 @@
       lucide.createIcons();
     }
 
-    // View Switching
-    function switchView(viewName) {
+    function getGroupSlug(g) {
+      if (!g) return 'lesson-1';
+      const m = (g.name || '').match(/lesson\s*(\d+)/i);
+      if (m) return `lesson-${m[1]}`;
+      if ((g.name || '').toLowerCase().includes('tổng quan')) return 'overview';
+      return `unit-${g.id}`;
+    }
+
+    // View Switching & URL Routing
+    function switchView(viewName, updateUrl = true) {
       ['lessons', 'quiz-player', 'flashcards', 'dictation', 'mocktest', 'analytics', 'notebook', 'pdfs'].forEach(v => {
         const el = document.getElementById(`view-${v}`);
         if (el) el.classList.add('hidden');
@@ -1189,6 +1197,22 @@
         if (audioEl) audioEl.pause();
       }
 
+      if (updateUrl) {
+        const tabRoutes = {
+          lessons: currentGroupId ? `/${getGroupSlug(groups.find(g => g.id === currentGroupId))}` : '/lesson-1',
+          flashcards: '/vocab',
+          dictation: '/dictation',
+          mocktest: '/mock-test',
+          analytics: '/analytics',
+          notebook: '/notebook',
+          pdfs: '/pdfs'
+        };
+        const newPath = tabRoutes[viewName] || '/';
+        if (window.location.pathname !== newPath) {
+          history.pushState(null, '', newPath);
+        }
+      }
+
       if (viewName === 'pdfs') renderPdfs();
       if (viewName === 'notebook') renderNotebook();
       if (viewName === 'flashcards') renderFlashcard();
@@ -1198,7 +1222,7 @@
     }
 
     // ==========================================
-    // COURSE & LESSON LOADER
+    // COURSE & LESSON LOADER WITH URL ROUTING
     // ==========================================
     async function loadCourse() {
       try {
@@ -1210,15 +1234,75 @@
         document.getElementById('total-groups-count').textContent = `${groups.length} Chương`;
 
         renderGroupsSidebar();
-        if (groups.length > 1) {
-          selectGroup(groups[1].id);
-        } else if (groups.length > 0) {
-          selectGroup(groups[0].id);
-        }
+        await handleRoute(true);
       } catch (e) {
         console.error('Error loading course:', e);
       }
     }
+
+    async function handleRoute(allowPush = false) {
+      const path = (window.location.pathname || '/').replace(/\/+$/, '') || '/';
+
+      // 1. Quiz player: /quiz/:lessonId
+      const quizMatch = path.match(/^\/quiz\/(\d+)/);
+      if (quizMatch) {
+        await startQuiz(quizMatch[1], false);
+        return;
+      }
+
+      // 2. Tab pages
+      if (path === '/vocab' || path === '/tu-vung') {
+        switchView('flashcards', false);
+        return;
+      }
+      if (path === '/dictation' || path === '/nghe-chep') {
+        switchView('dictation', false);
+        return;
+      }
+      if (path === '/mock-test' || path === '/thi-thu') {
+        switchView('mocktest', false);
+        return;
+      }
+      if (path === '/analytics' || path === '/phan-tich') {
+        switchView('analytics', false);
+        return;
+      }
+      if (path === '/notebook' || path === '/so-tay') {
+        switchView('notebook', false);
+        return;
+      }
+      if (path === '/pdfs' || path === '/tai-lieu') {
+        switchView('pdfs', false);
+        return;
+      }
+
+      // 3. Lesson pages: /lesson-1, /lesson/1, /lesson1, /overview
+      const lessonMatch = path.match(/^\/lesson[/-]?(\d+)/i);
+      if (lessonMatch && groups.length > 0) {
+        const num = lessonMatch[1];
+        const target = groups.find(g => new RegExp(`lesson\\s*${num}$`, 'i').test(g.name)) || groups.find(g => g.name.includes(num));
+        if (target) {
+          await selectGroup(target.id, false);
+          return;
+        }
+      }
+
+      if (path === '/overview' && groups.length > 0) {
+        await selectGroup(groups[0].id, false);
+        return;
+      }
+
+      // Default: lesson 1
+      if (groups.length > 1) {
+        await selectGroup(groups[1].id, allowPush);
+      } else if (groups.length > 0) {
+        await selectGroup(groups[0].id, allowPush);
+      }
+    }
+
+    window.addEventListener('popstate', () => {
+      handleRoute(false);
+    });
 
     function renderGroupsSidebar() {
       const container = document.getElementById('groups-list');
@@ -1233,7 +1317,7 @@
       `).join('');
     }
 
-    async function selectGroup(groupId) {
+    async function selectGroup(groupId, updateUrl = true) {
       currentGroupId = groupId;
       renderGroupsSidebar();
 
@@ -1241,9 +1325,16 @@
       if (group) {
         document.getElementById('active-group-title').textContent = group.name;
         document.getElementById('active-group-desc').textContent = `${group.total} mục • ${group.quizzes} bài trắc nghiệm • ${group.videos} video bài giảng • ${group.pdfs} file PDF`;
+        document.title = `${group.name.toUpperCase()} - Moon TOEIC 550+ Pro`;
+        if (updateUrl) {
+          const slug = getGroupSlug(group);
+          if (window.location.pathname !== `/${slug}`) {
+            history.pushState({ type: 'lesson', groupId }, '', `/${slug}`);
+          }
+        }
       }
 
-      switchView('lessons');
+      switchView('lessons', false);
 
       const res = await fetch(`/api/lessons?group_id=${groupId}`);
       allLessons = await res.json();
@@ -1345,8 +1436,11 @@
     // ==========================================
     // QUIZ ENGINE
     // ==========================================
-    async function startQuiz(lessonId) {
-      switchView('quiz-player');
+    async function startQuiz(lessonId, updateUrl = true) {
+      switchView('quiz-player', false);
+      if (updateUrl && window.location.pathname !== `/quiz/${lessonId}`) {
+        history.pushState({ type: 'quiz', lessonId }, '', `/quiz/${lessonId}`);
+      }
       document.getElementById('quiz-title').textContent = 'Đang tải câu hỏi từ Moon.vn...';
       document.getElementById('question-text').textContent = 'Vui lòng chờ giây lát...';
       document.getElementById('choices-container').innerHTML = '';
@@ -1360,12 +1454,13 @@
         
         if (!currentQuiz.questions || !currentQuiz.questions.length) {
           alert('Bài này chưa có dữ liệu câu hỏi trắc nghiệm hoặc đang được cập nhật.');
-          switchView('lessons');
+          exitQuiz();
           return;
         }
 
         document.getElementById('quiz-title').textContent = currentQuiz.title;
         document.getElementById('quiz-total-num').textContent = currentQuiz.totalQuestions;
+        document.title = `${currentQuiz.title} - Moon TOEIC 550+ Pro`;
 
         currentQuestionIdx = 0;
         userPendingSelections = {};
@@ -1376,7 +1471,7 @@
         renderCurrentQuestion();
       } catch (e) {
         alert('Lỗi tải bài trắc nghiệm: ' + e.message);
-        switchView('lessons');
+        exitQuiz();
       }
     }
 
@@ -1396,7 +1491,10 @@
       const audioEl = document.getElementById('quiz-global-audio');
       if (audioEl) audioEl.pause();
       quizAudioCurrentUrl = '';
-      switchView('lessons');
+      const curGroup = groups.find(g => g.id === currentGroupId);
+      const slug = getGroupSlug(curGroup);
+      history.pushState(null, '', `/${slug}`);
+      switchView('lessons', false);
     }
 
     function formatAudioTime(secs) {
@@ -1562,6 +1660,7 @@
         el.textContent = `${len} chữ cái: ` + bp.split('').map((c, i) => (i === 0 || i === len - 1 || c === ' ') ? c : '_').join(' ');
       } else {
         el.textContent = `${len} chữ cái: ` + bp.split('').map((c, i) => (i % 2 === 0 || c === ' ') ? c : '_').join(' ');
+      }
     }
 
     function isPlaceholder(s) {

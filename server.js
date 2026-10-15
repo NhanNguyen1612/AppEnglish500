@@ -933,6 +933,17 @@ app.get('/api/tts', (req, res) => {
   });
 });
 
+// 12. SPA Fallback routing for distinct lesson/quiz/tab pages (Express 5 compatible)
+app.use((req, res, next) => {
+  if (req.method !== 'GET' || req.path.startsWith('/api/') || req.path.includes('.')) {
+    return next();
+  }
+  const indexPath = fs.existsSync(path.join(__dirname, 'public', 'index.html'))
+    ? path.join(__dirname, 'public', 'index.html')
+    : path.join(__dirname, 'index.html');
+  res.sendFile(indexPath);
+});
+
 app.listen(PORT, () => {
   console.log(`=======================================================`);
   console.log(`🚀 TOEIC Moon.vn English Study App Pro is running!`);

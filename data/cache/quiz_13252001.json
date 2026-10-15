@@ -1,0 +1,69 @@
+{
+  "lessonId": "13252001",
+  "title": "[LIS] Checkup 2 - Bẫy âm thanh tương tự (Similar sounds) - Answer Key",
+  "totalQuestions": 2,
+  "audioUrl": "https://media.moon.vn/audio/englishtitle?id=47292",
+  "questions": [
+    {
+      "order": 1,
+      "questionId": 16785652,
+      "type": "photo-listen",
+      "questionText": "<p><img src=\"https://asset.moon.vn/img/chat/picture/2d81673e-48b1-4cd0-931d-6fff8fe75764.jpg\" data-filename=\"\" style=\"max-width: 600px; height: auto;\"><br></p>",
+      "passage": "",
+      "passageTitle": "Nghe lần 1 và chọn đáp án miêu tả đúng nhất bức tranh. Sau đó, nghe lần 2 và điền từ vào chỗ trống và gạch chân vào những từ có phát âm tương tự ở các đáp án. (File 02)",
+      "image": "https://asset.moon.vn/img/chat/picture/2d81673e-48b1-4cd0-931d-6fff8fe75764.jpg",
+      "a": "The bride and groom are walking on the stress.",
+      "b": "The man is sweeping with a broom.",
+      "c": "Flowers are in full bloom.",
+      "d": "The man is cleaning his room.",
+      "photoOptions": {
+        "A": {
+          "text": "The bride and groom are walking on the stress.",
+          "vi": "Cô dâu và chú rể đang đi dạo trên phố."
+        },
+        "B": {
+          "text": "The man is sweeping with a broom.",
+          "vi": "Người đàn ông đang quét nhà bằng chổi."
+        },
+        "C": {
+          "text": "Flowers are in full bloom.",
+          "vi": "Hoa đang nở rộ."
+        },
+        "D": {
+          "text": "The man is cleaning his room.",
+          "vi": "Người đàn ông đang dọn dẹp phòng của mình."
+        }
+      },
+      "blankPart": "",
+      "fullSentence": "",
+      "vietnamese": "",
+      "key": "B",
+      "explanation": "(A) The <b>bride and <u>groom</u></b> are walking on the stress.<br>(B) The man is <b>sweeping with a <u>broom</u></b>.<br>(C) Flowers are <b>in full <u>bloom</u></b>.<br>(D) The man is <b>cleaning his <u>room</u></b>.<br><br><i>Tạm dịch:<br>(A) <b>Cô dâu và <u>chú rể</u></b> đang đi dạo trên phố.<br>(B) Người đàn ông đang <b>quét nhà bằng <u>chổi</u></b>.<br>(C) Hoa đang <b><u>nở rộ</u></b>.<br>(D) Người đàn ông đang <b>dọn dẹp <u>phòng</u> của mình</b>.\n</i>",
+      "audioUrl": "https://media.moon.vn/audio/englishtitle?id=47292",
+      "topic": "Listening Part 1",
+      "vocabList": []
+    },
+    {
+      "order": 2,
+      "questionId": 16785669,
+      "type": "multiple-choice",
+      "questionText": "Không thể tải câu hỏi.",
+      "passage": "",
+      "passageTitle": "",
+      "image": "",
+      "a": "A",
+      "b": "B",
+      "c": "C",
+      "d": "D",
+      "photoOptions": null,
+      "blankPart": "",
+      "fullSentence": "",
+      "vietnamese": "",
+      "key": "C",
+      "explanation": "",
+      "audioUrl": "",
+      "topic": "Listening",
+      "vocabList": []
+    }
+  ]
+}
