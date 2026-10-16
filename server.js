@@ -476,6 +476,19 @@ async function getLessonVocabulary(lessonId) {
   return result;
 }
 
+const cleanStr = s => (s || '').replace(/<[^>]+>/g, '').replace(/&nbsp;/g, ' ').replace(/\s+/g, ' ').trim();
+
+const isPlaceholder = (s) => {
+  if (!s) return true;
+  const t = s.replace(/<[^>]+>/g, '').replace(/&nbsp;/g, ' ').trim();
+  if (!t || /^[A-D]$/i.test(t) || /^\([A-D]\)$/i.test(t)) return true;
+  if (/^[\s_.\-–—()]+$/.test(t)) return true;
+  if (/^([A-D]\s*[\.\:\)]\s*)?_{3,}/i.test(t)) return true;
+  if (/^(The\s+man|The\s+woman|A\s+man|A\s+woman|They|He|She|People|Some\s+people|There\s+is|There\s+are)\s+(is|are)?\s*_{3,}/i.test(t)) return true;
+  if (/_{3,}|-{4,}/.test(t) && t.length < 60) return true;
+  return false;
+};
+
 async function getLessonQuizData(rawLessonId) {
   const lessonId = resolveLessonId(rawLessonId);
   const quizCacheFile = path.join(CACHE_DIR, `quiz_${lessonId}.json`);
@@ -698,10 +711,10 @@ async function getLessonQuizData(rawLessonId) {
       passage: passage.trim(),
       passageTitle: passageTitle.trim(),
       image,
-      a: cleanA || (photoOptions?.A?.text) || 'A',
-      b: cleanB || (photoOptions?.B?.text) || 'B',
-      c: cleanC || (photoOptions?.C?.text) || 'C',
-      d: cleanD || (photoOptions?.D?.text) || 'D',
+      a: (photoOptions?.A?.text) || (!isPlaceholder(cleanA) ? cleanA : 'A'),
+      b: (photoOptions?.B?.text) || (!isPlaceholder(cleanB) ? cleanB : 'B'),
+      c: (photoOptions?.C?.text) || (!isPlaceholder(cleanC) ? cleanC : 'C'),
+      d: (photoOptions?.D?.text) || (!isPlaceholder(cleanD) ? cleanD : 'D'),
       photoOptions,
       blankPart,
       fullSentence,
@@ -757,39 +770,73 @@ app.get('/api/quiz/:lessonId', async (req, res) => {
   }
 });
 
-// 5. Mock Exam Generator (20 Random Questions)
+// 5. Mock Exam Generator (20 Valid Multiple-Choice Questions)
 app.get('/api/mock-test', (req, res) => {
   const allQuestions = [];
-  if (fs.existsSync(QUESTIONS_CACHE_DIR)) {
+
+  // 1. Prioritize processed quiz cache files (guaranteed real options, clean text, valid explanations)
+  if (fs.existsSync(CACHE_DIR)) {
+    const quizFiles = fs.readdirSync(CACHE_DIR).filter(f => f.startsWith('quiz_') && f.endsWith('.json'));
+    quizFiles.forEach(qf => {
+      try {
+        const qData = JSON.parse(fs.readFileSync(path.join(CACHE_DIR, qf), 'utf8'));
+        (qData.questions || []).forEach(q => {
+          const cleanText = (q.questionText || '').replace(/<[^>]*>/g, '').trim();
+          const isDashOnly = /^[-_\s\.]+$/.test(cleanText);
+          const hasRealOptions = q.a && q.b && !isPlaceholder(q.a) && !isPlaceholder(q.b) && q.a !== q.b;
+          if (!isDashOnly && hasRealOptions && q.key && ['A', 'B', 'C', 'D'].includes(q.key.toUpperCase())) {
+            allQuestions.push({
+              ...q,
+              type: 'multiple-choice'
+            });
+          }
+        });
+      } catch (e) {}
+    });
+  }
+
+  // 2. Fallback to raw questions cache with strict filtering against blank/placeholder questions
+  if (allQuestions.length < 40 && fs.existsSync(QUESTIONS_CACHE_DIR)) {
     const files = fs.readdirSync(QUESTIONS_CACHE_DIR);
     files.forEach(f => {
       if (f.endsWith('.json')) {
         try {
           const q = JSON.parse(fs.readFileSync(path.join(QUESTIONS_CACHE_DIR, f), 'utf8'));
-          if (q.questionText && q.key && (q.a || q.b || q.c || q.d)) {
-            allQuestions.push({
-              questionId: q.questionId,
-              questionText: q.questionText,
-              passage: (q.conetentEnglish || q.contentEnglish || '').trim(),
-              passageTitle: (q.titleEnglish || '').trim(),
-              image: (q.advImage || '').trim(),
-              a: q.a,
-              b: q.b,
-              c: q.c,
-              d: q.d,
-              key: q.key.trim().toUpperCase(),
-              explanation: q.answer || '',
-              topic: detectTopic('', q.answer || ''),
-              vocabList: extractVocab(q.answer || '')
-            });
-          }
+          const cleanText = cleanStr(q.questionText || '');
+          if (/^[-_\s\.]+$/.test(cleanText) || cleanText.length < 8) return;
+          if (!q.key || !q.key.trim() || !['A', 'B', 'C', 'D'].includes(q.key.trim().toUpperCase())) return;
+          if (isPlaceholder(q.a) || isPlaceholder(q.b) || cleanStr(q.a) === cleanStr(q.b)) return;
+
+          allQuestions.push({
+            questionId: q.questionId,
+            type: 'multiple-choice',
+            questionText: cleanText,
+            passage: (q.conetentEnglish || q.contentEnglish || '').trim(),
+            passageTitle: (q.titleEnglish || '').trim(),
+            image: (q.advImage || '').trim(),
+            a: cleanStr(q.a),
+            b: cleanStr(q.b),
+            c: cleanStr(q.c),
+            d: cleanStr(q.d),
+            key: q.key.trim().toUpperCase(),
+            explanation: q.answer || '',
+            topic: detectTopic('', q.answer || ''),
+            vocabList: extractVocab(q.answer || '')
+          });
         } catch (e) {}
       }
     });
   }
 
-  // Shuffle and pick 20
-  const shuffled = allQuestions.sort(() => 0.5 - Math.random());
+  // Remove duplicates by questionId
+  const uniqueMap = new Map();
+  allQuestions.forEach(q => {
+    if (!uniqueMap.has(q.questionId)) uniqueMap.set(q.questionId, q);
+  });
+  const uniqueList = Array.from(uniqueMap.values());
+
+  // Shuffle and select 20
+  const shuffled = uniqueList.sort(() => 0.5 - Math.random());
   const selected = shuffled.slice(0, Math.min(20, shuffled.length)).map((q, idx) => ({
     ...q,
     order: idx + 1
