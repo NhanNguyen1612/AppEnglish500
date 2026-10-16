@@ -2431,7 +2431,8 @@
     "ipa": "/ˌɪnfəˈmeɪʃn desk/",
     "phonetic": "/ˌɪnfəˈmeɪʃn desk/",
     "pronunciation_us": "/ˌɪnfəˈmeɪʃn desk/",
-    "audioUrl": "https://asset.moon.vn/audio/mp3/2026/9/7f9586bf-6c42-4492-b4a7-d452e24fe759.mp3"
+    "audioUrl": "https://asset.moon.vn/audio/mp3/2026/9/7f9586bf-6c42-4492-b4a7-d452e24fe759.mp3",
+    "imageUrl": "https://asset.moon.vn/img/flipcard/medium/2026/9/bd116a5c-ce59-4e4c-9f04-8e6742bbadd5.jpg"
   },
   {
     "word": "office furniture",
@@ -2486,7 +2487,8 @@
     "ipa": "/ˈmembəʃɪp fiː/",
     "phonetic": "/ˈmembəʃɪp fiː/",
     "pronunciation_us": "/ˈmembəʃɪp fiː/",
-    "audioUrl": "https://asset.moon.vn/audio/mp3/2026/4/c0629e0f-3db6-49cc-8552-5f545a33f1a3.mp3"
+    "audioUrl": "https://asset.moon.vn/audio/mp3/2026/4/c0629e0f-3db6-49cc-8552-5f545a33f1a3.mp3",
+    "imageUrl": "https://asset.moon.vn/img/chat/large/2026/4/2acf85a5-dd0e-4415-b7c9-bdee3f4f80c0.jpg"
   },
   {
     "word": "construction site",
@@ -2519,7 +2521,8 @@
     "ipa": "/ˌæplɪˈkeɪʃn fɔːm/",
     "phonetic": "/ˌæplɪˈkeɪʃn fɔːm/",
     "pronunciation_us": "/ˌæplɪˈkeɪʃn fɔːm/",
-    "audioUrl": "https://asset.moon.vn/audio/mp3/2026/7/c22daf05-8377-4bde-9ca9-af6527ab2ffa.mp3"
+    "audioUrl": "https://asset.moon.vn/audio/mp3/2026/7/c22daf05-8377-4bde-9ca9-af6527ab2ffa.mp3",
+    "imageUrl": "https://asset.moon.vn/img/flipcard/medium/2026/7/75228318-2fa2-45da-9b54-973c357c97b5.jpg"
   },
   {
     "word": "communications atellite",
@@ -2659,10 +2662,10 @@
     "meaning": "tài khoản tiết kiệm",
     "example": "",
     "lesson": "[REA] Bảng N+N",
-    "ipa": "",
-    "phonetic": "",
-    "pronunciation_us": "",
-    "audioUrl": ""
+    "ipa": "/ˈseɪvɪŋz əkaʊnt/",
+    "phonetic": "/ˈseɪvɪŋz əkaʊnt/",
+    "pronunciation_us": "/ˈseɪvɪŋz əkaʊnt/",
+    "audioUrl": "https://asset.moon.vn/audio/mp3/2026/9/11c75c0a-1f59-4d20-bb07-52340bebc00b.mp3"
   },
   {
     "word": "attendance record",
@@ -2673,7 +2676,8 @@
     "ipa": "/əˈtendəns ˈrekɔːd/",
     "phonetic": "/əˈtendəns ˈrekɔːd/",
     "pronunciation_us": "/əˈtendəns ˈrekɔːd/",
-    "audioUrl": "https://asset.moon.vn/audio/mp3/2026/6/12c12c8e-f0e1-4490-9393-e498227992dc.mp3"
+    "audioUrl": "https://asset.moon.vn/audio/mp3/2026/6/12c12c8e-f0e1-4490-9393-e498227992dc.mp3",
+    "imageUrl": "https://asset.moon.vn/img/flipcard/medium/2026/7/51922174-bc47-4de4-b755-091fe4b79e6f.jpg"
   },
   {
     "word": "sales manager",
@@ -2784,5 +2788,556 @@
     "phonetic": "",
     "pronunciation_us": "",
     "audioUrl": ""
+  },
+  {
+    "word": "savory",
+    "pos": "adj",
+    "meaning": "đậm đà, ngon miệng, hấp dẫn",
+    "example": "What is the purpose of the advertisement?",
+    "lesson": "[REA] Checkup 2 - NHỮNG TỪ VỰNG PHỔ BIẾN",
+    "ipa": "",
+    "phonetic": "",
+    "pronunciation_us": "",
+    "audioUrl": ""
+  },
+  {
+    "word": "go-to",
+    "pos": "n",
+    "meaning": "người hoặc nơi mà ai đó tìm đến khi cần giúp đỡ, lời khuyên, thông tin",
+    "example": "What is the purpose of the advertisement?",
+    "lesson": "[REA] Checkup 2 - NHỮNG TỪ VỰNG PHỔ BIẾN",
+    "ipa": "",
+    "phonetic": "",
+    "pronunciation_us": "",
+    "audioUrl": ""
+  },
+  {
+    "word": "cozy",
+    "pos": "từ vựng",
+    "meaning": "ấm cúng",
+    "example": "",
+    "lesson": "[REA] NHỮNG TỪ VỰNG PHỔ BIẾN",
+    "ipa": "/ˈkəʊzi/",
+    "phonetic": "/ˈkəʊzi/",
+    "pronunciation_us": "/ˈkəʊzi/",
+    "audioUrl": "https://media.moon.vn/dictionary/audio/us?id=cozy"
+  },
+  {
+    "word": "loan",
+    "pos": "từ vựng",
+    "meaning": "khoản tiền vay",
+    "example": "",
+    "lesson": "[REA] NHỮNG TỪ VỰNG PHỔ BIẾN",
+    "ipa": "/ləʊn/",
+    "phonetic": "/ləʊn/",
+    "pronunciation_us": "/ləʊn/",
+    "audioUrl": "https://asset.moon.vn/audio/mp3/2026/9/74c3fccc-4433-4054-96b7-2fa63ee0b941.mp3"
+  },
+  {
+    "word": "separate living area",
+    "pos": "từ vựng",
+    "meaning": "khu sinh hoạt riêng biệt",
+    "example": "",
+    "lesson": "[REA] NHỮNG TỪ VỰNG PHỔ BIẾN",
+    "ipa": "/ˈseprət ˈlɪvɪŋ ˈeəriə/",
+    "phonetic": "/ˈseprət ˈlɪvɪŋ ˈeəriə/",
+    "pronunciation_us": "/ˈseprət ˈlɪvɪŋ ˈeəriə/",
+    "audioUrl": "https://asset.moon.vn/audio/mp3/2026/9/2797e188-0b3a-4d5b-a478-c230f38fa86d.mp3"
+  },
+  {
+    "word": "authorize",
+    "pos": "từ vựng",
+    "meaning": "cấp phép",
+    "example": "",
+    "lesson": "[REA] NHỮNG TỪ VỰNG PHỔ BIẾN",
+    "ipa": "/ˈɔːθəraɪz/",
+    "phonetic": "/ˈɔːθəraɪz/",
+    "pronunciation_us": "/ˈɔːθəraɪz/",
+    "audioUrl": "https://asset.moon.vn/audio/wav/2026/6/95ed3233-3a0c-4e92-8f4c-ab80c75ef836.wav"
+  },
+  {
+    "word": "online banking portal",
+    "pos": "từ vựng",
+    "meaning": "cổng ngân hàng trực tuyến",
+    "example": "",
+    "lesson": "[REA] NHỮNG TỪ VỰNG PHỔ BIẾN",
+    "ipa": "/ˌɒnˈlaɪn ˈbæŋkɪŋ ˈpɔːtl/",
+    "phonetic": "/ˌɒnˈlaɪn ˈbæŋkɪŋ ˈpɔːtl/",
+    "pronunciation_us": "/ˌɒnˈlaɪn ˈbæŋkɪŋ ˈpɔːtl/",
+    "audioUrl": "https://asset.moon.vn/audio/mp3/2026/9/9f620e48-9e38-4863-952b-7b4f00a469d6.mp3"
+  },
+  {
+    "word": "partner with",
+    "pos": "từ vựng",
+    "meaning": "hợp tác với",
+    "example": "",
+    "lesson": "[REA] NHỮNG TỪ VỰNG PHỔ BIẾN",
+    "ipa": "/ˈpɑːtnə(r) wɪð/",
+    "phonetic": "/ˈpɑːtnə(r) wɪð/",
+    "pronunciation_us": "/ˈpɑːtnə(r) wɪð/",
+    "audioUrl": "https://asset.moon.vn/audio/mp3/2026/9/2128da0b-9596-44a7-acd7-3df24dd969dd.mp3"
+  },
+  {
+    "word": "espresso machine",
+    "pos": "từ vựng",
+    "meaning": "máy pha cà phê Espresso",
+    "example": "",
+    "lesson": "[REA] NHỮNG TỪ VỰNG PHỔ BIẾN",
+    "ipa": "/eˈspresəʊ məˈʃiːn/",
+    "phonetic": "/eˈspresəʊ məˈʃiːn/",
+    "pronunciation_us": "/eˈspresəʊ məˈʃiːn/",
+    "audioUrl": "https://asset.moon.vn/audio/mp3/2026/9/78fdb14c-2da8-4e3a-823a-dfb760bfea4c.mp3"
+  },
+  {
+    "word": "mortgage",
+    "pos": "từ vựng",
+    "meaning": "khoản tiền thế chấp",
+    "example": "khoản tiền thế chấp",
+    "lesson": "[REA] NHỮNG TỪ VỰNG PHỔ BIẾN",
+    "ipa": "/ˈmɔːɡɪdʒ/",
+    "phonetic": "/ˈmɔːɡɪdʒ/",
+    "pronunciation_us": "/ˈmɔːɡɪdʒ/",
+    "audioUrl": "https://media.moon.vn/dictionary/audio/us?id=mortgage"
+  },
+  {
+    "word": "suit your needs",
+    "pos": "từ vựng",
+    "meaning": "phù hợp với nhu cầu của bạn",
+    "example": "",
+    "lesson": "[REA] NHỮNG TỪ VỰNG PHỔ BIẾN",
+    "ipa": "/suːt jɔː(r) niːdz/",
+    "phonetic": "/suːt jɔː(r) niːdz/",
+    "pronunciation_us": "/suːt jɔː(r) niːdz/",
+    "audioUrl": "https://asset.moon.vn/audio/mp3/2026/9/e54bdf30-f439-4170-aa7a-e53625034a53.mp3"
+  },
+  {
+    "word": "amenity",
+    "pos": "từ vựng",
+    "meaning": "tiện nghi",
+    "example": "",
+    "lesson": "[REA] NHỮNG TỪ VỰNG PHỔ BIẾN",
+    "ipa": "/əˈmiːnəti/",
+    "phonetic": "/əˈmiːnəti/",
+    "pronunciation_us": "/əˈmiːnəti/",
+    "audioUrl": "https://media.moon.vn/dictionary/audio/us?id=amenity"
+  },
+  {
+    "word": "annual percentage yield (APY)",
+    "pos": "từ vựng",
+    "meaning": "lợi nhuận phần trăm hàng năm",
+    "example": "",
+    "lesson": "[REA] NHỮNG TỪ VỰNG PHỔ BIẾN",
+    "ipa": "/ˈænjuəl pəˈsentɪdʒ jiːld/",
+    "phonetic": "/ˈænjuəl pəˈsentɪdʒ jiːld/",
+    "pronunciation_us": "/ˈænjuəl pəˈsentɪdʒ jiːld/",
+    "audioUrl": "https://asset.moon.vn/audio/mp3/2026/9/49096247-520a-4b71-b5a0-d65dcab3928a.mp3"
+  },
+  {
+    "word": "luxurious",
+    "pos": "từ vựng",
+    "meaning": "sang trọng",
+    "example": "",
+    "lesson": "[REA] NHỮNG TỪ VỰNG PHỔ BIẾN",
+    "ipa": "/lʌɡˈʒʊəriəs/",
+    "phonetic": "/lʌɡˈʒʊəriəs/",
+    "pronunciation_us": "/lʌɡˈʒʊəriəs/",
+    "audioUrl": "https://media.moon.vn/dictionary/audio/us?id=luxurious"
+  },
+  {
+    "word": "soaking tub",
+    "pos": "từ vựng",
+    "meaning": "bồn ngâm",
+    "example": "",
+    "lesson": "[REA] NHỮNG TỪ VỰNG PHỔ BIẾN",
+    "ipa": "/ˈsəʊkɪŋ tʌb/",
+    "phonetic": "/ˈsəʊkɪŋ tʌb/",
+    "pronunciation_us": "/ˈsəʊkɪŋ tʌb/",
+    "audioUrl": "https://asset.moon.vn/audio/mp3/2026/9/0a7bca9f-9f5b-4f0a-8619-ff6af54d95d5.mp3"
+  },
+  {
+    "word": "transaction",
+    "pos": "từ vựng",
+    "meaning": "giao dịch",
+    "example": "",
+    "lesson": "[REA] NHỮNG TỪ VỰNG PHỔ BIẾN",
+    "ipa": "/trænˈzækʃn/",
+    "phonetic": "/trænˈzækʃn/",
+    "pronunciation_us": "/trænˈzækʃn/",
+    "audioUrl": "https://media.moon.vn/dictionary/audio/us?id=transaction"
+  },
+  {
+    "word": "award-winning restaurant",
+    "pos": "từ vựng",
+    "meaning": "nhà hàng đạt giải thưởng",
+    "example": "",
+    "lesson": "[REA] NHỮNG TỪ VỰNG PHỔ BIẾN",
+    "ipa": "/əˈwɔːd wɪnɪŋ ˈrestrɒnt/",
+    "phonetic": "/əˈwɔːd wɪnɪŋ ˈrestrɒnt/",
+    "pronunciation_us": "/əˈwɔːd wɪnɪŋ ˈrestrɒnt/",
+    "audioUrl": "https://asset.moon.vn/audio/mp3/2026/9/09e9860a-9720-41cb-a3ca-6116df364adc.mp3"
+  },
+  {
+    "word": "ensure",
+    "pos": "từ vựng",
+    "meaning": "bảo đảm",
+    "example": "",
+    "lesson": "[REA] NHỮNG TỪ VỰNG PHỔ BIẾN",
+    "ipa": "/ɪnˈʃʊə(r)/",
+    "phonetic": "/ɪnˈʃʊə(r)/",
+    "pronunciation_us": "/ɪnˈʃʊə(r)/",
+    "audioUrl": "https://media.moon.vn/dictionary/audio/us?id=ensure"
+  },
+  {
+    "word": "authorized",
+    "pos": "từ vựng",
+    "meaning": "được uỷ quyền / cấp phép",
+    "example": "",
+    "lesson": "[REA] NHỮNG TỪ VỰNG PHỔ BIẾN",
+    "ipa": "/ˈɔːθəraɪzd/",
+    "phonetic": "/ˈɔːθəraɪzd/",
+    "pronunciation_us": "/ˈɔːθəraɪzd/",
+    "audioUrl": "https://media.moon.vn/dictionary/audio/us?id=authorized"
+  },
+  {
+    "word": "accommodation",
+    "pos": "từ vựng",
+    "meaning": "chỗ ở",
+    "example": "",
+    "lesson": "[REA] NHỮNG TỪ VỰNG PHỔ BIẾN",
+    "ipa": "/əˌkɒməˈdeɪʃn/",
+    "phonetic": "/əˌkɒməˈdeɪʃn/",
+    "pronunciation_us": "/əˌkɒməˈdeɪʃn/",
+    "audioUrl": "https://media.moon.vn/dictionary/audio/us?id=accommodation"
+  },
+  {
+    "word": "reach out",
+    "pos": "từ vựng",
+    "meaning": "liên hệ",
+    "example": "",
+    "lesson": "[REA] NHỮNG TỪ VỰNG PHỔ BIẾN",
+    "ipa": "/riːtʃ aʊt/",
+    "phonetic": "/riːtʃ aʊt/",
+    "pronunciation_us": "/riːtʃ aʊt/",
+    "audioUrl": "https://asset.moon.vn/audio/mp3/2026/9/299948e5-994e-4fa3-9d80-308855b021e2.mp3"
+  },
+  {
+    "word": "suite",
+    "pos": "từ vựng",
+    "meaning": "phòng thượng hạng",
+    "example": "",
+    "lesson": "[REA] NHỮNG TỪ VỰNG PHỔ BIẾN",
+    "ipa": "/swiːt/",
+    "phonetic": "/swiːt/",
+    "pronunciation_us": "/swiːt/",
+    "audioUrl": "https://media.moon.vn/dictionary/audio/us?id=suite"
+  },
+  {
+    "word": "discount",
+    "pos": "từ vựng",
+    "meaning": "giảm giá",
+    "example": "",
+    "lesson": "[REA] NHỮNG TỪ VỰNG PHỔ BIẾN",
+    "ipa": "/ˈdɪskaʊnt/",
+    "phonetic": "/ˈdɪskaʊnt/",
+    "pronunciation_us": "/ˈdɪskaʊnt/",
+    "audioUrl": "https://media.moon.vn/dictionary/audio/us?id=discount"
+  },
+  {
+    "word": "initiate",
+    "pos": "từ vựng",
+    "meaning": "bắt đầu / khởi xướng",
+    "example": "",
+    "lesson": "[REA] NHỮNG TỪ VỰNG PHỔ BIẾN",
+    "ipa": "/ɪˈnɪʃieɪt/",
+    "phonetic": "/ɪˈnɪʃieɪt/",
+    "pronunciation_us": "/ɪˈnɪʃieɪt/",
+    "audioUrl": "https://media.moon.vn/dictionary/audio/us?id=initiate"
+  },
+  {
+    "word": "offer",
+    "pos": "từ vựng",
+    "meaning": "cung cấp",
+    "example": "",
+    "lesson": "[REA] NHỮNG TỪ VỰNG PHỔ BIẾN",
+    "ipa": "/ˈɒfə(r)/",
+    "phonetic": "/ˈɒfə(r)/",
+    "pronunciation_us": "/ˈɒfə(r)/",
+    "audioUrl": "https://media.moon.vn/dictionary/audio/us?id=offer"
+  },
+  {
+    "word": "loan specialist",
+    "pos": "từ vựng",
+    "meaning": "chuyên viên tư vấn vay vốn",
+    "example": "",
+    "lesson": "[REA] NHỮNG TỪ VỰNG PHỔ BIẾN",
+    "ipa": "/ləʊn ˈspeʃəlɪst/",
+    "phonetic": "/ləʊn ˈspeʃəlɪst/",
+    "pronunciation_us": "/ləʊn ˈspeʃəlɪst/",
+    "audioUrl": "https://asset.moon.vn/audio/mp3/2026/9/a599452c-e420-4f75-9e3e-49718490069b.mp3"
+  },
+  {
+    "word": "withdrawal",
+    "pos": "từ vựng",
+    "meaning": "sự rút tiền",
+    "example": "",
+    "lesson": "[REA] NHỮNG TỪ VỰNG PHỔ BIẾN",
+    "ipa": "/wɪðˈdrɔːəl/",
+    "phonetic": "/wɪðˈdrɔːəl/",
+    "pronunciation_us": "/wɪðˈdrɔːəl/",
+    "audioUrl": "https://media.moon.vn/dictionary/audio/us?id=withdrawal"
+  },
+  {
+    "word": "interest rate",
+    "pos": "từ vựng",
+    "meaning": "lãi suất",
+    "example": "lãi suất",
+    "lesson": "[REA] NHỮNG TỪ VỰNG PHỔ BIẾN",
+    "ipa": "/ˈɪntrəst reɪt/",
+    "phonetic": "/ˈɪntrəst reɪt/",
+    "pronunciation_us": "/ˈɪntrəst reɪt/",
+    "audioUrl": "https://asset.moon.vn/audio/mp3/2026/6/fe5b06e8-442e-41c3-b530-23b316422eb6.mp3",
+    "imageUrl": "https://asset.moon.vn/img/chat/large/2025/11/ae8b8724-5939-47e0-b030-25650a7042a8.jpg"
+  },
+  {
+    "word": "cooperation",
+    "pos": "từ vựng",
+    "meaning": "sự hợp tác",
+    "example": "",
+    "lesson": "[REA] NHỮNG TỪ VỰNG PHỔ BIẾN",
+    "ipa": "/kəʊˌɒpəˈreɪʃn/",
+    "phonetic": "/kəʊˌɒpəˈreɪʃn/",
+    "pronunciation_us": "/kəʊˌɒpəˈreɪʃn/",
+    "audioUrl": "https://media.moon.vn/dictionary/audio/us?id=cooperation"
+  },
+  {
+    "word": "furnished",
+    "pos": "từ vựng",
+    "meaning": "có sẵn đồ đạc",
+    "example": "có sẵn đồ đạc",
+    "lesson": "[REA] NHỮNG TỪ VỰNG PHỔ BIẾN",
+    "ipa": "/ˈfɜːnɪʃt/",
+    "phonetic": "/ˈfɜːnɪʃt/",
+    "pronunciation_us": "/ˈfɜːnɪʃt/",
+    "audioUrl": "https://media.moon.vn/dictionary/audio/us?id=furnished"
+  },
+  {
+    "word": "reservation",
+    "pos": "từ vựng",
+    "meaning": "sự đặt phòng",
+    "example": "",
+    "lesson": "[REA] NHỮNG TỪ VỰNG PHỔ BIẾN",
+    "ipa": "/ˌrezəˈveɪʃn/",
+    "phonetic": "/ˌrezəˈveɪʃn/",
+    "pronunciation_us": "/ˌrezəˈveɪʃn/",
+    "audioUrl": "https://media.moon.vn/dictionary/audio/us?id=reservation"
+  },
+  {
+    "word": "complimentary breakfast buffet",
+    "pos": "từ vựng",
+    "meaning": "bữa sáng tự chọn miễn phí",
+    "example": "",
+    "lesson": "[REA] NHỮNG TỪ VỰNG PHỔ BIẾN",
+    "ipa": "/ˌkɒmplɪˈmentri ˈbrekfəst ˈbʌfeɪ/",
+    "phonetic": "/ˌkɒmplɪˈmentri ˈbrekfəst ˈbʌfeɪ/",
+    "pronunciation_us": "/ˌkɒmplɪˈmentri ˈbrekfəst ˈbʌfeɪ/",
+    "audioUrl": "https://asset.moon.vn/audio/mp3/2026/9/c5a270ac-720e-4cc2-a9f1-43118de465ba.mp3"
+  },
+  {
+    "word": "verify",
+    "pos": "từ vựng",
+    "meaning": "xác minh; kiểm chứng",
+    "example": "",
+    "lesson": "[REA] NHỮNG TỪ VỰNG PHỔ BIẾN",
+    "ipa": "/ˈverɪfaɪ/",
+    "phonetic": "/ˈverɪfaɪ/",
+    "pronunciation_us": "/ˈverɪfaɪ/",
+    "audioUrl": "https://media.moon.vn/dictionary/audio/us?id=verify"
+  },
+  {
+    "word": "king-size bed",
+    "pos": "từ vựng",
+    "meaning": "giường cỡ lớn",
+    "example": "",
+    "lesson": "[REA] NHỮNG TỪ VỰNG PHỔ BIẾN",
+    "ipa": "/ˈkɪŋ saɪz bed/",
+    "phonetic": "/ˈkɪŋ saɪz bed/",
+    "pronunciation_us": "/ˈkɪŋ saɪz bed/",
+    "audioUrl": "https://asset.moon.vn/audio/mp3/2026/9/8d9917be-f7db-4e34-a950-f6bbe4412336.mp3"
+  },
+  {
+    "word": "withdraw",
+    "pos": "từ vựng",
+    "meaning": "rút lại; thu hồi",
+    "example": "rút lại; thu hồi",
+    "lesson": "[REA] NHỮNG TỪ VỰNG PHỔ BIẾN",
+    "ipa": "/wɪðˈdrɔː/",
+    "phonetic": "/wɪðˈdrɔː/",
+    "pronunciation_us": "/wɪðˈdrɔː/",
+    "audioUrl": "https://media.moon.vn/dictionary/audio/us?id=withdraw"
+  },
+  {
+    "word": "security",
+    "pos": "từ vựng",
+    "meaning": "bảo mật",
+    "example": "",
+    "lesson": "[REA] NHỮNG TỪ VỰNG PHỔ BIẾN",
+    "ipa": "/sɪˈkjʊərəti/",
+    "phonetic": "/sɪˈkjʊərəti/",
+    "pronunciation_us": "/sɪˈkjʊərəti/",
+    "audioUrl": "https://media.moon.vn/dictionary/audio/us?id=security"
+  },
+  {
+    "word": "spa-inspired bathroom",
+    "pos": "từ vựng",
+    "meaning": "phòng tắm lấy cảm hứng từ spa",
+    "example": "",
+    "lesson": "[REA] NHỮNG TỪ VỰNG PHỔ BIẾN",
+    "ipa": "/spɑː ɪnˈspaɪəd ˈbɑːθruːm/",
+    "phonetic": "/spɑː ɪnˈspaɪəd ˈbɑːθruːm/",
+    "pronunciation_us": "/spɑː ɪnˈspaɪəd ˈbɑːθruːm/",
+    "audioUrl": "https://asset.moon.vn/audio/mp3/2026/9/8ed3d2e1-25a4-4727-8ae0-501aff738854.mp3"
+  },
+  {
+    "word": "concierge service",
+    "pos": "từ vựng",
+    "meaning": "dịch vụ hỗ trợ khách hàng tại sảnh",
+    "example": "",
+    "lesson": "[REA] NHỮNG TỪ VỰNG PHỔ BIẾN",
+    "ipa": "/ˈkɒnsieəʒ ˈsɜːvɪs/",
+    "phonetic": "/ˈkɒnsieəʒ ˈsɜːvɪs/",
+    "pronunciation_us": "/ˈkɒnsieəʒ ˈsɜːvɪs/",
+    "audioUrl": "https://asset.moon.vn/audio/mp3/2026/9/6cab455d-1858-4743-94dc-cd6de5cccfb0.mp3"
+  },
+  {
+    "word": "assembly line",
+    "pos": "từ vựng",
+    "meaning": "dây chuyền lắp ráp",
+    "example": "There are fifty workers on the assembly line.",
+    "lesson": "[REA] Bảng N+N",
+    "ipa": "",
+    "phonetic": "",
+    "pronunciation_us": "",
+    "imageUrl": "",
+    "audioUrl": "https://asset.moon.vn/audio/mp3/2026/5/27ee39e0-659a-4780-8761-7318368384c5.mp3"
+  },
+  {
+    "word": "baggage allowance",
+    "pos": "từ vựng",
+    "meaning": "hành lý miễn cước",
+    "example": "",
+    "lesson": "[REA] Bảng N+N",
+    "ipa": "",
+    "phonetic": "",
+    "pronunciation_us": "",
+    "imageUrl": "",
+    "audioUrl": ""
+  },
+  {
+    "word": "company policy",
+    "pos": "từ vựng",
+    "meaning": "chính sách công ty",
+    "example": "",
+    "lesson": "[REA] Bảng N+N",
+    "ipa": "",
+    "phonetic": "",
+    "pronunciation_us": "",
+    "imageUrl": "",
+    "audioUrl": ""
+  },
+  {
+    "word": "dress-code regulation",
+    "pos": "từ vựng",
+    "meaning": "quy định về trang phục",
+    "example": "",
+    "lesson": "[REA] Bảng N+N",
+    "ipa": "",
+    "phonetic": "",
+    "pronunciation_us": "",
+    "imageUrl": "",
+    "audioUrl": ""
+  },
+  {
+    "word": "performance appraisal",
+    "pos": "từ vựng",
+    "meaning": "đánh giá hiệu suất",
+    "example": "",
+    "lesson": "[REA] Bảng N+N",
+    "ipa": "",
+    "phonetic": "",
+    "pronunciation_us": "",
+    "imageUrl": "",
+    "audioUrl": ""
+  },
+  {
+    "word": "safety precautions",
+    "pos": "từ vựng",
+    "meaning": "biện pháp phòng ngừa an toàn",
+    "example": "",
+    "lesson": "[REA] Bảng N+N",
+    "ipa": "",
+    "phonetic": "",
+    "pronunciation_us": "",
+    "imageUrl": "",
+    "audioUrl": ""
+  },
+  {
+    "word": "application fee",
+    "pos": "từ vựng",
+    "meaning": "phí đăng ký",
+    "example": "",
+    "lesson": "[REA] Bảng N+N",
+    "ipa": "",
+    "phonetic": "",
+    "pronunciation_us": "",
+    "imageUrl": "",
+    "audioUrl": ""
+  },
+  {
+    "word": "economics professor",
+    "pos": "từ vựng",
+    "meaning": "giáo sư kinh tế",
+    "example": "",
+    "lesson": "[REA] Bảng N+N",
+    "ipa": "",
+    "phonetic": "",
+    "pronunciation_us": "",
+    "imageUrl": "",
+    "audioUrl": ""
+  },
+  {
+    "word": "verification",
+    "pos": "danh từ",
+    "meaning": "sự xác minh",
+    "example": "The process of&nbsp;verification&nbsp;ensures\nthat all information is accurate and reliable.",
+    "lesson": "[REA] NHỮNG TỪ VỰNG PHỔ BIẾN",
+    "ipa": "/ˌverɪfɪˈkeɪʃn/",
+    "phonetic": "/ˌverɪfɪˈkeɪʃn/",
+    "pronunciation_us": "/ˌverɪfɪˈkeɪʃn/",
+    "imageUrl": "https://asset.moon.vn/img/chat/large/2026/3/def7d012-fe5c-4edf-a17e-426d3ff7d59c.jpg",
+    "audioUrl": "https://media.moon.vn/dictionary/audio/us?id=verification"
+  },
+  {
+    "word": "plush bathrobes and slippers",
+    "pos": "n phrase",
+    "meaning": "áo choàng tắm và dép sang trọng",
+    "example": "",
+    "lesson": "[REA] NHỮNG TỪ VỰNG PHỔ BIẾN",
+    "ipa": "/plʌʃ ˈbɑːθrəʊbz ænd ˈslɪpərz/",
+    "phonetic": "/plʌʃ ˈbɑːθrəʊbz ænd ˈslɪpərz/",
+    "pronunciation_us": "/plʌʃ ˈbɑːθrəʊbz ænd ˈslɪpərz/",
+    "imageUrl": "",
+    "audioUrl": "https://asset.moon.vn/audio/mp3/2026/9/1f5cec70-e55b-4e2f-a86e-f772370d9510.mp3"
+  },
+  {
+    "word": "promo code",
+    "pos": "n phrase",
+    "meaning": "mã khuyến mại",
+    "example": "",
+    "lesson": "[REA] NHỮNG TỪ VỰNG PHỔ BIẾN",
+    "ipa": "/ˈprəʊməʊ kəʊd/",
+    "phonetic": "/ˈprəʊməʊ kəʊd/",
+    "pronunciation_us": "/ˈprəʊməʊ kəʊd/",
+    "imageUrl": "",
+    "audioUrl": "https://asset.moon.vn/audio/mp3/2026/9/db42f7f3-ae27-4818-b8be-f454980c616b.mp3"
   }
 ]

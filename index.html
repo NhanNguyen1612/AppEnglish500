@@ -458,32 +458,47 @@
           </div>
 
           <!-- Flip Card -->
-          <div class="perspective w-full h-80 md:h-96 cursor-pointer" onclick="flipFlashcard()">
+          <div class="perspective w-full h-[360px] md:h-[400px] cursor-pointer" onclick="flipFlashcard()">
             <div id="flashcard-inner" class="flip-card-inner relative w-full h-full rounded-3xl shadow-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 flex flex-col">
               
               <!-- Front -->
-              <div class="flip-card-front absolute inset-0 p-8 flex flex-col items-center justify-between text-center">
+              <div class="flip-card-front absolute inset-0 p-6 md:p-8 flex flex-col items-center justify-between text-center overflow-hidden">
                 <div class="w-full flex items-center justify-between">
                   <span id="fc-lesson-tag" class="text-[11px] font-medium px-2.5 py-0.5 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-500 truncate max-w-xs">Lesson 1</span>
-                  <span id="fc-pos" class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300">NOUN</span>
+                  <div class="flex items-center space-x-2">
+                    <span id="fc-pos" class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300">NOUN</span>
+                    <button onclick="event.stopPropagation(); toggleMasterCurrentCard()" class="p-1.5 rounded-lg border border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-400 hover:text-amber-500 transition" title="Đánh dấu thẻ">
+                      <i data-lucide="bookmark" class="w-4 h-4"></i>
+                    </button>
+                  </div>
                 </div>
 
-                <div class="my-auto">
-                  <h3 id="fc-word" class="text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white mb-1.5 tracking-tight">summary</h3>
-                  <div id="fc-phonetic" class="text-sm md:text-base font-mono font-semibold text-blue-600 dark:text-blue-400 mb-3 tracking-wide">/ˈsʌm.ər.i/</div>
-                  <p class="text-xs text-slate-400 mb-4">💡 Nhấn vào thẻ để lật xem nghĩa & câu ví dụ</p>
+                <div id="fc-front-main" class="my-auto w-full flex flex-col md:flex-row items-center justify-center gap-6 px-2">
+                  <div id="fc-front-text-col" class="flex flex-col items-center justify-center text-center max-w-md">
+                    <div class="flex items-center justify-center space-x-3 mb-2">
+                      <button onclick="event.stopPropagation(); playFlashcardAudio()" class="w-11 h-11 rounded-full bg-gradient-to-tr from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white flex items-center justify-center shadow-md transition transform hover:scale-105 flex-shrink-0" title="Phát âm từ vựng">
+                        <i data-lucide="volume-2" class="w-5 h-5"></i>
+                      </button>
+                      <h3 id="fc-word" class="text-3xl md:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight">interest rate</h3>
+                    </div>
+                    <div id="fc-phonetic" class="text-sm md:text-base font-mono font-semibold text-blue-600 dark:text-blue-400 mb-2 tracking-wide">/ˈɪntrəst reɪt/</div>
+                    <p class="text-xs text-slate-400 mb-2">💡 Nhấn vào thẻ hoặc phím Space để lật xem nghĩa & câu ví dụ</p>
+                  </div>
                   
-                  <button onclick="event.stopPropagation(); speakWord(currentFlashcard.word)" class="inline-flex items-center space-x-2 px-4 py-2 rounded-xl bg-blue-50 dark:bg-slate-800 hover:bg-blue-100 text-blue-600 dark:text-blue-400 font-semibold text-xs transition shadow-sm">
-                    <i data-lucide="volume-2" class="w-4 h-4"></i>
-                    <span>Phát âm từ</span>
-                  </button>
+                  <!-- Illustration Image (Moon.vn style) -->
+                  <div id="fc-image-box" class="hidden flex-shrink-0 max-w-[220px] md:max-w-[280px]">
+                    <img id="fc-image" src="" alt="Illustration" class="w-full h-auto max-h-44 rounded-2xl shadow-md border border-slate-200 dark:border-slate-700 object-cover" />
+                  </div>
                 </div>
 
-                <div class="text-xs text-slate-400">Click để lật sang mặt sau</div>
+                <div class="text-xs text-slate-400 flex items-center space-x-1">
+                  <i data-lucide="rotate-cw" class="w-3.5 h-3.5"></i>
+                  <span>Click thẻ để lật sang mặt sau</span>
+                </div>
               </div>
 
               <!-- Back -->
-              <div class="flip-card-back absolute inset-0 p-8 flex flex-col items-center justify-between text-center bg-gradient-to-b from-blue-50/40 to-indigo-50/40 dark:from-slate-900 dark:to-slate-950 rounded-3xl">
+              <div class="flip-card-back absolute inset-0 p-6 md:p-8 flex flex-col items-center justify-between text-center bg-gradient-to-b from-blue-50/40 to-indigo-50/40 dark:from-slate-900 dark:to-slate-950 rounded-3xl overflow-y-auto">
                 <div class="w-full flex items-center justify-between">
                   <span class="text-xs font-bold text-blue-600 dark:text-blue-400 uppercase tracking-widest">ĐỊNH NGHĨA & CÂU VÍ DỤ</span>
                   <button id="fc-mastered-btn" onclick="event.stopPropagation(); toggleMasterCurrentCard()" class="text-xs font-semibold px-2.5 py-1 rounded-lg border transition flex items-center space-x-1">
@@ -492,25 +507,30 @@
                   </button>
                 </div>
 
-                <div class="my-auto w-full">
+                <div class="my-auto w-full max-w-lg">
                   <div class="flex items-center justify-center space-x-2.5 mb-2">
-                    <span id="fc-back-word" class="text-xl font-bold text-slate-800 dark:text-slate-100">summary</span>
+                    <button onclick="event.stopPropagation(); playFlashcardAudio()" class="p-1 rounded-lg text-orange-500 hover:text-orange-600">
+                      <i data-lucide="volume-2" class="w-4 h-4"></i>
+                    </button>
+                    <span id="fc-back-word" class="text-2xl font-bold text-slate-800 dark:text-slate-100">summary</span>
                     <span id="fc-back-phonetic" class="text-xs font-mono font-semibold text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-slate-800 px-2 py-0.5 rounded-md">/ˈsʌm.ər.i/</span>
                   </div>
-                  <h4 id="fc-meaning" class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4">bản tóm tắt, bản tổng kết</h4>
-                  <div class="bg-white/90 dark:bg-slate-800/90 p-4 rounded-2xl border border-slate-200 dark:border-slate-700 text-left w-full text-sm text-slate-700 dark:text-slate-200 shadow-sm">
-                    <div class="flex items-center justify-between mb-1.5">
-                      <span class="font-bold text-xs uppercase text-slate-400">Ví dụ trong đề:</span>
+                  <h4 id="fc-meaning" class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-3">bản tóm tắt, bản tổng kết</h4>
+                  
+                  <div class="bg-white/90 dark:bg-slate-800/90 p-4 rounded-2xl border border-slate-200 dark:border-slate-700 text-left w-full text-sm text-slate-700 dark:text-slate-200 shadow-sm mb-2">
+                    <div class="flex items-center justify-between mb-1">
+                      <span class="font-bold text-xs uppercase text-slate-400">Ví dụ câu:</span>
                       <button onclick="event.stopPropagation(); speakSentence(currentFlashcard.example)" class="text-xs text-blue-600 hover:text-blue-700 font-medium flex items-center space-x-1">
                         <i data-lucide="volume-2" class="w-3.5 h-3.5"></i>
                         <span>Đọc câu</span>
                       </button>
                     </div>
                     <p id="fc-example" class="italic leading-relaxed font-sans font-medium text-slate-700 dark:text-slate-300">"Included is a summary of the latest feedback..."</p>
+                    <p id="fc-example-translation" class="text-xs text-slate-500 dark:text-slate-400 mt-1 font-medium italic"></p>
                   </div>
                 </div>
 
-                <div class="w-full flex items-center justify-center space-x-2" onclick="event.stopPropagation()">
+                <div class="w-full flex items-center justify-center space-x-2 pt-2" onclick="event.stopPropagation()">
                   <button onclick="rateFlashcard('again')" class="px-3.5 py-2 rounded-xl bg-red-100 hover:bg-red-200 text-red-700 text-xs font-bold transition">
                     <span>🔴 Chưa nhớ</span>
                   </button>
@@ -526,19 +546,36 @@
             </div>
           </div>
 
-          <!-- Controls -->
-          <div class="flex items-center justify-between w-full mt-5 px-4">
-            <button onclick="prevFlashcard()" class="p-3 rounded-2xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 transition shadow-sm flex items-center space-x-1 text-sm font-semibold">
-              <i data-lucide="chevron-left" class="w-5 h-5"></i>
-              <span>Từ trước</span>
-            </button>
-            <div class="text-sm font-semibold text-slate-600 dark:text-slate-400">
-              <span id="fc-current-idx">1</span> / <span id="fc-total-count">0</span>
+          <!-- Controls Bar (Matching Moon.vn layout) -->
+          <div class="flex items-center justify-between w-full mt-5 px-2">
+            <!-- Left helper tools -->
+            <div class="flex items-center space-x-2">
+              <button onclick="toggleAudioMute()" id="btn-audio-mute" class="p-2.5 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-50 shadow-sm transition" title="Bật/Tắt âm thanh tự động">
+                <i data-lucide="volume-2" class="w-4 h-4"></i>
+              </button>
+              <button onclick="toggleFlashcardAutoplay()" id="btn-fc-autoplay" class="p-2.5 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-50 shadow-sm transition" title="Tự động phát & chuyển thẻ">
+                <i data-lucide="play" class="w-4 h-4"></i>
+              </button>
+              <button onclick="shuffleFlashcards()" class="p-2.5 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-50 shadow-sm transition" title="Trộn ngẫu nhiên thứ tự từ">
+                <i data-lucide="shuffle" class="w-4 h-4"></i>
+              </button>
+              <button onclick="flipFlashcard()" class="p-2.5 rounded-xl bg-blue-50 dark:bg-blue-950/60 border border-blue-200 dark:border-blue-900 text-blue-600 dark:text-blue-300 hover:bg-blue-100 shadow-sm transition" title="Lật mặt sau">
+                <i data-lucide="flip-horizontal" class="w-4 h-4"></i>
+              </button>
             </div>
-            <button onclick="nextFlashcard()" class="p-3 rounded-2xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 transition shadow-sm flex items-center space-x-1 text-sm font-semibold">
-              <span>Từ tiếp</span>
-              <i data-lucide="chevron-right" class="w-5 h-5"></i>
-            </button>
+
+            <!-- Right navigation -->
+            <div class="flex items-center space-x-3">
+              <button onclick="prevFlashcard()" class="w-10 h-10 rounded-full bg-blue-600 hover:bg-blue-700 text-white shadow transition flex items-center justify-center font-bold text-sm">
+                <i data-lucide="chevron-left" class="w-5 h-5"></i>
+              </button>
+              <div class="text-sm font-bold text-slate-700 dark:text-slate-300 px-1">
+                <span id="fc-current-idx">1</span> / <span id="fc-total-count">0</span>
+              </div>
+              <button onclick="nextFlashcard()" class="w-10 h-10 rounded-full bg-blue-600 hover:bg-blue-700 text-white shadow transition flex items-center justify-center font-bold text-sm">
+                <i data-lucide="chevron-right" class="w-5 h-5"></i>
+              </button>
+            </div>
           </div>
         </div>
 
@@ -3525,6 +3562,59 @@
       renderFlashcard();
     }
 
+    let isAudioMuted = false;
+    let isAutoplayActive = false;
+    let autoplayTimer = null;
+
+    function toggleAudioMute() {
+      isAudioMuted = !isAudioMuted;
+      const btn = document.getElementById('btn-audio-mute');
+      if (btn) {
+        btn.innerHTML = `<i data-lucide="${isAudioMuted ? 'volume-x' : 'volume-2'}" class="w-4 h-4"></i>`;
+        btn.className = `p-2.5 rounded-xl border transition shadow-sm ${isAudioMuted ? 'bg-rose-50 text-rose-600 border-rose-200 dark:bg-rose-950 dark:border-rose-900' : 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300'}`;
+        lucide.createIcons();
+      }
+    }
+
+    function toggleFlashcardAutoplay() {
+      isAutoplayActive = !isAutoplayActive;
+      const btn = document.getElementById('btn-fc-autoplay');
+      if (btn) {
+        btn.innerHTML = `<i data-lucide="${isAutoplayActive ? 'pause' : 'play'}" class="w-4 h-4"></i>`;
+        btn.className = `p-2.5 rounded-xl border transition shadow-sm ${isAutoplayActive ? 'bg-emerald-50 text-emerald-600 border-emerald-200 dark:bg-emerald-950 dark:border-emerald-900 font-bold' : 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300'}`;
+        lucide.createIcons();
+      }
+      if (isAutoplayActive) {
+        scheduleNextAutoplay();
+      } else if (autoplayTimer) {
+        clearTimeout(autoplayTimer);
+        autoplayTimer = null;
+      }
+    }
+
+    function scheduleNextAutoplay() {
+      if (!isAutoplayActive) return;
+      if (autoplayTimer) clearTimeout(autoplayTimer);
+      autoplayTimer = setTimeout(() => {
+        if (!isAutoplayActive) return;
+        if (currentFlashcardIdx < activeFlashcards.length - 1) {
+          nextFlashcard();
+        } else {
+          toggleFlashcardAutoplay();
+        }
+      }, 4000);
+    }
+
+    function shuffleFlashcards() {
+      if (!activeFlashcards || activeFlashcards.length < 2) return;
+      for (let i = activeFlashcards.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [activeFlashcards[i], activeFlashcards[j]] = [activeFlashcards[j], activeFlashcards[i]];
+      }
+      currentFlashcardIdx = 0;
+      renderFlashcard();
+    }
+
     function renderFlashcard() {
       if (!activeFlashcards.length) {
         document.getElementById('fc-word').textContent = 'Không tìm thấy từ';
@@ -3536,7 +3626,11 @@
         if (bwEl) bwEl.textContent = '';
         document.getElementById('fc-meaning').textContent = 'Thử đổi chủ đề từ vựng hoặc bộ lọc khác';
         document.getElementById('fc-example').textContent = '';
+        const exTr = document.getElementById('fc-example-translation');
+        if (exTr) exTr.textContent = '';
         document.getElementById('fc-pos').textContent = 'TRỐNG';
+        const imgBox = document.getElementById('fc-image-box');
+        if (imgBox) imgBox.classList.add('hidden');
         return;
       }
 
@@ -3560,10 +3654,25 @@
         backPhoneticEl.style.display = ipa ? 'inline-block' : 'none';
       }
 
+      // Illustration image (Moon.vn style)
+      const imgBox = document.getElementById('fc-image-box');
+      const imgEl = document.getElementById('fc-image');
+      if (currentFlashcard.imageUrl && imgBox && imgEl) {
+        imgEl.src = currentFlashcard.imageUrl;
+        imgBox.classList.remove('hidden');
+      } else if (imgBox) {
+        imgBox.classList.add('hidden');
+      }
+
       document.getElementById('fc-pos').textContent = (currentFlashcard.pos || 'VOCAB').toUpperCase();
       document.getElementById('fc-lesson-tag').textContent = currentFlashcard.lesson || 'TOEIC 550+';
       document.getElementById('fc-meaning').textContent = currentFlashcard.meaning;
       document.getElementById('fc-example').textContent = currentFlashcard.example ? `"${currentFlashcard.example}"` : 'Đang cập nhật ví dụ...';
+      const exTr = document.getElementById('fc-example-translation');
+      if (exTr) {
+        exTr.textContent = currentFlashcard.exampleTranslation ? `Dịch: ${currentFlashcard.exampleTranslation}` : '';
+        exTr.style.display = currentFlashcard.exampleTranslation ? 'block' : 'none';
+      }
 
       const mBtn = document.getElementById('fc-mastered-btn');
       const mText = document.getElementById('fc-mastered-text');
@@ -3576,6 +3685,13 @@
       }
 
       lucide.createIcons();
+
+      if (!isAudioMuted) {
+        playFlashcardAudio(currentFlashcard);
+      }
+      if (isAutoplayActive) {
+        scheduleNextAutoplay();
+      }
     }
 
     function renderVocabTable() {
@@ -3605,18 +3721,28 @@
                 </button>
               </div>
 
-              <div class="flex items-start justify-between gap-2 mb-1.5">
-                <div>
-                  <h4 class="text-lg font-bold text-slate-900 dark:text-white leading-tight">${f.word}</h4>
-                  ${ipa ? `<div class="text-xs font-mono font-semibold text-rose-600 dark:text-rose-400 mt-0.5">${ipa}</div>` : ''}
+              <div class="flex items-start justify-between gap-3 mb-2">
+                <div class="flex items-start space-x-3 min-w-0">
+                  ${f.imageUrl ? `
+                    <img src="${f.imageUrl}" alt="" class="w-14 h-14 rounded-xl object-cover border border-slate-200 dark:border-slate-700 flex-shrink-0 shadow-sm" />
+                  ` : ''}
+                  <div>
+                    <h4 class="text-lg font-bold text-slate-900 dark:text-white leading-tight">${f.word}</h4>
+                    ${ipa ? `<div class="text-xs font-mono font-semibold text-rose-600 dark:text-rose-400 mt-0.5">${ipa}</div>` : ''}
+                  </div>
                 </div>
-                <button onclick="playFlashcardAudioDirect('${(f.audioUrl || '').replace(/'/g, "\\'")}', '${f.word.replace(/'/g, "\\'")}')" class="p-2 rounded-xl bg-blue-50 dark:bg-slate-800 hover:bg-blue-100 text-blue-600 dark:text-blue-400 transition flex-shrink-0 shadow-sm" title="Nghe phát âm chuẩn">
+                <button onclick="playFlashcardAudioDirect('${(f.audioUrl || '').replace(/'/g, "\\'")}', '${f.word.replace(/'/g, "\\'")}')" class="p-2 rounded-xl bg-orange-50 hover:bg-orange-100 text-orange-600 dark:bg-orange-950 dark:text-orange-400 transition flex-shrink-0 shadow-sm" title="Nghe phát âm chuẩn">
                   <i data-lucide="volume-2" class="w-4 h-4"></i>
                 </button>
               </div>
 
-              <p class="text-sm font-medium text-slate-700 dark:text-slate-200 mb-2 leading-snug">${f.meaning}</p>
-              ${f.example ? `<p class="text-xs text-slate-500 italic bg-slate-50 dark:bg-slate-800/60 p-2.5 rounded-xl border border-slate-100 dark:border-slate-800 mb-3 leading-relaxed">"${f.example}"</p>` : ''}
+              <p class="text-sm font-semibold text-slate-800 dark:text-slate-200 mb-2 leading-snug">${f.meaning}</p>
+              ${f.example ? `
+                <div class="text-xs bg-slate-50 dark:bg-slate-800/60 p-2.5 rounded-xl border border-slate-100 dark:border-slate-800 mb-3 leading-relaxed">
+                  <p class="text-slate-700 dark:text-slate-300 italic font-medium">"${f.example}"</p>
+                  ${f.exampleTranslation ? `<p class="text-slate-500 dark:text-slate-400 mt-1 italic">${f.exampleTranslation}</p>` : ''}
+                </div>
+              ` : ''}
             </div>
 
             <div class="pt-2 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between gap-2">
